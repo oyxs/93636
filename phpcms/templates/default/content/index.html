@@ -1,0 +1,1129 @@
+{template "content","last"}
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>93636手游网_2016好玩手机网游推荐下载_手机网游资讯媒体</title>
+        <link rel="alternate" media="only screen and(max-width: 640px)" href="{$last_url}" id="link">
+        <meta name="keywords" content="{$SEO['keyword']}">
+        <meta name="description" content="{$SEO['description']}" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="shortcut icon" href="http://www.93636.com/statics/icon/32X32.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/statics/new_style/css/common.css">
+        <link rel="stylesheet" href="/statics/new_style/css/index.css">
+        <script src="/statics/new_style/js/jquery.js" type="text/javascript"></script>
+        <script src="/statics/new_style/js/superslide.2.1.js" type="text/javascript"></script>
+		 <script type="text/javascript">
+
+
+
+		var sUserAgent= navigator.userAgent.toLowerCase();
+
+		var bIsIpad= sUserAgent.match(/ipad/i) == "ipad";
+
+		var bIsIphoneOs= sUserAgent.match(/iphone os/i) == "iphone os";
+
+		var bIsMidp= sUserAgent.match(/midp/i) == "midp";
+
+		var bIsUc7= sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+
+		var bIsUc= sUserAgent.match(/ucweb/i) == "ucweb";
+
+		var bIsAndroid= sUserAgent.match(/android/i) == "android";
+
+		var bIsCE= sUserAgent.match(/windows ce/i) == "windows ce";
+
+		var bIsWM= sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+		if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+
+		window.location.href= 'http://m.93636.com';
+
+		} else {
+
+		//window.location= '电脑网站地址';
+
+		}
+
+
+
+</script>
+        <script type="text/javascript">
+            /*if (/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                try {
+                    if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+                        var strr = $('#link').attr("href");
+                        window.location.href = strr;
+                    }
+                } catch (e) {
+                }
+            }*/
+             
+            $(document).ready(function() {
+                //首页浮动效果
+                var d = document.getElementById("nav");
+                if (d != null) {
+                    var $navScroll = $(".nav");
+                    var $fixedNav = $(".top-nav");
+                    var navTop = 0;
+                    $(window).on("scroll", function() {
+                        var wt = $(this).scrollTop();
+                        if (wt > navTop) {
+                            $fixedNav.addClass('head_fixed');
+                        } else {
+                            $fixedNav.removeClass('head_fixed');
+                            $("#nav").css("margin-top", "0px");
+                        }
+                    });
+                }
+            });
+        </script>
+    </head>
+    <body>
+        {template "content","head"}
+        <!--<div> &lt;!&ndash;首页左侧按钮悬浮&ndash;&gt;-->
+            <!--<script type="text/javascript">-->
+                <!--/*120*120 创建于 2016/12/2*/-->
+                <!--var cpro_id = "u2835367";-->
+            <!--</script>-->
+            <!--<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/f.js"></script>-->
+
+        <!--</div>-->
+        <div class="fullSlide_before">
+            <div class="fullSlide">
+                <div class="bd">
+                    <ul>
+                        {pc:content  action="position" posid="27" catid="5" order="listorder DESC" limits="0,1"}    {loop $data $key $val}  <li class="bg_one"><a target="_blank" title="{$val[title]}" href="{ChangeUrl($val[url])}"><img src="{$val[nopicture]}" title="{$val[title]}" alt="{$val[title]}"/> </a></li> {/loop}{/pc}
+                        {pc:content  action="position" posid="27" catid="5" order="listorder DESC" limits="1,1"}    {loop $data $key $val}  <li class="bg_two"><a target="_blank" title="{$val[title]}" href="{ChangeUrl($val[url])}"><img src="{$val[nopicture]}" title="{$val[title]}" alt="{$val[title]}"/> </a></li> {/loop}{/pc}
+                        {pc:content  action="position" posid="27" catid="5" order="listorder DESC" limits="2,1"}    {loop $data $key $val}  <li class="bg_three"><a target="_blank" title="{$val[title]}" href="{ChangeUrl($val[url])}"><img src="{$val[nopicture]}" title="{$val[title]}" alt="{$val[title]}"/> </a></li> {/loop}{/pc}
+                        {pc:content  action="position" posid="27" catid="5" order="listorder DESC" limits="3,1"}    {loop $data $key $val}  <li class="bg_four"><a target="_blank" title="{$val[title]}" href="{ChangeUrl($val[url])}"><img src="{$val[nopicture]}" title="{$val[title]}" alt="{$val[title]}"/> </a></li> {/loop}{/pc}
+                        {pc:content  action="position" posid="27" catid="5" order="listorder DESC" limits="4,1"}    {loop $data $key $val} <li class="bg_five"><a target="_blank" title="{$val[title]}" href="{ChangeUrl($val[url])}"><img src="{$val[nopicture]}" title="{$val[title]}" alt="{$val[title]}"/> </a></li> {/loop}{/pc}
+                        {pc:content  action="position" posid="27" catid="5" order="listorder DESC" limits="5,1"}    {loop $data $key $val}  <li class="bg_six"><a target="_blank" title="{$val[title]}" href="{ChangeUrl($val[url])}"><img src="{$val[nopicture]}" title="{$val[title]}" alt="{$val[title]}"/> </a></li> {/loop}{/pc}
+                    </ul>
+                </div>
+                <div class="hd">
+                    <ul>
+                        <li class="on"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="game_commend">
+            <div class="game_list_box clearfix">
+                <div class="game_com_list on">
+                    <ul class="clearfix"><!--最新游戏 -->
+                        {pc:content  action="position" posid="41" catid="5" order="listorder DESC" num="20"}
+                        {php $i=1;}
+                        {loop $data $r}
+                        <li><a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" {if $i==1}class="game_color"{else}class=""{/if}><img class="game_app_img" title="{$r[title]}" alt="{$r[title]}" src="{$r[thumb]}">{$r[title]}</a></li>
+                        {php $i++;}
+                        {/loop}
+                        {/pc}
+
+                    </ul>
+                   
+                </div><!--game_com_list-->
+                <div class="game_com_list">
+                    <ul class="clearfix"><!--热门游戏 -->
+                        {pc:content  action="position" posid="26" catid="5" order="listorder DESC" num="20"}
+                        {php $i=1;}
+                        {loop $data $r}
+                        <li><a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" {if $i==1}class="game_color"{else}class=""{/if}><img class="game_app_img" alt="{$r[title]}" title="{$r[title]}"  src="{$r[thumb]}">{$r[title]}</a></li>
+                        {php $i++;}
+                        {/loop}
+                        {/pc}
+
+                    </ul>
+                   
+                </div>
+                <div class="game_com_list">
+                    <ul class="clearfix"><!--推荐游戏 -->
+                        
+                        {pc:content  action="position" posid="42" catid="5" order="listorder DESC" num="20"}
+                        {php $i=1;}
+                        {loop $data $r}
+                        <li><a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" {if $i==1}class="game_color"{else}class=""{/if}><img class="game_app_img" alt="{$r[title]}" src="{$r[thumb]}" title="{$r[title]}" >{$r[title]}</a></li>
+                        {php $i++;}
+                        {/loop}
+                        {/pc}
+                        
+                        
+
+                    </ul>
+                   
+                </div>
+                <!--game_com_list-->
+            </div>
+            <!--game_list_box-->
+            <div class="game_com_tab">
+                <ul>
+                   <li class="f1 on"><h3><b class="tb"></b>最新游戏</h3> </li>
+                    <li class="f2"><h3><b class="tb tb2"></b>热门游戏</h3> </li>
+                    <li class="f3"><h3><b class="tb tb3"></b>经典单机 </h3> </li>
+                </ul>
+            </div>
+            <!--game_com_tab-->
+        </div>
+        <div class="main clearfix">
+            <div class="bg-ad clearfix">
+                {pc:get sql="SELECT setting FROM 93636_poster WHERE spaceid = 11 AND type='images' AND disabled=0 ORDER BY listorder ASC" num="1"} 
+                
+                {loop $data $r} 
+                {php eval("\$narry = $r[setting];");}
+                <a href="{$narry[1][linkurl]}" class="bg-ad-l" title="{$narry[1][alt]}" target="_blank" rel="nofollow"><img src="{$narry[1][imageurl]}" alt="{$narry[1][alt]}" class="img-scale"></a>
+                {/loop} 
+                {/pc}
+
+                {pc:get sql="SELECT setting FROM 93636_poster WHERE spaceid = 12 AND type='images' AND disabled=0 ORDER BY listorder ASC" num="1"} 
+                
+                {loop $data $r} 
+                {php eval("\$narry = $r[setting];");}
+                <a href="{$narry[1][linkurl]}" class="bg-ad-r" title="{$narry[1][alt]}" target="_blank" rel="nofollow"><img src="{$narry[1][imageurl]}" alt="{$narry[1][alt]}" class="img-scale"></a>
+                {/loop} 
+                {/pc}  
+                       
+            </div>
+        </div>
+    <div class="main clearfix" >
+
+    <div class="index-banner">
+        <div class="index-ban-l">
+            <!-- 轮播 -->
+            <div class="m-slide">
+                <ul class="tab">
+
+                    {pc:content  action="position" posid="1"  order="listorder DESC"  num="4"}
+                        {loop $data $key $val}
+                        <li>
+                            <a target="_blank" title="{$val[title]}"  href="{ChangeUrl($val[url])}">
+                                <img src="{$val[nopicture]}" title="{$val[title]}"  alt="{$val[title]}">
+                            </a>
+                        </li>
+                        {/loop}
+                        {/pc}
+                </ul>
+                <ul class="img">
+                    {pc:content  action="position" posid="1"  order="listorder DESC"  num="4"}
+                    {loop $data $key $val}
+                    <li>
+                        <a href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}">
+                            <img src="{$val[nopicture]}" alt="{$val[title]}">
+                            <p class="ban-text ell">{$val[title]}</p>
+                            <span class="slide-shade"></span>
+                        </a>
+                    </li>
+                    {/loop}
+                    {/pc}
+                    
+                </ul>
+            </div>
+            <!-- 礼包推荐 -->
+            <div class="all-tit">
+                <i class="icon-gift"></i>
+                <h2>
+                    <span>礼包</span>
+                    <em></em>
+                    <span>推荐</span>
+                </h2>
+                <a href="/youxilibao" class="more"></a>
+            </div>
+            <div class="index-gift-list">
+                <ul>
+                    {pc:content action="position" posid="35" order="listorder DESC" limits="0,1"}
+                    {loop $data $r}
+                    <li>
+                        <div class="sl">
+                            <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+                        </div>
+                        <div class="sr">
+                            <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="gift-lq">
+                                <div class="lq-btn"><i></i>领取</div>
+                                <span>{$r[endtime]}</span>
+                            </a>
+                        </div>
+                        <div class="sm">
+                            <a class="ell" href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}">{$r[title]}<i class="New">N</i></a>
+                            <div class="progress brr5">
+                                <div class="some brr5" style="width:{LbCount($r['id'],$r['number'])}%"></div>
+                            </div>
+                            <span>剩余：{LbCount($r['id'],$r['number'])}%</span>
+                        </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+
+                    {pc:content action="position" posid="35"  order="listorder DESC" limits="1,1"}
+                    {loop $data $r}
+                    <li>
+                        <div class="sl">
+                             <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+                        </div>
+                        <div class="sr">
+                            <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="gift-lq">
+                                <div class="lq-btn"><i></i>领取</div>
+                                <span>{$r[endtime]}</span>
+                            </a>
+                        </div>
+                        <div class="sm">
+                            <a class="ell" href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}">{$r[title]}<i class="Hot">H</i></a>
+                            <div class="progress brr5">
+                                <div class="some brr5" style="width:{LbCount($r['id'],$r['number'])}%"></div>
+                            </div>
+                            <span>剩余：{LbCount($r['id'],$r['number'])}%</span>
+                        </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+
+                    {pc:content action="position" posid="35" order="listorder DESC" limits="2,4"}
+                    {loop $data $r}
+                    <li>
+                        <div class="sl">
+                             <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+                        </div>
+                        <div class="sr">
+                            <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="gift-lq">
+                                <div class="lq-btn"><i></i>领取</div>
+                                <span>{$r[endtime]}</span>
+                            </a>
+                        </div>
+                        <div class="sm">
+                            <a class="ell"  href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}">{$r[title]}</a>
+                            <div class="progress brr5">
+                                <div class="some brr5" style="width:{LbCount($r['id'],$r['number'])}%"></div>
+                            </div>
+                            <span>剩余：{LbCount($r['id'],$r['number'])}%</span>
+                        </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+                   
+                </ul>
+            </div>
+        </div>
+        <!-- 今日头条 -->
+        <div class="index-ban-r">
+            <div class="toutiao brr5">
+                <div class="tt-tit">今日头条</div>
+                {pc:content  action="position" posid="16" catid IN(30,27) order="listorder DESC" limits="0,2"}
+                {loop $data $val}
+                <h4 class="ell"><a class="dis-inline" href="{ChangeUrl($val[url])}" title="{$val[title]}"  target="_blank">{$val[title]}</a></h4>
+                <p class="ell">
+                    <a class="dis-inline" href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank">{str_cut($val[description],86,'...')}</a>
+                </p>
+                {/loop}
+                {/pc}
+                
+                <ul>
+                    {php $i=1;}
+                    {pc:content  action="position" posid="43"  order="listorder DESC" limits="0,4"}
+                    {loop $data $val}
+                    <li>
+                        {if $i==1}<span>【头条】</span>{elseif $i==2}<span>【原创】</span>{elseif $i==3}<span>【热点】</span>{elseif $i==4}<span>【关注】</span>{/if}
+                        <a href="{ChangeUrl($val[url])}" class="ell dis-inline" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                        <span class="date">{date('m-d',$val[inputtime])}</span>
+                    </li>
+                    {php $i++;}
+                    {/loop}
+                    {/pc}
+                    
+                </ul>
+            </div>
+            <div class="index-data brr5">
+                <div class="data-tit">
+                    <i></i>
+                    <h4>一周新游快讯</h4>
+                    
+                </div>
+                <ul class="index-data-box">
+                    {php $i=1;}
+                    {pc:content action="position" posid="50" catid="30" limits="0,5" order="listorder DESC"}
+                    {loop $data $val}
+                    <li class="{if $i==1}active{/if}">
+                        <h3>
+                            <i class="{if $i<3}list-first {/if}dis-inline">{$i}</i>
+                            <p class="ell dis-inline">{$val[title]}</p>
+                            <span class="dis-inline">{date('m-d',$val[inputtime])}</span>
+                        </h3>
+                        <div class="list-active">
+                            <i class="list-first dis-inline">{$i}</i>
+                            <a href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}" class="game-icon dis-inline">
+                                {pc:get sql="select thumb from 93636_game  where title='$val[gamename]' AND status='99'" return="data" num="1"}
+                                {if empty($data)}
+                                 <img src="{$val[thumb]}" alt="{$val[title]}" >
+                                {/if}
+                                {loop $data $r}
+                                <img src="{$r[thumb]}" alt="{$val[title]}" >
+                                {/loop}
+                                {/pc}
+                            </a>
+                            <div class="list-cent dis-inline">
+                                <a href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}" class="ell dis-inline">{$val[title]}</a>
+                                <p class="l-ell">{str_cut($val[description],180,'...')}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {php $i++;}
+                    {/loop}
+                    {/pc}
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+        <!--{pc:content action="position" posid="45" catid="5" limits="1,1" order="listorder DESC"}
+        {loop $data $r}
+        <div class="ad"><a href="{ChangeUrl($r[url])}" target="_blank"><img src="{$r[nopicture]}" alt="$r[title]"></a></div>
+        {/loop}
+        {/pc}-->
+
+<!-- 手游合集 -->
+<div class="main clearfix">
+    <div class="syheji brr5 clearfix">
+        <div class="all-tit">
+            <i class="icon-heji"></i>
+            <h2>
+                <span>手游</span>
+                <em></em>
+                <span>合集</span>
+                <ul class="dis-inline">
+                {pc:get sql="select * from 93636_category where parentid=218 order by listorder desc " return="info"}
+                {loop $info $r}
+                    <li><a href="http://www.93636.com{$r[url]}" title="{$r[catname]}" target="_blank">{$r[catname]}</a></li>
+                {/loop}
+                {/pc}
+                </ul>
+            </h2>
+            <a href="http://www.93636.com/heji/" class="more"></a>
+        </div>
+        <div class="heji-box">
+            <ul class="fold_wrap"  id="sm">
+                <!--{pc:get sql="select * from 93636_category where parentid=218 order by listorder desc " return="info"}
+                {loop $info $r}
+                <li class="pic_auto brr5"><span>{$r[catname]}</span><img class="pic-l" src="{$r[index_image]}" alt=""></li>
+                {/loop}
+                {/pc}-->
+                 <li class="pic_auto brr5"><a href="http://www.93636.com/heji/dianjing/" title="电子竞技" target="_blank"><span>电子竞技</span><img class="pic-l" src="/statics/new_style/img/l_1.jpg" alt="电子竞技"></a></li>
+                  <li class="pic_auto brr5"><a href="http://www.93636.com/heji/tengxun/" title="腾讯游戏" target="_blank"><span>腾讯游戏</span><img class="pic-l" src="/statics/new_style/img/l_2.png" alt="腾讯游戏"></a></li>
+                   <li class="pic_auto brr5"><a href="http://www.93636.com/heji/erciyuan/" title="二次元游戏" target="_blank"><span>二次元游戏</span><img class="pic-l" src="/statics/new_style/img/l_3.jpg" alt="二次元游戏"></a></li>
+                    <li class="pic_auto brr5"><a href="http://www.93636.com/heji/wangyi/" title="网易游戏" target="_blank"><span>网易游戏</span><img class="pic-l" src="/statics/new_style/img/l_4.png" alt="网易游戏"></a></li>
+                     <li class="pic_auto brr5"><a href="http://www.93636.com/heji/sanguo/" title="三国游戏" target="_blank"><span>三国游戏</span><img class="pic-l" src="/statics/new_style/img/l_5.png" alt="三国游戏"></a></li>
+                      <li class="pic_auto brr5"><a href="http://www.93636.com/heji/nvshen/" title="女生游戏" target="_blank"><span>女生游戏</span><img class="pic-l" src="/statics/new_style/img/l_6.png" alt="女生游戏"></a></li>
+                      <li class="pic_auto brr5"><a href="http://www.93636.com/heji/xiyou/" title="西游游戏" target="_blank"><span>西游游戏</span><img class="pic-l" src="/statics/new_style/img/l_7.png" alt="西游游戏"></a></li>
+                      <li class="pic_auto brr5"><a href="http://www.93636.com/heji/jingdiandanji/" title="单机游戏" target="_blank"><span>单机游戏</span><img class="pic-l" src="/statics/new_style/img/l_8.png" alt="单机游戏"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 热门视频 -->
+<div class="main clearfix">
+    <div class="hot-video brr5 clearfix">
+        <div class="all-tit">
+            <i class="icon-video"></i>
+            <h2>
+                <span>热门</span>
+                <em></em>
+                <span>视频</span>
+            </h2>
+            <a href="/video/" class="more"></a>
+        </div>
+        <div class="video-l">
+            {pc:content action="position" posid="17" catid="17" limits="0,1" order="listorder DESC"}
+            {loop $data $val}
+            <a class="brr5" href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}">
+                <img alt="{$val[title]}" src="{$val[thumb]}">
+                <p class="ell video-txt">{$val[title]}<i></i></p>
+                <span></span>
+                <div class="video-zz">
+                    <i class="tit1"></i>
+                    <i class="tit2"></i>
+                    <p class="ell">{$val[title]}</p>
+                </div>
+            </a>
+            {/loop}
+            {/pc}
+        </div>
+        <ul class="video-list">
+            {pc:content action="position" posid="17" catid="17" limits="1,4" order="listorder DESC"}
+            {loop $data $val}
+            <li>
+                <a class="brr5" href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}">
+                    <img alt="{$val[title]}" src="{$val[thumb]}">
+                    <p class="ell video-txt">{$val[title]}<i></i></p>
+                    <span></span>
+                    <div class="video-zz">
+                        <i class="tit1"></i>
+                        <i class="tit2"></i>
+                        <p class="ell">{$val[title]}</p>
+                    </div>
+                </a>
+            </li>
+            {/loop}
+            {/pc}
+            
+        </ul>
+    </div>
+   <!-- 行业新闻 -->
+    <div class="index-news brr5 clearfix">
+        <div class="all-tit">
+            <i class="icon-news"></i>
+            <h3>
+                <span>行业</span>
+                <em></em>
+                <span>新闻</span>
+            </h3>
+            <a href="/chanyenews/" class="more"></a>
+        </div>
+        <ul class="news-list">
+            {pc:content action="position" posid="52" catid="27,30" order="listorder DESC,id DESC" num="1"}
+            {loop $data $val}
+            <li class="active">
+                <h3>
+                    <i class="list-first dis-inline">1</i>
+                    <p class="ell dis-inline">{$val[title]}</p>
+                    <span class="dis-inline">{date('m-d',$val[inputtime])}</span>
+                </h3>
+                <div class="list-active">
+                    <a class="brr5" href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}" >
+                        <img src="{$val[nopicture]}" alt="{$val[title]}" title="{$val[title]}">
+                        <p class="ell">{$val[title]}</p>
+                        <span></span>
+                    </a>
+                </div>
+            </li>
+            {/loop}
+            {/pc}
+            {php $i=2;}
+            {pc:content action="position" posid="52" catid="27,30" order="listorder DESC,id DESC"  limits="1,3"}
+            {loop $data $val}
+            <li class="">
+                <h3>
+                    <i class="{if $i==2}list-first{/if} dis-inline">{$i}</i>
+                    <p class="ell dis-inline">{$val[title]}</p>
+                    <span class="dis-inline">{date('m-d',$val[inputtime])}</span>
+                </h3>
+                <div class="list-active">
+                    <a class="brr5" href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}">
+                        <img src="{$val[nopicture]}" alt="{$val[title]}" title="{$val[title]}">
+                        <p class="ell">{$val[title]}</p>
+                        <span></span>
+                    </a>
+                </div>
+            </li>
+            {php $i++;}
+            {/loop}
+            {/pc}
+           
+        </ul>
+    </div>
+</div>
+<!-- 广告 -->
+<div class="main clearfix">
+    <div class="bg-ad-box">
+        {pc:get sql="SELECT setting FROM 93636_poster WHERE spaceid = 13 AND type='images' AND disabled=0 ORDER BY listorder ASC" num="1"} 
+                
+        {loop $data $r} 
+        {php eval("\$narry = $r[setting];");}
+        <a href="{$narry[1][linkurl]}" class="bg-ad1 brr5" target="_blank" title="{$narry[1][alt]}" rel="nofollow"><img class="brr5 img-scale" src="{$narry[1][imageurl]}" alt="{$narry[1][alt]}"  rel="nofollow" ></a>
+        {/loop} 
+        {/pc}  
+</div>
+</div>
+<!-- 热门攻略 -->
+<div class="main clearfix">
+    <div class="strategy brr5 clearfix">
+        <div class="strategy-l dis-inline">
+            <div class="all-tit">
+                <i class="icon-strategy"></i>
+                <h2>
+                    <span>热门</span>
+                    <em></em>
+                    <span>攻略</span>
+                </h2>
+                <a href="/youxigonglue" class="more"></a>
+            </div>
+            <div class="strategy-l-l dis-inline">
+                {pc:content action="position" posid="32" catid="2" limits="0,2" order="listorder DESC"}
+                {loop $data $r}
+                <a class="brr5" href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">
+                    <img src="{$r[nopicture]}" alt="{$r[title]}">
+                    <p class="ell">{$r[title]}</p>
+                    <span></span>
+                </a>
+                {/loop}
+                {/pc}
+                
+            </div>
+            <div class="strategy-l-r dis-inline">
+                {pc:content action="lists" catid="2"  order="inputtime desc"  limits="0,1"}
+                {loop $data $val}
+                <h2 class="ell"><a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank">{$val[title]}</a></h2>
+                <p class="l-ell">{str_cut($val[description],180,'...')}</p>
+                <p>
+                    {pc:get sql="select writer from 93636_news_data  where id='$val[id]'" return="data" num="1"}
+                    {loop $data $r}
+                    <span class="dis-inline zz">作者：{$r[writer]}</span>
+                    {/loop}
+                    {/pc}
+                    <span class="dis-inline ly">来源：93636</span>
+                    <span class="dis-inline sj">{date('Y-m-d',$val[inputtime])}</span>
+                </p>
+                {/loop}
+                {/pc}
+                <ul class="strategy-list">
+                    {php $d=1;}
+                    {pc:content action="lists" catid="2"  order="inputtime desc"  limits="1,5"}
+                    {loop $data $val}
+                    <li>
+                        <h3>
+                            <i class="list-first dis-inline">{$d}</i>
+                            <a class="ell dis-inline" href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                            <span class="dis-inline">{date('m-d',$val[inputtime])}</span>
+                        </h3>
+                    </li>
+                    {php $d++;}
+                    {/loop}
+                    {/pc}
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- 热门新游 -->
+        <div class="strategy-r">
+            <div class="all-tit">
+                <i class="icon-newgame"></i>
+                <h2>
+                    <span>热门</span>
+                    <em></em>
+                    <span>新游</span>
+                </h2>
+            </div>
+            <div class="hot-newgame-box">
+                <em class="em-top"></em>
+                <em class="em-bot"></em>
+                <ul class="hot-newgame clearfix">
+                
+                    <li>
+                        <i></i>
+                        {pc:content action="position" posid="37" catid="5" limits="0,2" order="listorder DESC"}
+                        {loop $data $r}
+                        <div class="newgame-list">
+                            <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="gift-icon dis-inline">
+                                
+                                <img src="{$r[thumb]}" alt="{$r[title]}">
+                               
+                            </a>
+                            <div class="gift-txt">
+                                <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="txt-tit ell dis-inline">{$r[title]}</a>
+                                <p>类型：{$CATEGORYS[$r[catid]][catname]}</p>
+                                <p>
+                                    <a href="{if get_libao($r[title])!=''}{ChangeUrl(get_libao($r[title]))}{else}http://www.93636.com/games/libaolist{/if}"  target="_blank" class="gift-gift"></a>
+                                    <a href="{ChangeUrl($r[url])}"  title="{$r[title]}" target="_blank" class="gift-dow"></a>
+                                </p>
+                            </div>
+                        </div>
+                        {/loop}
+                        {/pc}
+                    </li>
+                
+                    <li>
+                        <i></i>
+                        {pc:content action="position" posid="26" catid="5" limits="2,2" order="listorder DESC"}
+                        {loop $data $r}
+                        <div class="newgame-list">
+                            <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="gift-icon dis-inline"><img src="{$r['thumb']}" alt=""></a>
+                            <div class="gift-txt">
+                                <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="txt-tit ell dis-inline">{$r[title]}</a>
+                                <p>类型：{$CATEGORYS[$r[catid]][catname]}</p>
+                                <p>
+                                    <a href="{if get_libao($r[title])!=''}{ChangeUrl(get_libao($r[title]))}{else}http://www.93636.com/games/libaolist{/if}"  target="_blank" class="gift-gift"></a>
+                                    <a href="{ChangeUrl($r[url])}"  title="{$r[title]}" target="_blank" class="gift-dow"></a>
+                                </p>
+                            </div>
+                        </div>
+                        {/loop}
+                        {/pc}
+                    </li>
+                    <li>
+                        <i></i>
+                        {pc:content action="position" posid="26" catid="5" limits="4,2" order="listorder DESC"}
+                        {loop $data $r}
+                        <div class="newgame-list">
+                            <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="gift-icon dis-inline"><img src="{$r['thumb']}" alt=""></a>
+                            <div class="gift-txt">
+                                <a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}" class="txt-tit ell dis-inline">{$r[title]}</a>
+                                <p>类型：{$CATEGORYS[$r[catid]][catname]}</p>
+                                <p>
+                                    <a href="{if get_libao($r[title])!=''}{ChangeUrl(get_libao($r[title]))}{else}http://www.93636.com/games/libaolist{/if}"  target="_blank" class="gift-gift"></a>
+                                    <a href="{ChangeUrl($r[url])}"  title="{$r[title]}" target="_blank" class="gift-dow"></a>
+                                </p>
+                            </div>
+                        </div>
+                        {/loop}
+                        {/pc}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 广告 -->
+<div class="main">
+    <div class="bg-ad2 clearfix brr5">
+                {pc:get sql="SELECT setting FROM 93636_poster WHERE spaceid = 14 AND type='images' AND disabled=0 ORDER BY listorder ASC" num="1"}     
+                {loop $data $r} 
+                {php eval("\$narry = $r[setting];");}
+                <a href="{$narry[1][linkurl]}" class="bg-ad-l brr5" title="{$narry[1][alt]}" target="_blank" rel="nofollow"><img class="brr5 img-scale" src="{$narry[1][imageurl]}" alt="{$narry[1][alt]}"></a>
+                {/loop} 
+                {/pc}
+                {pc:get sql="SELECT setting FROM 93636_poster WHERE spaceid = 15 AND type='images' AND disabled=0 ORDER BY listorder ASC" num="1"}     
+                {loop $data $r} 
+                {php eval("\$narry = $r[setting];");}
+                <a href="{$narry[1][linkurl]}" class="bg-ad-r brr5" title="{$narry[1][alt]}" target="_blank" rel="nofollow"><img class="brr5 img-scale" src="{$narry[1][imageurl]}" alt="{$narry[1][alt]}"></a>
+                {/loop} 
+                {/pc}
+             
+    </div>
+</div>
+<!-- 评测 -->
+<div class="main">
+    <div class="bg-ad2 clearfix brr5">
+        <div class="all-tit">
+            <i class="icon-pc"></i>
+            <h2>
+                <span>新游</span>
+                <em></em>
+                <span>评测</span>
+            </h2>
+            <a href="/youxipingce/" class="more" target="_blank"></a>
+        </div>
+        <ul class="index-pc">
+            {pc:content action="position" posid="31" catid="29" order="listorder DESC" num="5" }
+            {loop $data $val}
+            <li>
+                <img src="{$val[nopicture]}" alt="{$val[title]}" class="pc-pic">
+                <div class="zz"></div>
+                <div class="pc-text">
+                    <div class="pc-tit">
+                        <span class="pc-tit-l">HANDS-ON</span>
+                        <span class="pc-tit-r">{$val['pingfen']}</span>
+                    </div>
+                    <div class="pingfen jf">
+                        <div class="pingfen-cent">
+                        {pc:get sql="select thumb from 93636_game  where title='$val[gamename]' AND status='99'" return="data" num="1"}
+                        {if empty($data)}
+                                 <img src="{$val[thumb]}" alt="{$val[title]}" >
+                                {/if}
+                        {loop $data $r}
+                            <img src="{$r[thumb]}" alt="{$val[title]}">
+                        {/loop}
+                        {/pc}
+                            <span>{$val['pingfen']}</span>
+                        </div>
+                    </div>
+                    <p><a href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}">{$val[title]}</a></p>
+                </div>
+            </li>
+            {/loop}
+            {/pc}
+            
+        </ul>
+    </div>
+</div>
+<!-- 游戏排行 -->
+<div class="main clearfix">
+    <div class="ranking brr5">
+        <ul class="ranking-tit clearfix">
+            <li><h3><i class="rank-wy dis-inline"></i>最新网游排行榜</h3></li>
+            <li><h3><i class="rank-hot dis-inline"></i>热门游戏排行榜</h3></li>
+            <li><h3><i class="rank-dj dis-inline"></i>经典单机排行榜</h3></li>
+        </ul>
+        <!-- 最新网游排行榜 -->
+        <div class="rank-list">
+            <div class="rank-top">
+                <div class="s1">排名</div>
+                <div class="s2">游戏</div>
+                <div class="s3">类别</div>
+                <div class="s4">下载量</div>
+            </div>
+            <ul class="ranking-list">
+                {php $c=1;}
+                {pc:content  action="position" posid="39" order="listorder DESC" limits="0,2"}
+                
+                {loop $data $val}
+                <li {if $c==1}class="active"{/if}>
+                    <div class="rank-h2">
+                        <div class="s1 s1-first"><i>{$c}</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-first"><i>{$c}</i></div>
+                        <div class="s2">
+                            <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                                <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {php $c++;}
+                {/loop}
+                {/pc}
+
+                {pc:content  action="position" posid="39" order="listorder DESC" limits="2,1"}
+                {loop $data $val}
+                <li>
+                    <div class="rank-h2">
+                        <div class="s1 s1-second"><i>3</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-second"><i>3</i></div>
+                        <div class="s2">
+                             <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                                <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {/loop}
+                {/pc}
+
+                {php $c=4;}
+                {pc:content  action="position" posid="39" order="listorder DESC" limits="3,7"}
+                
+                {loop $data $val}
+                <li>
+                    <div class="rank-h2">
+                        <div class="s1 s1-third"><i>{$c}</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-third"><i>{$c}</i></div>
+                        <div class="s2">
+                             <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                                <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {php $c++;}
+                {/loop}
+                {/pc}
+               
+            </ul>
+        </div>
+        <!-- 热门游戏排行榜 -->
+        <div class="rank-list">
+            <div class="rank-top">
+                <div class="s1">排名</div>
+                <div class="s2">游戏</div>
+                <div class="s3">类别</div>
+                <div class="s4">下载量</div>
+            </div>
+            <ul class="ranking-list">
+                {php $c=1;}
+                {pc:content  action="position" posid="40" order="listorder DESC" limits="0,2"}
+                
+                {loop $data $val}
+                <li {if $c==1}class="active"{/if}>
+                    <div class="rank-h2">
+                        <div class="s1 s1-first"><i>{$c}</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-first"><i>{$c}</i></div>
+                        <div class="s2">
+                            <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                                <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {php $c++;}
+                {/loop}
+                {/pc}
+
+                {pc:content  action="position" posid="40" order="listorder DESC" limits="2,1"}
+                {loop $data $val}
+                <li>
+                    <div class="rank-h2">
+                        <div class="s1 s1-second"><i>3</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-second"><i>3</i></div>
+                        <div class="s2">
+                             <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                                <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {/loop}
+                {/pc}
+
+                {php $c=4;}
+                {pc:content  action="position" posid="40" order="listorder DESC" limits="3,7"}
+                
+                {loop $data $val}
+                <li>
+                    <div class="rank-h2">
+                        <div class="s1 s1-third"><i>{$c}</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-third"><i>{$c}</i></div>
+                        <div class="s2">
+                             <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                                <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {php $c++;}
+                {/loop}
+                {/pc}
+               
+            </ul>
+        </div>
+        <!-- 经典单机排行榜 -->
+        <div class="rank-list">
+            <div class="rank-top">
+                <div class="s1">排名</div>
+                <div class="s2">游戏</div>
+                <div class="s3">类别</div>
+                <div class="s4">下载量</div>
+            </div>
+            <ul class="ranking-list">
+                {php $c=1;}
+                {pc:content  action="position" posid="51" order="listorder DESC" limits="0,2"}
+                
+                {loop $data $val}
+                <li {if $c==1}class="active"{/if}>
+                    <div class="rank-h2">
+                        <div class="s1 s1-first"><i>{$c}</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-first"><i>{$c}</i></div>
+                        <div class="s2">
+                            <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                               <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {php $c++;}
+                {/loop}
+                {/pc}
+
+                {pc:content  action="position" posid="51" order="listorder DESC" limits="2,1"}
+                {loop $data $val}
+                <li>
+                    <div class="rank-h2">
+                        <div class="s1 s1-second"><i>3</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-second"><i>3</i></div>
+                        <div class="s2">
+                             <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                                <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {/loop}
+                {/pc}
+
+                {php $c=4;}
+                {pc:content  action="position" posid="51" order="listorder DESC" limits="3,7"}
+                
+                {loop $data $val}
+                <li>
+                    <div class="rank-h2">
+                        <div class="s1 s1-third"><i>{$c}</i></div>
+                        <div class="s2 ell">{$val[title]}</div>
+                        <div class="s3">{$CATEGORYS[$val[catid]][catname]}</div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                    <div class="rank-active">
+                        <div class="s1 s1-third"><i>{$c}</i></div>
+                        <div class="s2">
+                             <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-icon brr5">
+                                <img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}">
+                            </a>
+                            <div class="rank-icon-r">
+                                <a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank" class="rank-tit ell">{$val[title]}</a>
+                                <p class="star {if $val[recommend]!=5} star{$val[recommend]}{/if}"></p>
+                                <span>{$CATEGORYS[$val[catid]][catname]}</span>
+                            </div>
+                        </div>
+                        <div class="s4">{$val[downloadtimes]}</div>
+                    </div>
+                </li>
+                {php $c++;}
+                {/loop}
+                {/pc}
+               
+            </ul>
+        </div>
+
+    </div>
+</div>
+<!-- 广告 -->
+<div class="main clearfix">
+    <div class="bg-ad-box">
+        {pc:get sql="SELECT setting FROM 93636_poster WHERE spaceid = 16 AND type='images' AND disabled=0 ORDER BY listorder ASC" num="1"}     
+        {loop $data $r} 
+        {php eval("\$narry = $r[setting];");}
+            <a href="{$narry[1][linkurl]}" class="bg-ad1 brr5" title="{$narry[1][alt]}" target="_blank" rel="nofollow"><img class="brr5 img-scale" src="{$narry[1][imageurl]}" alt="{$narry[1][alt]}"></a>
+        {/loop} 
+        {/pc}
+</div>
+</div>
+ <!-- 网游入库 单机入库 -->
+<div class="main clearfix">
+    <div class="win_110 clearfix brr5">
+        <div class="w_caption">
+            <h4 class="toggle active">网游入库</h4>
+            <h4 class="toggle">单机入库</h4>
+            <a href="http://www.93636.com/games/list.html" class="more"></a>
+        </div>
+        <div class="w_g_all">
+            <ul class="w_game_list on">
+               {pc:get sql="select * from 93636_game  where singleornet='1' and status='99' and is_show='1'  ORDER BY id DESC " return="data" num="20"}
+                {loop $data $val}
+                <li><a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" alt="{$val[title]}"><p title="{$val[title]}">{$val[title]}</p></a></li>
+                
+                {/loop}
+                {/pc}
+            </ul>
+            <ul class="w_game_list">
+                {pc:get sql="select * from 93636_game  where singleornet='0' and status='99' and is_show='1' ORDER BY id DESC " return="data" num="20"}
+                {loop $data $val}
+                <li><a href="{ChangeUrl($val[url])}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" alt="{$val[title]}"><p title="{$val[title]}">{$val[title]}</p></a></li>
+                
+                {/loop}
+                {/pc}
+            </ul>
+        </div><!--w_g_all-->
+    </div>
+</div>
+
+<!-- 友情链接 -->
+<div class="main clearfix">
+    <div class="struct_wrap friendly_wrap brr5">
+        <h4>友情链接</h4>
+        <div class="friendly_swiper">
+            <div id="links_box">
+            {pc:link  action="type_list" siteid="$siteid" order="listorder DESC" num="24" return="data"}
+            {loop $data $v}
+                <a href="{$v['url']}" target="_blank"><h3>{$v['name']}</h3></a>
+            {/loop}
+            {/pc}
+               
+            </div>
+            <div class="btnWrap">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <!--友情链接-->
+
+    <div class="footer">
+          {template "content","foot"}
+</div>
+
+        <div> <!--首页右下角悬浮-->
+            <script type="text/javascript">
+                /*250*200 创建于 2016/12/2*/
+                var cpro_id = "u2835361";
+            </script>
+            <script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/f.js"></script>
+        </div>
+        <div>
+            <script type="text/javascript">
+                /*自适应 创建于 2016/12/2*/
+                var cpro_psid = "u2835357";
+            </script>
+            <script type="text/javascript" src="http://su.bdimg.com/static/dspui/js/f.js"></script>
+        </div>
+    <script src="/statics/new_style/js/miguan_wjzj.js" type="text/javascript"></script>
+    <script src="/statics/new_style/js/lib/jquery-1.8.3.min.js"></script>
+    <script src="/statics/new_style/js/lib/superslide.2.1.js"></script>
+    <script src="/statics/new_style/js/lib/common.js"></script>
+</body>
+</html>

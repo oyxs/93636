@@ -1,0 +1,78 @@
+﻿<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta name="MobileOptimized" content="620"/>
+<meta name="format-detection" content="telephone=no" />
+<link id="adaptation" rel="canonical" href="{new_get_url($catid)}" >
+<title>{$tit_le['title']}_93636手游网</title>
+<meta name="keywords" content="{$tit_le['keyword']}" /> 
+<meta name="description" content="{$tit_le['description']}" />
+<link href="http://www.93636.com/statics/wap/style/yueact.css" rel="stylesheet" type="text/css" />
+<script src="http://www.93636.com/statics/wap/js/jquery.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/wap/js/top.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+{template "wap","header_wap"}
+<div class="content">
+  <div class="bourt">
+      <div class="link">
+           <a href="/">首页</a> >{my_wap_pos($typeid)}
+      </div>
+      <div class="art-xx">
+          <h2 class="title"> 热门推荐 </h2>
+          <div class="jryx">
+           {pc:wap  action="position" posid="20" order="listorder DESC" num="4"}
+              <ul class="yx-list">
+              {loop $data $r}
+                  <li class="yx">
+                      <a href="{mynewurl($r[url])}" class="itm-lnk"><img src="{$r[thumb]}" alt="{$r[title]}">
+                          <div class="p-info">
+                              <p class="tep">{$r[title]}</p>
+                              <p class="mate">{$r[type]}</p>
+                              <p class="bt"><span class="down">开始玩</span></p>
+                          </div>
+                      </a>
+                  </li>
+              {/loop}    
+              </ul>
+            {/pc}  
+          </div>
+      </div>
+      <div class="art-game">
+          <h3 class="title">最新入库</h3>
+          {pc:wap action="lists" typeid="$typeid" num="8" order="inputtime DESC" return="info"}
+          <ul class="art-gamelists">
+          {loop $info $r}
+              <li>
+                <a href="{my_show_url($r[catid],$r[id])}" class="gameico">
+                    <img src="{$r[thumb]}" alt="">
+                    <span>{$r[title]}</span>
+                </a> 
+                <a href="{my_show_url($r[catid],$r[id])}" class="down"> 开始玩</a>
+              </li>
+          {/loop}
+          </ul>
+          {/pc}
+      </div>
+      <div class="game-classify">
+          <h2 class="title"> 游戏分类</h2>
+          <ul class="classify-list">
+              <li><a href="{my_list_url('31')}"><span class="thumb"><img src="/statics/wap/images/arder.png" alt="休闲益智"></span><p class="tit">休闲益智</p></a></li>
+              <li><a href="{my_list_url('32')}"><span class="thumb"><img src="/statics/wap/images/role.png" alt="角色扮演"></span><p class="tit">角色扮演</p></a></li>
+              <li><a href="{my_list_url('33')}"><span class="thumb"><img src="/statics/wap/images/car.png" alt="赛车游戏"></span><p class="tit">赛车游戏</p></a></li>
+              <li><a href="{my_list_url('34')}"><span class="thumb"><img src="/statics/wap/images/strategy.png" alt="策略游戏"></span><p class="tit">策略游戏</p></a></li>
+          </ul>
+          <ul class="classify-list">
+              <li><a href="{my_list_url('30')}"><span class="thumb"><img src="/statics/wap/images/fire.png" alt="射击游戏"></span><p class="tit">射击游戏</p></a></li>
+              <li><a href=""><span class="thumb"><img src="/statics/wap/images/more.png" alt=""></span><p class="tit">更多</p></a></li>
+          </ul>
+      </div>
+  </div>
+</div>
+{template "wap","footer_wap"}
+</body>
+</html>

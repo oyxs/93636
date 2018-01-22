@@ -1,0 +1,95 @@
+{template "content","header_ttcq_zhuanqu"}
+<div class="main">	
+<div class="left">
+    <div class="location">
+        <div>
+            您的位置：：<a href="/">首页</a>>{catpos($catid)}
+        </div>
+    </div><!--location end-->
+		{loop subcat($arrparentid[1]) $v}
+        {php $duan[] .= $v[catid] ;}
+        {/loop}
+        {php $duan2[] = $catid ;}
+        {php $arr_cat=array_diff($duan,$duan2);}
+        {php $catid_id=array_rand($arr_cat,1);}
+    <ul class="list_list">
+    {pc:content action="lists" catid="$catid" num="10"  order="id DESC" page="$page" }
+    {loop $data $r}
+        <li>
+            <a href="{$r[url]}" target="_blank" class="img"><img src="{$r[thumb]}" alt="{$r[title]}" /></a>
+            <div>
+                <h3><a href="{$r[url]}" target="_blank"><b>{$r[title]}</b></a></h3> <span>{date('Y-m-d',$r[inputtime])}</span>
+                <p>{str_cut($r[description],180)}<a href="{$r[url]}">[查看详情]</a></p>
+            </div>
+        </li>
+      {/loop}
+    </ul>
+    <ul class="page">
+        {$pages}
+    </ul><!--page end-->
+    {/pc} 
+</div><!--left end-->
+<div class="rig_box">
+     {template "content","zq_ttcq_right"}
+    <dl class="lmwz">
+        <dt><h2>热门文章</h2><a href="{$CATEGORYS[$catid][url]}" rel="nofollow"></a></dt>
+        <dd>
+        {pc:content action="lists" catid="$catid" num="7" order="listorder DESC"}
+            <ul>
+            {loop $data $key $val}
+                <li><a href="{$val['url']}">{$val['title']}</a></li> 
+            {/loop}
+            </ul>
+        {/pc}
+        </dd>
+    </dl><!--lmwz end-->
+    <dl class="lmwz">
+        <dt><h2>推荐文章</h2><a href="{$CATEGORYS[$arr_cat[$catid_id]][url]}" rel="nofollow"></a></dt>
+        <dd>
+        {pc:content action="lists" catid="$arr_cat[$catid_id]" num="7" order="listorder DESC"}
+            <ul>
+            {loop $data $key $val}
+                <li><a href="{$val['url']}">{$val['title']}</a></li>
+            {/loop}
+            </ul>
+        {/pc}
+        </dd>
+    </dl><!--lmwz end-->
+    <dl class="game_down">
+        <dt><h2>游戏推荐</h2><a href="http://www.93636.com/games/" rel="nofollow"></a></dt>
+        <dd>
+        {pc:content action="position" posid="37" num="9" order="listorder DESC"}
+            <ul>
+            {loop $data $key $value}
+                <li>
+                    <a href="{$value['url']}" target="_blank" title="{value['title']}">
+                        <img src="{$value['thumb']}" alt="{value['title']}">
+                        <em>{$value['title']}</em>
+                    </a>
+                </li>
+             {/loop}
+            </ul>
+        {/pc}
+        </dd>
+    </dl><!--lmwz end-->
+</div><!--rig_box end-->
+</div><!--main-->
+<div class="foot">
+<ul class="copyright">
+    <li>
+        <a href="/about/">关于我们</a> | 
+        <a href="/statement/">免责声明</a> |  
+        <a href="/contact/">联系我们</a> |
+        <a href="/ruanwen/">软文投稿</a> |
+        <a href="/hezuo/">商务合作</a> |
+        <a href="#">网站地图</a> 
+        <br>Copyright 2015 <a href="http://www.93636.com" target="_blank">93636手游网</a> 版权所有<br>
+    </li>
+</ul>
+</div>
+<!--底部-->
+<script>window._bd_share_config = {"common": {"bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16"}, "slide": {"type": "slide", "bdImg": "1", "bdPos": "right", "bdTop": "100"}, "image": {"viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16"}, "selectShare": {"bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]}};
+with (document)
+    0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="chendianhuai,XiaMen">
+        <meta name="date" content="2016-04-19 09:50:11">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>404页面</title>
+        <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+        <script  src="/statics/new_style/js/jquery.js"></script>
+        <script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+        <script  src="j/statics/new_style/s/jquery.scrollbar.js"></script>
+        <script  src="/statics/new_style/js/jquery.slider.js"></script>
+        <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+        <script type="text/javascript">
+            var t = 5;
+            setInterval("refer()", 500); 
+            function refer() {
+                if (t == 0) {
+                    location = "http://www.93636.com/";  
+                }
+                document.getElementById('show').innerHTML = "" + t ; 
+                t--; 
+            }
+        </script> 
+
+
+    </head>
+    <body>
+        <div class="erorr_404">
+            <div class="erorr_top">
+                <p>OHNO！<span>93636手游网</span> 提醒您访问的页面受伤住院了！</p>
+                <p><span id="show">5</span>秒，返回93636手游网</p> 
+                <a href=""><i></i>返回首页</a>
+            </div>
+        </div>
+    </body>
+</html>

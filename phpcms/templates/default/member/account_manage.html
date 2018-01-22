@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>phpcmsV9 - 会员管理中心</title>
+    <meta name="keywords" content=" 会员中心">
+    <meta name="description" content="会员中心" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="/statics/new/style/reset.css" rel="stylesheet" type="text/css">
+    <script src="/statics/new/js/jquery.js" type="text/javascript"></script>
+    <script src="/statics/new/js/miguan_wjzj.js" type="text/javascript"></script>
+</head>
+<body> 
+
+<div id="header">
+	<div class="logo"><a href="{$siteinfo['domain']}"><img src="/statics/new/images/logon.png" height="60" /></a><h3>{L('member_center')}</h3></div>
+	{php $siteinfo = siteinfo($this->memberinfo['siteid']);}
+	{php $this->menu_db = pc_base::load_model('member_menu_model');}
+	{php $menu = $this->menu_db->select(array('display'=>1, 'parentid'=>0), '*', 20 , 'listorder');}
+    <div class="link">{L('hellow')} {get_nickname()}<span> | </span>
+	<a href="{APP_PATH}index.php?m=member&c=index&a=logout">{L('logout')}</a>
+	<span> | </span><a href="{$siteinfo['domain']}">{L('index')}</a> </div>
+	<div class="nav-bar">
+    	<map>
+        	<ul class="nav-site cu-span">
+				{loop $menu $k $v}
+				<li>
+					{if $v['isurl']}
+						<a href="{$v['url']}" target="_blank"><span>{L($v['name'], '', 'member_menu')}</span></a>
+					{else}
+						<a href="index.php?m={$v['m']}&c={$v['c']}&a={$v['a']}&{$v['data']}" {if $k==$_GET['t']}class="on"{/if}><span>{L($v['name'], '', 'member_menu')}</span></a>
+					{/if}
+					</li>
+					<li class="line">|</li>
+				{/loop}
+            </ul>
+        </map>
+    </div>
+</div>
+
+<div id="memberArea">
+    <div id="cont_tow_2">
+        
+        <div class="col-left col-1 left-memu">
+            <h5 class="title">账号管理</h5>
+            <ul>
+                <li><a href="index.php?m=member&c=index&a=account_manage_info&t=1"><img src="/statics/new/images/user_edit.png" width="16"> 修改个人信息</a></li>
+                <li><a href="index.php?m=member&c=index&a=account_manage_avatar&t=1"><img src="/statics/new/images/vcard.png" width="16"> 修改头像</a></li>
+                <li><a href="index.php?m=member&c=index&a=account_manage_password&t=1"><img src="/statics/new/images/icon_key.gif" width="16" height="16"> 修改邮箱/密码</a></li>
+                <li><a href="index.php?m=member&c=index&a=account_manage_upgrade&t=1"><img src="/statics/new/images/Upload.png">&nbsp;&nbsp;会员自助升级</a></li>
+                <li><a href="index.php?m=member&c=index&a=account_change_mobile&t=1"><img src="/statics/new/images/mobile_phone.png"> 更换手机</a></li>
+            </ul>
+            <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+        </div>
+        
+        <div class="col-auto">
+            <div class="col-1 ">
+                <h5 class="title">个人信息：</h5>
+                <div class="content">
+                    <div class="col-1 member-info">
+                        <div class="content">
+                            <div class="col-left himg">
+                                <a title="{L('modify').L('avatar')}" href="index.php?m=member&c=index&a=account_manage_avatar&t=1"><img src="{$avatar[90]}" onerror="this.src='/statics/images/member/nophoto.gif'" width="60" height="60"></a>
+                            </div>
+                            <div class="col-auto">
+                                <h5>{if $memberinfo['vip']}<img src="{IMG_PATH}icon/vip.gif">{elseif $memberinfo['overduedate']}<img src="{IMG_PATH}icon/vip-expired.gif" title="{L('overdue')}，{L('overduedate')}：{format::date($memberinfo['overduedate'],1)}">{/if}
+		<font color="{$grouplist[$memberinfo[groupid]]['usernamecolor']}">
+		{if $memberinfo['nickname']} {$memberinfo['nickname']} {else} {$memberinfo['username']}{/if} 
+		</font>
+		{if $memberinfo['email']}（{$memberinfo['email']}）{/if}</h5>
+                                <p class="blue">
+                                   {L('member_group')}：{$grouplist[$memberinfo['groupid']]['name']}，
+                                   {L('account_remain')}：<font style="color:#F00; font-size:22px;font-family:Georgia,Arial; font-weight:700">{$memberinfo[amount]}</font> {L('unit_yuan')}，
+								   {L('point')}：<font style="color:#F00; font-size:12px;font-family:Georgia,Arial; font-weight:700">{$memberinfo[point]}</font> {L('unit_point')}{if $memberinfo['vip']}，vip{L('overduedate')}：<font style="color:#F00; font-size:12px;font-family:Georgia,Arial; font-weight:700">{format::date($memberinfo['overduedate'])}</font>{/if}		
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bk10"></div>	
+                    <div class="col-1 ">
+                        <h5 class="title">{L('more_configuration')}：</h5>
+                        <div class="content">
+							<table width="100%" cellspacing="0" class="table_form">
+								<tr>
+									<th width="120">{L('username')}</th>        
+									<td>{$memberinfo['username']}</td>
+								</tr>
+								<tr>
+									<th width="120">{L('in_model')}：</th>        
+									<td>{$member_model[$memberinfo['modelid']]['name']}</td>
+								</tr>
+								<tr>
+									<th width="120">{L('regtime')}：</th>        
+									<td>{FORMAT::date($memberinfo['regdate'] ,1)}</td>
+								</tr>
+								<tr>
+									<th width="120">{L('lastlogintime')}：</th>        
+									<td>{FORMAT::date($memberinfo['lastdate'] ,1)}</td>
+								</tr>
+								<tr>
+									<th width="120">{L('regip')}：</th>        
+									<td>{$memberinfo['regip']}</td>
+								</tr>
+								<tr>
+									<th width="120">{L('lastip')}：</th>        
+									<td>{$memberinfo['lastip']}</td>
+								</tr>
+								<tr>
+									<th width="120">{L('mp')}：</th>        
+									<td style="color:#ff6600;"><strong>{if $memberinfo['mobile']}{substr($memberinfo['mobile'],0,3)}****{substr($memberinfo['mobile'],-4)}{/if}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="更换手机" class="button" onclick="redirect('?m=member&c=index&a=account_change_mobile&t=1')"></td>
+								</tr>
+								{loop $member_modelinfo $k $v}
+								<tr>
+									<th width="120">{$k}：</th>        
+									<td>{$v}</td>
+								</tr>
+								{/loop}
+							</table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<div class="foot post">
+    <ul class="copyright">
+        <li>
+            <a href="http://youxi.wanjizhijia.com/aboutus/index.html">玩机之家</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/index.html">关于我们</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/site.html">网站地图</a> | 
+            <a>广告服务</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/contact.html">联系我们</a> |
+            <a>招聘信息</a> | 
+            <a>网站律师</a> | 
+            <a>会员注册</a> | 
+            <a>产品答疑</a>
+            <br>Copyright  2014 wanjizhijia.com 皖ICP备13015453号-2<br>
+            玩机之家 版权所有
+        </li>
+    </ul>
+</div><!--底部-->
+        
+<script>
+/**
+ * url跳转
+ */
+function redirect(url) {
+	if(url.indexOf('://') == -1 && url.substr(0, 1) != '/' && url.substr(0, 1) != '?') url = $('base').attr('href')+url;
+	location.href = url;
+}	
+</script>		
+</body>
+</html>

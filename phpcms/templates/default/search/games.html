@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{else}2016好玩的手机网游下载筛选_手机单机游戏破解版下载中心{/if}</title>
+    <meta name="keywords" content="{$SEO['keyword']}">
+    <meta name="description" content="{$SEO['description']}">
+     <link rel="stylesheet" href="/statics/new_style/css/common.css">
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+    <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+    <script  src="/statics/new_style/js/jquery.js"></script>
+    <script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+    <script  src="/statics/new_style/js/jquery.scrollbar.js"></script>
+    <script  src="/statics/new_style/js/jquery.slider.js"></script>
+    <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+    <script src="/statics/new_style/js/lib/common.js"></script>
+</head>
+<body>
+{template "content","head"}
+<div class="make_bg mt20">
+    <div class="main clear">
+		<div class="sid-nav">
+			<ul>
+				<li><a href="http://www.93636.com/games/">推荐</a></li>
+				<li><a class="on" href="http://www.93636.com/games/list.html">游戏库</a></li>
+			</ul>
+		</div>			
+        <ul class="bread-nav bread-top">
+            <li>当前位置：</li><li><a href="{siteurl($siteid)}">首页</a>&gt;</li><li><a href="http://www.93636.com/games/">游戏宝库</a></li>
+        </ul>
+        <div class="index-ranking mt0">
+            <div class="tags">
+                <dl>
+                    <dt><span>网络类型：</span> </dt>
+                    <dd>
+                        <a href="/games/catid_{$catid}_network_9_plate_{$plate}_flag_{$flag}/" {if $network==9} class="hover" {/if} title="不限">不限</a>
+                        <a href="/games/catid_{$catid}_network_0_plate_{$plate}_flag_{$flag}/" {if $network==0} class="hover" {/if}  title="单机">单机</a>
+                        <a href="/games/catid_{$catid}_network_1_plate_{$plate}_flag_{$flag}/" {if $network==1} class="hover" {/if}  title="网游">网游</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><span>支持平台：</span> </dt>
+                    <dd>
+                        <a href="/games/catid_{$catid}_network_{$network}_plate_9_flag_{$flag}/" {if $plate==9} class="hover" {/if}  title="不限">不限</a>
+                        <a href="/games/catid_{$catid}_network_{$network}_plate_0_flag_{$flag}/" {if $plate==0} class="hover" {/if}  title="安卓">安卓</a>
+                        <a href="/games/catid_{$catid}_network_{$network}_plate_1_flag_{$flag}/" {if $plate==1} class="hover" {/if}  title="IOS">IOS</a>
+                        <a href="/games/catid_{$catid}_network_{$network}_plate_2_flag_{$flag}/" {if $plate==2} class="hover" {/if}  title="双平台">双平台</a>
+                        <a href="/games/catid_{$catid}_network_{$network}_plate_3_flag_{$flag}/" {if $plate==3} class="hover" {/if}  title="电脑版">电脑版</a>
+
+                    </dd>
+                </dl>
+                <dl class="none">
+                    <dt><span>游戏类型：</span> </dt>
+                    <dd>
+                        <a href="/games/catid_5_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==5}  class="hover" {/if} title="不限">不限</a>
+                        <a href="/games/catid_32_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==32} class="hover" {/if} title="射击游戏">射击游戏</a>
+                        <a href="/games/catid_33_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==33} class="hover" {/if} title="休闲益智">休闲益智</a>
+                        <a href="/games/catid_34_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==34} class="hover" {/if} title="体育竞技">体育竞技</a>
+                        <a href="/games/catid_35_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==35} class="hover" {/if} title="角色扮演">角色扮演</a>
+                        <a href="/games/catid_36_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==36} class="hover" {/if} title="模拟经营">模拟经营</a>
+                        <a href="/games/catid_37_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==37} class="hover" {/if} title="策略游戏">策略游戏</a>
+                        <a href="/games/catid_38_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==38} class="hover" {/if} title="动作游戏">动作游戏</a>
+                        <a href="/games/catid_39_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==39} class="hover" {/if} title="赛车竞速">赛车竞速</a>
+                        <a href="/games/catid_41_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==41} class="hover" {/if} title="格斗游戏">格斗游戏</a>
+                        <a href="/games/catid_42_network_{$network}_plate_{$plate}_flag_{$flag}/" {if $catid==42} class="hover" {/if} title="棋牌游戏">棋牌游戏</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="main clear mt20">
+        <p class="lisy_on"><a href="/games/catid_{$catid}_network_{$network}_plate_{$plate}_flag_0/"><span {if $flag!=1}class="on"{/if}>最新</span></a><a href="/games/catid_{$catid}_network_{$network}_plate_{$plate}_flag_1/"><span {if $flag==1}class="on"{/if}>最热</span></a></p>
+        <div class="index-ranking mt0">
+            <div class="bk_game_all">
+                <ul class="bk_game clear cut">
+                    {pc:content action="lists" catid="$catid" where="$where" num="18" order="$order" page="$_GET['page']"}
+                    {loop $data $r}
+                    <li>
+                        <div class="bk_game_one">
+                            <a href="{$r[url]}" target="_blank" class="bk_pic"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+                            <a href="{$r[url]}" target="_blank" class="bk_link">{$r[title]}</a>
+                            <em>{$CATEGORYS[$r[catid]][catname]} | {$r[size]} </em>
+                            <div class="star"><p class="xx xx{$r[recommend]}"></p></div>
+                            <a href="{$r[url]}" target="_blank" class="lk_down">立刻下载</a>
+                        </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+
+            <div class="page">
+                {$pages}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    {template "content","foot"}
+</div>
+</body>
+</html>

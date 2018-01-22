@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信H5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="MobileOptimized" content="320">
+    <meta  name="applicable-device" content="mobile">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <link rel="stylesheet" href="http://www.93636.com/statics/weixin/css/yxsw_style.css">
+</head>
+<body>
+<div class="mod-main">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {loop $flag_data $r}
+            <a class="swiper-slide" href ="{$r[jumplink]}" style="background:url({$r[bigtu]}) no-repeat center center;background-size: cover;display: block;">
+                <p class="title">
+                    <span>{$r[title]}</span>
+                </p>
+            </a>
+            {/loop}
+        </div>
+    </div>
+    <nav>
+        <h3><i></i>点击即玩</h3>
+    </nav>
+    <ul id="yx-list" data-sum="2" data-status="0">
+        {loop $data $r}
+        <li>
+            <img src="{$r[thumb]}" alt="{$r[title]}" title="{$r[title]}">
+            <a href="{$r[jumplink]}" class="btn-box">
+                <span>开始</span>
+            </a>
+            <div class="info-box">
+                <p class="tit">{$r[title]}</p>
+                <div class="star-box" data-star="{$r[star]}">
+                    <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+                </div>
+                <p class="play-num"><em class="num">{$r['clicks']}</em>人玩过</p>
+            </div>
+        </li>
+        {/loop}
+    </ul>
+    <p class="tip" style="display:none">没有更多了</p>
+</div>
+<div class="mod-top">
+    <span class="i-top" id="go-top"></span>
+</div>
+<script src="/statics/weixin/js/yxsw_index.min.js"></script>
+<script>
+    var _page=2,$tip=$(".tip"),scrollTop,scrollHeight,windowHeight,$list=$("#yx-list");
+    //滚动底部自动加载数据
+    $(window).scroll(function () {
+        scrollTop = $(this).scrollTop();
+        scrollHeight = $(document).height() ;
+        windowHeight = $(this).height();
+        if (scrollHeight - (scrollTop + windowHeight) <=0&&_page<=$list.attr("data-sum")&&$list.attr("data-status")==0) {
+         getAjax()
+        }else{
+            $list.attr({"data-sum":1,"data-status":1});
+            $(".tip").show().text("没有更多了");
+        }
+    });
+    function getAjax() {
+        $.ajax({
+            url:'/index.php?m=wap&c=index&a=wxListH5&catid=239&page='+_page,
+            data:{},
+            dataType:'json',
+            type:'get',
+            beforeSend : function(){
+                $tip.show().text("正在加载中……");
+            },
+            success:function(data){
+                if(data[0].sum !=1){
+                    $list.attr("data-sum",data[0].sum);
+                    var html='';
+                    $tip.hide();
+                    _page=data[0].page;
+                    $.each(data, function (i, v) {
+                        html+='<li><img src="'+v.thumb+'" alt="'+v.title+'" title="'+v.title+'">'+
+                                '<a href="'+v.jumplink+'" class="btn-box"><span>开始</span></a>'+
+                                '<div class="info-box"><p class="tit">'+v.title+'</p>'+
+                                   '<div class="star-box" data-star="'+v.star+'"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>'+
+                                    '<p class="play-num"><em class="num">'+v.clicks+'</em>人玩过</p></div></li>'
+                    });
+                    $list.append(html);
+                    infoInit();
+                }else{
+                    $list.attr({"data-sum":1,"data-status":1});
+                    $(".tip").show().text("没有更多了");
+                }
+
+            }
+        });
+    }
+</script>
+</body>
+</html>

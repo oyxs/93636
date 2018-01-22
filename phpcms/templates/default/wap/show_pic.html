@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta name="MobileOptimized" content="620"/>
+<meta name="format-detection" content="telephone=no" />
+<link id="adaptation" rel="canonical" href="{new_get_url($catid)}" >
+<title>{$title}_93636手游网</title>
+<meta name="keywords" content="{$keyword}" /> 
+<meta name="description" content="{$description}" />
+<link href="http://www.93636.com/statics/wap/style/yueact.css" rel="stylesheet" type="text/css" />
+<link href="http://www.93636.com/statics/wap/style/swiper.css" rel="stylesheet" type="text/css" />
+<script src="http://www.93636.com/statics/wap/js/jquery.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/wap/js/top.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/wap/js/swiper.min.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+</head>
+<body>
+{template "wap","header_wap"}
+<div class="content">
+  <div class="bourt">
+      <div class="link">
+           <a href="/">首页</a> >{my_wap_pos($typeid)}
+      </div>
+      <div class="article">
+          <h1>{$title}</h1>
+          <div class="artinfo">
+              <span>来源：m.93636.com</span><span>时间：{date('m-d',strtotime($inputtime))}</span><span>作者：{$username}</span>
+          </div>
+          <div class="swiper-container swiper-container-horizontal yl-x">
+              <div class="swiper-wrapper h250">
+              {pc:get sql="SELECT pictureurls FROM phpcms_picture_data where id = $id" start="0" num="30" return="pictureurls" }
+                {loop $pictureurls $pic_k $r} 
+                {php $a=string2array($r[pictureurls])}
+                <?php $i=0;foreach($a as $r){$i++; ?>
+                 <div class="swiper-slide"><img src="<?php echo $r['url']; ?>" alt="<?php echo $r['alt']; ?>" ></div>
+                 <?php }?> 
+                {/loop}
+                {/pc}
+              </div>
+              <div class="swiper-pagination"></div>
+          </div>
+          <script>
+              var mySwiper = new Swiper('.swiper-container', {
+                  pagination: '.swiper-pagination',
+                  paginationClickable: true,
+                  spaceBetween: 30,
+                  centeredSlides: true,
+                  autoplay: 2500,
+                  autoplayDisableOnInteraction: false
+              });
+          </script>
+          <div class="art-text">
+             {$rs['content']}
+          </div>
+          <div class="share">
+              分享：  
+              <a rel="nofollow" class="weibo" href="http://v.t.sina.com.cn/share/share.php?url=http://www.shao-ming.com&title='分享内容'" target="_blank"><img src="/statics/wap/images/c.png" alt=""></a> 
+
+              <a rel="nofollow" target="_blank" title="分享到QQ空间" class="qzone" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.shao-ming.com" ><img src="http://www.93636.com/statics/wap/images/d.png" alt=""></a>
+              <a rel="nofollow" target="_blank" title="分享到腾讯微博" class="tqq" href="http://v.t.qq.com/share/share.php?url=http://www.shao-ming.com&title='分享内容'"><img src="http://www.93636.com/statics/wap/images/e.png" alt=""></a>
+          </div>
+          <div class="clear"></div>
+          <div class="art-keywords">
+               <span class="bq">标签</span>
+                <?php
+                    if(!empty($tags)){
+                        $tags = str_replace(",", " ", $tags);
+                        $tags = preg_replace("/\s(?=\s)/","\\1",$tags);
+                        $strs = explode(' ',$tags);
+                        foreach ($strs as $str){
+                            echo "<a href='/tags/$str' rel='nofollow'>$str</a>";
+                    }
+                }
+                ?>
+          </div>
+               <!--以下为判断上一篇和下一篇链接代码-->
+            <?php
+            	$inval_pr=strpos($previous_page[url],"javascript");
+                $inval_ne=strpos($next_page[url],"javascript"); 
+                if(is_integer($inval_pr)){
+                	$previous_page_url=$previous_page[url];
+                }
+                 if(is_bool($inval_pr)){
+                	$previous_page_url=my_show_url($catid,$previous_page[id]);
+                } 
+                if(is_integer($inval_ne)){
+                	$next_page_url=$next_page[url];
+                }
+                 if(is_bool($inval_ne)){
+                	$next_page_url=my_show_url($catid,$next_page[id]);
+                }
+            ?>  
+          <div class="art-relevant">
+              <div class="go"><span class="org">上一篇</span> <a href="{$previous_page_url}">{$previous_page[title]}</a></div>
+              <div class="up"><span class="gre">下一篇</span> <a href="{$next_page_url}">{$next_page[title]}</a></div>
+          </div>
+      </div>
+      <div class="art-interfix">
+         <p class="title">相关文章</p>
+        {pc:wap action="relation" relation="$relation" typeid="$typeid" num="5" keywords="$rs[keywords]" return="info"}  
+        <ul class="art-box">
+            {loop $info $r}
+            <li><a href="{my_show_url($r[catid],$r[id])}">{$r[title]}</a></li>
+            {/loop}
+        </ul>
+        {/pc}
+      </div>
+      <div class="art-game">
+          <p class="title">相关游戏</p>
+          {pc:wap  action="position" posid="26" order="listorder DESC" num="6"}
+            <ul class="art-gamelists">
+            	{loop $data $r}
+                <li><a href="{mynewurl($r[url])}" class="gameico"><img src="{$r[thumb]}" alt="{$r[title]}"> <span>{$r[title]}</span></a> <a href="{mynewurl($r[url])}" class="down"> 下载</a></li>
+                {/loop}
+            </ul>
+            {/pc}
+      </div>
+
+  </div>
+</div>
+{template "wap","footer_wap"}
+</body>
+</html>

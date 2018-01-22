@@ -1,0 +1,40 @@
+{template "content","header8"}
+
+{template "content","header2"}
+
+<div class="laction"><i></i>当前位置：<a href="/">首页</a> > {catpos($catid)}</div>
+	
+<div class="main ny_main">
+	<div class="spzxlm_gl">
+		{pc:content action="lists" catid="$catid" num="12" order="id DESC" page="$page"}
+		<ul class="sp_video">
+			{loop $data $r}		
+			<li>
+				<img src="{$r[thumb]}" alt="{$r[title]}" >
+				<div class="sml">
+					<span class="bg"></span>
+					<a title="{$r[title]}" target="_blank" href="{ChangeUrl($r[url])}">{$r[title]}</a>
+					<b></b>
+				</div>
+				<div class="big">
+					<a title="{$r[title]}" target="_blank" href="{ChangeUrl($r[url])}">
+						<span class="bg"> </span>
+						<b></b>
+						<p>{$r[title]}</p>
+					</a>
+				</div>
+				<div class="b_line"></div>
+			</li>
+			{/loop}
+ 		</ul>
+ 		{/pc}
+		
+		<div class="pages">{$pages}</div>
+	</div>
+	
+</div>	
+	
+{template "content","footer"}
+
+</body>
+</html>

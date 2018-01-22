@@ -1,0 +1,226 @@
+@charset "UTF-8";
+.nopx {
+    margin: 0!important;
+    padding: 0!important;
+}
+.clearfix:before,
+.clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+.ell {text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+
+.wbox {
+    width:1200px;
+    margin:0 auto;
+    text-align:center;
+    background: #f5f5f5;
+}
+.page3 .tese {
+    width:1200px;
+    height:400px
+}
+.page3 .tese li {
+    position:relative;
+    z-index:1;
+    float:left;
+    width:103px;
+    height:400px;
+    -webkit-transition:all 1.3s ease;
+    -moz-transition:all 1.3s ease;
+    -ms-transition:all 1.3s ease;
+    -o-transition:all 1.3s ease;
+    transition:all 1.3s ease;
+    overflow:hidden;
+    margin-right: 2px;
+}
+.page3 .tese li a{width: 100%;height: 100%;display: block}
+
+.page3 .tese li b {
+    display:block;
+    width:103px;
+    height:400px;
+    opacity:1;
+    -webkit-transform:translate3d(0,0,0);
+    -moz-transform:translate3d(0,0,0);
+    -ms-transform:translate3d(0,0,0);
+    -o-transform:translate3d(0,0,0);
+    transform:translate3d(0,0,0);
+    -webkit-transition:all .8s ease;
+    -moz-transition:all .8s ease;
+    -ms-transition:all .8s ease;
+    -o-transition:all .8s ease;
+    transition:all .8s ease;
+    position:relative;
+    z-index:3
+}
+.page3 .tese li.on {
+    width:780px
+}
+.page3 .tese li.on b {
+    -webkit-transform:translate3d(-100%,0,0);
+    -moz-transform:translate3d(-100%,0,0);
+    -ms-transform:translate3d(-100%,0,0);
+    -o-transform:translate3d(-100%,0,0);
+    transform:translate3d(-100%,0,0);
+    opacity:0;
+    filter:alpha(opacity=0)
+}
+.page3 .tese .sg {
+    background:url(../images/xyhj/shanguoshouji.jpg) no-repeat 0 0
+}
+.page3 .tese .sg b {
+    background:url(../images/xyhj/small-all.jpg) no-repeat 0 0
+}
+.page3 .tese .ns {
+    background:url(../images/xyhj/nvshengbiwan.jpg) no-repeat 0 0
+}
+.page3 .tese .ns b {
+    background:url(../images/xyhj/small-all.jpg) no-repeat -103px 0
+}
+.page3 .tese .jd {
+    background:url(../images/xyhj/danjiyouxi.jpg) no-repeat 0 0
+}
+.page3 .tese .jd b {
+    background:url(../images/xyhj/small-all.jpg) no-repeat -206px 0
+}
+
+.page3 .tese .xy {
+    background:url(../images/xyhj/xiyouticai.jpg) no-repeat 0 0
+}
+.page3 .tese .xy b {
+    background:url(../images/xyhj/small-all.jpg) no-repeat -309px 0
+}
+.page3 .tese .xs {
+    background:url(../images/xyhj/xiaoshuogaibian.jpg) no-repeat 0 0
+}
+.page3 .tese .xs b {
+    background:url(../images/xyhj/small-all.jpg) no-repeat -412px 0
+}
+/*手游合集列表*/
+.game-list-syhj{width: 1200px;margin: 11px auto 33px;}
+.game-list-syhj-header{height: 19px;border-left: 3px solid #75c41f;padding-left: 10px;color: #333;font-size: 16px;margin: 20px 0}
+.game-list-syhj ul{
+    margin-left: -20px;
+}
+.game-list-syhj ul li{
+    width: 590px;
+    height: 153px;
+    border-bottom: 2px solid #e1e1e1;
+    background: #f0f0f0;
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 25px;
+}
+.game-list-syhj ul li .game-box{padding: 15px;}
+.game-list-syhj ul li .game-box .game-box-pic{float: left;margin-right: 15px;width: 240px;}
+.game-list-syhj ul li .game-box .game-box-pic a.pic {width: 240px;height: 123px;display: inline-block}
+.game-list-syhj ul li .game-box .game-box-pic a.pic  img{width: 100%;height: 100%}
+.game-list-syhj ul li .game-box .game-box-c{float: left;width: 303px;position: relative;height: 123px;}
+.game-list-syhj ul li .game-box .game-box-c h2 a{ color: #333;font-size: 20px;font-style: normal}
+.game-list-syhj ul li .game-box .game-box-c h2 a:hover{ color: #ff9d10;text-decoration: underline}
+.game-list-syhj ul li .game-box .game-box-c p{ color: #666;font-size: 13px;line-height: 24px;margin-top: 5px;overflow: hidden;height: 48px;}
+.game-list-syhj ul li .game-box .game-box-c a.ckxq{ width: 90px;height: 35px;display: inline-block;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;border: 1px solid #75c41f;text-align: center;line-height: 35px;color: #75c41f;font-size: 16px;position: absolute;right: 0px;bottom: 0px;}
+.game-list-syhj ul li .game-box .game-box-c a.ckxq:hover{background: #75c41f;color: #fff}
+
+/*手游合集2*/
+.heji-banner { width: 1166px; padding: 15px 17px; background-color: #fff; font-size: 0;}
+.heji-pic,
+.heji-pic img { width: 879px; height: 451px;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1; /* Fix for IE7 */
+    *display: inline; /* Fix for IE7 */;
+    cursor: default;
+}
+
+.heji-pic-r { width: 265px; margin-left: 20px;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1; /* Fix for IE7 */
+    *display: inline; /* Fix for IE7 */}
+.heji-pic-r { font-size: 14px;}
+.heji-pic-r .name { width: 100%; font-size: 22px; font-weight: normal; line-height: 50px;text-align: center}
+.heji-pic-r p {font-size: 14px; color: #666; line-height: 26px;}
+.heji-pic-r ul li { margin-top: 40px;}
+.heji-icon {width: 90px;height: 90px; margin-right: 10px;float: left}
+.heji-icon img{width: 100%;height: 100%;;border-radius: 10px;-moz-border-radius: 10px;-webkit-border-radius: 10px}
+.heji-sr{width: 165px;float: left;position: relative;height: 90px;}
+.heji-sr span{font-size: 14px;color: #666}
+.heji-sr p a{font-size: 16px;color: #333;font-weight: bold}
+.heji-sr p a:hover{color: #ff9d10;text-decoration: underline}
+.heji-sr p{font-size: 12px;color: #666;margin-top: 2px;}
+
+.heji-sr a.down{display: block;width: 58px;height: 23px;text-align: center;line-height: 25px;color: #75c41f;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;border: 1px solid #75c41f;position: absolute;left: 0px;bottom: 0px;}
+.heji-sr a.down:hover{background: #75c41f;color: #fff}
+.heji-sr a.down-2{ left: 103px; }
+
+.heji-sr p.score-1{width: 150px;  position: absolute;  bottom: 13px;  left: 0;  }
+
+.heji-sr p.score-1 em,.recommended-c p.score-1 em{ width: 18px; height: 18px; float: left;background:url(../images/bg-all.png) no-repeat -219px -14px; }
+.heji-sr p.score-1 em.null-star,.recommended-c p.score-1 em.null-star{
+    background-position: -238px -14px;
+}
+
+
+/*游戏推荐*/
+.heji-game-recommended{margin-bottom: 28px;}
+.heji-game-recommended-header{height: 19px;border-left: 3px solid #75c41f;padding-left: 10px;color: #333;font-size: 16px;margin: 35px 0 15px 0}
+.heji-game-recommended-box{}
+.heji-game-recommended-box ul{margin-left: -14px;}
+.heji-game-recommended-box ul li{
+    width: 289px;height: 183px;display: inline-block;float: left;zoom: 1; *display: inline;background: #fff;margin-left: 14px;
+}
+.heji-game-recommended-box ul li .recommended-pic{width: 289px;height: 114px;position: relative;overflow: hidden}
+.heji-game-recommended-box ul li .recommended-pic img.item1{width: 100%;height: 100%}
+
+.recommended-pic .down-slide {
+    position:absolute;
+    top:-100%;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(117,196,31,.9);
+    filter:alpha(opacity=90) \9;
+    filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr=#c8393939,endColorStr=i#c8393939)
+}
+
+.recommended-pic .code {
+    width:68px;
+    height:68px;
+    padding:4px;
+    float:left;
+    margin:20px 0 0 38px;
+    background:#fff
+}
+.recommended-pic .code img {
+    width:100%
+}
+.recommended-pic .code-desc {
+    margin:20px 0 0 147px;
+    color:#fff;
+    line-height:18px;
+    font-size: 16px;
+}
+.recommended-pic p {
+    padding-bottom:10px
+}
+
+.heji-game-recommended-box ul li .recommended-c{width: 259px;height: 59px;padding: 5px 15px;position: relative;}
+
+.heji-game-recommended-box ul li .recommended-c .game-name a{color: #333;font-size: 18px;;height: 35px;line-height: 35px;display: block;width: 68%;}
+.heji-game-recommended-box ul li .recommended-c .game-name a:hover{color: #ff9d10;text-decoration: underline}
+.heji-game-recommended-box ul li .recommended-c .game-score{color: #666;font-size: 14px;height: 25px;line-height: 25px;}
+.heji-game-recommended-box ul li .recommended-c .down{display: block;width: 80px;height: 30px;text-align: center;line-height: 30px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;border: 1px solid #75c41f;color: #75c41f;position: absolute;right: 15px;top: 20px}
+.heji-game-recommended-box ul li .recommended-c .down:hover{background: #75c41f;color: #fff}
+
+.heji-game-recommended-box-2{background: #fff;padding-bottom: 20px;}
+.heji-game-recommended-box-2 ul{margin-left: -15px;}
+.heji-game-recommended-box-2 ul li{float: left;width: 251px;display: inline-block;padding: 20px 17px 20px 20px ;height: 90px;margin-left: 15px;}
+
+.heji-game-recommended-box-2 .heji-sr {  width: 151px;}
+/*page*/
+.page { text-align:center; height:50px; display:block; overflow:hidden; margin-top:35px;}
+.page a { padding:0px 15px; height:30px; line-height:30px; overflow:hidden;  border:1px solid #ccc; display:inline-block; margin-right:5px; }
+.page a:hover { background:#80c543; border:1px solid #fff; color:#fff;}
+.page span { padding:0px 15px; height:30px; line-height:30px; overflow:hidden; border:1px solid #fff;  display:inline-block; background:#80c543; color:#fff; margin-right:5px;	 }
+.page i { height:30px; line-height:30px; float:left; padding:0px 15px; }

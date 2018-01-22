@@ -1,0 +1,217 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta name="MobileOptimized" content="620" />
+<meta name="format-detection" content="telephone=no" />
+<title>用户注册-93636手游网</title>
+<link href="/statics/wap/style/yueact.css" rel="stylesheet" type="text/css" />
+<script src="/statics/wap/js/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="header">
+    <div class="topbar"> <a href=""><img src="/statics/wap/images/zuo.png" alt="" class="zuo"></a></div>
+    <div class="mrb logn"> <em class="logns"></em></div>
+</div>
+<div class="content">
+    <div class="cont">
+        <form id="form1">
+            <div class="u-login">
+                <ul>
+                    <li><span class="span-1"></span><input class="inputstyle boru" name="name" id="username" placeholder="用户名必须2~14个字符"></li>
+                    <li><span class="span-2"></span><input class="inputstyle boru" name="" type="password" placeholder="请输入您的密码" id="password" maxlength="16"></li>
+                    <li><span class="span-2"></span><input class="inputstyle boru" name="" type="password" placeholder="请确认密码" id="secondPwd"></li>
+                    <li><span class="span-3"></span><input class="inputstyle boru" name="name" placeholder="请输入有效邮箱" id="txtEmail"></li>
+                    <li><input class="w30" name="name" placeholder="输入验证码" id="txtCode"><img onclick='this.src = this.src + "&" + Math.random()' alt="验证码" src='' class="imgCode dp"></li>
+                </ul>
+                <div id="usernameDescription" class="error-red"></div>
+                <div id="passwordDescription" class="error-red"></div>
+                <div id="secondPwdDescription" class="error-red"></div>
+                <div id="txtEmailDescription" class="error-red"></div>
+                <div id="txtCodeDescription" class="error-red"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="mar-none onekeys">
+                <input value="立即注册" id="btnSubmit" class="go" type="button" onclick="registerSubmit();">
+            </div>
+        </form>
+        <div class="u-login pan">
+            <a href="" class="int"><i class="weib2"></i>微博登陆</a>
+            <a href="" class="rit"><i class="qq2"></i>QQ登陆</a>
+        </div>
+    </div>
+</div>
+<script>
+    function checkEmail() {
+        var email = $("#txtEmail").val();
+        if (emailCheck(email)) {//验证邮箱格式
+            return checkEmailStatus(email);//判断邮箱是否存在
+        } else {
+            $("#txtEmailDescription").html('邮箱格式不符合规范');
+            return false;
+        }
+    }
+
+    function checkEmailStatus(email) {
+        $.ajax({
+            async: true,
+            url: "http://www.93636.com/index.php?m=member&c=index&a=public_checkemail_ajax&clientid=email&email=" + email,
+            type: "get",
+            timeout: 15000,
+            success: function(data) {
+                if (data == '1') {
+                    $("#txtEmailDescription").html('');
+                    return true;
+                } else {
+                    $("#txtEmailDescription").html('该邮箱已经存在');
+                    return false;
+                }
+            }
+        });
+    }
+
+    function checkName() {
+        var username = $("#username").val();
+        //2~14字符
+        if (username.length >= 2 && username.length <= 14 && usernameCheck(username)) {//当字符数以及名称正则匹配满足条件时进行下一步
+            return checkUsername(username);//调用检查名称方法
+        } else {
+            $("#usernameDescription").html('用户名格式不符合规范');
+            return false;
+        }
+    }
+
+    function checkUsername(username) {
+
+        $.ajax({
+            async: true,
+            url: "http://www.93636.com/index.php?m=member&c=index&a=public_checkname_ajax&clientid=username&username=" + username,
+            type: "get",
+            timeout: 15000,
+            success: function(data) {
+                if (data == '1') {
+                    $("#usernameDescription").html('');
+                    return true;
+                } else {
+                    $("#usernameDescription").html('该用户名已经存在');
+                    return false;
+                }
+            }
+        });
+    }
+    function checkPassWord() {
+        var password = $('#password').val();
+        if ($.trim(password).length < 6) {
+            $("#passwordDescription").html("密码长度不能小于6位");
+            return false;
+        } else {
+            $("#passwordDescription").html("");
+            return true;
+        }
+    }
+
+    function checkSecondPassWord() {
+        var password = $('#password').val();
+        var secondPwd = $('#secondPwd').val();
+        if ($.trim(password).length < 6) {
+            $("#secondPwdDescription").html('确认密码长度不能小于6位');
+            return false;
+        }
+        if (password != secondPwd) {
+            $("#secondPwdDescription").html('2次密码不一致');
+            return false;
+        }
+        $("#secondPwdDescription").html('');
+        return true;
+    }
+
+    function usernameCheck(username) {
+        var a = username.match("^[\\u4E00-\\u9FA5\\uF900-\\uFA2D_\\w]+$");
+        if (a == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function emailCheck(email) {
+        var a = email.match("^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$");
+        if (a == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    function checkCode() {
+        var code = $("#txtCode").val();
+        if ($.trim(code).length <= 0) {
+            $("#txtCodeDescription").html('验证码不允许为空');
+            return false;
+        }
+        var result = email.match("^[a-z0-9A-Z]{4}$");
+        if (result == null) {
+            $("#txtCodeDescription").html('验证码不对');
+            return false;
+        }
+        $("#txtCodeDescription").html('');
+        $.ajax({
+            async: true,
+            url: "http://www.93636.com/index.php?m=member&c=index&a=public_checkname_ajax&clientid=username&code=" + code,
+            type: "get",
+            timeout: 15000,
+            success: function(data) {
+                if (data == '1') {
+                    $("#txtCodeDescription").html('');
+                    return true;
+                } else {
+                    $("#txtCodeDescription").html('验证码不对');
+                    return false;
+                }
+            }
+        });
+        return false;
+    }
+
+    function registerSubmit() {
+
+        if (!checkName()) {//判断名称是否正确
+            return false;
+        }
+        if (!checkPassWord()) {//判断密码是否正确
+            return false;
+        }
+        if (!checkSecondPassWord()) {//判断密码是否正确
+            return false;
+        }
+        if (!checkEmail()) {//判断邮箱是否正确
+            return false;
+        }
+        if (!checkCode()) {//判断验证码是否正确
+            return false;
+        }
+        var password = $('#password').val();
+        var secondPwd = $('#secondPwd').val();
+        var username = $("#username").val();
+        var email = $("#txtEmail").val();
+        //$.ajax({
+        //    async: true,
+        //    url: "",
+        //    type: "get",
+        //    data: { username: username, password: password, secondPwd: secondPwd, email: email },
+        //    timeout: 15000,
+        //    success: function (data) {
+        //        if (data == '1') {
+        //            return true;
+        //        } else {
+        //            alert('验证码不对');
+        //            return false;
+        //        }
+        //    }
+        //});
+    }
+</script>
+
+</body>
+</html>

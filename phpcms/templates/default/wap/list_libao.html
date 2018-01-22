@@ -1,0 +1,93 @@
+﻿<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="MobileOptimized" content="620"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link id="adaptation" rel="canonical" href="{new_get_url($catid)}" >
+    <title>{$tit_le['title']}_93636手游网</title>
+    <meta name="keywords" content="{$tit_le['keyword']}" /> 
+    <meta name="description" content="{$tit_le['description']}" />
+    <link href="http://www.93636.com/statics/wap/new_style/new_css/yueact.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.93636.com/statics/wap/new_style/new_css/swiper.css" rel="stylesheet" type="text/css" />
+    <script src="http://www.93636.com/statics/wap/js/jquery.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/wap/new_style/new_js/top.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/wap/js/swiper.min.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            //礼包剩余数量
+            if ($(".art-lb .game-name").html() != null) {
+                $.ajax({
+                    url: "http://m.93636.com/index.php?m=help&a=lasts",
+                    cache: false,
+                    success: function(html) {
+                        var jdata = eval('(' + html + ')');
+                        $(".gift_id").each(function() {
+                            var vid = $(this).attr("val");
+
+                            for (var i = 0; i < jdata.length; i++) {
+                                if (vid == jdata[i].gift_id) {
+                                    $(this).html("礼包剩余" + jdata[i].tol + "个");
+                                }
+                            }
+                        })
+                    }
+                })
+            }
+        });
+    </script>
+</head>
+<body>
+    {template "wap","header_wap"}
+    <div class="content">
+        <div class="swiper-container">
+            {pc:wap action="position" posid="18" catid="31" order="listorder DESC" num="5"}
+            <div class="swiper-wrapper">
+                {loop $data $r}
+                <div class="swiper-slide"><a href="{mynewurl($r[url])}"><img src="{$r[nopicture]}" alt="{$r[title]}"><span class="swiper-txt">{$r[title]}</span></a></div>
+                {/loop}
+            </div>
+            <div class="swiper-ico" style="bottom: 30px;">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+            </div>
+            {/pc}
+        </div>
+        <script>
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-ico',
+                paginationClickable: true
+            });
+        </script>
+        <div class="art-lb mr">
+            <div class="art-keywords">
+                <h3 class="title">最新礼包</h3>
+            </div>
+            {pc:wap action="lists" typeid="$typeid" num="4" order="id DESC" return="info"}
+            <ul class="game-name fb">
+                {loop $info $r}
+                <li><a href="{my_show_url($r[catid],$r[id])}" class="img"><img src="{$r[thumb]}" alt="{$r[title]}"> <strong>{$r[title]}</strong><span class="gift_id" val="{$r[id]}">礼包剩余个12</span></a><a href="{my_show_url($r[catid],$r[id])}" val="{$id}" class="g-list sw">领取</a> </li>
+                {/loop}
+            </ul>
+            {/pc}
+        </div>
+        <div class="art-lb mt20">
+            <div class="art-keywords art-bule">
+                <h3 class="title art-bule">更多礼包</h3>
+            </div>
+            {pc:wap action="lists" typeid="$typeid" limits="5,9" order="id DESC" return="info"}
+            <ul class="art-gamelists">
+                {loop $info $r}
+                <li><a href="{my_show_url($r[catid],$r[id])}" class="gameico"><img src="{$r[thumb]}" alt="{$r[title]}"> <span>{$r[title]}</span></a> <a href="{my_show_url($r[catid],$r[id])}" class="down">领取</a></li>
+                {/loop}
+            </ul>
+            {/pc}
+           <div class="g-more boru"><a href="/games/libaolist" class="txt arrow" rel="nofollow">礼包中心</a></div>
+        </div>
+    </div>
+    {template "wap","footer_wap"}
+</body>
+</html>

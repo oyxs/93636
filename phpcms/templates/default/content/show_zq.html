@@ -1,0 +1,120 @@
+{template "content","header_zq"}
+<!--seach END-->
+</div><!--head END-->
+<div class="main">	
+<div class="left">
+    <div class="location">
+        <div>
+            您的位置：：<a href="/">首页</a>>{catpos($catid)}{$title}
+        </div>
+    </div><!--location end-->
+    <div class="read">
+        <h1>{$title}</h1>
+        <div class="yxmls">时间：<span>{$inputtime}</span> <i></i> 来源：<span><a href="http://www.93636.com">93636手游网</a></span> <i></i> <i></i>分类：<a href="{$CATEGORYS[$catid][url]}">{$CATEGORYS[$catid][catname]}</a></div>
+        <div class="tag"><span>标签：{$tag}</span> </div>
+        <div class="content">
+            {$content}
+        </div><!--content end-->
+        <div class="fxd">
+        </div>
+        <div class="bqsm">
+            文章作者：<span>{$writer}</span><br>
+            本文地址：<span>{$url}</span><br>
+            所有版权转载时必须以链接形式注明作者和原始出处！
+        </div>
+        <div class="sxp">
+		<a href="{$previous_page[url]}" class="next"><list>上一篇</list>: {$previous_page[title]}</a>
+		<a href="{$next_page[url]}" class="per"><list>下一篇</list>: {$next_page[title]}</a>
+        </div><!--sxp end-->
+    </div><!--read end-->
+    <dl class="xgwz">
+        <dt><h2>相关文章</h2></dt>
+        <dd>
+        {pc:content action="relation" relation="$relation" catid="$catid" num="5" keywords="$rs[keywords]"} 
+            <ul>
+            {loop $data $r} 
+                <li><a href="{$r[url]}">{$r[title]}</a></li>
+            {/loop}
+            </ul>
+        {/pc}
+        </dd>
+    </dl><!--jcpl end-->
+    <dl class="xgwz">
+        <dt><h2>精彩评论</h2></dt>
+        <dd>
+            
+        </dd>
+    </dl><!--jcpl end-->
+</div><!--left end-->
+ 		{loop subcat($arrparentid[1]) $v}
+        {php $duan[] .= $v[catid] ;}
+        {/loop}
+        {php $duan2[] = $catid ;}
+        {php $arr_cat=array_diff($duan,$duan2);}
+        {php $catid_id=array_rand($arr_cat,1);}
+<div class="rig_box">
+     {template "content","zhuanqu_right"}
+    <dl class="lmwz">
+        <dt><h2>热门文章</h2><a href="{$CATEGORYS[$catid][url]}" rel="nofollow"></a></dt>
+        <dd>
+        {pc:content action="lists" catid="$catid" num="6" order="listorder DESC"}
+            <ul>
+            {loop $data $key $value}
+                <li><a href="{$value['url']}">{$value['title']}</a></li>
+            {/loop}
+            </ul>
+        {/pc}
+        </dd>
+    </dl><!--lmwz end-->
+    <dl class="lmwz">
+        <dt><h2>推荐文章</h2><a href="{$CATEGORYS[$arr_cat[$catid_id]][url]}" rel="nofollow"></a></dt>
+        <dd>
+        {pc:content action="lists" catid="$arr_cat[$catid_id]" num="9" order="listorder DESC"}
+            <ul>
+            {loop $data $key $value}
+                <li>
+                <a href="{$value['url']}">{$value['title']}</a>
+                </li>
+            {/loop}
+            </ul>
+        {/pc}
+        </dd>
+    </dl><!--lmwz end-->
+    <dl class="game_down">
+        <dt><h2>游戏推荐</h2><a href="http://www.93636.com/games/" rel="nofollow"></a></dt>
+        <dd>
+        {pc:content action="position" posid="37" num="9" order="listorder DESC"}
+            <ul>
+            {loop $data $key $value}
+                <li>
+                    <a href="{$value['url']}" target="_blank" title="{$value['title']}">
+                        <img src="{$value['thumb']}" alt="{$value['title']}">
+                        <em>{$value['title']}</em>
+                    </a>
+                </li>
+            {/loop}
+            </ul>
+        {/pc}
+        </dd>
+    </dl><!--lmwz end-->
+</div><!--rig_box end-->
+</div><!--main-->
+<div class="foot">
+<ul class="copyright">
+    <li>
+        <a href="/about/">关于我们</a> | 
+        <a href="/statement/">免责声明</a> |  
+        <a href="/contact/">联系我们</a> |
+        <a href="/ruanwen/">软文投稿</a> |
+        <a href="/hezuo/">商务合作</a> |
+        <a href="/sitemap/">网站地图</a> 
+        <br>Copyright 2015 <a href="http://www.93636.com" target="_blank">93636手游网</a> 版权所有<br>
+    </li>
+</ul>
+</div>
+<!--底部-->
+<script>window._bd_share_config = {"common": {"bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16"}, "slide": {"type": "slide", "bdImg": "1", "bdPos": "right", "bdTop": "100"}, "image": {"viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16"}, "selectShare": {"bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]}};
+with (document)
+    0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+</body>
+</html>

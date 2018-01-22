@@ -1,0 +1,150 @@
+﻿<script  type="text/javascript" src="/statics/new_style/js/jquery.js"></script>
+<script scr="/statics/js/formvalidatorregex.js" type="text/javascript"></script>
+<link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+<script type="text/javascript">
+    var countdown=60;
+    function settime(obj) {
+        var tell = $("#tell").val();
+        var code = $("#code").val();
+        if(tell==''){
+            alert('请输入手机号');
+            return false;
+        }
+        if(code==''){
+            alert('请输入验证码');
+            return false;
+        }
+        var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+        if(!myreg.test(tell))
+        {
+            alert('请输入有效的手机号码！');
+            return false;
+        }
+        
+        if (countdown == 0) {
+            obj.removeAttribute("disabled");
+            obj.value="免费获取验证码";
+            countdown = 60;
+            return;
+        } else {
+
+            if (countdown == 60){
+                $.ajax({
+                    type: 'post',
+                    url: '/alidayu/sent.php',
+                    data: {tell: tell,code:code},
+                    dataType: 'json',
+                    success: function(data) {
+                        alert(data.msg);
+                    }
+                });
+
+
+            }
+
+
+            obj.setAttribute("disabled", true);
+            obj.value="重新发送(" + countdown + ")";
+            countdown--;
+        }
+        setTimeout(function() {
+                    settime(obj) }
+                ,1000)
+    }
+
+</script>
+
+<div class="login" >
+    <ul>
+        <li><p class="error" id="msg"></p></li>
+        <li><input type="text" id="username" class="login_tx login_user" name="username" placeholder="请输入2-14个字符" /></li>
+        <li><input type="password" class="login_tx login_passwor"  id="reg_passwd" name="password" placeholder="请输入密码" />
+        <li><input type="password" class="login_tx login_passwor"  id="reg_passwd2" name="pwdconfirm"  placeholder="请再次输入密码"  /></li>
+        <li><input type="text" id="email" class="login_tx login_email"   name="email"  placeholder="请输入您的邮箱"/></li>
+        <li style="position: relative"><input id="code" class="resName" type="text" maxlength="50" name="codes" style="width:221px;">
+                                    <div class="jcode-pic">
+                                        <img id="imgCode" onclick='this.src = this.src + "&" + Math.random()' alt="验证码" src="/api.php?op=checkcode&code_len=5&font_size=14&width=90&height=30">
+                                    </div>
+                                    <p>请输入图中的字母或数字，不区分大小写</p>
+                                </li>
+        <li><input type="text" id="tell" class="login_tx login_tell"   name="tell"  placeholder="请输入手机号"/></li>
+        
+        <li style="position: relative">
+            <input type="text" id="m_code" class="login_tx login_m_code"   name="m_code"  placeholder="请输入验证码"/>
+            <input type="button" id="btn" size="10" value="手机号获取验证码" style="position: absolute; width:120px;right: 0px;top:0 ;text-align: center;text-indent: 0" onclick="settime(this)" />
+        </li>
+
+        <input type="hidden" name="dosubmit" value="同意注册协议，提交注册" id="dosubmit">
+        <li><input type="submit" id="r_sub" class="login_bt" value="注册" /></li>
+    </ul>
+    <p class="shejiao clear" >
+        <span>使用社交账号登录:</span>
+        <a href="javascript:;" id="qq_login" class="a1">QQ账号登录</a>
+        <a href="javascript:;" id="sina_login" class="a2">新浪微博登录</a>
+    </p>
+</div>
+<script language="JavaScript">
+    function usernameCheck(username) {
+        var a = username.match("^[\\u4E00-\\u9FA5\\uF900-\\uFA2D_\\w]+$");
+        if (a == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function Refresh(){
+        $(window.parent.document).find('.opacity_box').show();
+        window.parent.location.reload();
+    }
+    $("#r_sub").click(function(){
+        var username=$("#username").val();
+        var password=$("#reg_passwd").val();
+        var pwdconfirm=$("#reg_passwd2").val();
+        var email=$("#email").val();
+        var code=$("#code").val();
+        var m_code=$("#m_code").val();
+        var tell=$("#tell").val();
+        var dosubmit=$("#dosubmit").val();
+        if(password!=pwdconfirm){
+            $("#msg").text("两次输入的密码不一致");
+            return false;
+        }else if(password.length < 6){
+            $("#msg").text("密码太短，不得少于6个字符");
+            return false;
+        }else if(username.length < 6){
+            $("#msg").text("用户名长度为6-14个字符");
+            return false;
+        }else if(!usernameCheck(username)){
+            $("#msg").text("用户名不合法");
+            return false;
+        }else{
+
+            $.get("/index.php?m=member&c=index&a=public_checkname_ajax&clientid=username&username=" + username, function(data) {
+                if (data == '0') {
+                    $("#msg").text("用户名已经注册");
+                }else {
+                    $.ajax({
+                        type: 'post',
+                        url: '/index.php?m=member&c=index&a=register_new',
+                        data: {username: username,password:password,pwdconfirm:pwdconfirm,email:email,tell:tell,m_code:m_code,dosubmit:dosubmit},
+                        dataType: 'json',
+                        success: function(data) {
+                            if (data.static == "1") {
+                                alert("邮件已发送到邮箱，请登录邮箱进行激活");
+                                setTimeout("Refresh();",2000);
+                            } else {
+                                $("#msg").text(data.msg);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+
+
+
+
+    });
+
+</script>

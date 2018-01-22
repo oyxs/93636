@@ -1,0 +1,116 @@
+﻿<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta name="MobileOptimized" content="620"/>
+<meta name="format-detection" content="telephone=no" />
+<link id="adaptation" rel="canonical" href="{new_get_url($catid)}" >
+<title>{$tit_le['title']}_93636手游网</title>
+<meta name="keywords" content="{$tit_le['keyword']}" /> 
+<meta name="description" content="{$tit_le['description']}" />
+<link href="/statics/wap/style/swiper.css" rel="stylesheet" type="text/css" />
+<link href="/statics/wap/style/yueact.css" rel="stylesheet" type="text/css" />
+<script src="/statics/wap/js/jquery.js" type="text/javascript"></script>
+<script src="/statics/wap/js/top.js" type="text/javascript"></script>
+<script src="/statics/wap/js/swiper.min.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+</head>
+<body>
+{template "wap","header_zq"}
+<div class="link">
+    <a href="/">首页</a> >{my_wap_pos($typeid)}
+</div>
+<?php
+    $type_arr=subtype($typeid);
+    $typeid_array=array();
+    foreach($type_arr as $key => $val){
+        $typeid_array[].=$key;
+        }
+     $cat_id=wap_catid($typeid);
+?>
+<div class="content">
+    <div class="zqtp"><img src="{$CATEGORYS[$cat_id][image]}" alt="{wap_typename($typeid)}"></div>
+    <ul class="conbtn">
+        <li><a href="{my_list_url($typeid_array[0])}" class="ibtn03"><em></em>{wap_typename($typeid_array[0])}</a></li>
+        <li><a href="{my_list_url($typeid_array[1])}" class="ibtn01"><em></em>{wap_typename($typeid_array[1])}</a></li>
+        <li><a href="{my_list_url($typeid_array[2])}" class="ibtn02"><em></em>{wap_typename($typeid_array[2])}</a></li>
+        <li><a href="{my_list_url($typeid_array[3])}" class="ibtn04"><em></em>{wap_typename($typeid_array[3])}</a></li>
+    </ul>
+    <div class="news">
+        <ul class="list-news">
+            {pc:wap action="lists" typeid="$typeid_array[2]" num="1" order="id DESC" return="info"}
+            {loop $info $r}
+            <li><a href="{my_show_url($r[catid],$r[id])}" class="red"><em class="tag wg">资讯</em> <p>{$r[title]}</p></a></li>
+			{/loop}
+            {/pc}
+            {pc:wap action="lists" typeid="$typeid_array[1]" num="1" order="id DESC" return="info"}
+            {loop $info $r}
+            <li><a href="{my_show_url($r[catid],$r[id])}" class="red"><em class="tag wg">礼包</em> <p>{$r[title]}</p></a></li>
+			{/loop}
+            {/pc}
+            {pc:wap action="lists" typeid="$typeid_array[7]" num="2" order="id DESC" return="info"}
+            {loop $info $r}
+            <li><a href="{my_show_url($r[catid],$r[id])}" class="red"><em class="tag wg">图鉴</em> <p>{$r[title]}</p></a></li>
+			{/loop}
+            {/pc}
+        </ul>
+    </div>
+    <div class="art-lb mr">
+        <h2 class="title">{wap_typename($typeid_array[0])}<a href="{my_list_url($typeid_array[0])}" class="more" rel="nofollow">></a></h2>
+        {pc:wap action="lists" typeid="$typeid_array[0]" num="4" order="id DESC" return="info"}
+        <ul class="art-lists">
+            {loop $info $r}
+            <li><a href="{my_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"></a> <div class="info"><a href="{my_show_url($r[catid],$r[id])}" class="tit">{$r[title]}</a> <p class="time">{date('Y-m-d',$r[inputtime])}</p></div></li>
+            {/loop}
+        </ul>
+        {/pc}
+    </div>
+    <div class="art-lb mr">
+        <h2 class="title">{wap_typename($typeid_array[4])}<a href="{my_list_url($typeid_array[4])}" class="more" rel="nofollow">></a></h2>
+        {pc:wap action="lists" typeid="$typeid_array[4]" num="4" order="id DESC" return="info"}
+        <ul class="art-lists">
+            {loop $info $r}
+            <li><a href="{my_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"></a> <div class="info"><a href="{my_show_url($r[catid],$r[id])}" class="tit">{$r[title]}</a> <p class="time">{date('Y-m-d',$r[inputtime])}</p></div></li>
+            {/loop}
+        </ul>
+        {/pc}
+    </div>
+    <div class="art-lb mr">
+        <h2 class="title">{wap_typename($typeid_array[5])}<a href="{my_list_url($typeid_array[5])}" class="more" rel="nofollow">></a></h2>
+        {pc:wap action="lists" typeid="$typeid_array[5]" num="4" order="id DESC" return="info"}
+        <ul class="art-lists">
+            {loop $info $r}
+            <li><a href="{my_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"></a> <div class="info"><a href="{my_show_url($r[catid],$r[id])}" class="tit">{$r[title]}</a> <p class="time">{date('Y-m-d',$r[inputtime])}</p></div></li>
+            {/loop}
+        </ul>
+        {/pc}
+    </div>
+    <div class="art-lb mr">
+        <p class="title">{wap_typename($typeid_array[6])}<a href="{my_list_url($typeid_array[6])}" class="more" rel="nofollow">></a></p>
+        <div class="occupat">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {pc:wap action="lists" typeid="$typeid_array[6]" num="3" order="id DESC" return="info"}
+                    {loop $info $r}
+                    <div class="swiper-slide">
+                        <a href="{my_show_url($r[catid],$r[id])}">
+                            <img src="{$r[thumb]}" alt="{$r[title]}">
+                            <span class="swiper-txt">{$r[title]}</span>
+                        </a>
+                    </div>
+                    {/loop}
+                    {/pc}
+                </div>
+            </div>
+        </div>
+       <script>
+			var mySwiper = new Swiper('.swiper-container', {
+				autoplay: 5000,
+			});
+        </script>
+    </div>
+</div>    
+{template "wap","footer_wap"}
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta name="MobileOptimized" content="620"/>
+<meta name="format-detection" content="telephone=no" />
+<link id="adaptation" rel="canonical" href="{new_get_url($catid)}" >
+<title>{$tit_le['title']}_93636手游网</title>
+<meta name="keywords" content="{$tit_le['keyword']}" /> 
+<meta name="description" content="{$tit_le['description']}" />
+<link href="/statics/wap/style/yueact.css" rel="stylesheet" type="text/css" />
+<script src="/statics/wap/js/jquery.js" type="text/javascript"></script>
+<script src="/statics/wap/js/top.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+</head>
+<body>
+{template "wap","header_zq"}
+<div class="content">
+    <div class="bourt">
+        <div class="link">
+             <a href="/">首页</a> >{my_wap_pos($typeid)}
+        </div>
+        <div class="art-lb">
+            <p class="title">{wap_typename($typeid)}</p>
+            {pc:wap action="lists" typeid="$typeid" num="20" order="id DESC" return="info"}
+            <ul class="art-lists">
+            	{loop $info $r}
+                 <li><a href="{my_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"></a> <div class="info"><a href="{my_show_url($r[catid],$r[id])}" class="tit">{$r[title]}</a><p class="time">{date('Y-m-d',$r[inputtime])}</p></div></li>
+                {/loop}
+            </ul>
+            {/pc}
+            <div class="g-more"><a href="{my_list_url($typeid)}" class="txt arrow">加载更多</a></div>
+        </div>
+    </div>
+</div>
+{template "wap","footer_wap"}
+</body>
+</html>

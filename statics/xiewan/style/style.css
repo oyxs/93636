@@ -1,0 +1,92 @@
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+:focus{outline: 0;} 
+ol,ul{list-style:none;}
+/*base css*/
+body { font: 12px/1.5 Arial,"Microsoft YaHei"; margin:0px; padding:0px; text-align:center; background:url(../images/bg_bg.png) no-repeat center; height:3100px;}
+body,td,th {font-size: 12px;}
+hr{ border:0; padding:0; margin:0; display:block}
+a{color:#666;text-decoration:none;}
+a:hover{text-decoration:none;}
+.clear{clear:both;}
+.clear:after, .clear:before {content: "";display: table;clear: both;overflow: hidden;}
+
+/*css*/
+
+.st-all { position: relative; display:none;}
+.st-make { z-index:99; background-color: #000; opacity: 0.3;    top: 0;left: 0; width: 100%;height: 100%; position:fixed;filter:alpha(opacity=30); -moz-opacity:0.3;opacity:0.3;}
+.st-paper {  position:fixed;overflow:hidden; width: 486px;height: 383px; top:30%; left:50%; margin-left:0; margin-top:0; z-index:999; }
+.st-paper .paper { width: 486px; height: 383px; background:url(../images/gf_03.png) no-repeat;background-color: transparent; box-shadow: none;}
+.st-paper .paper .cloes { position: absolute;right: 140px;top: 160px;width: 60px; height: 60px; background: url(../images/dac_03.png) no-repeat;cursor: pointer;}
+.st-paper .paper .p-link { position: absolute;bottom: 70px;left: 36px;background: #ffdb15;line-height: 82px;text-align: center;font-size: 32px;width: 326px;height: 82px;border-radius: 4px;color: #852417;}
+
+
+.w-msgbox { outline: 0; width: 500px; border: 1px solid #E6E6E6; font-size: 14px; line-height: 1.8; position: fixed; z-index: 999; -position: absolute; left: 50%; top:50%; background: #fff; color: #333; box-shadow: 0 0 5px rgba(0,0,0,.4); overflow: hidden; text-align:left; margin-top:-259px; margin-left:-251px;}
+.w-msgbox-close { position: absolute; right: 8px; top: 9px;font-size: 24px; width: 24px; height: 24px; line-height: 24px; color: #A1A1A1; text-align: center; text-decoration: none;}
+.w-msgbox-hd { height: 45px; line-height: 45px; background: #FAFAFA; color: #3C3C3C; border-bottom: 1px solid #E6E6E6; padding: 0 20px;}
+.w-msgbox-bd { padding: 10px;}
+.m-login { width: 350px; padding: 15px 0; margin: 0 auto; _zoom: 1;}
+.m-login .w-form-item { position: relative;  margin: 15px 0;}
+.m-login .w-form-item .ico-username, .m-login .w-form-item .ico-password , .m-login .w-form-item .ico-email , .m-login .w-form-item .ico-QQ  { position: absolute; left: 12px; top: 18px; z-index: 1;}
+.w-select, .w-textarea, .w-input { display: inline-block; position: relative; width: auto; background: #fff;}
+.m-login .w-input-input { padding-left: 50px; width:290px; height: 40px; line-height: 40px; font-size: 20px;vertical-align: middle;}
+.w-select, .w-textarea-input, .w-input-input { padding: 8px; border: 1px solid #ABABAB; outline: none;}
+.ico { display: inline-block; vertical-align: middle; background: url('../images/uerico.png') no-repeat; _background-image: url('../images/uerico.png'); overflow: hidden; width:20px; height:20px;}
+.ico-password { width: 22px;  height: 30px; background-position:0 -70px;}
+.ico-email { width: 22px;  height: 30px; background-position:0 -33px;}
+.ico-QQ { width: 22px;  height: 30px; background-position:0 -148px;}
+.m-login .m-login-btn {  width: 350px;  margin: 0 0 5px; height: 50px;line-height: 50px;  font-size: 24px; font-weight: normal;}
+.w-button-main { background: #DD344F;}
+.w-button { border: none; white-space: nowrap; font-size: 15px; display: inline-block;vertical-align: middle;color: #fff;     background: #DD344F; padding: 0 15px; text-align: center; height: 30px; line-height: 30px; border-radius: 3px; cursor: pointer; text-decoration: none!important; font-family: "Microsoft Yahei",simhei; outline: none;}
+.w-form-item p { line-height:30px; color:#FF0000;}
+.m-login-ext { text-align:center;}
+.m-login-ext a { color:#3399FE;}
+.topHeadeRight ul li a { line-height:40px; font-size:14px; color:#333;} 
+.section-body { width:1200px; margin:0 auto;}
+.section-body .logo { width:100%; height:208px;}
+.section-body .logo_link { width:230px; height:auto; float:right; margin-top:20px;}
+.section-body .logo a { width:230px; height:104px;}
+.section-body .down { width:397px; height:125px; margin:200px 0 70px 100px; float:left;}
+.section-body .red { background:url(../images/red.png) no-repeat center; width:100%; height:43px;}
+.draw{ position:relative;width:570px;}
+#disk{width:570px; height:595px; background:url(../images/dw.png) no-repeat;}
+#start{width: 164px; height: 320px; position:absolute; top: 111.5px; left: 203px;}
+#start img{cursor:pointer}
+.section-body .zhuanpan-pic { margin-bottom:50px;}
+.zhuanpan-pic { text-align:left;}
+.w_1000 { width:1000px; margin:0 auto;}
+.red span { color:#f4410a; line-height:42px; font-size:18px;}
+.red span ,.red .bd{ float:left;}
+.red .bd .tempWrap{ width:910px !important; }
+.red .bd ul{ overflow:hidden; zoom:1; }
+.red .bd ul li{ margin:0 20px; float:left; height:42px; line-height:42px;  text-align:left; _display:inline; width:auto !important; color:#fadd33; font-size:18px;}
+
+#temp { overflow:hidden; width: 910px; height:40px;} 
+#temp ul li ,#Marquee_x ul li div{ margin:0 20px; float:left; height:42px; line-height:42px;  text-align:left; _display:inline; width:auto !important; color:#fadd33; font-size:18px;} /* 横向滚动必须让所有li左浮动 */
+#temp ul li div{ float:left;line-height:40px; overflow:hidden;}
+
+.QQ_link { visibility: visible; position: fixed; bottom: 90px; right: 0; margin-left: 607px; left: 50%; z-index: 999;}
+.QQ_post { position: relative;}
+.QQ_link a { width:70px; height:81px; display:block; }
+.Win_all { position:relative;display:none;}
+.Win_part {top: 0; left: 0; width: 100%; height: 100%; position: fixed;}
+.Winning { position:fixed; background:url(../images/Winning.png) no-repeat; width:449px; height:285px; top:50%; left:50%; margin-top:-142px; margin-left:-225px; }
+.Winning h2 { height:75px; line-height:75px; color:#e8cf97; text-align:center; font-size:25px;}
+.Winning .win_info { padding:0 50px;}
+.Winning .win_info p ,.Winning .win_info a { text-align:left; line-height:35px; display:block;}
+.Winning .win_info .org { color:#ddcf88; font-size:16px; font-family:"宋体"}
+.Winning .win_info .w_red { color:#ff2501; font-size:30px; text-align:center; line-height:100px; height:100px; overflow:hidden;}
+.Winning .win_info .n_red ,.win_info .n_red a {color:#ff2501; font-size:30px;text-align:center; line-height:60px; height:60px; overflow:hidden; }
+.Winning .win_info .n_red a { font-size:20px;}
+.Winning .cloes {  position: absolute;  right: 20px; top: 20px; width: 21px; height:20px; background: url(../images/w_cloes.png) no-repeat; cursor: pointer;}
+.Winning .win_info .org .w-input-input { border:1px solid #49474c; background:#000; width:200px; color:#fff; filter:alpha(opacity=50);    -moz-opacity:0.5;    -khtml-opacity: 0.5;     opacity: 0.5;   }
+#part_two { display:none;}
+@media screen and (min-width:1201px) and (max-width: 1361px){
+    .side-left{width:45px;}
+    .side-left{background-position:-177px 0;}
+}
+@media screen and (min-width:1362px){
+    .side-left{width:220px;}
+    .side-left{background-position:0 0;}
+}

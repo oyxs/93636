@@ -1,0 +1,146 @@
+{template "content","header"}
+{template "content","header2"}
+<div class="laction"><i></i>当前位置：<a href="{siteurl($siteid)}">首页</a> > {catpos($catid)}</div>
+	<div class="main ny_main">
+		<div class="rmtj">
+		 	<h3>热门推荐<span class="sj"></span></h3>
+            {pc:content  action="position" posid="20" order="listorder DESC" num="4"} 
+			<ul class="tj_nr">
+            	{loop $data $key $val} 
+				<li>
+					<a href="{$val['url']}" target="_blank" class="img"><img alt="{$val['title']}" src="{$val['thumb']}"></a>
+					<h3>{$val['title']}<em>/{$val['tags']}</em></h3>
+					<h4>{str_cut($val['description'],40)}</h4>
+					<a href="{$val['url']}" target="_blank" class="ksyx">开始游戏</a>
+				</li>
+				{/loop}
+			</ul>
+            {/pc}
+		</div>
+		
+		<div class="lfh5_main">
+			<div class="h5zq  yxhj">
+				<div class="bt">
+					<h2 class="bt_logo yxhj">游戏合集</h2>
+					<ul class="h5bt_ul">
+						<li><h3><a href="/h5/h5xxyz/">休闲益智</a>|</h3></li> 
+						<li><h3><a href="/h5/h5jsby/">角色扮演</a>|</h3></li> 
+						<li><h3><a href="/h5/h5scyx/">赛车游戏</a>|</h3></li> 
+						<li><h3><a href="/h5/h5clyx/">策略游戏</a>|</h3></li> 
+						<li><h3><a href="/h5/h5fxsj/">飞行射击</a>|</h3></li> 
+					</ul>
+				</div>
+                {pc:content action="lists" catid="7,8,9,10,11" num="10" order="clicks DESC"}
+				<ul class="h5_yx">
+                	{loop $data $key $val} 
+					<li>
+						<a href="{$val['url']}" target="_blank"><img alt="{$val['title']}" class="zt" src="{$val['thumb']}"></a>
+						<h3><a href="{$val['url']}" target="_blank">{$val['title']}</a><em>/{$val['tags']}</em></h3>
+						<p>{str_cut($val['description'],120)}</p>
+						<span class="xx" ></span>
+						<a href="{$val['url']}" target="_blank" class="game_go">开始游戏</a>
+					</li>
+                    {/loop}
+				</ul>
+                 {/pc}
+			</div>
+			<div class="h5zq  yxhj">
+				<div class="bt">
+					<h2 class="bt_logo yxjk">最新入库</h2>
+				</div><!--bt-->
+                {pc:content action="lists" catid="7,8,9,10,11" num="8"  order="inputtime DESC"}
+				<ul class="h5_yx">
+                	{loop $data $r}
+					<li>
+						<a href="{ChangeUrl($r[url])}"><img alt="{$r[title]}" class="zt" src="{$r[thumb]}"></a>
+						<h3><a href="{ChangeUrl($r[url])}">{$r[title]}</a><em>/{$r[tags]}</em></h3>
+						<p>{str_cut($r[description],120)}</p>
+						<span class="xx" ></span>
+						<a href="{ChangeUrl($r[url])}" target="_blank" class="game_go">开始游戏</a>
+					</li>
+                    {/loop}
+				</ul>
+                {/pc}
+			</div>
+		</div>
+		<div class="rth5_main">
+			<dl class="yxph">
+				<dt><h3>H5游戏排行榜</h3></dt>
+				<dd id="h5ph">
+                	{pc:content  action="hits" catid="7,8,9,10,11" num="8" order="weekviews DESC" num="9"}
+					<ul class="ph_ul">
+                    	{loop $data $key $val} 
+						<li {if $n==1}class="on"{/if}>
+							<div>
+								<em class="em1">{$n}</em>
+								<a href="{$val['url']}" target="_blank">{$val['title']}</a>
+							</div>
+							
+							<ul>
+								<li>
+									<a href="{$val['url']}" target="_blank" class="img"> <img alt="{$val['title']}" src="{$val['thumb']}"></a>
+									<p class="hover_zt">
+										<span class="bt_h2">{$val['title']}</span>
+										<span class="bt_nr">{$val['tags']}</span>
+										<a href="{$val['url']}"><span> 开始游戏 </span></a>
+									</p>
+								</li>
+							</ul>
+						</li>
+						{/loop}
+					</ul>
+                    {/pc}
+				</dd>
+			</dl><!--yxph游戏排行榜-->
+			
+			<dl class="yxph"><!--yxph手游排行榜-->
+				<dt><h3>破解游戏排行</h3></dt>
+				<dd id="pjph">
+                	
+                    {pc:get sql="select title,thumb,type,url from 93636_game where singleornet=0 and anlink!='' order by updatetime DESC" num="8" return="info"}
+					<ul class="ph_ul">
+                    	{loop $info $key $val} 
+						<li {if $n==1}class="on"{/if}>
+							<div>
+								<em class="em1">{$n}</em>
+								<a href="{$val['url']}">{$val['title']}</a>
+							</div>
+							
+							<ul>
+								<li>
+									<a href="{$val['url']}" class="img"> <img alt="{$val['title']}" src="{$val['thumb']}"></a>
+									<p class="hover_zt">
+										<span class="bt_h2">{$val['title']}</span>
+										<span class="bt_nr">{$val['type']}</span>
+										<a href="{$val['url']}"><span> 下载安装 </span></a>
+									</p>
+								</li>
+							</ul>
+						</li><!--1-->
+                        {/loop}
+					</ul>
+                    {/pc}
+				</dd>
+			</dl><!--yxph手游排行榜-->
+
+			<dl class="yxph">
+				<dt><h3>热门手游推荐</h3></dt>
+				<dd>
+                	{pc:content  action="position" posid="25" order="id DESC" num="9"} 
+					<ul class="syph_ul">
+                    	{loop $data $key $val} 
+						<li>
+                        	<a class="img" href="{$val['url']}"><img alt="{$val['title']}" src="{$val['thumb']}" border="0"></a>
+                            <a class="title" href="{$val['url']}">{$val['title']}</a>
+                            <a class="ljxz" href="{$val['url']}">立即下载</a>
+                        </li>
+                        {/loop}
+					</ul>
+                    {/pc}
+				</dd>
+			</dl><!--手游排行榜-->
+		</div><!--h5_rt_main 右边-->
+	</div><!--h5_main-->
+{template "content","footer"}
+</body>
+</html>

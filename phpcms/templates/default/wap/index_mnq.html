@@ -1,0 +1,300 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+         <link href="/statics/mnq/style/yueact.css" rel="stylesheet" type="text/css">
+    <script src="/statics/mnq/js/jquery.js" type="text/javascript"></script>
+    <script src="/statics/mnq/js/index.js" type="text/javascript"></script>
+    <script src="/statics/mnq/js/superslide.2.1.js" type="text/javascript" ></script>
+        <script> var _czc = _czc || []; _czc.push(["_setAccount", "1256716135"]);</script>
+        <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <div class="header">
+            <div class="break">
+                <a onClick="window.history.go(-1)"><em></em></a>
+                <a onClick="window.history.go(1)"><em class="new1"></em></a>
+                <a onClick="window.location.reload()"><em class="new2"></em></a>
+            </div>
+            <ul class="navlist">
+                <li class="on"><a href="http://mnq.93636.com/">首页</a></li>
+                <li><a href="/games/">游戏库</a></li>
+                <li><a href="/mnq/wangyou/">网游</a></li>
+                <li><a href="/mnq/danji/">单机</a></li>
+                <li><a href="/heji/?typeid=120">手游合集</a></li>
+            </ul>
+            <div class="search">
+                <form id="seaform" name="seaform" action="/index.php" method="get">
+                    <span class="sd-l sd-f">
+                        <span class="down" style="display: block;"></span>
+                        <input name="q" type="text" id="search_txt" class="title" value="" size="20" maxlength="30" placeholder="" autocomplete="off">
+                        <input type="hidden" name="m" value="search">
+                        <input type="hidden" name="c" value="index">
+                        <input type="hidden" name="a" value="init">
+                        <input type="hidden" name="typeid" value="55">
+                        <input type="hidden" name="siteid" value="1">
+                        <input type="hidden" name="forward" value="">
+                    </span>
+                    <input class="r bian" type="submit" name="Submit" value="找游戏">
+                </form>
+            </div>
+        </div>
+        <div class="main">
+            <div class="part_l">
+                <div class="focusBox">	
+                    <div class="tempWrap">
+                        {pc:wap action="position" posid="27" order="listorder DESC" num="5"}
+                        <ul class="pic">
+                            {loop $data $r}
+                            <li><a href="{mynewurl($r[url])}" target="_blank"><img src="{$r[nopicture]}" alt=""></a><div class="make"><span class="bg"></span><a href="{mynewurl($r[url])}" target="_blank" title="{$r[title]}" class="pic_tit">{$r[title]}</a> <input class="g_down" type="submit" name="Submit" value="立刻下载"></div></li>
+                            {/loop}
+                        </ul>
+                        {/pc}
+                    </div>	
+                    <ul class="hd">		
+                        <li class="on"></li>
+                        <li class=""></li>			
+                        <li class=""></li>		
+                        <li class=""></li>		
+                    </ul>
+                </div>
+                <div class="game_all">
+                    <div class="g_link">
+                        <a href="" target="_blank" class="line">93636首页</a>
+                        <ul class="info">
+                            <li class="on line">热门游戏</li>
+                            <li class="line">经典单机</li>
+                            <li class="line">推荐游戏</li>
+                            <li class="line">网游精选</li>
+                        </ul>
+                        <a href="/games/" class="more">更多 >></a>
+                    </div>
+                    <div class="game_list clear">
+                        {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=25  and 93636_game.anlink!='' ORDER BY 93636_game.id DESC" return="data" num="18"}
+                        <ul class="disy on">
+                            {loop $data  $k $val}
+                            <li>
+                                <div class="one">
+                                    {if $val['libaoURL']!=""}<i class="present"></i>{/if}
+                                    <a href="{my_show_url($val[catid],$val[id])}" target="_blank"><p><img src="{$val['thumb']}" alt=""></p></a>
+                                    <div class="d_txt"><p>{str_cut($val[title],24,'')}</p><em>{str_cut($val[type],8,"")} | {ceil($val['size'])}MB</em></div>
+                                    <a href="{$val['anlink']}" target="_blank" class="pc push" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                                </div>
+                            </li>
+                            {/loop}
+
+                        </ul>
+                        {/pc}
+
+                        {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=42 and 93636_game.anlink!='' ORDER BY 93636_game.id DESC" return="data" num="18"}
+                        <ul class="disy">
+                            {loop $data  $k $val}
+                            <li>
+
+                                <div class="one">
+                                    {if $val['libaoURL']!=""}<i class="present"></i>{/if}
+                                    <a href="{my_show_url($val[catid],$val[id])}" target="_blank"><p><img src="{$val['thumb']}" alt=""></p></a>
+                                    <div class="d_txt"><p>{str_cut($val[title],24,'')}</p><em>{str_cut($val[type],8,"")} | {ceil($val['size'])}MB</em></div>
+                                    <a href="{$val['anlink']}" target="_blank" class="pc push" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                                </div>
+                            </li>
+                            {/loop}
+                        </ul>
+                        {/pc}
+                        {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=26 and 93636_game.anlink!='' ORDER BY 93636_game.id DESC" return="data" num="18"}
+                        <ul class="disy">
+                            {loop $data  $k $val}
+                            <li>
+                                <div class="one">
+                                    {if $val['libaoURL']!=""}<i class="present"></i>{/if}
+                                    <a href="{my_show_url($val[catid],$val[id])}" target="_blank"><p><img src="{$val['thumb']}" alt=""></p></a>
+                                    <div class="d_txt"><p>{str_cut($val[title],24,'')}</p><em>{str_cut($val[type],8,"")} | {ceil($val['size'])}MB</em></div>
+                                    <a href="{$val['anlink']}" target="_blank" class="pc push" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                                </div>
+                            </li>
+                            {/loop}
+                        </ul>
+                        {/pc}
+
+                        {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=41 and 93636_game.anlink!='' ORDER BY 93636_game.id DESC" return="data" num="18"}
+                        <ul class="disy">
+                            {loop $data  $k $val}
+                            <li>
+                                <div class="one">
+                                    {if $val['libaoURL']!=""}<i class="present"></i>{/if}
+                                    <a href="{my_show_url($val[catid],$val[id])}" target="_blank"><p><img src="{$val['thumb']}" alt=""></p></a>
+                                    <div class="d_txt"><p>{str_cut($val[title],24,"")}</p><em>{str_cut($val[type],8,"")} | {ceil($val['size'])}MB</em></div>
+                                    <a href="{$val['anlink']}" target="_blank" class="pc push" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                                </div>
+                            </li>
+                            {/loop}
+                        </ul>
+                        {/pc}
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="part_r">
+                <div class="package">
+                    <i class="p_groom"></i>
+                    <h2>各种福利免费送</h2>
+                    <ul class="g_ico">
+                        <li><img src="/statics/mnq/images/gift.png" alt=""></li>
+                        <li><img src="/statics/mnq/images/gift.png" alt=""></li>
+                        <li><img src="/statics/mnq/images/gift.png" alt=""></li>
+                    </ul>
+                    <div class="QQ_nub">
+                        <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=ed7f040fe9a3843402d1fa3e0171d42d986971365a3acd398bdaac6fd7088c3c"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="93636【手游交流一群】" title="93636【手游交流一群】"></a>
+                        <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=963481fc6c703c49bebabb289a6902b59ae823230149fabb4cccf8450c8cf285"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="93636【手游交流二群】" title="93636【手游交流二群】"></a>
+                        <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=d90bc28f77d861e3f977beee8d6af61bb61bf29bf1b0b7564267f3926306bbc6"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="93636【福利一群】" title="93636【福利一群】"></a>
+                        <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=c588c0819621954c68b4ba092c91b877ed67a3209eab49cf440a9e2d19bca4de"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="93636【福利二群】" title="93636【福利二群】"></a>
+                        <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=29124b363f0d4f47e59e529ff31e1d103003e5e400394fa4e7a6ce62a00a3a46"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="携玩助手【客服一群】" title="携玩助手【客服一群】"></a>
+                        <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=368fca981d27d947a596bc1b7c8d0d93e83de6e425902917d7dba9ba3026b1f7"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="携玩助手【客服二群】" title="携玩助手【客服二群】"></a>
+                    </div>
+                </div>
+                <div class="game_all rank-cont">
+                    <div class="d_top">
+                        <h2>下载排行榜</h2>
+                        <div class="rank-tit"><span class="on">网游</span><b>|</b><span>新游</span></div>
+                    </div>
+
+                    <ul class="rank-cont-ul on">
+
+                        {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=40 and 93636_game.anlink!='' ORDER BY 93636_game.id DESC" return="data" start="1" num="1"}
+                        {loop $data  $k $val}
+                        <li class="hover">
+                            <div class="rank-normal">
+                                <em class="rank-rank org">1</em>
+                                <span class="rank-txt">{$val['gamename']}</span>
+                                <span class="number">下载量：{$val['downloadtimes']}</span>
+                            </div>
+                            <div class="rank-hover">
+                                <em class="rank-rank org">1</em>
+                                <div class="rank-heigh"><a class="rank-txt">{str_cut($val['gamename'],24,"")}</a><a href="{my_show_url($val[catid],$val[id])}"><img src="{$val['thumb']}" alt="" width="45"></a></div>
+                                <div class="rank-ht">
+                                    <span class="number">下载量：{$val['downloadtimes']}</span>
+                                    <div class="install" >
+                                        <a href="javascript:void(0);" class="bule" data-title="{$val['gamename']}" data-thumb="{$val['twcode']}" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到手机', '{$val[title]}','1','disy']);">安装到手机</a>
+                                        <a href="{$val['anlink']}" class="gret" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/loop}
+                        {/pc}
+                        {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=40 and 93636_game.anlink!=''  ORDER BY 93636_game.id DESC" return="data" start="2" num="9"}
+                        {php $i=2;}
+                        {loop $data  $k $val}
+                        <li>
+                            <div class="rank-normal">
+                                <em class="rank-rank org">{$i}</em>
+                                <span class="rank-txt">{str_cut($val['gamename'],24,"")}</span>
+                                <span class="number">下载量：{$val['downloadtimes']}</span>
+                            </div>
+                            <div class="rank-hover">
+                                <em class="rank-rank org">{$i}</em>
+                                <div class="rank-heigh"><a class="rank-txt">{str_cut($val['gamename'],24,"")}</a><a href="{my_show_url($val[catid],$val[id])}"><img src="{$val['thumb']}" alt="" width="45"></a></div>
+                                <div class="rank-ht">
+                                    <span class="number">下载量：{$val['downloadtimes']}</span>
+                                    <div class="install" >
+                                        <a href="javascript:void(0);" class="bule" data-title="{$val['gamename']}" data-thumb="{$val['twcode']}" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到手机', '{$val[title]}','1','disy']);">安装到手机</a>
+                                        <a href="{$val['anlink']}" class="gret" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {php $i++;}
+                        {/loop}
+                        {/pc}
+                    </ul>
+
+                    {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=39 and 93636_game.anlink!='' ORDER BY 93636_game.id DESC" return="data" num="10"}
+                    <ul class="rank-cont-ul">
+                        {php $i=1;}
+                        {loop $data  $k $val}
+                        <li class="hover">
+                            <div class="rank-normal">
+                                <em class="rank-rank org">{$i}</em>
+                                <span class="rank-txt">{str_cut($val['gamename'],24,"")}</span>
+                                <span class="number">下载量：{$val['downloadtimes']}</span>
+                            </div>
+                            <div class="rank-hover">
+                                <em class="rank-rank org">{$i}</em>
+                                <div class="rank-heigh"><a class="rank-txt">{$val['gamename']}</a><a href="{my_show_url($val[catid],$val[id])}"><img src="{$val['thumb']}" alt="" width="45"></a></div>
+                                <div class="rank-ht">
+                                    <span class="number">下载量：{$val['downloadtimes']}</span>
+                                    <div class="install">
+                                        <a href="javascript:void(0);" class="bule" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到手机', '{$val[title]}','1','disy']);">安装到手机</a>
+                                        <a href="{$val['anlink']}" class="gret" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {php $i++}
+                        {/loop}
+                    </ul>
+                    {/pc}
+                </div>
+            </div>
+        </div>
+        <div class="foot game_all">
+            <div class="game_list common">
+                <div class="g-online fr"><h2>网游排行</h2><span><a href="/mnq/wangyou/">更多>></a></span></div>
+                {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=9 and 93636_game.anlink!='' ORDER BY 93636_game.id DESC" return="data" num="12"}
+                <ul class="disy">
+                    {loop $data  $k $val}
+                    <li>
+                        <div class="one">
+                            {if $val['libaoURL']!=""}<i class="present"></i>{/if}
+                            <a href="{my_show_url($val[catid],$val[id])}" target="_blank"><p><img src="{$val['thumb']}" alt=""></p></a>
+                            <div class="d_txt"><p>{str_cut($val['gamename'],24,"")}</p><em>{str_cut($val[type],8,"")} | {ceil($val['size'])}MB</em></div>
+                            <a href="{$val['anlink']}" target="_blank" class="pc push" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                        </div>
+                    </li>
+
+                        {/loop}
+                </ul>
+                {/pc}
+            </div>
+            <div class="game_list common ft">
+                <div class="stand fr"><h2>单机排行</h2><span><a href="/mnq/danji/">更多>></a></span></div>
+                {pc:get sql="select * from 93636_position_data  left join 93636_game on 93636_position_data.id=93636_game.id  where  93636_position_data.posid=42 and 93636_game.anlink!='' ORDER BY 93636_game.id DESC" return="data" num="12"}
+                <ul class="disy">
+                    {loop $data  $k $val}
+                    <li>
+                        <div class="one">
+                            {if $val['libaoURL']!=""}<i class="present"></i>{/if}
+                            <a href="{my_show_url($val[catid],$val[id])}" target="_blank"><p><img src="{$val['thumb']}" alt=""></p></a>
+                            <div class="d_txt"><p>{str_cut($val['gamename'],20,"")}</p><em>{str_cut($val[type],8,"")}| {ceil($val['size'])}MB</em></div>
+                            <a href="{$val['anlink']}" target="_blank" class="pc push" onclick="_czc.push(['_trackEvent', '模拟器首页', '安装到电脑', '{$val[title]}','1','disy']);">安装到电脑</a>
+                        </div>
+                    </li>
+                    {/loop}
+                </ul>
+                {/pc}
+            </div>
+        </div>
+        <div class="ins_phone">
+            <div class="ui-dialog">
+                <h2>安装到手机</h2>
+                <span class="cloes">×</span>
+            </div>
+            <div class="ui_txt">
+                <h1 class="data-title"></h1>
+                <p>建议在Wi-fi环境下扫描下载</p>
+                <p class="ui_img"><img src="" alt="" class="data_thumb"></p>
+                <p>扫一扫,安装到手机</p>
+                <p>您也可以使用USB连接手机安装</p>
+            </div>
+            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256716135'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256716135%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
+        <script type="text/javascript">
+            jQuery(".focusBox").slide({mainCell: ".pic", effect: "left", autoPlay: true, delayTime: 500});
+        </script>
+    </body>
+</html>

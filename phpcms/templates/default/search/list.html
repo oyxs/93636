@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>{$search_q}_{$SEO['site_title']}</title>
+    <link rel="stylesheet" href="/statics/new_style/css/common.css">
+        <link rel="stylesheet" href="/statics/new_style/css/index.css">
+    <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+    <script  src="/statics/new_style/js/jquery.js"></script>
+    <script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+    <script  src="/statics/new_style/js/jquery.scrollbar.js"></script>
+    <script  src="/statics/new_style/js/jquery.slider.js"></script>
+    <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+    <script src="/statics/new_style/js/lib/common.js"></script>
+	<script type="text/javascript">
+            if (/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                try {
+                    if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+                        var strr = "http://m.93636.com?m=search&c=index&a=restart_search&typeid=4&q={urlencode($search_q)}&siteid={$siteid}";
+                        window.location.href = strr;
+                    }
+                } catch (e) {
+                }
+            }
+        </script>
+</head>
+<body>
+{template 'content', 'head'}
+<style type="text/css">
+    .m-nav { width: 100%; height: 45px;}
+    .m-nav li{ float: left; overflow: hidden; color: #666; font-size: 14px;}
+    .m-nav li a{ line-height: 45px;color: #666666;font-size: 14px;display: inline-block;}
+    .m-nav li .i-next {  margin: 0 5px 0 2px;  }
+    .mod-tab .tab-nav{
+        width: 100%;
+        background: #eaf5de url(/statics/new_style/images/nav-bg.png) no-repeat 0 0;
+        line-height: 36px;
+        height: 36px;
+        position: relative;
+        z-index: 5;
+        margin-bottom: 20px;;
+    }
+    .mod-tab .tab-nav-2{
+        background: #eaf7ff url(/statics/new_style/images/nav-bg-2.png) no-repeat 0 0;
+    }
+    .mod-tab .tab-nav li{
+        float: left; margin-left: -11px;
+        *display: inline;
+        width: 100px;
+        text-align: center;
+        position: relative;
+    }
+    .mod-tab .tab-nav li.first-nav { margin-left: 0; background: url(/statics/new_style/images/nav3.png) 0 0  no-repeat;}
+    .mod-tab .tab-nav a{
+        text-align: center;
+        font-size: 16px;
+        color: #333333;
+        font-family: "microsoft yahei";
+        display: block;
+    }
+    .mod-tab .tab-nav li.active,.mod-tab .tab-nav li:hover{
+        background: url(/statics/new_style/images/nav2.png) 0 0  no-repeat;
+    }
+    .mod-tab .tab-nav li.active.first-nav,
+    .mod-tab .tab-nav li.first-nav:hover {background: url(/statics/new_style/images/nav1.png) 0 0  no-repeat;}
+    .mod-tab .tab-nav li.active a,.mod-tab .tab-nav li:hover a{
+        color: #ffffff;
+    }
+</style>
+<div class="main clear min-h">
+    <ul class="m-nav clearfix">
+        <li class="">
+            <a href="http://www.93636.com/" target="_blank">
+                <i></i>
+                首页
+            </a>
+            <span class="i-next">&gt;</span>
+        </li>
+        <li>
+            <a href="#" target="">
+                {if $typeid==0}全部{elseif $typeid==1}游戏{elseif $typeid==2}文章{else}礼包{/if}的搜索结果
+            </a>
+        </li>
+    </ul>
+    <div class="search_info">
+        <div class="mod-tab">
+            <ul class="tab-nav clearfix" id="tab-nav">
+                <li class="{if 0==$typeid}first-nav active{else}first-nav{/if}">
+                    <a href="?m=search&c=index&a=searchall&typeid=0&q={urlencode($search_q)}&siteid={$siteid}" >全部<i></i></a>
+                </li>
+                <li class="{if 1==$typeid}active{else}{/if}">
+                    <a href="?m=search&c=index&a=restart_search&typeid=1&q={urlencode($search_q)}&siteid={$siteid}" >游戏<i></i></a>
+                </li>
+                <li class="{if 2==$typeid}active{else}{/if}">
+                    <a href="?m=search&c=index&a=restart_search&typeid=2&q={urlencode($search_q)}&siteid={$siteid}" >文章<i></i></a>
+                </li>
+                <li class="{if 3==$typeid}active{else}{/if}">
+                    <a href="?m=search&c=index&a=restart_search&typeid=3&q={urlencode($search_q)}&siteid={$siteid}" >礼包<i></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="index-ranking mt0">
+            <div class="bk_game_all">
+                {if $typeid==1}
+                <ul class="seach_list clear cut">
+                    {loop $data $i $r}
+                    {if $r['status']==99}
+                    <li>
+                        <div class="pic"><a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{$r[thumb]}" alt="{$r[title]}"></a></div>
+                        <div class="info">
+                            <div class="pj"> <h2><a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a></h2><span>{$CATEGORYS[$r[catid]][catname]}</span><span>|</span><span>大小：{$r[size]}</span></div>
+                            <div class="text">
+                                　{$r[description]}
+                            </div>
+                        </div>
+                        <div class="down_bont"><a href="{$r[url]}" class="d_rad">进入专区</a>
+                            {if $r[anlink]!==''}<a href="{$r[anlink]}" class="d_bule">下载游戏</a>{else}
+                            <a href="http://cdn.qmzs.com/xiewan/qmzs_sp[111]_qd[xw93636].exe" class="d_bule">下载游戏</a>{/if}
+                        </div>
+                    </li>
+                    {/if}
+                    {/loop}
+                </ul>
+                {/if}
+                {if $typeid==3}
+                <ul class="search_lb clear">
+                    {loop $data $i $r}
+                    <li class="clear">
+                        <div class="wrap3_list">
+                            <div class="wrap3_lf"><img src="{$r[thumb]}" alt="{$r[title]}"></div>
+                            <div class="wrap3_info">
+                                <dl class="clear">
+                                    <dt><a href="{$r[url]}" class="w_title" title="{$r[title]}" target="_blank">{$r[title]}</a> </dt>
+                                </dl>
+                                <dl class="clear">
+                                    <dt>{$r[description]}</dt>
+                                </dl>
+                                <dl class="clear">
+                                    <dt>剩余：</dt>
+                                    <dd class="clearfix">
+                                        <span class="spanbox"><span class="ht" style="width:{LbCount($r['id'],$r['number'])}%;"></span></span>
+                                        <em class="sl">{LbCount($r['id'],$r['number'])}%</em>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="wrap3_rg">
+                                <!-- lh th -->
+                                <a href="{$r[url]}" class="ht">
+                                    <span class="ht">领取</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+                {if $typeid==2}
+                <ul class="seach_art clear">
+                    {loop $data $i $r}
+                    <li>
+                        <p class="seach_title"><a href="{$r[url]}" title="{$r[title]}" target="_blank"><i class="sea_ioc">[新闻]</i>{$r[title]}</a><span class="tit_info">{format::date($r[inputtime], 1)}</span></p>
+                        <p class="sea_info">{$r[description]}</p>
+                    </li>
+                    {/loop}
+                </ul>
+                {/if}
+            </div>
+            <div class="page">
+                {$pages}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    {template 'content', 'foot'}
+</div>
+</body>
+</html>

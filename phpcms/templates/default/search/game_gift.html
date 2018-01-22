@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>{$search_q}_{$SEO['site_title']}</title>
+    <meta name="keywords" content="礼包详情页">
+    <meta name="description" content="礼包详情页" />
+    <link href="/statics/new/style/yueact.css" rel="stylesheet">
+    <script  src="/statics/new/js/jquery.js"></script>
+    <script  src="/statics/new/js/miguan_wjzj.js"></script>
+    <script  src="/statics/new/js/jquery.scrollbar.js"></script>
+    <script  src="/statics/new/js/jquery.slider.js"></script>
+    <script  src="/statics/new/js/superslide.2.1.js"></script>
+    <script type="text/javascript">
+        // 游戏排行
+        $('.js-game-top-list').on('mouseover', 'li', function(e) {
+            if ($(this).hasClass('game-top-active'))
+                return;
+            $(this).addClass('game-top-active').siblings('li').removeClass('game-top-active');
+        });
+    </script>
+</head>
+<body>
+{template "content","head"}
+<div class="make_bg mt20">
+    <div class="main clear">
+        <ul class="bread-nav bread-top">
+            <li>当前位置：</li><li><a href="{siteurl($siteid)}">首页</a>&gt;</li><li> {catpos($catid)}</li>
+        </ul>
+        <div class="index-ranking mt0">
+            <div class="wrap3 clear">
+                <div class="wrap3_title">旋风保镖公测礼包</div>
+                <div class="wrap3_list">
+                    <div class="wrap3_lf"><img src="pic/kk.png" alt=""></div>
+                    <div class="wrap3_info">
+                        <dl class="clear">
+                            <dt>剩余：</dt>
+                            <dd class="clearfix">
+                                <span class="spanbox"><span class="ht" style="width:58%;"></span></span>
+                                <em class="sl">58%</em>
+                            </dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>礼包时效：</dt>
+                            <dd class="clearfix">2016-04-22 至 2017-04-20</dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>支持平台：</dt>
+                            <dd class="clearfix"><img src="images/ap_ico.png" alt=""></dd>
+                        </dl>
+                        <dl class="clear greet">
+                            <dt>[温馨提示]</dt>
+                            <dd class="clearfix">
+                                <p>该礼包开启淘号功能，请领取礼包的用户尽快使用！</p>
+                                <p>加入93636礼包群（110），了解最新礼包资讯！</p>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="wrap3_rg">
+                        <!-- lh th -->
+                        <a href="javascript:void(0)" class="lh">
+                            <span><em class="emicon"></em><em class="ho qh"></em></span>
+                            <em class="emtxt">领取</em>
+                        </a>
+                    </div>
+                    <div class="wrap3_link">
+                        <a href="" target="_blank" class="zl_but"></a>
+                        <a href="" target="_blank" class="pc_but"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mar_top">
+            <div class="part_one clear">
+                <h3 class="tit_part">礼包详情</h3>
+                <div class="index-ranking  mar_top">
+                    <div class="gife_info">
+                        <p class="gife_rule">礼包内容：北海龙王、北海笼子助战伙伴各1个（有效期7天）、九转金丹*10、银锭*2</p>
+                        <p class="gife_rule">领取时段：</p>
+                        <p class="gife_rule">使用方法： 在游戏内长安城"聚宝仙子"处兑换，可获得豪华奖励一份。</p>
+                        <p class="gife_rule">注意事项： 仅限安卓官服</p>
+                    </div>
+                </div>
+            </div>
+            <div class="part_one clear">
+                <h3 class="tit_part">相关礼包</h3>
+                <div class="index-ranking  mar_top">
+                    <ul class="about_gift">
+                        <li class="gife_one">
+                            <a href="" target="blank"><img src="pic/kk.png" alt=""></a>
+                            <div class="gife_tit">
+                                <p class="ptitle"><a href="">旋风保镖媒体专属礼包</a></p>
+                                <p class="ptxt">有效期至：2016-4-30</p>
+                                <p class="plq"><em>剩余：88%</em><a href="" target="blank"  class="b_gre">领取</a></p>
+                            </div>
+                        </li>
+                        <li class="gife_one">
+                            <a href="" target="blank"><img src="pic/kk.png" alt=""></a>
+                            <div class="gife_tit">
+                                <p class="ptitle"><a href="">旋风保镖媒体专属礼包</a></p>
+                                <p class="ptxt">有效期至：2016-4-30</p>
+                                <p class="plq"><em>剩余：88%</em><a href="" target="blank" class="b_red">领取</a></p>
+                            </div>
+                        </li>
+                        <li class="gife_one">
+                            <a href="" target="blank"><img src="pic/kk.png" alt=""></a>
+                            <div class="gife_tit">
+                                <p class="ptitle"><a href="">旋风保镖媒体专属礼包</a></p>
+                                <p class="ptxt">有效期至：2016-4-30</p>
+                                <p class="plq"><em>剩余：88%</em><a href="" target="blank"  class="b_red">领取</a></p>
+                            </div>
+                        </li>
+                        <li class="gife_one">
+                            <a href="" target="blank"><img src="pic/kk.png" alt=""></a>
+                            <div class="gife_tit">
+                                <p class="ptitle"><a href="">旋风保镖媒体专属礼包</a></p>
+                                <p class="ptxt">有效期至：2016-4-30</p>
+                                <p class="plq"><em>剩余：88%</em><a href="" target="blank"  class="b_red">领取</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="part_one clear">
+                <h3 class="tit_part">相关游戏</h3>
+                <ul class="gm_list">
+                    <li><a href=""><img src="pic/kk.png" alt=""><p>旋风保镖</p></a></li>
+                    <li><a href=""><img src="pic/kk.png" alt=""><p>旋风保镖</p></a></li>
+                    <li><a href=""><img src="pic/kk.png" alt=""><p>旋风保镖</p></a></li>
+                    <li><a href=""><img src="pic/kk.png" alt=""><p>旋风保镖</p></a></li>
+                    <li><a href=""><img src="pic/kk.png" alt=""><p>旋风保镖</p></a></li>
+                    <li><a href=""><img src="pic/kk.png" alt=""><p>旋风保镖</p></a></li>
+                    <li><a href=""><img src="pic/kk.png" alt=""><p>旋风保镖</p></a></li>
+                    <li><a href=""><img src="pic/kk.png" alt=""><p>旋风保镖</p></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="dgyx_rig mt0">
+            <h3 class="tit_two">游戏礼包</h3>
+            <dl class="ph_new paih pop">
+                <dd class="rank-cont rank-ios">
+                    <!--下载排行榜-->
+                    <ul class="rank-cont-ul">
+                        <li class=" hover">
+                            <div class="rank-normal">
+                                <p>蜀山战纪之剑侠传奇 <a href="" class="claim">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-down" href="" target="blank"></a>
+                                <a class="rank-img" target="blank" href=""> <img src="pic/kk.png" alt="蜀山战纪之剑侠传奇">
+                                    <p class="rank-item-tit cut">功夫熊猫至尊礼包</p>
+                                    <p class="rank-type">剩余：<span>98%</span></p>
+                                </a>
+                                <a href="" class="claims">领取</a>
+                            </div>
+                        </li>
+                        <!--鼠标效果 hover-->
+                        <!--排行榜10-->
+                        <li>
+                            <div class="rank-normal">
+                                <p>画江湖之灵主 <a href="" class="claim">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-img" target="blank" href=""> <img src="pic/kk.png" alt="画江湖之灵主">
+                                    <p class="rank-item-tit cut">功夫熊猫至尊礼包</p>
+                                    <p class="rank-type">剩余：<span>98%</span></p>
+                                </a>
+                                <a href="" class="claims">领取</a>
+                            </div>
+                        </li>
+                        <!--鼠标效果 hover-->
+                        <!--排行榜10-->
+                        <li>
+                            <div class="rank-normal">
+                                <p>新大主宰 <a href="" class="claim">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-img" target="blank" href=""> <img src="pic/kk.png" alt="新大主宰">
+                                    <p class="rank-item-tit cut">功夫熊猫至尊礼包</p>
+                                    <p class="rank-type">剩余：<span>98%</span></p>
+                                </a>
+                                <a href="" class="claims">领取</a>
+                            </div>
+                        </li>
+                        <!--鼠标效果 hover-->
+                        <!--排行榜10-->
+                        <li>
+                            <div class="rank-normal">
+                                <p>新秦时明月 <a href="" class="claim">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-img" target="blank" href=""> <img src="pic/kk.png" alt="新秦时明月">
+                                    <p class="rank-item-tit cut">功夫熊猫至尊礼包</p>
+                                    <p class="rank-type">剩余：<span>98%</span></p>
+                                </a>
+                                <a href="" class="claims">领取</a>
+                            </div>
+                        </li>
+                        <!--鼠标效果 hover-->
+                        <!--排行榜10-->
+                        <li>
+                            <div class="rank-normal">
+                                <p>天魔幻想 <a href="" class="claim">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-img" target="blank" href=""> <img src="pic/kk.png" alt="天魔幻想">
+                                    <p class="rank-item-tit cut">功夫熊猫至尊礼包</p>
+                                    <p class="rank-type">剩余：<span>98%</span></p>
+                                </a>
+                                <a href="" class="claims">领取</a>
+                            </div>
+                        </li>
+                        <!--鼠标效果 hover-->
+                        <!--排行榜10-->
+                        <li>
+                            <div class="rank-normal">
+                                <p>乱舞之刃 <a href="" class="claim">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-img" target="blank" href=""> <img src="pic/kk.png" alt="乱舞之刃">
+                                    <p class="rank-item-tit cut">功夫熊猫至尊礼包</p>
+                                    <p class="rank-type">剩余：<span>98%</span></p>
+                                </a>
+                                <a href="" class="claims">领取</a>
+                            </div>
+                        </li>
+                        <!--鼠标效果 hover-->
+                        <!--排行榜10-->
+                        <li class="none">
+                            <div class="rank-normal">
+                                <p>蜀山战纪 <a href="" class="claim">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-img" target="blank" href=""> <img src="pic/kk.png" alt="蜀山战纪">
+                                    <p class="rank-item-tit cut">功夫熊猫至尊礼包</p>
+                                    <p class="rank-type">剩余：<span>98%</span></p>
+                                </a>
+                                <a href="" class="claims">领取</a>
+                            </div>
+                        </li>
+                        <!--鼠标效果 hover-->
+                        <!--排行榜10-->
+                    </ul>
+                </dd>
+                <!--下载排行榜-->
+            </dl>
+            <h3 class="tit_two">游戏测评</h3>
+            <dl class="paih">
+                <dd>
+                    <div class="v_info fl">
+                        <ul>
+                            <li><a href="" title="新游战队再添一员 激萌《守护者们》霸气来袭" target="_blank">11新游战队再添一员 激萌《守护者们》霸气来袭</a></li>
+                            <li><a href="" title="《刀锋无双》新版即将热血来袭 同心共战平天下" target="_blank">《刀锋无双》新版即将热血来袭 同心共战平天下</a></li>
+                            <li><a href="" title="《魔力宝贝》手游新资料片神域庄园上线" target="_blank">《魔力宝贝》手游新资料片神域庄园上线</a></li>
+                            <li><a href="" title="《白发魔女传》正版手游原稿流出 高度还原张国荣容颜" target="_blank">《白发魔女传》正版手游原稿流出 高度还原张国荣容颜</a></li>
+                            <li><a href="" title="《白发魔女传》正版手游原稿流出 高度还原张国荣容颜" target="_blank">《白发魔女传》正版手游原稿流出 高度还原张国荣容颜</a></li>
+                            <li><a href="" title="《白发魔女传》正版手游原稿流出 高度还原张国荣容颜" target="_blank">《白发魔女传》正版手游原稿流出 高度还原张国荣容颜</a></li>
+                            <li><a href="" title="《白发魔女传》正版手游原稿流出 高度还原张国荣容颜" target="_blank">《白发魔女传》正版手游原稿流出 高度还原张国荣容颜</a></li>
+                            <li><a href="" title="《白发魔女传》正版手游原稿流出 高度还原张国荣容颜" target="_blank">《白发魔女传》正版手游原稿流出 高度还原张国荣容颜</a></li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="foot">
+    <ul class="copyright">
+        <li>
+            <a href="">关于我们</a> |
+            <a href="">免责声明</a> |
+            <a href="">联系我们</a> |
+            <a href="">软文投稿</a> |
+            <a href="">商务合作</a> |
+            <a href="">网站地图</a>
+            <br>Copyright 2015 <a href="http://www.93636.com" target="_blank">93636手游网</a> 版权所有 <span id="cnzz_stat_icon_1254986506"><a href="http://www.cnzz.com/stat/website.php?web_id=1254986506" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="http://icon.cnzz.com/img/pic1.gif"></a></span><script src=" http://s4.cnzz.com/z_stat.php?id=1254986506&amp;show=pic1" type="text/javascript"></script><script src="http://c.cnzz.com/core.php?web_id=1254986506&amp;show=pic1&amp;t=z" charset="utf-8" type="text/javascript"></script>	<br>
+        </li>
+    </ul>
+</div>
+<!--未登录提示-->
+<div class="prompt">
+    <div class="pr_bg"><span id="pr_cloes">×</span></div>
+    <div class="pr_tit">
+        <p><i></i>尊敬的用户：您好！您还未登录，请先登录。</p>
+        <div class="pr_logn">
+            <a href="javascript:void(0)" target="_blank" class="pr_l_ioc"></a>
+            <a href="javascript:void(0)" target="_blank"  class="pr_r_ioc"></a>
+        </div>
+    </div>
+</div>
+<!--登录框-->
+<div class="login_box">
+    <div class="box_close">×</div>
+    <div class="login_tab">
+        <ul>
+            <li class="hover">登录</li>
+            <li class="">注册</li>
+        </ul>
+    </div>
+    <div class="box_content">
+        <iframe src="登录框.html" id="login" class="iframe" scrolling="no" style="border: 0px; width: 100%; height: 355px; display: inline;"></iframe>
+        <iframe src="注册框.html" id="register" class="iframe" scrolling="no" style="border: 0px; width: 100%; height: 425px; display: none;"></iframe>
+    </div>
+</div>
+<!--领取礼包提示-->
+<div class="get_pr">
+    <div class="get_bg"><span id="get_cloes">×</span></div>
+    <div class="get_line">您的礼包码是：<input type="text" class="text"> <a href="">复制</a></div>
+    <div class="get_group">欢迎加入官方礼包福利群：<a href=""><img src="images/group.png"></a></div>
+</div>
+</body>
+</html>

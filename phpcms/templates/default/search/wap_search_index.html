@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta name="MobileOptimized" content="620"/>
+<meta name="format-detection" content="telephone=no" />
+<title>{$search_q}_93636手游网</title>
+<meta name="keywords" content="" /> 
+<meta name="description" content="" />
+<link href="/statics/wap/new_style/new_css/yueact.css" rel="stylesheet" type="text/css" />
+<script src="http://www.93636.com/statics/new/js/jquery.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/js/cookie.js" type="text/javascript"></script>
+</head>
+<body>
+{template "wap","header_search"}
+<div class="content">
+    <div class="bourt">
+        <div class="art-lb mr">
+            <ul class="sy-record">
+            </ul>
+            <div class="g-more"><a href="">清除历史记录</a></div>
+        </div>
+    </div>
+</div>
+<script language="javascript">
+//setcookie("seach","",7)
+var str='';
+if($("#j-input").val()!=""){
+    if(getcookie("seach")==""){
+        setcookie("seach",$("#j-input").val(),7)
+    }else{
+        yseach="|"+getcookie("seach")+"|";
+        if(yseach.indexOf($("#j-input").val())>0){
+        }else{
+            setcookie("seach",$("#j-input").val()+"|"+getcookie("seach"),7);
+        }
+        seach=getcookie("seach").split("|");
+        for(var i=0;i<seach.length && i<5;i++){
+            if(str==""){
+                str="<li><a href=\"aaaa\" class=\"img\"><i></i><span>"+seach[i]+"</span></a></li>";
+            }else{
+                str+="<li><a href=\"aaaa\" class=\"img\"><i></i><span>"+seach[i]+"</span></a></li>";
+            }
+        }
+        $(".sy-record").html(str);
+    }
+}
+</script>
+{template "wap","footer_wap"}
+</body>
+</html>

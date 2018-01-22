@@ -1,0 +1,135 @@
+{template "content","header6"}
+{template "content","header2"}
+<div class="main">
+    <div class="laction"><i></i>当前位置：<a href="/">首页</a> > {catpos($catid)}{$title} </div>	
+    <div class="h5-left">
+        <div class="left-content">
+            <div class="content-img">
+                <a href="{$url}">
+                    <img src="{$bigtu}" alt="{$title}">
+                    <span class="img-app"></span>
+                </a>
+            </div><!--content-a-->
+            <div class="content-text">
+                <h1>{$title}</h1>
+                <ul class="label">
+                    <li>
+                        <strong>分类：</strong>
+                        <span class="color">{$type}</span>
+                    </li>
+                    <li>
+                        <strong>大小：</strong>
+                        <span>{$size}</span>
+                    </li>
+                    <li>
+                        <strong>入库时间：</strong>
+                        <span>{$inputtime}</span>
+                    </li>
+                    <li>
+                        <strong>语言：</strong>
+                        <span>简体中文</span>
+                    </li>
+                    <li class="mr15">
+                        <strong>标签：</strong>
+                        <?php
+                            if(!empty($tags)){
+                                $tags = str_replace(",", " ", $tags);
+                                $tags = preg_replace("/\s(?=\s)/","\\1",$tags);
+                                $strs = explode(' ',$tags);
+                                foreach ($strs as $str){
+                                    echo "<a href='/tags/$str' rel='nofollow' target='_blank'>$str</a>";
+                                }
+                        }
+                        ?>
+                    </li>
+                </ul>
+                <div class="text-btn">
+                    <a href="http://www.93636.com/h5{$jumplink}" class="btn-go" target="_blank" >开始游戏</a>
+                    <div class="code">
+                      <img src="" alt="">
+                    </div>
+                    <span class="btn-phone">手机上玩</span>
+                </div><!--text-btn-->
+            </div>
+        </div><!--left-content-->
+        <dl class="intro1 m20">
+            <dt><h2><span class="intro-ico"></span>游戏简介</h2></dt>
+            <dd>
+                <p>{$description}</p>
+            </dd>
+        </dl>
+        <dl class="intro2 m20">
+            <dt><h2><span class="intro-ico"></span>操作技巧</h2></dt>
+            <dd>
+                <ul class="opera">
+                    <li>
+                        <span></span>
+                        鼠标点击</li>
+                </ul>
+                <div class="text">{$content}</div>
+            </dd>
+        </dl>
+        <dl class="intro3 m20">
+        <dt><h2><span class="intro-ico"></span>小编推荐</h2></dt>
+            <dd>
+             {pc:content action="lists" catid="$catid" order="inputtime DESC" num="8"}
+             {loop $data $r}
+                <a href="{ChangeUrl($r[url])}" target="_blank">
+                    <img src="{$r[thumb]}" alt="{$r[title]}"> 
+                    <p>{$r[title]}</p>
+                </a>
+             {/loop}
+             {/pc}
+            </dd>
+        </dl>
+    </div><!--h5-left-->
+    <div class="h5-right">
+        <dl class="yxph">
+            <dt><h3>热门破解手游</h3></dt>
+            <dd>
+               {pc:content  action="position" posid="26" order="listorder DESC" num="9"}
+                <ul class="syph_ul">
+                {loop $data $key $val} 
+                    <li>
+                        <a class="img" href="{$val['url']}" target="_blank"><img alt="{$val['title']}" src="{$val['thumb']}" border="0"></a>
+                        <a class="title" href="{$val['url']}">{$val['title']}</a>
+                        <a class="ljxz" href="{$val['url']}" target="_blank">立即下载</a>
+                    </li>
+                 {/loop}
+                </ul>
+                {/pc}
+            </dd>
+        </dl><!--手游排行榜-->
+        <dl class="yxph">
+            <dt><h3 class="h5ph">H5游戏排行榜</h3></dt>
+            <dd id="h5ph">
+           		{pc:content  action="hits" catid="7,8,9,10,11" num="8" order="weekviews DESC" num="9"}
+                <ul class="ph_ul">
+                    {loop $data $key $val} 
+                    <li {if $n==1}class="on"{/if}>
+                        <div>
+                            <em class="em1">{$n}</em>
+                            <a href="http://www.93636.com/h5{$val['jumplink']}" target="_blank">{$val['title']}</a>
+                        </div>
+                        
+                        <ul>
+                            <li>
+                                <a href="{$val['url']}" target="_blank" class="img"> <img alt="{$val['title']}" src="{$val['thumb']}"></a>
+                                <p class="hover_zt">
+                                    <span class="bt_h2">{$val['title']}</span>
+                                    <span class="bt_nr">{$val['tags']}</span>
+                                    <a href="{$val['url']}"><span> 开始游戏 </span></a>
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                    {/loop}
+                </ul>
+               {/pc}
+            </dd>
+        </dl><!--yxph游戏排行榜-->           
+    </div>
+</div><!--main end-->	
+{template "content","footer"}
+</body>
+</html>

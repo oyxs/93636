@@ -1,0 +1,24 @@
+{template "content","header8"}
+
+{template "content","header2"}
+
+<div class="laction"><i></i>当前位置：<a href="/">首页</a> > {catpos($catid)} </div>
+<div class="main ny_main">
+	<dl class="mntppic dlmargin">
+        <dt><h2>{$CATEGORYS[$catid]['catname']}</h2><!--<a href="{$CATEGORYS[$catid]['url']}" target="_blank" rel="nofollow"></a>--></dt>
+        {pc:content action="lists" catid="$catid" order="updatetime DESC" num="20" page="$page"}
+        <dd>
+            <ul>
+            	{loop $data $r}	
+                <li><a href="{ChangeUrl($r[url])}"><img alt="{$r[title]}" src="{$r[thumb]}"><i>{$r[title]}</i></a></li>
+                {/loop}
+            </ul>
+			<div class="page">{$pages}</div><!--page-->
+        </dd><!--mntppic end-->
+        {/pc}
+    </dl><!--mntppic end-->
+	
+</div><!--spzxlm main视频站小栏目-->
+{template "content","footer"}
+</body>
+</html>

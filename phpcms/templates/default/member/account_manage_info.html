@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="chendianhuai,XiaMen">
+        <meta name="date" content="2016-04-19 09:50:11">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>用户中心</title>
+        <meta name="keywords" content="用户中心">
+        <meta name="description" content="用户中心" />
+        <link rel="shortcut icon" href="http://www.93636.com/statics/icon/32X32.ico" type="image/x-icon" />
+         <link rel="stylesheet" href="/statics/new_style/css/common.css">
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+         <link href="/statics/css/user/yueact.css" rel="stylesheet">
+         <style>.foot {margin-top: 0px;}</style>
+          <script  src="/statics/js/user/city.js"></script>
+        <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+        <script  src="/statics/new_style/js/jquery.js"></script>
+        <script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+        <script  src="/statics/new_style/js/jquery.scrollbar.js"></script>
+        <script  src="/statics/new_style/js/jquery.slider.js"></script>
+        <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+        <script src="/statics/new_style/js/lib/common.js"></script>
+    </head>
+    <body>
+        {template "content","head"}
+        {php $username = param::get_cookie('_username');}
+         <div class="user_all">
+            <div class="user_main">
+                {template "member","head"}
+                <div class="user_imopr  clear">
+                    <div class="im_fl">
+                        <ul>
+                            <li class="im_top"><a href="/index.php?m=member&c=index&a=gold_shop">兑换商城<b></b></a></li>
+                            <li class="im_cen"><a href="/index.php?m=member&c=index&a=my_level">我的等级<b></b></a></li>
+                            <li class="im_cen"><a href="/index.php?m=member&c=index&a=account_manage_password&t=1">修改密码<b></b></a></li>
+                            <li class="im_cen"><a href="/index.php?m=member&c=index&a=my_libao">我的收藏<b></b></a></li>
+                            <li class="im_cen"><a href="/index.php?m=member&c=index&a=notice">我的消息{if $new==1}<i class="new"></i>{/if}<b></b></a></li>
+                            <li class="im_fot"><a href="/index.php?m=member&c=index" class="cus">基本资料<b class="on"></b></a></li>
+                        </ul>
+                    </div>
+                    <div class="im_fr">
+                        <form  name="myform" action="" method="post" class="ml30">
+                            <div class="user_db clear">
+                                <ul>
+                                    <li><em>Lv{$member['level']}</em>{$member['level_name']}</li>
+                                    <li>积分：<span class="greet">{$member['integral']}</span></li>
+                                    <li>平台金币：<span class="greet">{$member['gold']}</span></li>
+                                </ul>
+                            </div>
+                            <div class="info-table tab_part">
+                                <ul>
+                                    <li>
+                                        <div class="user"><label>昵称：</label><input name="nickname" id="nickname" type="text" value="{$memberinfo['nickname']}" class="input-box">
+                                        <i class="tips">昵称字符在2-20之间</i></div>
+                                    </li>
+                                    <li>
+                                        <div class="user"><label>用户名：</label><span>{$username}</span></div>
+                                    </li>
+                                    <li>
+                                        <div class="user"><label>性别：</label>                 
+                                            <select name="sex" id="sex" class="ps" >
+                                                <option value="0" {if $membermodelinfo['sex']==''} selected="selected"{/if}>保密</option>
+                                                <option value="1" {if $membermodelinfo['sex']=='1'} selected="selected"{/if}>女</option>
+                                                <option value="2" {if $membermodelinfo['sex']=='2'} selected="selected"{/if}>男</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li>
+                                    <input type="hidden" id="year2" value="{$year}">
+                                    <input type="hidden" id="month2" value="{$month}">
+                                    <input type="hidden" id="day2" value="{$day}">
+                                        <div class="user">
+                                            <label>生日：</label>
+                                            <select name="year">
+                                            </select>年
+                                            <select name="month">
+                                            </select>月
+                                            <select name="day">
+                                            </select>日
+                                        </div>
+                                    </li>
+                                    <li class="nones">
+                                        <div class="user">
+                                            <label>所在地：</label>
+                                            <select name="selectp" onChange="selectcityarea('selectp', 'selectc', 'myform');">
+                                                <option value="0" >选择省份</option>
+                                            </select>
+                                            <select name="selectc">
+                                                <option value="0" >选择城市</option>
+                                            </select>
+                                        </div>
+                                        <script language="javascript">first("selectp", "selectc", "myform",'{if $membermodelinfo[province]==""} 0 {else}{$membermodelinfo[province]}{/if}', '{if $membermodelinfo[city]==""} 0 {else}{$membermodelinfo[city]}{/if}');</script>
+                                    </li>
+                                </ul>
+                                <input type="hidden" name="dosubmit" value="1"><input type="submit" class="smt smt1" value="保存">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"> 
+            {template "content","foot"}
+        </div>
+        <script>
+            /**
+             * url跳转
+             */
+            function redirect(url) {
+                if (url.indexOf('://') == -1 && url.substr(0, 1) != '/' && url.substr(0, 1) != '?')
+                    url = $('base').attr('href') + url;
+                location.href = url;
+            }
+        </script>
+    </body>
+</html>

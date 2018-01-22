@@ -1,0 +1,619 @@
+{template "content","last"}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>2016好玩的手机网游下载筛选_手机单机游戏破解版下载中心</title>
+        <meta name="keywords" content="{$SEO['keyword']}">
+        <meta name="description" content="{$SEO['description']}" />
+        <link rel="shortcut icon" href="http://www.93636.com/statics/icon/32X32.ico" type="image/x-icon" />
+        <link rel="alternate" media="only screen and(max-width: 640px)" href="{$last_url}" id="link">
+         <link rel="stylesheet" href="/statics/new_style/css/common.css">
+		 <style>
+			body{background-color:#fff !important}
+		 </style>
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+        <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+		  <script src="/statics/new_style/js/jquery.js" type="text/javascript"></script>
+          <script src="/statics/new_style/js/lib/common.js"></script>
+        <script type="text/javascript">
+            if (/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                try {
+                    if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+                        var strr = $('#link').attr("href");
+                        window.location.href = strr;
+                    }
+                } catch (e) {
+                }
+            }
+        </script>
+    </head>
+    <body>
+        {template "content","head"}
+        <div class="blic-all">
+            <!-- <div class="blic-bg"><a href="javascript:;"></a></div>  -->
+            <div class="blic-main clearfix">
+				<div class="sid-nav">
+					<ul>
+						<li><a class="on" href="http://www.93636.com/games/">推荐</a></li>
+						<li><a href="http://www.93636.com/games/list.html">游戏库</a></li>
+					</ul>
+				</div>			
+                <div class="blic-fff">
+                    <ul class="bread-nav">
+                        <li>当前位置：</li><li><a href="/">首页</a>&gt;</li><li>{catpos($catid)}</li>
+                    </ul>
+                    <div class="blic-list-pic clearfix">
+                        {pc:content  action="position" posid="37" catid="5" order="listorder DESC" limits="0,1"}
+                        {loop $data $r}
+                        <a class="blic-list-pic-g" href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}" target="_blank"><img class="img-scale" src="{$r[nopicture]}" title="{$r[title]}" alt="{$r[title]}"></a>
+                        {/loop}
+                        {/pc}
+                        <ul class="blic-list-pic-r">
+                            {pc:content  action="position" posid="26" catid="5" order="listorder DESC" limits="0,3"}
+                            {loop $data $r}
+                            <li><a href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}" target="_blank"><img class="img-scale" src="{$r[bigtu]}" title="{$r[title]}" alt="{$r['title']}"></a></li>
+                            {/loop}
+                            {/pc}
+                        </ul>
+                        <ul class="blic-list-pic-b">
+                            {pc:content  action="position" posid="26" catid="5" order="listorder DESC" limits="3,4"}
+                            {loop $data $r}
+                            <li><a href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}" target="_blank"><img class="img-scale" src="{$r[bigtu]}" title="{$r[title]}" alt="{$r['title']}"></a></li>
+                            {/loop}
+                            {/pc}
+                        </ul>
+                    </div>
+                    <!--<div class="blic-list-icon clearfix">
+                        <ul class="icon-ul">
+                            {pc:content  action="position" posid="25" catid="5" order="listorder DESC" num="11"}
+                            {loop $data $r}
+                            <li>
+                                <a href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}" target="_blank">
+                                    <span class="game-pic"><img src="{$r[thumb]}" title="{$r[title]}" alt="{$r['title']}"></span>
+                                    <p class="ell">{$r['title']}</p>
+                                </a>
+                            </li>
+                            {/loop}
+                            {/pc}
+
+                        </ul>
+                        <div class="blic-game-name">
+                            <div class="blic-list-name">
+                                <div class="blic-list-tit"><h2>最新网游</h2></div>
+                                <div class="ul-of">
+                                    <ul>
+                                        {pc:get sql="select * from 93636_game  where singleornet='1' and status='99'  ORDER BY id DESC " return="data" num="11"}
+                                        {loop $data $val}
+                                        <li><a href="{ChangeUrl($val[url])}" title="{$val['title']}" target="_blank">{str_cut($val['title'],14,"")}</a></li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blic-list-name">
+                                <div class="blic-list-tit"><h2>经典单机</h2></div>
+                                <div class="ul-of">
+                                    <ul>
+                                        {pc:get sql="select * from 93636_game  where singleornet='0' and status='99'  ORDER BY id DESC " return="data" num="11"}
+                                        {loop $data $val}
+                                        <li><a href="{ChangeUrl($val[url])}" title="{$val['title']}" target="_blank">{str_cut($val['title'],14,"")}</a></li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blic-list-name">
+                                <div class="blic-list-tit"><h2>93636推荐</h2></div>
+                                <div class="ul-of">
+                                    <ul>
+                                        {pc:content  action="position" posid="9" catid="5" order="listorder DESC" num="11"}
+                                        {loop $data $r}
+                                        <li><a href="{ChangeUrl($r[url])}" title="{$r['title']}" target="_blank">{str_cut($r['title'],14,"")}</a></li>
+                                        {/loop}
+                                        {/pc}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!--<div class="libc-banner clearfix">
+                        <div class="libc-slider">
+                            <div class="bd">
+                                <ul>
+                                    {pc:content  action="position" posid="1"  order="listorder DESC"  num="5"}
+                                    {loop $data $r}
+                                    <li><a target="_blank" href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}"><img class="img-scale" src="{$r[nopicture]}" title="{$r[title]}" alt="{$r[title]}"></a></li>
+                                    {/loop}
+                                    {/pc}
+                                </ul>
+                            </div>
+                            <div class="txt-bg"></div>
+                            <div class="txt">
+                                <ul> {pc:content  action="position" posid="1"  order="listorder DESC"  num="5"}
+                                    {loop $data $r}
+                                    <li><a href="{ChangeUrl(ChangeUrl($r[url]))}" target="_blank" title="{$r[title]}">{$r[title]}</a></li>
+                                    {/loop}
+                                    {/pc}
+                                </ul>
+                            </div>
+                            <div class="hd">
+                                <ul>
+                                    <li class="on"></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="libc-banner-r">
+                            <div class="hd">
+                                <h3 class="tit1 mb20">一周游快讯</h3>
+                            </div>
+                            {pc:content  action="position" posid="50" catid="30" order="listorder DESC" limits="0,1"}
+                            {loop $data $r}
+                            <a href="{ChangeUrl(ChangeUrl($r[url]))}" target="_blank"><img src="{$r[nopicture]}" alt="{$r[title]}"></a>
+                            {/loop}
+                            {/pc}
+                            <div class="v_info">
+                                <ul>
+                                    {pc:content  action="position" posid="50" catid="30" order="listorder DESC" limits="1,5"}
+                                    {loop $data $r}
+                                    <li>
+                                        <a href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}" target="_blank">{$r[title]}</a>
+                                    </li>
+                                    {/loop}
+                                    {/pc}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <div class="game-gather mt30">
+                        <div class="hd">
+                            <span></span>
+                            <h2 class="tit">手游·宝库</h2>
+                            <div class="grey_bg"></div>
+                        </div>
+                        <!-- 游戏分类 -->
+                        <div class="class-tab clearfix">
+                            <div class="js-slideTxtBox">
+                                <div class="hd">
+                                    <ul class="link-list1">
+                                        <li class="on">
+                                            <a href="/games/catid_35_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="jsby"></em>
+                                                <p>角色扮演</p>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/games/catid_38_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="dzyx"></em>
+                                                <p>动作游戏</p>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/games/catid_33_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="xxyz"></em>
+                                                <p>休闲益智</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bd tab-main1">
+                                    <!--角色扮演-->
+                                    <ul>
+                                        {pc:content action="lists" catid="35" where="is_show='1'"  order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!--角色扮演end-->
+                                    <!--动作游戏-->
+                                    <ul>
+                                        {pc:content action="lists" catid="38"  where="is_show='1'"  order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!--动作游戏end-->
+                                    <!--休闲益智-->
+                                    <ul>
+                                        {pc:content action="lists" catid="33"  where="is_show='1'"   order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" title="{$val[title]}" href="{ChangeUrl(ChangeUrl($val[url]))}" target="_blank"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" title="{$val[title]}" href="{ChangeUrl(ChangeUrl($val[url]))}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!--休闲益智end-->
+                                </div>
+                            </div>
+                            <div class="js-slideTxtBox1">
+                                <div class="hd">
+                                    <ul class="link-list2">
+                                        <a href="/games/list.html" class="more-class" target="_blank">
+                                            <em class="gdfl"></em>
+                                            <p>更多分类</p>
+                                        </a>
+                                        <li class="">
+                                            <a href="/games/catid_37_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="clyx"></em>
+                                                <p>策略游戏</p>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/games/catid_41_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="mxyx"></em>
+                                                <p>格斗游戏 </p>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/games/catid_39_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="scjs"></em>
+                                                <p>赛车竞速</p>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/games/catid_36_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="mnjy"></em>
+                                                <p>模拟经营</p>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/games/catid_34_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="tyjj"></em>
+                                                <p>体育竞技</p>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/games/catid_32_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="sjyx"></em>
+                                                <p>射击游戏</p>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/games/catid_42_network_9_plate_9_flag_0/" target="_blank">
+                                                <em class="qpyx"></em>
+                                                <p>棋牌游戏</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bd tab-main2">
+                                    <!---策略游戏 -->
+                                    <ul>
+                                        {pc:content action="lists" catid="37"  where="is_show='1'"   order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!---策略游戏end -->
+                                    <!---冒险游戏 -->
+                                    <ul>
+                                        {pc:content action="lists" catid="38"  where="is_show='1'"  order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!---冒险游戏end -->
+                                    <!---赛车竞速 -->
+                                    <ul>
+                                        {pc:content action="lists" catid="39"  where="is_show='1'"  order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!---赛车竞速end -->
+                                    <!---模拟经营 -->
+                                    <ul>
+                                        {pc:content action="lists" catid="36"  where="is_show='1'"   order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!---模拟经营end -->
+                                    <!---体育竞技 -->
+                                    <ul>
+                                        {pc:content action="lists" catid="34"  where="is_show='1'"   order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" target="_blank" title="{$val[title]}"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!---体育竞技 -->
+                                    <!---射击游戏 -->
+                                    <ul>
+                                        {pc:content action="lists" catid="32"  where="is_show='1'"   order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank"><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" target="_blank" title="{$val[title]}">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!---射击游戏end -->
+                                    <!---棋牌游戏 -->
+                                    <ul>
+                                        {pc:content action="lists" catid="42"  where="is_show='1'"  order="updatetime desc"  limits="0,12"}
+                                        {loop $data $val}
+                                        <li>
+                                            <div class="sl">
+                                                <a class="game-pic" href="{ChangeUrl(ChangeUrl($val[url]))}" target="_blank" title="{$val[title]}" ><img src="{$val[thumb]}" title="{$val[title]}" alt="{$val[title]}"></a>
+                                            </div>
+                                            <div class="sr"><a class="ell" href="{ChangeUrl(ChangeUrl($val[url]))}" title="{$val[title]}" target="_blank">{$val[title]}</a>
+                                                <span>{$val[size]}</span>
+                                                <p>
+                                                    <?php
+				                    				for($i=0;$i<$val[recommend];$i++){
+														echo '<em></em>';
+													}
+													$a=5-$val[recommend];
+													for($j=0;$j<$a;$j++){
+														echo '<em class="null-star"></em>';
+													}
+                								?>
+                                                    <i>{$val[recommend]}分</i>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        {/loop}
+                                        {/pc}
+                                    </ul>
+                                    <!---棋牌游戏end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="game-gift mt30">
+                        <div class="hd">
+                            <span></span>
+                            <h2 class="tit">游戏·礼包</h2>
+                            <div class="grey_bg"></div>
+                            <div class="more"><a href="/games/libaolist" target="_blank" class="">更多&nbsp;&nbsp;+</a></div>
+                        </div>
+                        <div class="game-gift-of">
+                            <ul>
+                                {pc:content  action="position" posid="35" catid="31" order="listorder DESC" limits="0,6"}
+                                {loop $data $r}
+                                <li>
+                                    <div class="s1"><a class="game-pic" target="_blank" title="{$r[title]}" href="{ChangeUrl(ChangeUrl($r[url]))}"><img src="{$r[thumb]}" title="{$r[title]}" alt="{$r[title]}"></a></div>
+                                    <div class="s2">
+                                        <a href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}" target="_blank">{$r[title]}</a>
+                                        <div class="progr"><div class="pro-main"><b style="width:{LbCount($r[id],$r[number])}%"></b></div><span>剩余：{LbCount($r['id'],$r['number'])}%</span></div>
+                                        <p>有效期：{$r[endtime]}</p>
+                                    </div>
+                                    <div class="s3"><a href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}" target="_blank">马上领取</a></div>
+                                </li>
+                                {/loop}
+                                {/pc}
+                            </ul>
+                        </div>
+                        {pc:content  action="position" posid="45" catid="5" order="listorder DESC" limits="2,1"}
+                        {loop $data $r}
+                        <div class="ggao"><a href="{ChangeUrl(ChangeUrl($r[url]))}" title="{$r[title]}" target="_blank"><img src="{$r[nopicture]}" title="{$r[title]}" alt="{$r[title]}"></a></div>
+                        {/loop}
+                        {/pc}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            {template "content","foot"}
+        </div>
+    </body>
+    <script src="/statics/new_style/js/jquery.js" type="text/javascript"></script>
+    <script src="/statics/new_style/js/superslide.2.1.js" type="text/javascript"></script>
+    <script src="/statics/new_style/js/miguan_wjzj.js" type="text/javascript"></script>
+    <script type="text/javascript">
+            jQuery(".libc-slider").slide({titCell: ".hd ul", mainCell: ".bd ul", effect: "fold", autoPlay: true, autoPage: true, trigger: "click", mouseOverStop: true,
+            });
+            jQuery(".libc-slider").slide({titCell: ".hd li", mainCell: ".bd ul", effect: "fold", autoPlay: true, trigger: "click", mouseOverStop: true,
+                //下面startFun代码用于控制文字上下切换
+                startFun: function(i) {
+                    jQuery(".libc-slider .txt li").eq(i).animate({"bottom": 0}).siblings().animate({"bottom": -73}, 3000);
+                }
+            });
+            // 游戏分类
+            $(".js-slideTxtBox").slide();
+            $(".js-slideTxtBox1").slide();
+            $(document).ready(function() {
+                $('.js-slideTxtBox1 .link-list2 li').removeClass('on');
+            });
+            $(function() {
+                $('.js-slideTxtBox1 .link-list2 li').on('mouseover', function() {
+                    $(this).addClass('on').siblings('li').removeClass('on');
+                    $('.tab-main2').show();
+                    $('.tab-main1').hide()
+                    $('.link-list1 li').removeClass('on');
+                })
+            });
+            $(function() {
+                $('.js-slideTxtBox .link-list1 li').on('mouseover', function() {
+                    $(this).addClass('on').siblings('li').removeClass('on');
+                    $('.tab-main1').show();
+                    $('.tab-main2').hide()
+                    $('.link-list2 li').removeClass('on');
+                })
+            });
+    </script>
+</html>
+

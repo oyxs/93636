@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>礼包淘号_93636手游网</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta  name="applicable-device" content="mobile">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://www.93636.com/statics/wap/weixin/css/style.css">
+</head>
+<body>
+<div class="mod-search">
+    <div class="m-search">
+        <i class="back" onclick="history.go(-1)"></i>
+        <form id="seaform" name="seaform" action="/index.php?m=search&c=index&a=wx_search" method="get">
+            <input class="in-sear" id="j-search" name="q" placeholder="输入游戏名称">
+            <input type="hidden" name="m" value="search">
+            <input type="hidden" name="c" value="index">
+            <input type="hidden" name="a" value="wx_search">
+            <input type="hidden" name="typeid" value="1">
+            <input type="hidden" name="siteid" value="1">
+            <input type="hidden" name="forward" value="">
+            <button class="search-btn" type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+<div class="search-list">
+    <ul>
+        <li class="clearfix">
+            <img src="{$result[0][thumb]}" alt="{$result[0][title]}" title="{$result[0][title]}">
+            <div class="info">
+                <p class="title">{$result[0][title]}</p>
+                <p class="tip">回复<span>{$result[0][id]}#</span>领取</p>
+            </div>
+        </li>
+    </ul>
+
+</div>
+<div class="ss-result-list">
+    <ul class="clearfix">
+        {pc:get sql="select code from 93636_gift where gift_id='$id' order by id desc " num="12"}
+        {loop $data $v}
+            <li class="">{$v[code]}</li>
+        {/loop}
+        {/pc}
+    </ul>
+    <a class="change-other" href="javascript:;">换一批</a>
+</div>
+<input type="hidden" id="page" value=""/>
+<input type="hidden" id="all" value=""/>
+<script src="http://www.93636.com/statics/wap/weixin/js/jquery-3.0.0.min.js"></script>
+<script>
+    $('.change-other').click(function(){
+        var page=$("#page").val();
+        var all=$("#all").val();
+        if(all==1){
+           $.ajax({
+            type:"get",
+            url:"index.php?m=search&c=index&a=TH_show&id={$id}&page="+page,
+            data:{},
+            dataType:'json',
+            success:function(data){
+                if(data[0].sum  != 1){
+                    $("#page").val(data[0].page);
+                     var _html='';
+                    for(var i=0;i<data.length;i++){         
+                        _html+='<li class="">'+data[i].code+'</li>';
+                        $('.ss-result-list ul').empty().append(_html);           
+                    }
+                    if(data[0].page<=data[0].sum){
+                        
+                    }else if(data[0].page>data[0].sum){
+                       
+                        $("#all").val(2);
+                    }
+                }else{
+                   
+                    $("#all").val(2);
+
+                }
+            }
+        }); 
+        }
+        
+    })
+</script>
+<script>
+    (function (window, document) {
+        (function () {
+            var viewportEl = document.querySelector('meta[name="viewport"]'), hotcssEl = document.querySelector('meta[name="hotcss"]'), dpr = window.devicePixelRatio || 1;
+            if (hotcssEl) {
+                var hotcssCon = hotcssEl.getAttribute("content");
+                if (hotcssCon) {
+                    var initialDpr = hotcssCon.match(/initial\-dpr=([\d\.]+)/);
+                    if (initialDpr) {
+                        dpr = parseFloat(initialDpr[1])
+                    }
+                }
+            }
+            var scale = 1, content = "width=device-width, initial-scale=" + scale + ", minimum-scale=" + scale + ", maximum-scale=" + scale + ", user-scalable=no";
+            if (viewportEl) {
+                viewportEl.setAttribute("content", content)
+            } else {
+                viewportEl = document.createElement("meta");
+                viewportEl.setAttribute("name", "viewport");
+                viewportEl.setAttribute("content", content);
+                document.head.appendChild(viewportEl)
+            }
+        })();
+        var hotcss = {};
+        hotcss.px2rem = function (px, designWidth) {
+            if (!designWidth) {
+                designWidth = parseInt(hotcss.designWidth, 10)
+            }
+            return parseInt(px, 10) * 320 / designWidth / 20
+        };
+        hotcss.mresize = function () {
+            var innerWidth = window.innerWidth;
+            if (!innerWidth) {
+                return false
+            }
+            document.documentElement.style.fontSize = (innerWidth * 20 / 320) + "px"
+        };
+        hotcss.mresize();
+        window.addEventListener("resize", hotcss.mresize, false);
+        window.addEventListener("load", hotcss.mresize, false);
+        setTimeout(function () {
+            hotcss.mresize()
+        }, 300);
+        window.hotcss = hotcss
+    })(window, document);
+
+    window.onload=function(){
+    $("#page").val("2");
+    $("#all").val("1");
+};
+</script>
+</body>
+</html>

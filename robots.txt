@@ -1,0 +1,12 @@
+User-agent: * 
+Disallow: /api
+Disallow: /caches
+Disallow: /phpcms
+Disallow: /statics
+Disallow: /apk
+Disallow: /tpicture
+Disallow: /404
+Disallow: /tags
+Disallow: /www.93636.com/index.php?m=member&c=index&a=login
+Disallow: /www.93636.com/index.php?m=member&c=index
+sitemap:http://www.93636.com/sitemap.xml

@@ -1,0 +1,141 @@
+{template "content","header8"}
+
+{template "content","header2"}
+
+<div class="laction"><i></i>当前位置：<a href="/">首页</a> > {catpos($catid)}</div>
+<div class="main ny_main">
+	<div class="jqjd_box">
+		<div class="slide">
+			<ul class="slide-cont"><!-- 幻灯 -->
+            {pc:content action="position" catid="$catid" posid="18" order="listorder DESC" num="5"}
+            {loop $data $r}
+				<li class="slide-item">
+					<a target="blank" title="{$r[title]}" href="{ChangeUrl($r[url])}"><img alt="{$r[title]}" src="{$r[nopicture]}"></a>
+					<div class="slide-txt">
+						<div class="txt_bg"></div>
+						<a target="_blank" title="{$r[title]}" href="{ChangeUrl($r[url])}">{$r[title]}</a>				
+					</div><!--slide-txt-->
+				</li>
+				{/loop}
+				{/pc}
+			</ul><!--slide-cont-->
+			<ul class="slide-nav">
+				<li class="nownav">1</li>
+				<li>1</li>
+			</ul><!--slide-nav-->
+			<div style="" class="slide-loading"></div>
+			<a id="next" href="javascript:void(0)"></a>
+			<a id="prev" href="javascript:void(0)"></a>		</div>
+		<!--img_ban end-->
+		<dl class="jqjd">
+			<dt><h3>近期焦点</h3></dt>
+			<dd>
+				<ul>
+                    {pc:content action="position" catid="$catid" posid="19" order="listorder DESC" num="1"}
+                    {loop $data $r}	
+                        <li class="xg"><a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}">{$r[title]}</a>{str_cut($r[description],180)}</li>
+                    {/loop}
+                    {/pc}
+                    {pc:content action="position" catid="$catid" posid="19" order="listorder DESC" limits="1,5"}
+                    {loop $data $r}	
+                        <li><em>动态</em><a href="{ChangeUrl($r[url])}" target="_blank" title="{$r[title]}">{$r[title]}</a> <span>{date('m-d',$r[inputtime])}</span></li>
+					{/loop}
+                    {/pc}
+				</ul>
+			</dd>
+		</dl><!--jqjd end-->
+	</div><!--jqjd_box end-->
+	<div class="cyxw_box">
+		<dl class="cyxw">
+			<dt><h2 class="on">{$CATEGORYS[$catid][catname]}</h2></dt>
+			<dd>
+                {pc:content action="lists" catid="$catid" num="10"  order="id DESC" page="$page" }
+				<ul>
+                	{loop $data $r}					
+                    <li>
+						<a href="{ChangeUrl($r[url])}" class="img" target="_blank" title="{$r[title]}"><img alt="{$r[title]}" src="{$r[thumb]}"></a>
+						<div>
+							<a href="{ChangeUrl($r[url])}" class="title" target="_blank" title="{$r[title]}"><em>{$r[title]}</em><span class="time">{date('Y-m-d',$r[inputtime])}</span></a>
+<!--                            <p class="tag"><span>标签：</span> {$r[tags]}</p>	-->	
+							<p class="peren">{$r[description]}</p>	
+						</div>
+					</li>
+					{/loop}
+				</ul>
+                <div class="pages">{$pages}</div>
+               {/pc}
+			</dd>
+		</dl><!--cyxw end-->
+		<div class="cyxw_rig">
+		<div class="cyxw_post">
+			<dl class="yxzx" id="r-float">
+				<dt>
+					<h3>{$CATEGORYS[30]['catname']}</h3> <a href="{$CATEGORYS[30]['url']}" target="_blank"></a>
+                </dt>
+				<dd>
+					<ul>
+                    {pc:content action="lists" catid="30" num="1" order="inputtime DESC"}
+                    	{loop $data $key $val}
+						<li class="img"><a href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}"><img alt="{$val['title']}" src="{$val[thumb]}"><i></i><em>{$val[title]}</em></a></li>
+                        {/loop}
+                    {/pc}
+                     {pc:content action="lists" catid="30" limits="1,4"  order="inputtime DESC"}
+                     	{loop $data $key $val}
+						<li class="nlist">
+                        	<a href="{ChangeUrl($val[url])}" class="img" target="_blank" title="{$val[title]}"><img alt="{$val['title']}" src="{$val[thumb]}"></a>
+                            <p><a href="{ChangeUrl($val[url])}" class="title" target="_blank" title="{$val[title]}">{$val[title]}</a>{$val[description]}.</p>
+                        </li>
+                      	{/loop}
+                      {/pc}
+					</ul>
+				</dd>
+			</dl><!--yxzx end-->
+			<div class="pop">
+			<dl class="yxsp" id="yxsp">
+				<dt>
+					<h3>{$CATEGORYS[17]['catname']}</h3> <a href="{$CATEGORYS[17]['url']}" target="_blank"></a>
+                </dt>
+				<dd>
+					<ul>
+                    {pc:content action="lists" catid="18" num="1" order="inputtime DESC"}
+                    	{loop $data $key $val}
+						<li class="img"><a href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}"><img alt="{$val['title']}" src="{$val[thumb]}"><i></i><em>{$val[title]}</em></a></li>
+                        {/loop}
+                    {/pc}
+                    {pc:content action="lists" catid="19" num="4"  order="inputtime DESC"}
+                     	{loop $data $key $val}
+						<li class="list"><a href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}">{$val[title]}</a></li>
+                      	{/loop}
+                    {/pc}
+                    {pc:content action="lists" catid="20" num="1"  order="inputtime DESC"}
+                     	{loop $data $key $val}
+						<li class="list none"><a href="{ChangeUrl($val[url])}" target="_blank" title="{$val[title]}">{$val[title]}</a></li>
+                      	{/loop}
+                    {/pc}
+					</ul>
+				</dd>
+			</dl><!--yxsp end-->
+			<dl class="yxsp yxsp_3">
+				<dt><h3>热门游戏</h3> <a href="/games/" target="_blank"></a></dt>
+				<dd>
+        			{pc:content action="position" posid="25" order="listorder DESC" num="9"}
+					<ul>
+                    	{loop $data $key $val}
+						<li><a href="{$val['url']}" target="_blank" title="{$val[title]}"><img alt="{$val['title']}" src="{$val['thumb']}"><i>马上看</i><em>{$val['title']}</em></a></li>
+                        {/loop}
+					</ul>
+                    {/pc}
+				</dd>	
+			</dl><!--yxsp end-->
+			</div>
+			</div>
+		</div><!--cyxw_rig end-->
+	</div><!--cyxw_box end-->
+</div><!--main end-->
+
+ <div class="footer">
+          {template "content","foot"}
+</div>
+
+</body>
+</html>

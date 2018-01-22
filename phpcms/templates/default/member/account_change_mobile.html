@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>phpcmsV9 - 会员管理中心</title>
+    <meta name="keywords" content=" 会员中心">
+    <meta name="description" content="会员中心" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="/statics/new/style/reset.css" rel="stylesheet" type="text/css">
+    <script src="/statics/new/js/jquery.js" type="text/javascript"></script>
+    <script src="/statics/new/js/miguan_wjzj.js" type="text/javascript"></script>
+</head>
+<body> 
+<div id="header">
+    <div class="nav-two">
+        <a href="#" class="logo" ><img src="/statics/new/images/logon.png"></a>
+        <div class="zx">会员中心</div>
+    </div><!--nav-->
+    <div class="link">
+        你好 (wangdl123)<span> | </span>
+        <a href="">退出</a>
+        <span> | </span><a href="http://www.93636.com/">首页</a> 
+    </div>
+    <div class="nav-bar">
+        <div class="map">
+            <ul class="nav-site cu-span">
+                <li>
+                    <a href="index.php?m=member" id="tow1"><span>管理中心</span></a>
+                </li>
+                <li class="line">|</li>
+                <li>
+                    <a id="tow2" class="on"><span>账号管理</span></a>
+                </li>
+                <li class="line">|</li>
+            </ul>
+        </div>
+    </div>
+</div><!--top结束-->
+
+<div id="memberArea">
+    <div id="cont_tow_2">
+        
+        <div class="col-left col-1 left-memu">
+            <h5 class="title">账号管理</h5>
+            <ul>
+                <li><a href="index.php?m=member&c=index&a=account_manage_info&t=1"><img src="/statics/new/images/user_edit.png" width="16"> 修改个人信息</a></li>
+                <li><a href="index.php?m=member&c=index&a=account_manage_avatar&t=1"><img src="/statics/new/images/vcard.png" width="16"> 修改头像</a></li>
+                <li><a href="index.php?m=member&c=index&a=account_manage_password&t=1"><img src="/statics/new/images/icon_key.gif" width="16" height="16"> 修改邮箱/密码</a></li>
+                <li><a href="index.php?m=member&c=index&a=account_manage_upgrade&t=1"><img src="/statics/new/images/Upload.png">&nbsp;&nbsp;会员自助升级</a></li>
+                <li class="on"><a href="index.php?m=member&c=index&a=account_change_mobile&t=1"><img src="/statics/new/images/mobile_phone.png"> 更换手机</a></li>
+            </ul>
+            <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+        </div>
+        
+        <div class="col-auto">
+		<div class="col-1 ">
+			<h5 class="title">{L('change_mobile')}</h5>
+			<div class="content">
+			<form method="post" action="" id="myform" name="myform">
+				<table width="100%" cellspacing="0" class="table_form">
+					<tr>
+						<th width="120">{L('soulbound')}：</th>        
+						<td>{if $memberinfo['mobile']}{substr($memberinfo['mobile'],0,3)}****{substr($memberinfo['mobile'],-4)}{/if}</td>
+					</tr>
+					<tr>
+						<th width="120">当前账号{L('password')}：</th>        
+						<td><input name="password" type="password" id="password" size="30" value="" class="input-text"></td>
+					</tr>
+					<tr>
+						<th width="120">{L('checkcode')}：</th>        
+						<td><div class="input"><input type="text" id="code" name="code" size="10" class="input-text">{form::checkcode('code_img', '5', '14', 120, 26)}</div></td>
+					</tr>
+					
+					<tr>
+						<th>{L('new_mobile')}：</th>
+						<td><span id="mobile_div"><input name="mobile" type="text" id="mobile" size="15" value="" class="input-text"> <button onclick="get_verify()" type="button" class="button">获取短信校验码</button></span>
+						<div id="mobile_send_div" style="padding-top:15px;display:none">此服务免费,校验码已发送到<span id="mobile_send"></span>，<span id="edit_mobile" style="display:none"><a href="javascript:void();" onclick="edit_mobile()"><font color="red">修改号码</font></a>，</span> 如果超过120秒未收到校验码，您可以免费重新获取。<br><br>
+			<div class="submit"><button type="button" id="GetVerify" onclick="get_verify()" class="button">重获短信校验码</button></div></div> 
+			<script language="JavaScript">
+			<!--
+				var times = 120;
+				var isinerval;
+				function get_verify() {
+					var session_code = $('#code').val();
+					if(session_code=='') {
+						alert('请输入验证码');
+						$('#code').focus();
+						return false;
+					}
+					var mobile = $("#mobile").val();
+					var partten = /^1[3-9]\d{9}$/;
+					if(!partten.test(mobile)){
+						alert("请输入正确的手机号码");
+						return false;
+					}
+					$.get("api.php?op=sms",{ mobile: mobile,session_code:session_code,random:Math.random()}, function(data){
+						if(data=="0") {
+							$("#mobile_send").html(mobile);
+							$("#mobile_div").css("display","none");
+							$("#mobile_send_div").css("display","");
+							times = 120;
+							$("#GetVerify").attr("disabled", true);
+							isinerval = setInterval("CountDown()", 1000);
+						} else if(data=="-1") {
+							alert("你今天获取验证码次数已达到上限");
+						} else if(data=="-100") {
+							$('#code').val('');
+							alert("验证码已失效，请点击图片验证码获取新的验证码！");
+							$('#code').focus();
+						} else if(data=="-101") {
+							alert("验证码错误！");
+							$('#code').focus();
+						} else {
+							alert("短信发送失败");
+						}
+					});
+					
+				}
+				function CountDown() {
+					if (times < 1) {
+						$("#GetVerify").html("获取短信校验码").attr("disabled", false);
+						$("#edit_mobile").css("display","");
+						clearInterval(isinerval);
+						return;
+					}
+					$("#GetVerify").html(times+" 秒后重获校验码");
+					times--;
+				}
+				function edit_mobile() {
+					$("#mobile_div").css("display","");
+					$("#mobile_send_div").css("display","none");
+				}
+			//-->
+			</script>
+		    </div></div>
+			</td>
+					</tr>
+					<tr>
+						<th>短信校验码：</th>
+						<td><input name="mobile_verify" type="text" id="mobile_verify" size="15" value="" class="input-text"></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td><input name="dosubmit" type="submit" id="dosubmit" value="{L('submit')}" class="button"></td>
+					</tr>
+				</table>
+
+				
+			</form>
+			</div>
+			<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+		</div>
+	</div>
+        
+    </div>
+</div>
+        
+<div class="foot post">
+    <ul class="copyright">
+        <li>
+            <a href="http://youxi.wanjizhijia.com/aboutus/index.html">玩机之家</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/index.html">关于我们</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/site.html">网站地图</a> | 
+            <a>广告服务</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/contact.html">联系我们</a> |
+            <a>招聘信息</a> | 
+            <a>网站律师</a> | 
+            <a>会员注册</a> | 
+            <a>产品答疑</a>
+            <br>Copyright  2014 wanjizhijia.com 皖ICP备13015453号-2<br>
+            玩机之家 版权所有
+        </li>
+    </ul>
+</div><!--底部-->
+        
+<script>
+/**
+ * url跳转
+ */
+function redirect(url) {
+	if(url.indexOf('://') == -1 && url.substr(0, 1) != '/' && url.substr(0, 1) != '?') url = $('base').attr('href')+url;
+	location.href = url;
+}	
+</script>		
+</body>
+</html>

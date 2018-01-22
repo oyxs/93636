@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<?php
+	/**
+	 * pc和移动端适配,获取当前页面指向移动端的完整URL地址
+	 */ 
+  $sys_protocal = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 
+
+'http://';
+  $cat_url=$CATEGORYS[$catid]['url'];
+  $rel_url = explode('/',$cat_url);//切割取出来的链接
+  $rel_url_to = $rel_url[3];//取出栏目链接部分
+  $parentid_r = $CATEGORYS[$catid]['parentid'];
+  if(intval($parentid_r)!=0 && isset($id)){
+      $subcatid1 = get_catid_arr();
+      $subcatid2 = array(7,8,9,10,11,32,33,34,35,36,37,38,39,40,41,42);
+      $d_length1 = sizeof($subcatid1);
+      $d_length2 = sizeof($subcatid2);  
+      for($i=0;$i<$d_length1;$i++){
+          if(intval($subcatid1[$i])==intval($catid)){
+            $last_url = $sys_protocal.(($_SERVER['HTTP_HOST']=='www.93636.com') ? 'm.93636.com' : 
+
+$_SERVER['HTTP_HOST']).'/'.$rel_url_to.'/'.$catid.'9'.$id.'.html';
+          }
+      }
+      for($i=0;$i<$d_length2;$i++){
+          if(intval($subcatid2[$i])==intval($catid)){
+            $last_url = $sys_protocal.(($_SERVER['HTTP_HOST']=='www.93636.com') ? 'm.93636.com' : 
+
+$_SERVER['HTTP_HOST']).'/'.$rel_url_to.'/'.$id.'.html';
+          }
+      }
+ }
+  elseif(intval($parentid_r)=='0' && isset($id)){
+      $last_url = $sys_protocal.(($_SERVER['HTTP_HOST']=='www.93636.com') ? 'm.93636.com' : $_SERVER
+
+['HTTP_HOST']).'/'.$rel_url_to.'/'.$id.'.html';
+      }
+  elseif(!isset($catid)){
+      $last_url = $sys_protocal.(($_SERVER['HTTP_HOST']=='www.93636.com') ? 'm.93636.com' : $_SERVER
+
+['HTTP_HOST']).'/';          
+  }
+  else{
+      if(intval($parentid_r)!=0 && !isset($id)){
+          $rel_url_to = $rel_url[3].'/'.$rel_url[4];
+          $last_url = $sys_protocal.(($_SERVER['HTTP_HOST']=='www.93636.com') ? 'm.93636.com' : 
+
+$_SERVER['HTTP_HOST']).'/'.$rel_url_to.'/';
+      }
+      else{
+          $last_url = $sys_protocal.(($_SERVER['HTTP_HOST']=='www.93636.com') ? 'm.93636.com' : 
+
+$_SERVER['HTTP_HOST']).'/'.$rel_url_to.'/';
+      }
+  }
+?>
+<title>{$seotitle}_93636手游网</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<link rel="alternate" media="only screen and(max-width: 640px)" href="{$last_url}" id="link">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <link rel="stylesheet" href="/statics/new_style/css/common.css">
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+        
+<link href="http://www.93636.com/statics/new/style/yueact.css" rel="stylesheet" type="text/css">
+<script src="http://www.93636.com/statics/new/js/jquery.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/new/js/miguan_wjzj.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/new/js/MSClass.js" type="text/javascript"></script>
+<script src="/statics/new_style/js/superslide.2.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+	if(/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+	  try{
+		if(/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)){
+			
+			var strr = $('#link').attr("href");
+		  	window.location.href = strr;
+		}
+	  }catch(e){}
+	}
+
+</script>
+    <?php
+
+    if($_SERVER['HTTP_HOST']=='sy.mm2358.com'){
+            echo ' <script>var _czc = _czc || [];_czc.push(["_setAccount", "1256719711"]);</script>';
+}
+if($_SERVER['HTTP_HOST']=='www.93636.com'){
+
+    echo ' <script>var _czc = _czc || [];_czc.push(["_setAccount", "1256663213"]);</script>';
+    }
+    ?>
+</head>
+<body>

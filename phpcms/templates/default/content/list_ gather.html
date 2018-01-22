@@ -1,0 +1,130 @@
+{template "content","header"}
+{template "content","header2"}
+<div class="main clear">
+       
+        <div class="laction"><i></i>当前位置：<a href="/">首页</a> > {catpos($catid)}</div>
+       
+        
+        <div class="heji-banner">
+            <div class="heji-pic">
+                <a href="javascript:;"><img src="{$CATEGORYS[$catid][image]}" alt=""></a>
+            </div>
+            <div class="heji-pic-r">
+                <div class="name ell">{$CATEGORYS[$catid][catname]}手机游戏集合</div>
+                <p>{$CATEGORYS[$catid][description]} </p>
+                <ul>
+                    {pc:content  action="position" posid="58" catid="$catid" order="listorder DESC" limits="0,2"}
+                    {loop $data $r}
+                    <li class="clearfix">
+                        <div class="heji-icon"><a title="{$r[title]}" href="{ChangeUrl($r[url])}" target="_blank"><img src="{$r[thumb]}" alt=""></a></div>
+                        <div class="heji-sr">
+                            <p class="ell"><a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a></p>
+                            {php $nid = gid(ChangeUrl($r[url]));}
+                            {php $info=ginfo($nid);}
+                            <span>
+                                {php echo mb_substr($CATEGORYS[$info[0][catid]][catname],0,2,"utf-8");}
+                                丨下载：{$info[0]['downloadtimes']}</span>
+
+                            <p class="score-1">
+                                <?php
+                                                    for($i=0;$i<$info[0]['recommend'];$i++){
+                                                        echo '<em></em>';
+                                                    }
+                                                    $a=5-$info[0]['recommend'];
+                                                    for($j=0;$j<$a;$j++){
+                                                        echo '<em class="null-star"></em>';
+                                                    }
+                                                ?>
+                            </p>
+
+
+                            <a href="{ChangeUrl($r[url])}" class="down down-2" target="_blank">下载</a>
+                        </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="heji-game-recommended">
+            <div class="heji-game-recommended-header">新游推荐</div>
+            <div class="heji-game-recommended-box">
+                <ul class="clearfix">
+                     {pc:content  action="position" posid="58" catid="$catid" order="listorder DESC" limits="2,4"}
+                    {loop $data $r}
+                    <li>
+                        <div class="recommended-pic">
+                            <img class="item1" src="{$r[bigtu]}" title="{$r[title]}" alt="">
+                            <div class="down-slide">
+                                <div class="code">
+                                    <img src="/towcode.php?u=http://m.93636.com/games/{$r[id]}.html" alt=""></div>
+                                    {php $nid = gid(ChangeUrl($r[url]));}
+                            {php $info=ginfo($nid);}
+                                <div class="code-desc">
+                                    <p class="down-txt">扫描下载</p>
+                                    <p>类型：{php echo mb_substr($CATEGORYS[$info[0][catid]][catname],0,2,"utf-8");}</p>
+                                    <p>大小：{$info[0]['size']}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recommended-c">
+                                <p class="game-name"><a href="{ChangeUrl($r[url])}" class="ell" title="{$r[title]}" target="_blank">{$r[title]}</a></p>
+                                <p  class="score-1 score-1-2">
+                                <?php
+                                                    for($i=0;$i<$info[0]['recommend'];$i++){
+                                                        echo '<em></em>';
+                                                    }
+                                                    $a=5-$info[0]['recommend'];
+                                                    for($j=0;$j<$a;$j++){
+                                                        echo '<em class="null-star"></em>';
+                                                    }
+                                                ?>
+                                </p>
+                               <a class="down" href="{ChangeUrl($r[url])}">下载</a>
+                        </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="heji-game-recommended">
+            <div class="heji-game-recommended-header">游戏精选</div>
+            <div class="heji-game-recommended-box-2">
+                    <ul class="clearfix">
+                    {pc:content action="lists" catid="$catid" where="is_show='1'" num="12"   order="id DESC" page="$page" }
+                    {loop $data $r}
+                        <li class="clearfix">
+                            <div class="heji-icon"><a title="{$r[title]}" href="{ChangeUrl($r[url])}" target="_blank"><img src="{$r[thumb]}" alt=""></a></div>
+                            <div class="heji-sr">
+                                <p class="ell">
+                                    <a href="{ChangeUrl($r[url])}" title="" target="_blank">{$r[title]}</a></p>
+                                {php $nid = gid(ChangeUrl($r[url]));}
+                                {php $info=ginfo($nid);}
+                                <p>类型：
+                                    {php echo mb_substr($CATEGORYS[$info[0][catid]][catname],0,2,"utf-8");}
+                                    </p><p>下载：{$info[0]['downloadtimes']}</p>
+                                
+                                <a href="{ChangeUrl($r[url])}" class="down" target="_blank">下载</a>
+                            </div>
+                        </li>
+                    {/loop}
+                    {/pc}
+                        
+
+                    </ul>
+                <div class="page">
+                    {$pages}
+                </div>
+            </div>
+        </div>
+
+    </div>
+        <!--main-->
+<div class="footer">
+          {template "content","foot"}
+</div>
+    </body>
+</html>

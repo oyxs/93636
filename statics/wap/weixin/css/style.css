@@ -1,0 +1,258 @@
+@charset "UTF-8";
+/* CSS reset */
+body {
+  background-color: #FFFFFF;
+  position: relative; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+/*内外边距通常让各个浏览器样式的表现位置不同*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  padding: 0;
+  margin: 0; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+fieldset, img {
+  border: 0; }
+
+a {
+  text-decoration: none; }
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+input, select, img {
+  vertical-align: middle; }
+
+input, select {
+  outline: none; }
+
+input, select, textarea {
+  font-size: 100%; }
+
+ul, ol {
+  list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+address, cite, dfn, em, var {
+  font-style: normal; }
+
+/* 去掉 firefox 下此元素的边框 */
+abbr, acronym {
+  border: 0;
+  font-variant: normal; }
+
+/* 去除默认边框 */
+fieldset, img {
+  border: 0; }
+
+/* 一致的 del 样式 */
+del {
+  text-decoration: line-through; }
+
+address, caption, cite, code, dfn, em, th, var {
+  font-style: normal;
+  font-weight: 500; }
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+  display: block; }
+
+/* 统一上标和下标 */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/*重排左对齐*/
+caption, th {
+  text-align: left; }
+
+/* IE bug fixed: th 不继承 text-align*/
+th {
+  text-align: inherit; }
+
+html {
+  font-family: "Microsoft YaHei"; }
+
+/*清除浮动*/
+.clearfix:after {
+  content: "";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both; }
+
+.clearfix {
+  zoom: 1; }
+
+.clear {
+  clear: both; }
+
+.body {
+  background-color: #f4f4f4; }
+
+.mod-search {
+  width: 100%;
+  height: 2.3rem;
+  background-color: #ffffff; }
+  .mod-search form {
+    display: inline-block; }
+  .mod-search .m-search {
+    padding: 0 0.5rem;
+    height: 2.3rem; }
+    .mod-search .m-search i {
+      background: url("../images/i_back.png") no-repeat;
+      width: 0.5rem;
+      height: 0.85rem;
+      background-size: cover;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.35rem; }
+    .mod-search .m-search .in-sear {
+      border: 0;
+      -webkit-appearance: none;
+      width: 10.25rem;
+      height: 0.75rem;
+      background-color: #f4f4f4;
+      padding: 0.25rem 0.75rem;
+      line-height: 1.25rem;
+      color: #9b9b9b;
+      font-size: 0.6rem;
+      border-radius: 1.25rem;
+      margin: 0.5rem 0; }
+    .mod-search .m-search .search-btn {
+      color: #333333;
+      font-size: 0.6rem;
+      width: 1.75rem;
+      line-height: 2.3rem;
+      text-align: center;
+      background-color: transparent;
+      border: 0; }
+
+.search-list {
+  margin-top: 0.5rem;
+  background-color: #ffffff; }
+  .search-list li {
+    padding: 0.8rem 0.7rem;
+    border-bottom: 1px solid #e8e8e8; }
+    .search-list li img {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.5rem;
+      float: left;
+      margin-right: 0.5rem; }
+    .search-list li .info {
+      overflow: hidden;
+      position: relative; }
+      .search-list li .info .title {
+        color: #333333;
+        font-size: 0.65rem;
+        line-height: 0.95rem;
+        height: 2rem;
+        margin-bottom: 0.25rem;
+        overflow: hidden; }
+      .search-list li .info .tip {
+        text-align: left;
+        color: #333333;
+        font-size: 0.6rem; }
+        .search-list li .info .tip span {
+          color: #f75656;
+          font-weight: bold; }
+      .search-list li .info .btn_th {
+        display: block;
+        width: 2.6rem;
+        height: 1.05rem;
+        font-size: 0.6rem;
+        color: #fff;
+        text-align: center;
+        line-height: 1.15rem;
+        background-color: #3fc1fb;
+        border-radius: 0.15rem;
+        position: absolute;
+        right: 0rem;
+        bottom: 0rem; }
+      .search-list li .info .title-guoqi {
+        width: 3.9rem;
+        height: 1.8rem;
+        background: url("../images/guoqi.png");
+        background-size: cover;
+        display: block;
+        position: absolute;
+        right: 0rem;
+        bottom: 0rem; }
+  .search-list .i-more {
+    text-align: center;
+    background-color: #ffffff;
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    color: grey; }
+  .search-list .none {
+    text-align: center;
+    background-color: #ffffff;
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    color: grey; }
+
+/*淘号*/
+.ss-result-list {
+  margin-top: 0.5rem;
+  background-color: #fff;
+  padding-bottom: 0.5rem; }
+  .ss-result-list ul {
+    padding: 0rem 0.7rem;
+    margin-left: -0.75rem; }
+    .ss-result-list ul li {
+      float: left;
+      width: 6.425rem;
+      border-radius: 0.15rem;
+      background-color: #f7f7f7;
+      font-size: 0.6rem;
+      color: #333;
+      text-align: center;
+      margin-left: 0.75rem;
+      margin-top: 1rem;
+      padding: 0.375rem 0.25rem;
+      word-break: break-all; }
+  .ss-result-list .change-other {
+    width: 14rem;
+    height: 1.5rem;
+    text-align: center;
+    line-height: 1.5rem;
+    font-size: 0.6rem;
+    color: #fff;
+    border-radius: 0.15rem;
+    background-color: #3fc1fb;
+    display: block;
+    margin: 1.25rem auto 0; }
+
+/*返回顶部*/
+.mod-top {
+  position: fixed;
+  bottom: 2.25rem;
+  right: 0.5rem;
+  z-index: 999; }
+  .mod-top .i-top {
+    background: url("../images/go_top.png") no-repeat;
+    width: 1.85rem;
+    height: 1.85rem;
+    background-size: cover;
+    display: block; }
+
+/*# sourceMappingURL=style.css.map */

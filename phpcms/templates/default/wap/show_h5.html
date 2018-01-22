@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="MobileOptimized" content="620"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link id="adaptation" rel="canonical" href="{new_get_url($catid)}" >
+    <title>{$title}小游戏在线玩_{$title}操作技巧_93636手游网</title>
+    <meta name="keywords" content="{$title}小游戏,在线玩,操作技巧" /> 
+    <meta name="description" content="{$description}" />
+    <link href="http://www.93636.com/statics/wap/style/yueact.css" rel="stylesheet" type="text/css" />
+    <script src="http://www.93636.com/statics/wap/js/jquery.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/wap/js/top.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+</head>
+<body>
+    {template "wap","header_wap"}
+    <div class="content">
+        <div class="bourt">
+            <div class="link">
+                <a href="/">首页</a> >{my_wap_pos($typeid)}
+            </div>
+            <div class="game-name">
+                <div class="img"><img src="{$thumb}" alt=""> <strong>{$title}</strong><span>分类：{$type}</span><em>大小：{$size}</em></div>
+                <a href="/h5{$jumplink}" class="sw">点开玩</a>
+            </div>
+            <div class="game-brief">
+                <div class="art-keywords">
+                    <h3 class="title">游戏简介</h3>
+                </div>
+                <div class="tex">
+                    {$description}
+                </div>
+            </div>
+            <div class="game-skill">
+                <div class="art-keywords">
+                    <h3 class="title">操作技巧</h3>
+                </div>
+                <?php
+                $content=str_replace("鼠标","用手",$rs['content']);
+                ?>
+                <div class="bored">
+                    {$content}
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="art-game">
+                <div class="art-keywords">
+                    <h3 class="title">相关游戏</h3>
+                </div>
+                {pc:wap action="lists" typeid="$typeid" num="6"}  
+                <ul class="art-gamelists">
+                    {loop $data $r}
+                    <li><a href="{my_show_url($r[catid],$r[id])}" class="gameico"><img src="{$r[thumb]}" alt=""> <span>{$r[title]}</span></a> <a href="{my_show_url($r[catid],$r[id])}" class="down"> 开始玩</a></li>
+                    {/loop}
+                </ul>
+                {/pc}
+            </div>
+        </div>
+    </div>
+    {template "wap","footer_wap"}
+</body>
+</html>

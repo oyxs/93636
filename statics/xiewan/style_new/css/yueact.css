@@ -1,0 +1,49 @@
+
+*{padding:0px;margin:0px;list-style-type:none; font-family: 'Microsoft Yahei','SimSun';}
+body{font-family:"\5FAE\8F6F\96C5\9ED1","Arial Narrow",HELVETICA;background:url(../images/fix_bg.png) no-repeat center; width:100%; height:2200px; -webkit-text-size-adjust:100%;min-width:1000px;}
+a img{border:none}
+:focus{outline:0}
+
+/*base css*/
+
+input,button,textarea{font-family:"PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif}
+body{background-color:#f2f2f2;}
+.block{display:block !important}
+button{border:none;cursor:pointer;outline:none}
+a{text-decoration:none}
+input{padding:0;outline:none}
+li{list-style:none}
+.clear{clear:both;zoom: 1;}
+.clear:after, .clear:before {content: "";display: table;clear: both;overflow: hidden;}
+
+.fix_top { width:1000px; margin:0 auto; height:auto; position:relative; min-width:1000px;}
+.f_t_link { width:370px; height:25px; float:right; background:url(../images/fix_float.png) no-repeat;}
+.f_t_link a { float:left; width:114px; line-height:25px; color:#ffcd62; font-size:16px; text-align:center;}
+.f_t_link a:hover { text-decoration:underline;}
+.fix_cy {width:309px; height:124px; display:block; margin:0 auto; margin-top: 810px;}
+.f_mt { margin-top:20px;}
+.logo { position:absolute; right: -20px; top: 50px;}
+
+.fix_muen { width:1095px; height:auto; overflow:hidden; margin:0 auto;}
+.cy_link { background:url(../images/cy_link.png) no-repeat center; width:1095px; height:474px; position:relative;}
+.cy_link h2 { position:absolute; top:130px; left:100px;height:37px;}
+.cy_tit { background:url(../images/yc_tit.png) no-repeat; width:164px; }
+.hd_tit { background:url(../images/hd_tit.png) no-repeat; width:131px;}
+.hd_info { position:absolute; top:180px; left:100px;}
+.group_link { position:absolute; right:250px; top:230px;}
+
+.scrollBox { position: relative; overflow: hidden; height:151px; zoom: 1;width:1000px; padding-top:200px; padding-left:53px; }
+.scrollBox .ohbox { overflow: hidden; position: relative; width: 910px; left: 38px;}
+.scrollBox .piclist { overflow: hidden; zoom: 1;}
+.scrollBox .piclist li { float: left;  display: inline; width: 216px; height:151px; background: #fff; margin:5px 8px 0 8px; position:relative;}
+.scrollBox .piclist li img {width: 216px; height:151px; }
+.scrollBox .piclist li span ,.focusBox .bd li .s_bg { height: 30px;line-height: 30px; display: block; color:#fff; text-align: center; position:absolute;  bottom:0; left:0; width:100%; background:url(../images/b_bg.png) repeat; }
+.scrollBox .pageBtn .prev { left: 65px; background:url(../images/l_button.png) no-repeat;}
+.scrollBox .pageBtn .next { right: 15px; background:url(../images/r_button.png) no-repeat;}
+.scrollBox .pageBtn span { display: block; width:23px; height:38px; position: absolute; top:260px; cursor: pointer; text-indent: -999em; overflow: hidden;}
+.list { display:none;}
+.big { width: 100%; height: 100%; position: absolute; left: 0px; top: 0px;  background:url(../images/b_bg.png) repeat; display:none;}
+.big a { line-height:151px; color:#fff; text-align:center; width:100%; display:block;}
+
+.foot { margin:0 auto; margin-top:200px; width:1000px;}
+.foot p { color:#fdd482; text-align:center; font-size:12px; line-height:30px;}

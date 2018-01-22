@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+#banner {
+    width: 100%;
+    height:8.0rem;
+    overflow: hidden;
+    position:relative;
+}
+#banner .swiper-slide {
+    position:relative;
+    text-align:center;
+}
+#banner img {
+    max-width: 100%;
+}
+.gallerytitle {
+    text-align: center;
+    font-size: 0.75rem;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    color: #f1f1f1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-weight: normal;
+    background-color: rgba(0,0,0,0.66);
+}
+.pagination {
+    position: absolute;
+    z-index: 20;
+    bottom: 0.125rem;
+    width: 1.65rem;
+    text-align: center;
+    right:0;
+}
+.swiper-pagination-bullet {
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius:50%;
+    background: #999;
+    margin: 0 0.075rem;
+    cursor: pointer;
+}
+.swiper-pagination-bullet-active {
+    background: #c52929;
+}
+#tabs-container{
+    margin-top: 0.375rem;
+    width: 16.0rem;
+    height: auto;
+}
+.tabs{
+    background-color: #fff;
+    width:100%;
+    height:2.0rem;
+    overflow:hidden;
+    padding:0 0.5rem;
+}
+.tabs ul li{float: left;width: 33.33%;text-align: center;height:2.0rem;background-color: #fff;}
+.tabs a{
+    font-size: 0.7rem;
+    font-weight: normal;
+    text-align: center;
+    min-width: 2.5rem;
+    height: 1.15rem;
+    line-height: 1.25rem;
+    color: #333;
+    display: inline-block;
+    margin: 0.425rem auto 0;
+    padding: 0 0.5rem;
+    
+}
+.tabs li.active a{
+    color: #fff;
+    background-color: #c52929;
+    border-radius: 0.75rem;
+}
+.tab_con{position: relative;}
+.news-list{
+    
+}
+.news-list li{
+    float: left;background-color: #fff;padding: 0.35rem 0;
+}
+/*.news-list li .c-1{float: left;width: 3.75rem;height: 2.55rem;margin-left: .5rem;}*/
+.news-list li .c-1{float: left;width: 4.1rem;height: 2.8rem;margin-left: .5rem;}
+.news-list li .c-1 a{display: block;width: 100%;height: 100%;}
+.news-list li .c-1 a img{width: 100%;height: 100%;}
+.news-list li .c-2{float: left;width: 10.4rem;margin-left: 0.5rem;position: relative;height: 2.8rem;margin-right: .5rem;}
+.news-list li .c-2 h3{color: #333;font-size: .7rem;line-height: 1.4;}
+ .data_time,.data_ico{position: absolute;font-size: .6rem;color: #999;}
+.news-list li .c-2 .data_time{left: 0;bottom: 0;}
+.news-list li .c-2 .data_ico{right: 0;bottom: 0;}
+ .ico_look{color: #999;font-size: .6rem;margin-right: .5rem;}
+ .ico_look i{background: url("../images/icon.png");width: 0.85rem;height: 0.85rem;background-position: -.425rem -.02rem;background-size: 16rem 8rem;display: inline-block;vertical-align: middle;margin:0 0.125rem 0rem 0;}
+ .data_ico .ico_look{float: right;}
+ .data_ico .ico_good{float: right;}
+.ico_good i{background: url("../images/icon.png");width: 0.55rem;height: 0.85rem;background-position: -2.15rem -.02rem;background-size: 16rem 8rem;display: inline-block;vertical-align: middle;margin:0 0.125rem 0rem 0;}
+ .ico_good.on i{background-position: -3.75rem -.02rem;}
+ .ico_good.on span{color: #fd5672;}
+.ico_good span{font-size: .6rem;}
+.preloader,.preloader_top {
+    /*position: absolute;*/
+    /*left: 0;*/
+    z-index: 99999;
+    color: #999;
+    text-align: center;
+    line-height: 1.25rem;
+    height: 1.25rem;
+    width: 100%;
+    opacity: 0;
+    font-size: .5rem;
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -ms-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+   background-color: #fff;
+    display: none;
+}
+.preloader{bottom: -2.5rem;}
+.preloader_top{top: -2.5rem;}
+.preloader_top img{width: .5rem;height: .5rem;margin-right: .25rem;vertical-align: top;margin-top: .3rem}
+.preloader img{width: .5rem;height: .5rem;margin-right: .25rem;vertical-align: top;margin-top: .3rem}
+.preloader.visible{
+    /*bottom: 0;*/
+    opacity: 1;
+}
+.preloader_top.visible{
+    /*top: 0;*/
+    opacity: 1;
+}
+/*文章详情*/
+.m-data{width: 16rem;padding: .3rem .5rem 0 .3rem;}
+.m-data h1{color: #333;font-size: 0.9rem;line-height: 1.6;font-weight: bold;}
+.txt-info .time,.txt-info .author{color: #999;font-size: .5rem;}
+.txt-info .author{margin-left: .1rem;}
+.para-box{margin-top: .3rem;width: 100%;}
+.para-box p{font-size: 0.8rem;color: #333;line-height: 1.6;width: 100%;text-align: center;}
+.para-box p img{margin: .2rem 0; max-width: 100% ;height: auto;  background-size: cover;}
+.para-box .data_ico_two{margin: .4rem 0 0 0;height: 1rem;width: 100%;}
+.para-box .data_ico_two .ico_good { font-size: .6rem; color: #999}
+.para-box .data_ico_two >div{float: left;}

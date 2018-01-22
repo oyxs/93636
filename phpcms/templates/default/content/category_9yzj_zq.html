@@ -1,0 +1,258 @@
+{template "content","header_9yzj_zhuanqu"}
+<div class="main">
+{php $sub_cats =explode(',', $arrchildid);}
+    <div class="m_top">
+        <div class="banner">
+            <div id="focus">
+            {pc:content action="position" posid="38" catid="$catid" order="listorder DESC" num="3"} 
+                <ul>
+                {loop $data $key $val} 
+                    <li><a href="{$val['url']}" target="_blank" title="{$val['title']}"><img src="{$val['nopicture']}" alt="{$val['title']}">
+                    <div class="blank"></div>
+                    <span>{$val['title']}</span></a></li>
+                 {/loop}
+                </ul>
+            {/pc} 
+            </div><!--focus END-->
+        </div><!--banner END-->
+        <div id="news">
+            <ul class="top_h">
+                <li><h2 class="active">新闻</h2></li>
+                <li><h2>礼包</h2></li>
+            </ul>
+            <div class="news_content" style="display:block;">
+                <a href="{$CATEGORYS[$sub_cats[6]][url]}" class="more" rel="nofollow">更多<i></i></a>
+                {pc:content action="lists" catid="$sub_cats[6]" num="10" order="listorder DESC"}
+                <ul>
+                    {loop $data $key $value}
+                    <li>
+                        <em class="pre_tit">[新闻]</em>
+                        <a href="{$value['url']}" target="_blank" title="{$value['title']}">{str_cut($value['title'],58)}</a>
+                        <span class="timer">{date('m-d',$value['inputtime'])}</span>
+                    </li>
+                    {/loop}
+                </ul>
+                {/pc}
+            </div><!--news_content END-->
+            <div class="news_content">
+                <a href="{$CATEGORYS[$sub_cats[4]][url]}" class="more" rel="nofollow">更多<i></i></a>
+                {pc:content action="lists" catid="$sub_cats[4]" num="9" order="listorder DESC"}
+                <ul>
+                {loop $data $key $val}
+                    <li>
+                        <em class="pre_tit">[礼包]</em>
+                        <a href="{$val['url']}" title="{$val['title']}" target="_blank">{$val['title']}</a>
+                        <span class="timer">{date('m-d',$val['inputtime'])}</span>
+                    </li>
+                 {/loop}
+                </ul>
+              {/pc}
+            </div><!--news_content END-->
+        </div><!--news END-->
+        <div class="line"></div><!--line END-->
+        {template "content","zq_9yzj_right"}
+    </div><!--m_top END-->
+    <div class="box">
+         <dl class="box_left">
+            <dt>
+            <h2>新手攻略</h2>
+            <a href="{$CATEGORYS[$sub_cats[2]][url]}" rel="nofollow" class="more">更多<i></i></a>
+            </dt>
+            <dd>
+                <ul>
+                {pc:content action="lists" catid="$sub_cats[2]" num="1" order="listorder DESC"}
+                {loop $data $key $val}
+                    <li class="tt">
+                        <div class="ing"><a href="{$val['url']}"  title="{$val['title']}" target="_blank"><img src="{$val['thumb']}" alt="{$val['title']}"></a></div>
+                        <div class="text">
+                            <a href="{$val['url']}" title="{$val['title']}" target="_blank">{$val['title']}</a>
+                            <p>{str_cut($val['description'],220)}</p>
+                        </div>
+                    </li>
+                     {/loop}
+                  {/pc}
+                      {pc:content action="lists" catid="$sub_cats[2]" limits="1,6" order="listorder DESC"}
+                    {loop $data $key $val}
+                      <li><a href="{$val['url']}" title="{$val['title']}" target="_blank">{$val['title']}</a><span>{date('Y-m-d',$val['inputtime'])}</span></li>
+                {/loop}
+                  {/pc}
+                </ul>
+              
+            </dd>
+        </dl><!--box_left END-->
+         <dl class="box_img">
+            <dt>
+            <h2>门派攻略</h2>
+            <a class="more" href="{$CATEGORYS[$sub_cats[1]][url]}" rel="nofollow">更多<i></i></a>
+            </dt>
+            <dd>
+                <a href="javascript:void(0);" class="turn_left"></a>
+                <div class="career">
+                {pc:content action="lists" catid="$sub_cats[1]" num="9" order="listorder DESC"}
+                    <ul>
+                    {loop $data $key $val}
+                    <li><a href="{$val['url']}" target="_blank" title="{$val['title']}"><img src="{$val['nopicture']}" alt="{$val['title']}">
+                   <div class="blank"></div>
+                    <span>{$val['title']}</span> 
+                    </a></li>
+                    {/loop}
+                    </ul>
+                {/pc}	
+                </div><!--career END-->
+                <a href="javascript:void(0);" class="turn_right"></a>
+            </dd>
+        </dl><!--box_img END-->
+    </div><!--box END-->
+    <div class="box">
+        <dl class="box_left">
+            <dt>
+                <h2>进阶攻略</h2>
+                <a href="{$CATEGORYS[$sub_cats[3]][url]}"  rel="nofollow"class="more">更多<i></i></a>
+            </dt>
+            <dd>
+                <ul>
+                {pc:content action="lists" catid="$sub_cats[3]" num="1" order="listorder DESC"}
+                {loop $data $key $val}
+                    <li class="tt">
+                        <div class="ing"><a href="{$val['url']}"  title="{$val['title']}" target="_blank"><img src="{$val['thumb']}" alt="{$val['title']}"></a></div>
+                        <div class="text">
+                            <a href="{$val['url']}" target="_blank">{$val['title']}</a>
+                            <p>{str_cut($val['description'],220)}</p>
+                        </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+                    {pc:content action="lists" catid="$sub_cats[3]" limits="1,6" order="listorder DESC"}
+                    {loop $data $key $val}
+                    <li><a href="{$val['url']}" title="{$val['title']}" target="_blank">{$val['title']}</a><span>{date('Y-m-d',$val['inputtime'])}</span></li>
+                     {/loop}
+                    {/pc}
+               
+                </ul>
+                
+            </dd>
+        </dl><!--box_left END-->
+        <dl class="box_right">
+            <dt>
+            <h2>攻略</h2>
+            <a href="{$CATEGORYS[$sub_cats[0]][url]}" rel="nofollow" class="more">更多<i></i></a>
+            </dt>
+            <dd>
+            {pc:content action="lists" catid="$sub_cats[0]" num="8" order="listorder DESC"}
+                <ul>
+                {loop $data $key $val}
+                    <li><a href="{$val['url']}" title="{$val['title']}" target="_blank">{str_cut($val['title'],60)}</a><span>{date('Y-m-d',$val['inputtime'])}</span></li>
+                {/loop}
+                </ul>
+            {/pc}
+            </dd>
+        </dl><!--box_right END-->
+       
+    </div><!--box2 END-->
+    <dl class="picture">
+        <dt>	
+        <h2>游戏图鉴</h2>
+        <div class="classify">
+            <a href="">角色</a><span>/</span>
+            <a href="">技能</a><span>/</span>
+            <a href="">宠物</a><span>/</span>
+            <a href="">任务</a><span>/</span>     
+        </div>
+        <a class="more" href="{$CATEGORYS[$sub_cats[5]][url]}" rel="nofollow">更多<i></i></a>
+        </dt>
+        <dd>
+            <ul style="display:block;">
+             {pc:content action="lists" catid="$sub_cats[5]" num="6" order="listorder DESC"}
+                {loop $data $key $value}
+                <li><a href="{$value['url']}" title="{$value['title']}" target="_blank"><img src="{$value['thumb']}" alt="{$value['title']}"></a></li>
+                {/loop}
+            {/pc}
+            </ul>
+        </dd>
+    </dl><!--picture END-->
+    <dl class="video">
+        <dt>
+            <h2 class="m_over">精彩视频</h2>
+            <a class="more" href="{$CATEGORYS[$sub_cats[7]][url]}" rel="nofollow">更多<i></i></a>
+        </dt>
+        <dd class="tab_box">
+            <div style="display:block;">
+            {pc:content action="lists" catid="$sub_cats[7]" num="1" order="listorder DESC"}
+            {loop $data $key $val}
+             <a class="big_img" title="{$val['title']}" href="{$val['url']}"><img src="{$val['thumb']}" alt="{$val['title']}"><div class="blank"></div>
+                    <span>{$val['title']}</span>
+                    <i></i>
+                    </a>
+             {/loop}	
+             {/pc}
+            {pc:content action="lists" catid="$sub_cats[7]" limits="1,4" order="listorder DESC"}
+                <ul>
+                {loop $data $key $val}
+                    <li>
+                    <a title="{$val['title']}" href="{$val['url']}">
+                    <img src="{$val['thumb']}" alt="{$val['title']}">
+                    <div class="blank"></div>
+                    <span>{$val['title']}</span>
+                    <i></i>
+                    </a>
+                    </li>
+                {/loop}
+                </ul>
+            {/pc}	
+            </div>
+        </dd>
+    </dl><!--video END-->
+    <dl class="game_rec">
+        <dt><h2>游戏推荐</h2></dt>
+        <dd>
+            {pc:content action="position" $posid="37" num="9" order="listorder DESC"}
+            <ul>
+             {loop $data $key $val}
+                <li>
+                    <a href="{$val['url']}" target="_blank" title="{$val['title']}">
+                        <img src="{$val['thumb']}" alt="{$val['title']}">
+                        <em>{$val['title']}</em>
+                    </a>
+                </li>
+             {/loop}
+            </ul>
+         {/pc}
+        </dd>
+    </dl><!--game_rec END-->
+    <dl class="comment">
+        <dt>
+        <h2>玩家评论</h2>
+        <span class="count">(10000条)</span>
+        </dt>
+        <dd>
+
+        </dd>
+    </dl>
+    <dl class="flink">
+        <dt><h2>友情链接</h2></dt>
+        <dd>
+            <a href="" target="_blank" title="">九阴真经手游 </a>|
+        </dd>
+    </dl><!--flink END-->
+</div><!--main END-->
+<div class="foot">
+    <ul class="copyright">
+        <li>
+            <a href="/about/">关于我们</a> | 
+            <a href="/statement/">免责声明</a> |  
+            <a href="/contact/">联系我们</a> |
+            <a href="/ruanwen/">软文投稿</a> |
+            <a href="/hezuo/">商务合作</a> |
+            <a href="/sitemap/">网站地图</a> 
+            <br>Copyright 2015 <a href="http://www.93636.com" target="_blank">93636手游网</a> 版权所有<br>
+        </li>
+    </ul>
+</div>
+<!--footer END-->
+<script>
+    window._bd_share_config = {"common": {"bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16"}, "slide": {"type": "slide", "bdImg": "1", "bdPos": "right", "bdTop": "100"}, "image": {"viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16"}, "selectShare": {"bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]}};
+    with (document)
+        0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+</body>
+</html>
+

@@ -1,0 +1,128 @@
+@charset "utf-8";
+html *{
+	box-sizing:border-box;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	outline: 0;
+	-webkit-text-size-adjust: none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  margin: 0;
+  padding: 0;
+}
+/*body {  font: 100%/1.5 'Arial', 'Heiti SC', 'Helvetica', 'HelveticaNeue', 'Droidsansfallback', "Droid Sans", 'Dengxian', 'Segoe', 'microsoft yahei'; }*/
+body { font-family:Arial,Microsoft YaHei,tahoma, Verdana, Geneva, sans-serif; overflow:auto;-webkit-overflow-scrolling:touch;position: relative;}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 100%;
+}
+address, cite, dfn, em, var, i {
+	font-style: normal;
+}
+ul, ol {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	display:block;
+}
+a:focus, input:focus, textarea:focus {
+	outline: none;
+}
+a:link {
+	color: #333;
+}
+a:visited {
+	color: #999;
+}
+a:hover, a:active {
+	color: #333;
+	text-decoration: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+textarea {
+	resize: none;
+}
+input[type="button"], input[type="submit"],input[type="reset"], input[type="file"]::-webkit-file-upload-button, button,select,textarea{
+ 	-webkit-appearance:none;
+ 	appearance:none;
+ 	border: none;
+ 	-webkit-border-radius: 0;
+ 	border-radius: 0;
+}
+html {
+	font-size:100%;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+html,body{
+	background-color: #fff;
+	/*max-width: 640px;*/
+	margin: 0 auto;
+	padding: 0 0 0 0;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+ embed, object, video, iframe {
+	width: auto;
+	width: 100%;
+	height: auto;
+}
+/*---公用Begin---*/
+.ellipsis{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.ellipsis_clip{
+	white-space: nowrap;
+	text-overflow:clip;
+	overflow: hidden;
+}
+.break{
+	word-break: break-all;
+	word-wrap: break-word;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{
+	zoom: 1;
+}
+.flex{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.flex .flex_item{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	flex: 1;
+}
+.box{
+   display: -webkit-box;
+}
+.box .box_item{
+    -webkit-box-flex: 1;
+}
+.inline_block{
+    display:inline-block;
+}
+input:-ms-input-placeholder,textarea:-ms-input-placeholder{
+	color:#999999;
+}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{
+	color:#999999;
+}
+input::-moz-placeholder,textarea::-moz-placeholder{
+	color:#999999;
+}
+.disn{display: none;}
+/*---公用End---*/

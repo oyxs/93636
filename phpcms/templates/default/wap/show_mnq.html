@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link href="/statics/mnq/style/yueact.css" rel="stylesheet" type="text/css">
+        <script src="/statics/mnq/js/jquery.js" type="text/javascript"></script>
+        <script src="/statics/mnq/js/index.js" type="text/javascript"></script>
+        <script type="text/javascript" src="/statics/mnq/js/superslide.2.1.js"></script>
+        <script> var _czc = _czc || []; _czc.push(["_setAccount", "1256716135"]);</script>
+        <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <div class="header">
+            <div class="break">
+                <a onclick="window.history.go(-1)"><em></em></a>
+                <a onclick="window.history.go(1)"><em class="new1"></em></a>
+                <a onclick="window.location.reload()"><em class="new2"></em></a>
+            </div>
+            <ul class="navlist">
+                <li class="on"><a href="http://mnq.93636.com/">首页</a></li>
+                <li><a href="/games/">游戏库</a></li>
+                <li><a href="/mnq/wangyou/">网游</a></li>
+                <li><a href="/mnq/danji/">单机</a></li>
+                <li><a href="/heji/?typeid=120">手游合集</a></li>
+            </ul>
+            <div class="search">
+                <form id="seaform" name="seaform" action="/index.php" method="get">
+                    <span class="sd-l sd-f">
+                        <span class="down" style="display: block;"></span>
+                        <input name="q" type="text" id="search_txt" class="title" value="" size="20" maxlength="30" placeholder="" autocomplete="off">
+                        <input type="hidden" name="m" value="search">
+                        <input type="hidden" name="c" value="index">
+                        <input type="hidden" name="a" value="init">
+                        <input type="hidden" name="typeid" value="55">
+                        <input type="hidden" name="siteid" value="1">
+                        <input type="hidden" name="forward" value="">
+                    </span>
+                    <input class="r bian" type="submit" name="Submit" value="找游戏">
+                </form>
+            </div>
+        </div>
+        <div class="conmiddle">
+            <div class="left-box">
+                <div class="install">
+                    <div class="game-text">
+                        <img src="{$thumb}" alt="">
+                        <div class="info">
+                            <div class="fff clear"><strong>{$title}</strong>{if $libaoURL!=""}<em class="present"></em>{/if}</div>
+                            <p><span>类型：{$type}</span><span>下载：{$downloadtimes}下载</span><span>大小：{$size}</span></p>
+                            <p>更新：{$inputtime}</p>
+                        </div>
+                    </div>
+                    <div class="k_link">
+                        <a href="{$pclink}" class="key kb" onclick="_czc.push(['_trackEvent', '模拟器内容页', '一键安装', '{$title}','1','disy']);">一键安装</a>
+                        <div class="QR_code">
+                            <div class="key kc" onclick="_czc.push(['_trackEvent', '模拟器内容页', '手机安装', '{$title}','1','disy']);" >手机安装</div>
+                            <div class="CR"><img src="{$twcode}" alt="{$title}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Image">
+                    <div class="list"><span class="on">简介</span><span>礼包</span></div>
+                    <div class="w_list">
+                        <div class="words on">
+                            <p>{str_cut($rs['content'],400)}</p>
+                            <ul class="bg-img">
+                                {php $i=0;}
+                                {loop $pictures $v}
+                                {if $i<3}
+                                <li><img src="{$v['url']}" alt="{$v['alt']}"></li>
+                                {/if}
+                                {php $i++;}
+                               {/loop}
+
+                            </ul>
+                        </div>
+                        <div class="words">
+                            <ul class="w_gife clear">
+                                <!--{pc:get sql="select * from 93636_libao a where catid='31' and a.title like '%$gamename%' ORDER BY updatetime DESC" return="data" num="10"}-->
+
+
+                                {pc:get sql="select * from 93636_libao  left join 93636_libao_data on 93636_libao.id=93636_libao_data.id  where catid='31' and 93636_libao.title like '%$gamename%' ORDER BY updatetime DESC" return="data" num="10"}
+
+                                {loop $data $key $r}
+                                <li>
+                                <a href="{ChangeUrl($r['url'])}" class="w_pic"><img src="{$r['thumb']}" alt="{$r['title']}"></a>
+                                    <div class="w_txt">
+                                        <a href="{ChangeUrl($r[url])}">{$r[title]}</a>
+
+
+
+                                        <div class="progress-bar">
+                                            <div class="progress-all"><span class="progress-icon" style="width:{LbCount($r['id'],$r['number'])}%;"></span></div>
+                                            <span>剩余{LbCount($r['id'],$r['number'])}%</span>
+                                        </div>
+                                        <a href="{ChangeUrl($r[url])}" class="draw d_color">领取</a>
+                                    </div>
+
+                                </li>
+
+                                {/loop}
+                                {/pc}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-box">
+                <div class="air">
+                    <div class="title"><p>小编推荐</p></div>
+                    <ul class="article-list">
+                        {pc:wap action="position" posid="40" order="listorder DESC" num="8"}
+                        {loop $data $r}
+                        <li>
+                            <div class="pop">
+                                <a href="" class="p_pic"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+                                <div class="p_txt">
+                                    <a href="{mynewurl($r[url])}" class="p_link">{$r[title]}</a>
+                                    <em class="down">{$r[downloadtimes]}次下载 | {$r['size']}</em>
+                                    <a href="{mynewurl($r[url])}" class="samlls" onclick="_czc.push(['_trackEvent', '模拟器内容页', '一键安装', '{$r[title]}','1','disy']);" >一键安装</a>
+                                </div>
+                            </div>
+                        </li>
+                        {/loop}
+                        {/pc}
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256716135'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256716135%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+        </div>
+
+        <script type="text/javascript">
+            jQuery(".slider .bd li").first().before(jQuery(".slider .bd li").last());
+            jQuery(".slider").slide({titCell: ".hd ul", mainCell: ".bd ul", effect: "leftLoop", autoPlay: true, vis: 3, autoPage: true, trigger: "click"});
+        </script>
+
+    </body>
+</html>

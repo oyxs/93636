@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>{$title}_93636手游网</title>
+	<link rel="alternate" media="only screen and(max-width: 640px)" href="{$last_url}" id="link">
+    <meta name="keywords" content="{$SEO['keyword']}">
+    <meta name="description" content="{$SEO['description']}" />
+    <link rel="shortcut icon" href="http://www.93636.com/statics/icon/32X32.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/statics/new_style/css/common.css">
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+    <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+    <link href="/statics/new_style/style/game-blic.css" rel="stylesheet">
+    <script  src="/statics/new_style/js/jquery.js"></script>
+    <script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+    <script  src="/statics/new_style/js/jquery.scrollbar.js"></script>
+    <script  src="/statics/new_style/js/jquery.slider.js"></script>
+    <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+    <script src="/statics/new_style/js/lib/common.js"></script>
+	<script>
+		if (/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                try {
+                    if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+                        //var strr = $('#link').attr("href");
+						var strr = 'http://m.93636.com/video/{$id}.html';
+                        window.location.href = strr;
+                    }
+                } catch (e) {
+                }
+            }
+		
+		</script>
+		<script>
+            $(function() {
+               
+				$(".bdsharebuttonbox a").click(function() {
+				   $.ajax({
+						type: 'post',
+						url: '/index.php?m=member&c=index&a=share_reward&id={$id}',
+						dataType: 'json',
+						success: function(data) {
+							
+						}
+					})
+				});
+            });
+			
+        </script>
+		<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</head>
+<body>
+{template "content","head"}
+<div class="make_bg mt20">
+    <div class="main clear">
+	 {pc:content  action="position" posid="45"  order="listorder DESC" num="1"}
+	  {loop $data $key $val}
+        <div class="ggao"><a href="{$val[url]}"><img src="{$val[nopicture]}" title="{$val[title]}"  alt="{$val[title]}"></a></div>
+		 {/loop}
+     {/pc}
+        <div class=" mar_top">
+            <ul class="bread-nav">
+                <li>当前位置：</li><li><a href="/">首页</a>&gt;</li><li>{catpos($catid)}{$title}</li>
+            </ul>
+            <div class="index-ranking  mar_top">
+                <h1 class="tit_g">{$title}</h1>
+                <div class="ly_box"><span>来源: <a href="http://www.93636.com">93636手游网</a></span> <span>作者：rainbow</span> <span>时间：{$inputtime}</span>
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+				</div>
+                <div class="con">
+				{if $video_url !=''}
+                <iframe height=404 width=515 src="{$video_url}" frameborder=0 allowfullscreen></iframe>
+
+                {/if}
+                    　　{$content}
+
+                </div><!--con end-->
+                <div id="pages" class="text-c"></div>
+                <div class="sxyurl">
+                    <a href="{$previous_page[url]}" class="next"><span class="on">上一篇</span><i>{$previous_page[title]}</i></a>
+                    <a href="{$next_page[url]}" class="per"><span>下一篇</span><i>{$next_page[title]}</i> </a>
+                </div><!--sxyurl end-->
+                <div class="left2">
+                    <div class="left2_rel">
+                        <h2>相关视频</h2>
+                    </div>
+                    <ul>
+                        {pc:content action="relation" relation="$relation" catid="$catid" num="4" keywords="$rs[keywords]"}
+                        {loop $data $r}
+                        <li>
+                            <a href="{ChangeUrl($r[url])}" target="_blank">
+                                <img alt="{$r[title]}" src="{$r[thumb]}">
+                                <p class="bg">{$r[title]}</p>
+                            </a>
+                        </li>
+                        {/loop}
+                        {/pc}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="dgyx_rig mr_t">
+            {pc:get sql="select id,url,catid,thumb,title,type,size,anlink,applelink,pclink,qmlink,guanlink from 93636_game  where title='$gamename' AND status='99' and catid not in (218,225,224,223,227,222,221,234,220,219,233) and is_show=1 ORDER BY id DESC " return="data" num="1"}
+			{if empty($data)} 
+			{pc:get sql="select id,url,thumb,catid,title,type,size,anlink,applelink,pclink,qmlink,guanlink from 93636_game  where  status='99' and is_show=1 ORDER BY id DESC " return="data" num="1"}
+			{/if}		
+            {loop $data $val}
+            <div class="ph_new paih">
+                <div class="tj_game_tit clear">
+                    <a href="" target="_blank" class="tj_img"><img src="{$val[thumb]}" alt="{$val[title]}"></a>
+                    <div class="tj_game_info fl">
+                        <a href="" target="_blank">游戏名称：{$val[title]}</a>
+                        <em>类型：{$CATEGORYS[$val[catid]][catname]}</em>
+                        <em>游戏大小：{$val[size]}</em>
+                    </div>
+                    <div class="down_link clear">
+                        <ul>
+                            <li class="an_QR">
+                                <a href="javacript:;" target="_blank" {if $val[anlink]!='' || $val[qmlink]!='' || $val[guanlink]!=''}class="an_bg"{else} class="an_none"{/if}></a>
+								{if $val[anlink]!='' || $val[qmlink]!='' || $val[guanlink]!=''}
+                                <div class="anz_bg">
+                                    <div class="anz_QR clear">
+                                        <div class="QR_m fl">
+                                            <p class="on"><img src="/towcode.php?u={$last_url}" alt="二维码"></p>
+                                            <p><img src="/towcode.php?u={$last_url}" alt="二维码"></p>
+                                            <p><img src="/towcode.php?u={$last_url}" alt="二维码"></p>
+                                        </div>
+                                        <div class="anz_bor">
+                                            <p class="on">官方版</p>
+                                            <p>360版</p>
+                                            <p>UC版</p>
+                                        </div>
+                                    </div>
+                                </div>
+								{/if}
+                            </li>
+                            <li><a {if $val['pclink']}href=""{else}href="http://cdn.qmzs.com/xiewan/qmzs_sp[111]_qd[xw93636].exe" {/if} target="_blank" class="pc_bg"></a></li>
+                            <li  class="ios_QR">
+                                <a href="javacript:;" target="_blank" {if $val[applelink]!=''}class="ios_bg"{else} class="ios_none"{/if}></a>
+								{if $val[applelink]!=''}
+                                <div class="QR_i">
+                                    <div class="clear">
+                                        <div class="ios_pic fl">
+                                            <p class="on"><img src="/towcode.php?u={$last_url}" alt="二维码"></p>
+                                        </div>
+                                        <div class="ios_tit fl">
+                                            <p class="on">官方版</p>
+                                        </div>
+                                    </div>
+                                </div>
+								{/if}
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {/loop}
+            {/pc}
+            <h3>新游推荐</h3>
+            <dl class="rmyx paih">
+                <dd>
+                    <ul class="clear">
+                        {pc:content  action="position" posid="26" order="listorder DESC" num="9"}
+                        {loop $data $key $val}
+                        <li><a href="{ChangeUrl($val[url])}" target="_blank"><img alt="{$val[title]}" src="{$val[thumb]}"><i></i><em>{$val[title]}</em></a></li>
+                        {/loop}
+                        {/pc}
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+
+    </div>
+</div>
+<div class="footer">
+    {template "content","foot"}
+</div>
+</body>
+</html>

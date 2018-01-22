@@ -1,0 +1,183 @@
+{template "content","header"}
+{template "content","header2"}
+
+<div class="laction"><i></i>当前位置：<a href="">首页</a> > {catpos($catid)}</div>
+	
+	<div class="main ny_main">
+		<div class="azwy_ys">
+			<div class="slide" >
+            {pc:content  action="position" posid="32" order="listorder DESC" num="5"}
+				<ul class="slide-cont">
+                 {loop $data $r}
+					<li class="slide-item">
+						<a href="{ChangeUrl($r[url])}" title="" target="_blank"><img src="{$r[nopicture]}" alt="{$r[title]}"></a>
+						<div class="slide-txt">
+							<div class="txt_bg"></div>
+							<a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a>
+					</li>
+                   {/loop}
+				</ul>
+                {/pc}
+				<ul class="slide-nav">
+					<li class="nownav">1</li>
+					<li>1</li>
+				</ul>
+				<div class="slide-loading" style=""></div>
+				<a href="javascript:void(0)"  id="next" ></a>
+				<a href="javascript:void(0)" id="prev"></a>
+			</div>
+			<div class="news_box">
+                <div class="hd">
+                {pc:content  action="position" posid="31" order="listorder DESC" num="1"}
+                {loop $data $r}
+					<div class="hd_tit"><a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a></div>
+					<div class="hd_art">
+						<p>{str_cut($r['description'],200)}<a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank" rel="nofollow">详细&gt;&gt;</a></p>
+					</div>
+                {/loop}
+				{/pc}
+				</div>
+				<div class="bd">
+					<ul>
+                    {pc:content  action="position" posid="31" order="listorder DESC" limits="1,5"}
+						{loop $data $r}
+						<li>
+							<em>动态</em>
+							<a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a>
+							<span>{date('m-d',$r['inputtime'])}</span>
+						</li>
+                         {/loop}
+					{/pc}
+					</ul>
+				</div><!--bd-->
+			</div><!--news_box-->
+		</div><!--azwy_ys 图banner-->
+		
+		<div class="yxtj_box">
+			<dl class="yxtj pa20">
+				<dt class="borline"><h2>游戏推荐</h2> <a href="http://www.93636.com/games/catid_5_network_9_plate_1/" class="more_icon" target="_blank"></a></dt>
+				<dd>
+					<ul>
+                    {pc:content action="lists" catid="32,33,34,35,36,37,38,39,41,42" where="typeid=58 and recommend=5" order="updatetime DESC" num="9"}
+                    {loop $data $r}
+						<li><a href="{ChangeUrl($r[url])}" class="img" target="_blank"><img alt="{$r[title]}" src="{$r[thumb]}"><em></em></a>
+							<div><a href="{ChangeUrl($r[url])}" class="title" target="_blank">{$r[title]}</a>
+								<p><span>{$r[size]}</span> <span class="xx"></span></p>
+								<a href="{ChangeUrl($r[url])}" class="bort" target="_blank">下载游戏</a>
+							</div>
+					  </li>
+						 {/loop}
+					{/pc}
+					</ul>
+				</dd>
+			</dl><!--yxtj end-->
+			<dl class="yxlb pa20">
+				<dt class="borline"><h2>游戏礼包</h2> <a href="/youxilibao/" class="more_icon" target="_blank"></a></dt>
+				<dd>
+					<ul>
+                     {pc:content  action="position" posid="36" order="listorder DESC" num="5"}
+                     {loop $data $r}
+						<li><p><a href="{ChangeUrl($r[url])}" class="title" target="_blank">{$r[gamename]}</a>{$r[title]}</p>
+							<a href="{ChangeUrl($r[url])}" class="th" target="_blank"></a>
+                            </li>
+                            {/loop}
+			{/pc}
+					</ul>
+				</dd>
+			</dl>
+		</div><!--yxtj_box end-->
+		<div class="gdph_box pa20">
+			<div class="gdph_left">
+				<dl>
+					<dt class="borline">
+					  <h2>苹果排行榜</h2> <a href="/games/catid_5_network_9_plate_1/" class="more_icon" rel="nofollow" target="_blank"></a></dt>
+					<dd>
+						<ul>
+                         {pc:content action="lists" catid="32,33,34,35,36,37,38,39,41,42" where="typeid=58" order="updatetime DESC" num="10"}                              
+                          {loop $data $r}                        
+							<li {if $n==1}class="on"{/if}>
+								<i>{$n}</i>
+								<div class="thover"><a href="{ChangeUrl($r[url])}" target="_blank">{$r[title]}</a></div>
+								<div class="img_box"><a href="{ChangeUrl($r[url])}" class="img" target="_blank"><img alt="{$r[title]}" src="{$r[thumb]}"><em></em></a>
+							  <p><a href="{ChangeUrl($r[url])}" class="title" target="_blank">{$r[title]}</a><i class="star stargrey"> <span class="star starlight star{$r[recommend]}"></span> </i><span>类型：{$r[type]}</span></p></div>
+							</li>                        
+                            {/loop}
+                {/pc}
+					  </ul>
+					</dd>
+				</dl>
+				<dl>
+					<dt class="borline"><h2 class="azwyph">苹果网游排行榜</h2> <a href="/games/catid_5_network_1_plate_1/" class="more_icon" rel="nofollow" target="_blank"></a></dt>
+					<dd>
+						<ul>
+                        {pc:content action="lists" catid="32,33,34,35,36,37,38,39,41,42" where="typeid=58 and singleornet=1" order="updatetime DESC" num="10"}           
+                          {loop $data $r}
+                          <li {if $n==1}class="on"{/if}>
+								<i>{$n}</i>
+								<div class="thover"><a href="{ChangeUrl($r[url])}" target="_blank">{$r[title]}</a></div>
+								<div class="img_box"><a href="{ChangeUrl($r[url])}" class="img" target="_blank"><img alt="{$r[title]}" src="{$r[thumb]}"><em></em></a>
+							  <p><a href="{ChangeUrl($r[url])}" class="title" target="_blank">{$r[title]}</a><i class="star stargrey"> <span class="star starlight star{$r[recommend]}"></span> </i><span>类型：{$r[type]}</span></p></div>
+							</li>
+							 {/loop}
+                {/pc}              
+                </ul>
+					</dd>
+				</dl>
+				<dl>
+					<dt class="borline"><h2 class="azdjphb">苹果单机排行榜</h2> <a href="/games/catid_5_network_0_plate_1/" class="more_icon" rel="nofollow" target="_blank"></a></dt>
+					<dd>
+						<ul>
+                        {pc:content action="lists" catid="32,33,34,35,36,37,38,39,41,42" where="typeid=58 and singleornet=0" order="updatetime DESC" num="10"}                
+                          {loop $data $r}
+							<li {if $n==1}class="on"{/if}>
+								<i>{$n}</i>
+								<div class="thover"><a href="{ChangeUrl($r[url])}" target="_blank">{$r[title]}</a></div>
+								<div class="img_box"><a href="{ChangeUrl($r[url])}" class="img" target="_blank"><img alt="{$r[title]}" src="{$r[thumb]}"><em></em></a>
+							  <p><a href="{ChangeUrl($r[url])}" class="title" target="_blank">{$r[title]}</a><i class="star stargrey"> <span class="star starlight star{$r[recommend]}"></span> </i></i><span>类型：{$r[type]}</span></p></div>
+							</li>                    
+							 {/loop}
+                {/pc}
+						</ul>
+					</dd>
+				</dl>
+			</div><!--gdph_left emd-->
+			<dl class="kfb">
+				<dt>
+				  <h3>开测表</h3></dt>
+				<dd>
+					<ul>
+						<li>
+						<p class="title_time"><span class="time">时间</span><span class="yxmc">游戏名称</span><span class="zt">状态</span></p></li>
+						{pc:content action="lists" catid="140"  where="test=2" order="listorder DESC" num="13"}
+                        {loop $data $r}
+						<li><a href="{$r[gameurl]}" target="_blank"><span class="time">{substr($r[time], 5)}
+</span><span class="yxmc">{$r[title]}</span><span class="zt">{$r[state]}</span></a></li>
+					{/loop}
+                {/pc}	
+					</ul>
+				</dd>
+			</dl>
+		</div><!--gdph_box emd-->
+		<dl class="yxsp_box pa20">
+			<dt class="borline"><h3>游戏视频</h3> <a href="/video/" class="more_icon" rel="nofollow" target="_blank"></a></dt>
+			<dd>
+				<ul>
+                {pc:content  action="position" posid="33" order="listorder DESC" num="1"}
+                {loop $data $r}
+					<li class="one"><a href="{ChangeUrl($r[url])}" target="_blank"><img alt="{$r[title]}" src="{$r[nopicture]}"><i></i><span>{$r[title]}</span><em></em></a></li>
+					{/loop}
+                {/pc}
+                {pc:content  action="position" posid="33" order="listorder DESC" limits="1,6"}
+                {loop $data $r}
+               <li class="list"> <a href="{ChangeUrl($r[url])}" target="_blank"><img alt="{$r[title]}" src="{$r[nopicture]}"><i></i><span>{$r[title]}</span><em></em></a>
+               </li>
+                {/loop}
+                {/pc} 
+				</ul>
+			</dd>
+		</dl><!--yxsp end-->
+	</div><!--main emd-->
+	
+	{template "content","footer"}	
+</body>
+</html>

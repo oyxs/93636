@@ -1,0 +1,81 @@
+<div class="top-nav" id="nav">
+    <div class="top">
+        <div class="top_muen">
+            <div class="logo"><a href="/"><img src="/statics/new_style/images/logo.png" alt="logo"></a></div>
+            <form action="/index.php" method="get" target="_blank" >
+                <div class="search">
+                    <input type="text" name="q" id="search_txt" class="text" value="{$q}" size="20" maxlength="30"  placeholder="93636手游">
+                    <input type="hidden" name="m" value="search">
+                    <input type="hidden" name="c" value="index">
+                    <input type="hidden" name="a" value="searchall">
+                    <input type="hidden" name="typeid" value="0">
+                    <input type="hidden" name="siteid" value="1">
+                    <input type="hidden" name="forward" value="">
+                    <button class="button" type="submit"></button>
+                </div>
+            </form>
+            <div class="user" id="no_login" style="display: none;">
+                <ul>
+                    
+                    <li class="zc"><a href="http://www.vrqile.com/" target="_blank" ><i></i><p>VR</p></a></li>
+                    <li class="xw"><a href="http://www.xiewan.org/" target="_blank" ><i></i><p>携玩助手</p></a></li>
+					<li><a href="/index.php?m=member&c=index&a=login" target="_blank" ><i></i><p>登录</p></a></li>
+                </ul>
+            </div>
+            <!--
+           <div class="user" id="is_login" style="display: none;">
+                <ul>
+                    <li class="head_img"><a href="/index.php?m=member&c=index" target="_blank" ><img src="" alt="" onerror="this.src='/statics/images/user/hd_img.png'" id="avtar"><span class="ells" id="ell"></span></a></li>
+                    
+                    <li class="ml0"><a href="/index.php?m=member&c=index&a=logout" target="_blank" >退出</a></li>
+                   <!-- <li class="zc"><a href="/index.php?m=member&c=index&a=register" target="_blank" ><i></i><p>注册</p></a></li>-->
+            <!-- <li class="xw"><a href="http://www.xiewan.org/" target="_blank" ><i></i><p>携玩助手</p></a></li>
+         </ul>
+     </div>-->
+
+            <div class="user" id="is_login" style="display: none;">
+                <ul>
+                    <li class="zc"><a href="http://www.vrqile.com/" target="_blank" ><i></i><p>VR</p></a></li>
+                    <li class="gr">
+                        <a href="http://www.93636.com/index.php?m=member&c=index" target="_blank" ><i></i><p class="ell">93636玩家</p></a>
+                        <div class="mod-user">
+                            <div class="mod-subox">
+                                <div class="subox-top clearfix">
+                                    <img src="http://placehold.it/72x72"  class="subox-pic" id="avtar">
+                                    <div class="us-text">
+                                        <h4 class="ell" id="ells"></h4>
+                                        <div>米币：<span>1000</span></div>
+                                        <div><a href="http://www.93636.com/index.php?m=member&c=index" title="个人中心">个人中心</a><em>|</em><a href="http://www.93636.com/index.php?m=member&c=index&a=logout" title="退出">退出</a></div>
+                                    </div>
+                                </div>
+                                <div class="subox-bot clearfix">
+                                    <a href="http://www.93636.com/index.php?m=pay&c=deposit&a=pay_mb">充值中心</a>
+                                    <a href="http://www.93636.com/index.php?m=member&c=index&a=notice">我的消息</a>
+                                    <a href="http://www.93636.com/index.php?m=member&c=index&a=my_libao">我的收藏</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="xw"><a href="http://www.xiewan.org/" target="_blank" ><i></i><p>携玩助手</p></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="head_all">
+        <div class="head">
+            <div class="header">
+                <ul>
+                    <li><a href="/" title="首页" {if !$catid}class="on"{/if} target="_blank">首页</a></li>
+                    <li><a href="/games/" title="游戏库" {if $CATEGORYS[$top_parentid][catid]==5} class="on"{/if} target="_blank">游戏库</a></li>
+					<li><a href="http://ip.93636.com" title="maxip"  target="_blank">Maxip</a></li>
+                    <li><a href="/youxilibao/" title="游戏礼包" {if $CATEGORYS[$top_parentid][catid]==31}class="on"{/if} target="_blank">游戏礼包</a></li>
+                    <!--<li><a href="/paihangbang/" title="排行版" {if $catid==226} class="on"{/if} target="_blank">排行榜</a></li>-->
+                    <li><a href="/heji/" title="游戏合集" {if $CATEGORYS[$top_parentid][catid]==218} class="on"{/if} target="_blank">游戏合集</a></li>
+                    <li><a href="/youxizixun/" title="游戏资讯" {if $CATEGORYS[$top_parentid][catid]==30} class="on"{/if} target="_blank">游戏资讯</a></li>
+                    <li><a href="/youxigonglue/" title="游戏攻略" {if $CATEGORYS[$top_parentid][catid]==2} class="on"{/if} target="_blank">游戏攻略</a></li>
+                    <li><a href="/video/" title="游戏视频" {if $CATEGORYS[$top_parentid][catid]==17} class="on"{/if} target="_blank">游戏视频</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

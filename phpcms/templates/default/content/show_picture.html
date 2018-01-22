@@ -1,0 +1,210 @@
+<?php 
+	$SEO[site_title] = "";
+?>
+
+{template "content","header5"}
+
+{template "content","header2"}
+
+<div class="laction"><i></i>当前位置：<a href="/">首页</a> >{catpos($catid)}{$title}</div>
+	
+<div class="main ny_main">
+	<div class="videoCon_left">
+		<div class="left1">
+			<h1>{$title}</h1>
+			<div class="mark fw">
+				<span>来源: <a href="http://www.93636.com">93636手游网</a></span>
+				<span>作者:<em>盛夏</em></span>
+				<span>时间:<em>{$inputtime}</em></span>
+			</div>
+			
+			<div id="video">
+				<ul class="bul">
+					<li class="on">
+						<div class="xnrlh">
+							<a href="javascript:void(0)" class="lefton"><img src="/statics/new/images/left1.png"
+></a>
+							<div class="mypic">
+								<ul class="ul" style="width:4800px; display: block;">
+					{pc:get sql="SELECT pictureurls FROM phpcms_picture_data where id = $id" start="0" num="30" return="pictureurls" } 
+                    {loop $pictureurls $pic_k $r} 
+                    {php $a=string2array($r[pictureurls])}
+                    <?php $i=0;foreach($a as $r){$i++; ?>
+                    <li><a class="img"><img src="<?php echo $r['url']; ?>" longdesc="<?php echo $r['url']; ?>" alt="<?php echo $r['alt']; ?>"></a></li>
+                    <?php }?> 
+                    {/loop} 
+                    {/pc}	
+								</ul>
+							</div>
+							<a href="javascript:void(0)" class="srighton"><img src="/statics/new/images/sright.png"></a>
+                            
+                            
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div  class="text fw">{$content}</div>
+            <div class="sxyurl">
+			<a href="{$previous_page[url]}" class="next"> <list>上一篇</list><i>{$previous_page[title]}</i></a>
+			<a href="{$next_page[url]}" class="per"><list>下一篇</list><i>{$next_page[title]}</i> </a>
+		</div><!--sxyurl end-->
+            <div class="label_key">
+                <?php
+        if(!empty($tags)){
+			$tags = str_replace(",", " ", $tags);
+			$tags = preg_replace("/\s(?=\s)/","\\1",$tags);
+			$strs = explode(' ',$tags);
+			foreach ($strs as $str){
+				echo "<a href='/tags/$str' rel='nofollow' target='_blank'>$str</a>";
+			}
+		}
+        ?>
+            </div>
+     </div><!--内容页left1 end-->
+		
+		<div class="xz_pic_xg">
+			<div class="left2_rel">
+				<h2>相关图片</h2>
+			</div>
+			<ul>
+            {pc:content action="relation" relation="$relation" catid="$catid" num="6" keywords="$rs[keywords]"}
+				{loop $data $r}
+				<li>
+					<a href="{ChangeUrl($r[url])}" target="_blank">
+					  <img src="{$r[thumb]}"  alt="{$r[title]}">
+					  <em class="title1">{$r[title]}</em>
+					  <span></span>
+					  <em class="bg"></em>					 
+					 </a>				
+				</li>
+                {/loop}
+			{/pc}
+			</ul>
+		</div>
+		
+	</div><!--内容页左边 end-->
+	
+	<div class="videoCon_right">
+	  <div class="widget p20">
+		<div class="widget_head general">
+		  <h2>今日推荐</h2>
+		  </div>
+		  <ul class="sxg_pic">
+          {pc:content  action="lists" catid="12" order="id DESC" num="6"}
+          {loop $data $r}
+			  <li>
+				  <a href="{ChangeUrl($r[url])}" class="small" target="_blank">
+					  <img src="{$r[thumb]}" alt="{$r[title]}">
+					  <em class="title1">{$r[title]}</em>
+					  <em class="bg"></em>				  
+				  </a>	
+			  </li>
+			 {/loop}
+		{/pc}
+		  </ul>
+		</div>
+	  <div class="hotgame p20">
+		  <div class=" hotgame_head general">
+			  <h3>热门游戏</h3>
+		  </div>
+		  <ul class="headlist">
+          {pc:content  action="position" posid="26" order="listorder DESC" num="15"}
+          {loop $data $r}
+			  <li class="head_li">
+				  <a href="{ChangeUrl($r[url])}" target="_blank">
+					  <img src="{$r[thumb]}"  alt="{$r[title]}">
+					  <em></em>
+					  <div class="hot-txt">
+						<p>{$r[title]}</p>
+					  </div>
+				  </a>			  </li>
+			  {/loop}
+		  {/pc}
+		  </ul>
+		</div>
+	</div><!--内容页右边 end-->
+</div><!--videoCon end-->	
+{template "content","footer"}
+
+<style>
+.pagebar a{display:inline-block;width:25px;height:25px;line-height:25px;border:1px solid #ccc;color:blue;}
+</style>
+<script>
+
+var picPageViews=function(paramsdata){
+	var _self=this;
+	var picIndex;
+	var total;
+	var params={
+		left:".lefton",
+		right:".srighton",
+		rule:/\d+_(\d+)\.html/i,
+		picEle:".mypic ul li",
+	};
+	
+	for(var t in paramsdata ){
+		params[t]=paramsdata[t];
+	}
+	
+	
+	
+	this.run=function(){
+		total=$(params.picEle).length;
+		_self.changePicIndex();
+		_self.picPrev();
+		_self.picNext();
+		
+	}
+	this.changePicIndex=function (){
+		 var url=window.location;
+		 var rule=params.rule;
+		 var result=rule.exec(url);
+		 if(!result){
+		 	picIndex=0;
+			return;
+		 }
+		 picIndex=result[1]-1;//alert(picIndex);
+		 $(params.picEle).hide();
+		 $(params.picEle).eq(picIndex).show();
+	}
+	
+	this.picNext=function (){
+		$(params.right).click(function(){
+			if(picIndex+1>total-1){
+				console.log('已看完01');
+				return false;
+			}
+			window.location=_self.getUrl(picIndex+2);
+		});
+	}
+	
+	this.picPrev=function (){
+		$(params.left).click(function(){
+			if(picIndex-1<0){
+				console.log('已看完02');
+				return false;
+			}
+			window.location=_self.getUrl(picIndex-1);
+		});
+	}
+	this.getUrl=function(i){//alert(i)
+		var reurl='';
+		var url=window.location.href;
+		if(url.match(/\d+_\d+\.html/i)){
+			reurl=url.replace(/_\d+\.html/i,'_'+i+'.html');
+		}else{
+			reurl=url.replace(/\.html/i,'_'+i+'.html');
+		}
+		return reurl;
+	}
+
+	this.run();
+
+}
+
+new picPageViews();
+
+</script>
+</body>
+</html>

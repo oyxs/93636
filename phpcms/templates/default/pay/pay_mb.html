@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>米币充值中心</title>
+    <link href="/statics/mb/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="/statics/mb/css/style.css" rel="stylesheet" type="text/css" />
+<body>
+<div class="v-header" id="msg" show-id="{$show}">
+    <div class="wrap clearfix">
+        <div class="v-head-fl">
+            <a href="http://www.93636.com/index.php?m=pay&c=deposit&a=pay_mb"  class="logo">
+                <img src="/statics/mb/images/logo.png" alt="米币充值中心">
+            </a>
+            <div class="h-txt">
+                <h1>充值中心</h1>
+                <span>VOUCHER CENTER</span>
+            </div>
+        </div>
+        <ul class="v-nav clearfix">
+            <li >
+                <a href="http://www.93636.com/" target="_blank">官网首页</a>
+            </li>
+            <li class="active">
+                <a href="http://www.93636.com/index.php?m=pay&c=deposit&a=pay_mb" target="_blank">充值中心</a>
+            </li>
+            <li>
+                <a href="http://www.93636.com/index.php?m=member&c=index" target="_blank">用户中心</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="v-container">
+    <div class="wrap clearfix">
+        <ul class="v-tab clearfix" id="v-tab">
+            <li class="active">
+                <a class="tab-wycz" href="">
+                    <i></i>我要充值
+                    <span></span>
+                </a>
+            </li>
+            <li >
+                <a class="tab-czjl" href="">
+                    <i></i>充值记录
+                    <span></span>
+                </a>
+            </li>
+            <li >
+                <a class="tab-xfjl" href="">
+                    <i></i>消费记录
+                    <span></span>
+                </a>
+            </li>
+        </ul>
+        <div class="v-tab-container" id="t-container">
+            <div class="v-tab-content mod-wycz cur" >
+                <h3 class="v-content-hd">
+                    <i></i>填写充值信息
+                </h3>
+                <form action="http://www.93636.com/alipay/alipayapi.php" method="post" id="pay_form" class="v-content-bd" >
+                    <div class="choose-game-box control-group clearfix">
+                        <label class="control-label">可选游戏：</label>
+                        <div class="control">
+                            <input type="text" id="choose-game" name="game_name">
+                            <span class="tip-txt"><i>*</i>只有在可选框内的游戏才能使用平台币</span>
+                        </div>
+                        <div class="mchoose-box" >
+                            <span class="hd"></span>
+                            <!--<div class="choose-list" id="choose-list">-->
+                            <!--<ul class="clearfix">-->
+                            <!--<li class="act"><a href="">A</a></li>-->
+                            <!--<li ><a href="">B</a></li>-->
+                            <!--<li><a href="">C</a></li>-->
+                            <!--<li><a href="">D</a></li>-->
+                            <!--<li><a href="">E</a></li>-->
+                            <!--<li><a href="">F</a></li>-->
+                            <!--<li><a href="">G</a></li>-->
+                            <!--<li><a href="">H</a></li>-->
+                            <!--<li><a href="">I</a></li>-->
+                            <!--<li><a href="">J</a></li>-->
+                            <!--<li><a href="">K</a></li>-->
+                            <!--<li><a href="">L</a></li>-->
+                            <!--<li><a href="">M</a></li>-->
+                            <!--<li><a href="">N</a></li>-->
+                            <!--<li><a href="">O</a></li>-->
+                            <!--<li><a href="">P</a></li>-->
+                            <!--<li><a href="">Q</a></li>-->
+                            <!--<li><a href="">R</a></li>-->
+                            <!--<li><a href="">S</a></li>-->
+                            <!--<li><a href="">T</a></li>-->
+                            <!--<li><a href="">U</a></li>-->
+                            <!--<li><a href="">V</a></li>-->
+                            <!--<li><a href="">W</a></li>-->
+                            <!--<li><a href="">X</a></li>-->
+                            <!--<li><a href="">Y</a></li>-->
+                            <!--<li><a href="">Z</a></li>-->
+                            <!--</ul>-->
+                            <!--<span class="underline" ></span>-->
+                            <!--</div>-->
+                            <div class="choose-content" id="choose-content">
+                                <ul class="clearfix">
+                                    {loop $game $r}
+                                    <li>
+                                        <a href="">
+                                            <i></i>
+                                            {$r[game_name]}
+                                        </a>
+                                    </li>
+                                    {/loop}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="account-box control-group clearfix">
+                        <label class="control-label">充值账号：</label>
+                        <div class="control">
+                            <input type="text" name="username" value="">
+                            <span class="tip-txt"><i>*</i>填写自己游戏账号或修改TA游戏账号充值</span>
+                        </div>
+                    </div>
+                    <div class="confirm-account-box control-group clearfix">
+                        <label class="control-label">确认账号：</label>
+                        <div class="control">
+                            <input type="text" name="username_check" value="">
+                            <span class="tip-txt"><i>*</i>在填写充值用户名时请仔细填写并确认，以免充值错误</span>
+                        </div>
+                    </div>
+                    <div class="pay-count-box control-group clearfix">
+
+
+                        <span class="control-label">充值金额：</span>
+                        <div class="controls-option">
+                            <label class="channel-radio ten active" data-num="10">
+                                <a class="radio-box " href="javascript:void(0);">
+                                    10元
+                                    <i class="icon-check"></i>
+                                </a>
+                            </label>
+                            <label class="channel-radio fifty" data-num="50">
+                                <a class="radio-box" href="javascript:void(0);">
+                                    50元
+                                    <i class="icon-check"></i>
+                                </a>
+                            </label>
+                            <label class="channel-radio hundred" data-num="100">
+                                <a class="radio-box" href="javascript:void(0);">
+                                    100元
+                                    <i class="icon-check"></i>
+                                </a>
+                            </label>
+                            <label class="channel-radio two-hundred" data-num="200">
+                                <a class="radio-box" href="javascript:void(0);">
+                                    200元
+                                    <i class="icon-check"></i>
+                                </a>
+                            </label>
+                            <div class="control">
+                                <input type="text" name="pay" id="pay-count" maxlength="5" value="10" onfocus="if (value =='自定义金额'){value =''}" onblur="if (value ==''){value='自定义金额'}">
+                                <span class="input-txt">元</span>
+                                <span class="tip-txt">（1人民币=10米币）</span>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="pay-method-box control-group clearfix" data-method="1">
+                            <span class="control-label">支付方式：</span>
+                            <div class="controls-option">
+                                <label class="channel-radio active" data-kind="1">
+                                    <a class="radio-box " href="javascript:void(0);">
+                                        <i class="i-method"></i>支付宝
+                                        <i class="icon-check"></i>
+                                    </a>
+                                </label>
+                                <label class="channel-radio bank" data-kind="2">
+                                    <a class="radio-box" href="javascript:void(0);" >
+                                        <i class="i-method"></i>银联
+                                        <i class="icon-check"></i>
+                                    </a>
+                                </label>
+                                <label class="channel-radio weixin" data-kind="3">
+                                    <a class="radio-box" href="javascript:void(0);" >
+                                        <i class="i-method"></i>微信
+                                        <i class="icon-check"></i>
+                                    </a>
+                                </label>
+                            </div>
+                        </div>
+                    <input type="hidden" name="number" value="{$number}" />
+                    <input type="hidden" name="trade_name" value="{$trade_name}" />
+                    <input type="hidden" name="trade_description" value="{$trade_description}" />
+                    <input type="hidden" name="type" value="1" id="pay_type"/>
+                    <input type="hidden" name="dosubmit" value="1"/>
+                    <div class="pay-account control-group clearfix">
+                        <span class="control-label">您将获得：</span>
+                        <h5>
+                            <em class="pay-fee">100</em>米币
+                        </h5>
+                    </div>
+                    <div class="submit-box control-group">
+                        <a href="#"   id="dosubmit">立即支付</a>
+                    </div>
+                </form>
+                <p class="contact">
+                    <i></i>如有疑问, 请在线客服QQ：617736071
+                    <a class="i-kf" href="">
+                        <img src="/statics/mb/images/i_qqkf.png">
+                    </a>
+                </p>
+
+            </div>
+            <div class="v-tab-content mod-czjl" >
+                <h3 class="v-content-hd">
+                    <i></i>快速查询记录
+                </h3>
+                <form action="" class="v-content-bd order-query">
+                    <div class="date-time control-group clearfix" data-kind="1">
+                        <label class="control-label">充值时间：</label>
+                        <div class="control">
+                            <a href="javascript:void(0);" class="dropdown-link">
+                                <span class="link-txt">全部
+                                 <i></i>
+                                </span>
+                                <div class="dropdown">
+                                    <ul>
+                                        <li type="1">
+                                            全部
+                                        </li>
+                                        <li type="2">
+                                            一天内
+                                        </li>
+                                        <li type="3">
+                                            一周内
+                                        </li >
+                                        <li type="4">
+                                            一月内
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-status control-group clearfix" data-kind="2">
+                        <label class="control-label">订单状态：</label>
+                        <div class="control">
+                            <a href="javascript:void(0);" class="dropdown-link">
+                                <span class="link-txt">全部
+                                 <i></i>
+                                </span>
+                                <div class="dropdown">
+                                    <ul>
+                                         <li type="2">
+                                            全部
+                                        </li>
+                                        <li type="1">
+                                           成交
+                                        </li>
+                                        <li type="0">
+                                            未成交
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-number control-group clearfix" data-ordernum=''>
+                        <label class="control-label">订单号：</label>
+                        <div class="control">
+                            <input type="text" value="" >
+                        </div>
+                    </div>
+                    <div class="search-box control-group">
+                        <a href="javascript:void(0);" id="cz-submit">立即查询</a>
+                    </div>
+                </form>
+                <div class="table-list">
+                    <div class="m-table">
+                        <ul class="clearfix" id="czjl-ul">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="load-more">
+                    <a href="javascript:void(0);">
+                        点击加载更多
+                    </a>
+                </div>
+            </div>
+            <div class="v-tab-content mod-xfjl" >
+                <h3 class="v-content-hd">
+                    <i></i>快速查询记录
+                </h3>
+                <form action="" class="v-content-bd order-query">
+                    <div class="date-time control-group clearfix" data-kind="1">
+                        <label class="control-label">消费时间：</label>
+                        <div class="control">
+                            <a href="javascript:void(0);" class="dropdown-link">
+                                <span class="link-txt">全部
+                                 <i></i>
+                                </span>
+                                <div class="dropdown">
+                                    <ul>
+                                          <li type="1">
+                                            全部
+                                        </li>
+                                        <li type="2">
+                                            一天内
+                                        </li>
+                                        <li type="3">
+                                            一周内
+                                        </li>
+                                        <li type="4">
+                                            一月内
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-status control-group clearfix" data-kind="4">
+                        <label class="control-label">消费状态：</label>
+                        <div class="control">
+                            <a href="javascript:void(0);" class="dropdown-link">
+                                <span class="link-txt">全部
+                                 <i></i>
+                                </span>
+                                <div class="dropdown">
+                                    <ul>
+                                         <li type="4">
+                                            全部
+                                        </li>
+                                        <li type="1">
+                                            待处理
+                                        </li>
+                                        <li type="2">
+                                            成功
+                                        </li>
+                                        <li type="3">
+                                            失败
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-number control-group clearfix" data-ordernum=''>
+                        <label class="control-label">订单号：</label>
+                        <div class="control">
+                            <input type="text" value="" >
+                        </div>
+                    </div>
+                    <div class="search-box control-group">
+                        <a href="javascript:void(0);" id="xf-submit">立即查询</a>
+                    </div>
+                </form>
+                <div class="table-list">
+                    <div class="m-table">
+                        <ul class="clearfix" id="xfjl-ul">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="load-more">
+                    <a href="javascript:void(0);">
+                        点击加载更多
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mask"></div>
+<div class="v-dialog">
+
+    <div class="dia-hd">
+        <h3>信息提示</h3>
+        <a href="" class="close"></a>
+    </div>
+    <!--充值成功-->
+    <div class="dia-bd">
+        <p class="suc"><i ></i>充值成功</p>
+    </div>
+    <!--充值失败-->
+    <!--<div class="dia-bd">-->
+    <!--<p class="err"><i ></i>充值失败</p>-->
+    <!--</div>-->
+    <div class="dia-fd">
+        <p>如有疑问，请联系客服：123456789</p>
+    </div>
+</div>
+<!--底部 footer-->
+<div class="foot">
+    <ul class="copyright">
+        <li>
+            <a href="/about/" target="_blank" rel="nofollow">关于我们</a> |
+            <a href="/statement/" target="_blank" rel="nofollow">免责声明</a> |
+            <a href="/contact/" target="_blank" rel="nofollow">联系我们</a> |
+            <a href="/ruanwen/" target="_blank" rel="nofollow">软文投稿</a> |
+            <a href="/hezuo/" target="_blank" rel="nofollow">商务合作</a> |
+            <a href="/sitemap/" target="_blank">网站地图</a>
+            <br>Copyright 2015 <a href="http://www.93636.com" target="_blank">93636手游网</a> 版权所有  闽ICP备14017636号-2  厦门米冠网络科技有限公司
+            <div class="census">
+                <script src="http://www.93636.com/statics/new_style/js/cnzz.js" type="text/javascript"></script><span id="cnzz_stat_icon_1256663213"><a href="http://www.cnzz.com/stat/website.php?web_id=1256663213" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="http://icon.cnzz.com/img/pic1.gif"></a></span><script src=" http://s4.cnzz.com/z_stat.php?id=1256663213&amp;show=pic1" type="text/javascript"></script><script src="http://c.cnzz.com/core.php?web_id=1256663213&amp;show=pic1&amp;t=z" charset="utf-8" type="text/javascript"></script>
+            </div>
+            <br>
+        </li>
+    </ul>
+</div>
+<script src="/statics/mb/js/Lib/jquery-1.8.3.min.js"></script>
+<script src="/statics/mb/js/index.js"></script>
+</body>
+</html>

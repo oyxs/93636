@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>模拟器游戏库</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="/statics/mnq/style/yueact.css" rel="stylesheet" type="text/css">
+    <script src="/statics/mnq/js/jquery.js" type="text/javascript"></script>
+    <script type="/statics/mnq/text/javascript" src="js/superslide.2.1.js"></script>
+	<script src="/statics/mnq/js/index.js" type="text/javascript"></script>
+	<div style="display:none"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_1256716135'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256716135%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></div>
+
+<script>
+    function InstallAndRun(id){
+              $.ajax({
+                url: "http://mnq.93636.com/index.php?m=help&a=gethree",
+                cache: false,
+                success: function(html){
+                  var jdata=eval('('+html+')');
+                       for(var i=0;i<jdata.length;i++){
+                           if(id==jdata[i].id){
+                               var anlink = jdata[i].anlink;
+                               var title = jdata[i].title;
+                               var thumb = jdata[i].thumb;
+                           }
+                        }
+                        window.external.InstallApp(anlink,title,thumb);
+                        //alert(anlink+title+thumb);
+                    }
+            })
+        }
+    </script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div class="header">
+    <div class="break">
+        <a onclick="window.history.go(-1)"><em></em></a>
+        <a onclick="window.history.go(1)"><em class="new1"></em></a>
+        <a onclick="window.location.reload()"><em class="new2"></em></a>
+    </div>
+    <ul class="navlist">
+        <li class="on"><a href="http://mnq.93636.com/">首页</a></li>
+        <li><a href="/games/">游戏库</a></li>
+        <li><a href="/mnq/wangyou/">网游</a></li>
+        <li><a href="/mnq/danji/">单机</a></li>
+        <li><a href="/heji/?typeid=120">手游合集</a></li>
+    </ul>
+    <div class="search">
+        <form id="seaform" name="seaform" action="/index.php" method="get">
+                    <span class="sd-l sd-f">
+                        <span class="down" style="display: block;"></span>
+                        <input name="q" type="text" id="search_txt" class="title" value="" size="20" maxlength="30" placeholder="" autocomplete="off">
+                        <input type="hidden" name="m" value="search">
+                        <input type="hidden" name="c" value="index">
+                        <input type="hidden" name="a" value="init">
+                        <input type="hidden" name="typeid" value="55">
+                        <input type="hidden" name="siteid" value="1">
+                        <input type="hidden" name="forward" value="">
+                    </span>
+            <input class="r bian" type="submit" name="Submit" value="找游戏">
+        </form>
+    </div>
+</div>
+    <div class="hotcon">
+        <div class="select">
+            <p><span>排序</span><i class="minus"></i></p>
+            <ul class="new-px" style=" display: none;">
+                <li>按最新</li>
+                <li>按人气</li>
+            </ul>
+        </div>
+        <div class="mar-jl">
+            <ul class="style">
+                <li><a href=""><img src="/statics/mnq/images/3-(2).png" alt=""></a></li>
+                <li><a href=""><img src="/statics/mnq/images/3-(1).png" alt=""></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="conmiddle">
+        <ul class="list-games on">
+        {pc:wap action="lists" typeid="10" num="16" where="anlink!=''&&status=99" order="updatetime DESC" return="data" page="$page"}
+            {loop $data $r}
+            <li><div class="unit">
+                <a href="{my_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"><strong>{$r[title]}</strong><em>{$r[downloadtimes]}下载 |{$r[size]}</em></a>
+                <a onClick="InstallAndRun({$r[id]});_czc.push(['_trackEvent', '游戏库', '安装', 'updatetime',,'']);" class="button">安装</a>
+            </div></li>
+            {/loop}
+        {/pc}
+        </ul>
+        <ul class="list-games">
+        {pc:wap action="lists" typeid="10" num="16" where="anlink!=''&&status=99" order="downloadtimes DESC" return="data" page="$page"}
+            {loop $data $r}
+            <li><div class="unit">
+                <a href="{my_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"><strong>{$r[title]}</strong><em>{$r[downloadtimes]}下载 |{$r[size]}</em></a>
+                <a onClick="InstallAndRun({$r[id]});_czc.push(['_trackEvent', '游戏库', '安装', 'downloadtimes',,'']);" class="button">安装</a>
+            </div></li>
+            {/loop}
+        {/pc}
+        </ul>
+        <div class="page">{$pages}</div>
+    </div>
+    <script type="text/javascript">
+        jQuery(".slider .bd li").first().before(jQuery(".slider .bd li").last());
+        jQuery(".slider").slide({titCell: ".hd ul", mainCell: ".bd ul", effect: "leftLoop", autoPlay: true, vis: 3, autoPage: true, trigger: "click"});
+    </script>
+</body>
+</html>

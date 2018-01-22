@@ -1,0 +1,61 @@
+<div id="orderInfo">
+    <div class="ico_title">微信扫码支付</div>
+    <div class="form_wrap account">
+        <div class="form_list">
+            <span class="list_title">商户订单号：</span>
+            <span class="list_val">
+                <input name="out_trade_no" value="" readonly="readonly" maxlength="32" size="32" placeholder="长度32" id="out_trade_no">
+            </span>
+            <i>*</i><em>长度32</em>
+        </div>
+        <div class="form_list">
+            <span class="list_title">商品描述：</span>
+            <span class="list_val">
+                <input name="body" value="" readonly="readonly" maxlength="64" size="32" placeholder="长度127" >
+            </span>
+            <i>*</i><em>长度64</em>
+        </div>
+        <!--<div class="form_list">
+            <span class="list_title">附加信息：</span>
+            <span class="list_val">
+                <input name="attach" value="" maxlength="128" size="32" placeholder="长度128">
+            </span>
+            <em>长度128</em>
+        </div>-->
+        <div class="form_list">
+            <span class="list_title">总金额：</span>
+            <span class="list_val">
+                <input type="hidden" name="total_fee" />
+                <input name="total_fee_pay"  readonly="readonly" value="" placeholder="元">
+            </span>
+            <i>*</i><em>单位：<font color="red">元</font></em>
+        </div>
+        <input type="hidden" name="mch_create_ip" vtype="ip" value="127.0.0.1" maxlength="16" placeholder="长度16">
+        <!--<div class="form_list">
+             <span class="list_title">终端IP：</span>
+             <span class="list_val">
+
+             </span>
+             <i>*</i><em>长度16</em>
+         </div>
+
+         <div class="form_list">
+             <span class="list_title">订单生成时间：</span>
+             <span class="list_val">
+                 <input name="time_start" vtype="time" value="" maxlength="14" placeholder="长度14">
+             </span>
+             <em>长度14:yyyyMMddhhmmss</em>
+         </div>
+         <div class="form_list">
+             <span class="list_title">订单超时时间：</span>
+             <span class="list_val">
+                 <input name="time_expire" vtype="time" value="" maxlength="14" placeholder="长度14">
+             </span>
+             <em>长度14:yyyyMMddhhmmss</em>
+         </div>-->
+        <div class="form_list">
+            <span class="list_title"></span>
+            <span class="list_val submit btn btn_blue" id="sub">生成微信扫码</span>
+        </div>
+    </div>
+</div>

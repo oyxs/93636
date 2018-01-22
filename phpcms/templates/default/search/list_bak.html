@@ -1,0 +1,150 @@
+{template 'search', 'header'}		
+
+<div class="laction"><i></i>当前位置：<a href="/">首页</a> > 搜索"{$search_q}"</div>
+
+<div class="xz_search">
+	<div class="results-left">
+		<dl>
+        	<dt>网页结果</dt>
+            <dd>
+            
+            	<a href="?m=search&c=index&a=restart_search&typeid=1&q={urlencode($search_q)}&siteid={$siteid}&time={$time}" {if 1==$typeid} class="ac"{/if}><em></em>游戏库</a>
+				<a href="?m=search&c=index&a=restart_search&typeid=2&q={urlencode($search_q)}&siteid={$siteid}&time={$time}" {if 2==$typeid} class="ac"{/if}><em></em>文章</a>
+				<a href="?m=search&c=index&a=restart_search&typeid=3&q={urlencode($search_q)}&siteid={$siteid}&time={$time}" {if 3==$typeid} class="ac"{/if}><em></em>礼包</a>
+           
+            </dd>
+        </dl>   
+<!--     	
+		<dl>
+        	<dt>按时间搜索</dt>
+            <dd>
+            <a href="?m=search&c=index&a=init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=all" {if $time=='all' || empty($time)}class="ac"{/if}><em></em>全部时间</a>            	
+			<a href="?m=search&c=index&a=init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=day" {if $time=='day'}class="ac"{/if}	><em></em>一天内</a>
+			<a href="?m=search&c=index&a=init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=week" {if $time=='week'}class="ac"{/if} ><em></em>一周内</a>
+            <a href="?m=search&c=index&a=init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=month" {if $time=='month'}class="ac"{/if} ><em></em>一月内</a>
+            <a href="?m=search&c=index&a=init&typeid={$typeid}&q={urlencode($search_q)}&siteid={$siteid}&time=year" {if $time=='year'}class="ac"{/if} ><em></em>一年内</a>
+            </dd>
+        </dl>   
+-->     	
+		<dl>
+        	<dt>搜索历史</dt>
+            <dd id='history_ul'>
+            </dd>
+        </dl>        	
+    </div>
+        
+	<div class="res_right">
+		{if $typeid==2}
+		<div class="results-right">
+			<h2 class="h2_jg">获得约<i>{$totalnums}</i>条结果（用时{sprintf("%01.2f", $execute_time)}秒）</h2>
+			<ul>
+			{php $c = end(array_keys($data)); }  
+			{loop $data $i $r}
+				<li class="xz_sea_li {if $i==$c}li_none{/if}">
+					<h2><a href="{$r[url]}" target="_blank">{$r[title]}</a></h2>
+					<a target="_blank" title="{$r[title]}" href="{$r[url]}"><img class="img" alt="{$r[title]}" src="{$r[thumb]}"></a>
+					<div class="txt_wz">
+						<p class="txt_peren">{$r[description]}</p>
+						<p class="sj_timpic">{format::date($r[inputtime], 1)}</p>				
+					</div>
+				</li>
+			{/loop}
+			{if empty($data)}未找到结果{/if}
+			</ul>
+		</div>
+		{/if}
+		
+		{if $typeid==1}
+		<div class="res_yxk_right">
+			<h2 class="h2_jg">获得约<i>{$totalnums}</i>条结果（用时{sprintf("%01.2f", $execute_time)}秒）</h2>
+			<ul>
+			{php $c = end(array_keys($data)); }  
+			{loop $data $i $r}
+			{if $r['status']==99}
+				<li class="xz_sea_li {if $i==$c}li_none{/if}">
+					<div class="yxk_title"><h2><a href="{$r[url]}" target="_blank">{$r[title]}</a></h2><span class="time_pic">{format::date($r[inputtime], 1)}</span></div>
+					<a class="yxk_img" target="_blank" title="{$r[title]}" href="{$r[url]}"><img alt="{$r[title]}" src="{$r[thumb]}"><i></i></a>
+					<div class="txt_wz"><p class="txt_peren"><a href="{$r[url]}">{$r[description]}</a></p></div>
+				</li>
+				{/if}
+			{/loop}
+			{if empty($data)}未找到结果{/if}		
+			</ul>
+		</div>
+		{/if}
+
+		{if $typeid==3}
+		<div class="res_yxk_right">
+			<h2 class="h2_jg">获得约<i>{$totalnums}</i>条结果（用时{sprintf("%01.2f", $execute_time)}秒）</h2>
+			<ul>
+			{php $c = end(array_keys($data)); }  
+			{loop $data $i $r}
+			
+				<li class="xz_sea_li {if $i==$c}li_none{/if}">
+					<div class="yxk_title"><h2><a href="{$r[url]}" target="_blank">{$r[title]}</a></h2><span class="time_pic">{format::date($r[inputtime], 1)}</span></div>
+					<a class="yxk_img" target="_blank" title="{$r[title]}" href="{$r[url]}"><img alt="{$r[title]}" src="{$r[thumb]}"><i></i></a>
+					<div class="txt_wz"><p class="txt_peren"><a href="{$r[url]}">{$r[description]}</a></p></div>
+				</li>
+				
+			{/loop}
+			{if empty($data)}未找到结果{/if}		
+			</ul>
+		</div>
+		{/if}
+
+		<div class="seachd_page">{$pages}</div>	
+		
+	</div>
+		
+</div>
+
+
+{template "content","footer"}
+
+<script type="text/javascript" src="http://www.phpcms.com/statics/js/cookie.js"></script> 
+<script type="text/javascript">
+$(document).ready(function() {
+	var q = $("#search_txt").val();
+	var typeid = $("#typeid").val();
+	search_history = getcookie('search_history');
+	
+	if(search_history!=null && search_history!='') {
+		search_s = search_history.split(",");
+		var exists = in_array(q+'|'+typeid, search_s);
+		//不存在
+		if(exists==-1) {
+			if(search_s.length > 5) {
+				search_history = search_history.replace(search_s[0]+',', "");
+			}
+			search_history += ','+q+'|'+typeid;
+		}
+		
+		//搜索历史
+		var history_html = '';
+		for(i=0;i<search_s.length;i++) {
+			var j = search_s.length - i - 1;
+			search_s_arr = search_s[j].split("|");
+			var keyword = search_s_arr[0];
+			var keywordtypeid = search_s_arr[1];
+			history_html += '<a href="?m=search&c=index&a=init&typeid='+keywordtypeid+'&q='+keyword+'">'+keyword+'</a>';
+		}
+		$('#history_ul').html(history_html);
+	} else {
+		search_history = q+'|'+typeid;
+	}
+
+	setcookie('search_history', search_history, '1000');
+
+	function in_array(v, a) {
+		var i;
+		for(i = 0; i < a.length; i++) {
+			if(v === a[i]) {
+				return i;
+			}
+		}
+		return -1;
+	}
+});
+</script>
+</body>
+</html>

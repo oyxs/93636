@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>会员中心</title>
+<meta name="keywords" content=" 会员中心">
+<meta name="description" content="会员中心" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/statics/new/style/reset.css" rel="stylesheet" type="text/css">
+<script src="/statics/new/js/jquery.js" type="text/javascript"></script>
+<script src="/statics/new/js/miguan_wjzj.js" type="text/javascript"></script>
+<script type="text/javascript" src="/statics/js/formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/statics/js/formvalidatorregex.js" charset="UTF-8"></script>
+</head>
+<body> 
+	
+<div id="header">
+	<div class="logo"><a href="{$siteinfo['domain']}"><img src="/statics/new/images/logon.png" height="60" /></a><h3>{L('member_center')}</h3></div>
+	{php $siteinfo = siteinfo($this->memberinfo['siteid']);}
+	{php $this->menu_db = pc_base::load_model('member_menu_model');}
+	{php $menu = $this->menu_db->select(array('display'=>1, 'parentid'=>0), '*', 20 , 'listorder');}
+    <div class="link">{L('hellow')} {get_nickname()}<span> | </span>
+	<a href="{APP_PATH}index.php?m=member&c=index&a=logout">{L('logout')}</a>
+	<span> | </span><a href="{$siteinfo['domain']}">{L('index')}</a> </div>
+	<div class="nav-bar">
+    	<map>
+        	<ul class="nav-site cu-span">
+				{loop $menu $k $v}
+				<li>
+					{if $v['isurl']}
+						<a href="{$v['url']}" target="_blank"><span>{L($v['name'], '', 'member_menu')}</span></a>
+					{else}
+						<a href="index.php?m={$v['m']}&c={$v['c']}&a={$v['a']}&{$v['data']}" {if $k==$_GET['t']}class="on"{/if}><span>{L($v['name'], '', 'member_menu')}</span></a>
+					{/if}
+					</li>
+					<li class="line">|</li>
+				{/loop}
+            </ul>
+        </map>
+    </div>
+</div>
+
+<div id="memberArea">
+    <div class="hyzx block" id="cont_tow_1" style=" display:block;">
+        <div class="col-left col-1 left-memu">
+            <h5 class="title"><img src="/statics/new/images/m_1.png" width="15" height="15" alt=""> 管理中心</h5>
+            <ul>
+                <li><a href="index.php?m=member&c=index&a=init"> 我的礼包</a></li>
+                <li><a href="index.php?m=member&c=index&a=myfav"> 我的收藏</a></li>
+                <li><a href="index.php?m=member&c=index&a=mydown"> 下载管理</a></li>
+            </ul>
+            <h6 class="title">财务管理</h6>
+            <ul>
+                <li><a href="index.php?m=pay&c=deposit&a=pay"><img src="/statics/new/images/m_4.png" width="15" height="16" alt=""> 在线充值</a></li>
+                <li><a href="index.php?m=pay&c=deposit&a=init"><img src="/statics/new/images/m_8.png" width="16" height="16" alt=""> 支付记录</a></li>
+                <li class="on"><a href="index.php?m=pay&c=spend_list&a=init"><img src="/statics/new/images/table-information.png" width="16" height="16" alt=""> 消费记录</a></li>
+                <li><a href="index.php?m=member&c=index&a=change_credit"><img src="/statics/new/images/coins_add.png" width="16" height="16" alt=""> 积分购买/兑换</a></li>
+            </ul>
+        </div>
+        
+        <div class="col-auto">
+			<div class="col-1 ">
+				<h6 class="title">消费记录</h6>
+				<div class="content">
+					<form name="searchform" action="{APP_PATH}index.php?m=pay&c=spend_list&a=init" method="get" >
+						<input type="hidden" value="pay" name="m">
+						<input type="hidden" value="spend_list" name="c">
+						<input type="hidden" value="init" name="a">
+						<div class="search">
+						订单时间  {form::date('starttime',format::date($starttime))} 到   {form::date('endtime',format::date($endtime))}
+						{form::select(array(''=>'消费类型', '1'=>'金钱', '2'=>'积分'),$type,'name="type"')}  
+						<input type="submit" value="查询" class="button" name="dosubmit">
+						</div>
+					</form>
+					<table width="100%" cellspacing="0"  class="table-list">
+				        <thead>
+				            <tr>
+				            <th width="20%">消费内容</th>
+				            <th width="20%">时间</th>
+				            <th width="15%">消费类型</th>
+				            <th width="8%">数量</th>
+				            </tr>
+				        </thead>
+						<tbody>
+							{loop $list $info} 
+							<tr>
+								<td width="20%" align="center">{$info['msg']}</td>
+								<td  width="20%" align="center">{format::date($info['creat_at'], 1)}</td>
+								<td width="15%" align="center">{if $info[type]==1}金钱{elseif $info[type]==2}积分{/if}</td>
+								<td width="8%" align="center">{$info['value']}</td>
+							</tr>
+							{/loop}
+				    	</tbody>
+				    </table>
+				
+					<div id="pages"> {$pages}</div>
+				</div>
+				<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+			</div>
+		</div>
+		
+    </div>    
+</div>
+
+<div class="foot post">
+    <ul class="copyright">
+        <li>
+            <a href="http://youxi.wanjizhijia.com/aboutus/index.html">玩机之家</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/index.html">关于我们</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/site.html">网站地图</a> | 
+            <a>广告服务</a> | 
+            <a href="http://youxi.wanjizhijia.com/aboutus/contact.html">联系我们</a> |
+            <a>招聘信息</a> | 
+            <a>网站律师</a> | 
+            <a>会员注册</a> | 
+            <a>产品答疑</a>
+            <br>Copyright  2014 wanjizhijia.com 皖ICP备13015453号-2<br>
+            玩机之家 版权所有
+        </li>
+    </ul>
+</div>
+	
+</body>
+</html>

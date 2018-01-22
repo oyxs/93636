@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta name="MobileOptimized" content="620"/>
+<link id="adaptation" rel="canonical" href="{new_get_url()}" >
+<meta name="format-detection" content="telephone=no" />
+<?php
+    if($singleornet=='单机'){
+        $str_tit='<title>'.$title.'在线下载_'.$title.'玩法攻略_93636手游网'.'</title>';
+        $keywords=$title.',在线下载,攻略';
+        echo $str_tit;
+    }
+    else{
+        $str_tit='<title>'.$title.'在线下载_'.$title.'手游攻略,评测,资讯_93636手游网'.'</title>';
+        $keywords=$title.'手游,'.$title.'在线下载,'.$title.'攻略';
+        echo $str_tit;
+}
+?>
+<meta name="keywords" content="{$keywords}" />
+<meta name="description" content="{$description}" />
+<link href="http://www.93636.com/statics/wap/new_style/new_css/yueact.css" rel="stylesheet" type="text/css" />
+<link href="http://www.93636.com/statics/wap/new_style/new_css/swiper.css" rel="stylesheet" type="text/css" />
+<script src="http://www.93636.com/statics/wap/js/jquery.js" type="text/javascript"></script> 
+<script src="http://www.93636.com/statics/wap/new_style/new_js/top.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/wap/js/swiper.min.js" type="text/javascript"></script>
+    <script src="/statics/new_style/js/lib/jquery.cookie.js"></script>
+<style>.footer .copyright { height: 80px;}</style>
+<script>
+    $(document).ready(function() {
+        $(".xz-right a").click(function() {
+            i = $(".xz-right a").index(this);
+            $(".xz-right a").removeClass("cur");
+            $(this).addClass("cur");
+            $(".art-interfix ul").removeClass("on");
+            $(".art-interfix").find(" ul:eq(" + i + ")").addClass("on");
+        });
+    });
+</script>
+    <?php
+    //1256719128
+    if($_SERVER['HTTP_HOST']=='x.mm2358.com'){
+            echo ' <script>var _czc = _czc || [];_czc.push(["_setAccount", "1256719128"]);</script>';
+	}
+	if($_SERVER['HTTP_HOST']=='m.93636.com'){
+        echo ' <script>var _czc = _czc || [];_czc.push(["_setAccount", "1256719651"]);</script>';
+    }
+	?>
+ <script type="text/javascript">
+            var browser={
+                versions:function(){
+                    var u = navigator.userAgent, app = navigator.appVersion;
+                    return {
+                        trident: u.indexOf('Trident') > -1,
+                        presto: u.indexOf('Presto') > -1,
+                        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                        android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
+                        iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+                        iPad: u.indexOf('iPad') > -1, //是否iPad
+                        webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                        weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+                        qq: u.match(/\sQQ/i) == " qq" //是否QQ
+                    };
+                }(),
+                language:(navigator.browserLanguage || navigator.language).toLowerCase()
+            }
+            $(function(){
+                if(browser.versions.android){
+                    var info='android';
+                    var urls="{$down_url}";
+					$("#fix_bg").hide();
+					$("#yys").show();
+                    if(urls){
+                        $("#downs").attr('href', urls);
+                        $("#fix_down").attr('href', urls);
+                        $("#fix_down2").attr('href', urls);
+                        $("#downs").addClass("greds2");
+                    }else{
+                        $("#downs").addClass("gray");
+                        $("#fix_down").addClass("no_down");
+                    }
+                }
+                else if(browser.versions.iPhone||browser.versions.iPad){
+                    var info='IOS';
+                    var urls="{$applelink}";
+					$("#fix_bg").show();
+					$("#yys").hide();
+                    if(urls){
+                        $("#downs").attr('href', urls);
+                        $("#fix_down").attr('href', urls);
+                        $("#fix_down2").attr('href', urls);
+                        $("#downs").addClass("greds2");
+                    }else{
+                        $("#downs").addClass("gray");
+                        $("#fix_down").addClass("no_down");
+                    }
+                }
+                $("#downs").click(function(){
+                    var today = new Date();
+                    today.setHours(0);
+                    today.setMinutes(0);
+                    today.setSeconds(0);
+                    today.setMilliseconds(0);
+                    var oneday = 1000 * 60 * 60 * 24;
+                    var date = new Date(today * 1 + oneday * 1);
+                    var cootitle=info+"{$title}";
+                    var cookie=$.cookie(cootitle); //读取cookie
+                    if(cookie){
+                    }else{
+                        _czc.push(["_trackEvent", info, "{$title}", "立即下载","1","yt"]);
+                        $.cookie(cootitle,//写入cookie
+                                cootitle,//需要cookie写入的业务
+                                {
+                                    "path":"/", //cookie的默认属性
+                                    "expires":date //有效天数
+                                })
+                    }
+
+                });
+            });
+ </script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+</head>
+<body>
+{template "wap","header_wap"}
+<div class="content">
+    <div class="bourt">
+        <div class="link">
+            <a href="/">首页</a> ><a href="/games/">游戏宝库</a> >{if $singleornet=='单机'}<a href="/games/catid_{wap_catid($typeid)}_network_0_plate_9/">{wap_typename($typeid)}</a> {/if}{if $singleornet=='网游'}<a href="/games/catid_{wap_catid($typeid)}_network_1_plate_9/">{wap_typename($typeid)}</a> {/if}
+        </div>
+        <div class="new-box" id="content">
+                <div class="new-img"><img src="{$thumb}" alt="{$title}"></div>
+                <div class="new-info">
+                    <div class="yx-name"><h1>{$title}</h1></div>
+                    <p class="xx-box"><em class="xx-start xx-start{$recommend}"></em><span><span class="greds">{$recommend}</span> 分</span></p>
+                    <p class="style-box"><span>下载次数：{$downloadtimes}次</span><span>大小：{$size}</span></p>
+                </div>
+                <ul class="ad-list clear">
+                    <li><i></i>官方版</li>
+                    <li><i class="ad-img"></i>无广告</li>
+                    <li><i class="bd-img"></i>无病毒</li>
+                </ul>
+                 <div class="zx-donw">
+                    <a href="javascript:;" id="downs"  class="" >立刻下载</a>
+                 </div>
+				 <div class=''>
+				<!--<script type="text/javascript">-->
+				<!--/*93636——嵌入20:5 创建于 2016/11/21*/-->
+				<!--var cpro_id = "u2822709";-->
+				<!--</script>-->
+				<!--<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/cm.js"></script>-->
+				</div>
+            </div>
+        <div class="game-brief">
+            <div class="art-keywords">
+                <h3 class="title">游戏简介</h3>
+            </div>
+            <div class="tex limit">
+               {$rs['content']}
+            </div>
+            <?php
+            	$contents=str_split($rs['content']);
+            ?>
+            <div class="swiper-container cles">
+                <div class="swiper-wrapper">
+                	{loop $pictures $r}
+                    <div class="swiper-slide"><img src="{$r['url']}" alt="{$r['alt']}" class="cc"></div>
+                    {/loop}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <script>
+                var mySwiper = new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    spaceBetween: 30,
+                    centeredSlides: true,
+                    autoplay: 2500,
+                    autoplayDisableOnInteraction: false
+                });
+                var d = document.getElementById("banner");
+                    if (d != null) {
+                        var $navScroll = $("#banner");
+                        var $fixedNav = $(".head");
+                        var navTop = $navScroll.offset().top + $navScroll.height();
+                        var hh = $fixedNav.height();
+                        $(window).on("scroll", function() {
+                            var wt = $(this).scrollTop();
+                            if (wt > navTop) {
+                                $fixedNav.addClass('head_fixed');
+                                $("#main").css("margin-top", hh);
+                            } else {
+                                $fixedNav.removeClass('head_fixed');
+                                $("#main").css("margin-top", "0px");
+                            }
+                        });
+                    }
+            </script>
+        </div>
+
+        <div class="art-interfix">
+            <div class="xz-wzlsit">
+                <div class="art-keywords art-bule">
+                    <h3 class="title art-bule">游戏资讯 </h3>
+                </div>
+            </div>
+            {pc:get sql="select * from 93636_news where catid='2,1,3' and gamename = '$title' and status =99 ORDER BY id DESC" return="data" start="0" num="5"}
+            {if empty($data)}
+            {pc:get sql="select * from 93636_news where catid='2,1,3'  and status =99 ORDER BY id DESC"  return="data" start="0" num="5"}
+            {/if}
+            <ul class="art-box disy on">
+            	{loop $data $r}
+                <li><a href="{my_show_url($r[catid],$r[id])}">{$r[title]}</a></li>
+                {/loop}
+            </ul>
+            {/pc}
+           <!--{pc:get sql="select * from 93636_news a where catid='2,29,30' and a.title like '%$title%'" return="data" start="5" num="5"}
+            <ul class="art-box disy">
+            	{loop $data $r}
+                <li><a href="{my_show_url($r[catid],$r[id])}">{$r[title]}</a></li>
+                {/loop}
+            </ul>
+            {/pc}-->
+        </div>
+       <!-- <div class="art-comment">
+            <h3 class="title">网友评论:</h3>
+            <iframe src="http://m.93636.com/index.php?m=comment&c=index&a=init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
+<!--            <div class="txt-box"><textarea id="saytext" name="content"></textarea></div>
+            <div class="fb-new"><a href="javascript:void(0)">发布</a></div>
+            <ul class="wy-maseg">
+                <li>
+                    <div class="wy-txt">
+                        <img src="pic/555.png" alt="">
+                        <p>93636玩家<span class="spos">来自于</span><span>网页版</span> <em class="rq-box">2015-10-10</em></p>
+                        <p class="discuss">很好很好很好很好很好很很好很好很好很好很好很好很好很好很好很好好很好很好很好很好</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="wy-txt">
+                        <img src="pic/555.png" alt="">
+                        <p>93636玩家<span class="spos">来自于</span><span>网页版</span> <em class="rq-box">2015-10-10</em></p>
+                        <p class="discuss">很好很好很好很好很好很很好很好很好很好很好很好很好很好很好很好好很好很好很好很好</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="wy-txt">
+                        <img src="pic/555.png" alt="">
+                        <p>93636玩家<span class="spos">来自于</span><span>网页版</span> <em class="rq-box">2015-10-10</em></p>
+                        <p class="discuss">很好很好很好很好很好很很好很好很好很好很好很好很好很好很好很好好很好很好很好很好</p>
+                    </div>
+                </li>
+            </ul>
+            <a href="" class="ck-more">点击查看更多</a>
+        </div>--><!--art-comment-->
+        <div class="art-game">
+            <div class="art-keywords">
+                <h3 class="title">推荐游戏</h3>
+            </div>
+             {pc:wap  action="position" posid="26" typeid="10" order="listorder DESC" num="6"}
+            <ul class="art-gamelists">
+            	{loop $data $r}
+                <li><a id="mobileDown" href="{mynewurl($r[url])}" class="gameico" ><img src="{$r[thumb]}" alt="{$r[title]}"> <span>{$r[title]}</span></a> <a id="mobileDown2" href="{mynewurl($r[url])}" class="down"> 下载</a></li>
+                {/loop}
+            </ul>
+            {/pc}
+        </div>
+    </div>
+</div>
+<!--<div class="game-net" id="">
+	<a href="" id="">
+		<img class="icon" src="http://www.93636.com/statics/wap/new_style/new_img/flo-pic.png" alt="">
+		<div class="fix_info">
+			<p>关注93636公众号</p>
+			<span>王者荣耀每周礼包 查询你的真正实力</span>
+		</div>
+        <img class="fix_ewm" src="http://www.93636.com/statics/wap/new_style/new_img/93636ewm.jpg" alt="">
+	</a>
+</div>-->
+
+<!-- <div class="fix_bg" id="fix_bg" style="display: none;">
+         <a href="" id="fix_down2">
+           <div class="fix_l">
+                
+                <span class="fix_pic"><img src="{$thumb}" alt="{$title}"></span>
+                <div class="fix_info">
+                    <p>{$title}</p>
+                    <em>游戏大小：{$size}</em>
+                </div>
+            </div>
+            <div  class="fix_r"><span id="fix_down" class="" >立刻下载</span></div>
+           </a> 
+        </div>
+<div class="fix_bg-1 fix_bg" id="yys" style="display: none;"> 
+		{pc:get sql="SELECT * from 93636_game where title='少女咖啡枪'" return="data" num="1"}
+		{loop $data $r}
+         <a href="{if $r[qmlink]!=''}{$r[qmlink]}{elseif $r[guanlink]!=''}{$r[guanlink]}{else}{$r[anlink]}{/if}" id="fix_down2">
+           <div class="fix_l">
+                
+                <span class="fix_pic"><img src="{$r[thumb]}" alt=""></span>
+                <div class="fix_info">
+                    <p>{$r[title]}</p>
+                    <em>游戏大小：{$r[size]}</em>
+                </div>
+            </div>
+            <div  class="fix_r"><span id="fix_down" class="" ></span></div>
+           </a> 
+		   {/loop}
+            {/pc}
+        </div> -->
+{template "wap","footer_wap"}
+</body>
+</html>

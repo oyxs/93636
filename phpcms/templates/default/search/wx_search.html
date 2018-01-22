@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$search_q}_93636手游网</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta  name="applicable-device" content="mobile">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://www.93636.com/statics/wap/weixin/css/style.css">
+</head>
+<body>
+<div class="mod-search">
+    <div class="m-search">
+        <i class="back" onclick="history.go(-1)"></i>
+        <form id="seaform" name="seaform" action="/index.php?m=search&c=index&a=wx_search" method="get">
+            <input class="in-sear" id="j-search" name="q" placeholder="输入游戏名称">
+            <input type="hidden" name="m" value="search">
+            <input type="hidden" name="c" value="index">
+            <input type="hidden" name="a" value="wx_search">
+            <input type="hidden" name="typeid" value="1">
+            <input type="hidden" name="siteid" value="1">
+            <input type="hidden" name="forward" value="">
+            <button class="search-btn" type="submit">搜索</button>
+        </form>
+    </div>
+</div>
+<div class="search-list">
+    <ul id="content">
+        {if empty($result)}
+            <p class="none">暂时没找到你要的礼包，请过段时间再来~</p>
+        {else}
+        {loop $result $i $r}
+        <li class="clearfix">
+            <img src="{$r[thumb]}" alt="{$r[title]}" title="{$r[title]}">
+            <div class="info">
+                <p class="title">{$r[title]}</p>
+                <p class="tip">回复<span>{$r[id]}#</span>领取</p>
+                {if $r[is_null] == 0 && $r[is_expire] != 1}
+                <a class="btn_th" href="http://m.93636.com/index.php?m=search&c=index&a=TH_show&id={$r[id]}">淘号</a>
+                {/if}
+                {if $r[is_expire] == 1}
+                <p class="title-guoqi"></p>
+                {/if}
+            </div>
+        </li>
+        {/loop}
+        {/if}
+    </ul>
+    {if !empty($result)}
+        <a href="javascript:;" class="i-more">下拉加载更多...</a>
+        {/if}
+        <!--返回顶部-->
+    <div class="mod-top">
+        <span class="i-top" id="go-top"></span>
+    </div>
+       <input type="hidden" id="page" value=""/>
+        <input type="hidden" id="all" value=""/>
+</div>
+<script src="http://www.93636.com/statics/wap/weixin/js/jquery-3.0.0.min.js"></script>
+<script>
+    (function (window, document) {
+        (function () {
+            var viewportEl = document.querySelector('meta[name="viewport"]'), hotcssEl = document.querySelector('meta[name="hotcss"]'), dpr = window.devicePixelRatio || 1;
+            if (hotcssEl) {
+                var hotcssCon = hotcssEl.getAttribute("content");
+                if (hotcssCon) {
+                    var initialDpr = hotcssCon.match(/initial\-dpr=([\d\.]+)/);
+                    if (initialDpr) {
+                        dpr = parseFloat(initialDpr[1])
+                    }
+                }
+            }
+            var scale = 1, content = "width=device-width, initial-scale=" + scale + ", minimum-scale=" + scale + ", maximum-scale=" + scale + ", user-scalable=no";
+            if (viewportEl) {
+                viewportEl.setAttribute("content", content)
+            } else {
+                viewportEl = document.createElement("meta");
+                viewportEl.setAttribute("name", "viewport");
+                viewportEl.setAttribute("content", content);
+                document.head.appendChild(viewportEl)
+            }
+        })();
+        var hotcss = {};
+        hotcss.px2rem = function (px, designWidth) {
+            if (!designWidth) {
+                designWidth = parseInt(hotcss.designWidth, 10)
+            }
+            return parseInt(px, 10) * 320 / designWidth / 20
+        };
+        hotcss.mresize = function () {
+            var innerWidth = window.innerWidth;
+            if (!innerWidth) {
+                return false
+            }
+            document.documentElement.style.fontSize = (innerWidth * 20 / 320) + "px"
+        };
+        hotcss.mresize();
+        window.addEventListener("resize", hotcss.mresize, false);
+        window.addEventListener("load", hotcss.mresize, false);
+        setTimeout(function () {
+            hotcss.mresize()
+        }, 300);
+        window.hotcss = hotcss
+    })(window, document);
+    $("#go-top").on("click", function () {
+        $("body,html").animate({scrollTop: 0}, 500);
+        return false;
+    });
+</script>
+<script src="http://www.93636.com/statics/wap/js/jquery.js" type="text/javascript"></script>
+
+<script>
+window.onload=function(){
+    $("#page").val("2");
+    $("#all").val("1");
+};
+
+//滚动底部自动加载数据
+$(window).scroll(function () {
+    var scrollTop = $(this).scrollTop();
+    var scrollHeight = $(document).height();
+    var windowHeight = $(this).height();
+    if (scrollHeight - (scrollTop + windowHeight) <= 0 ) {
+        var page=$("#page").val();
+        var all=$("#all").val();
+        if(all==1){
+            glist_json(page);
+        }
+    }
+});
+
+//获取数据
+function glist_json(page){
+    $.getJSON('index.php?q={$search_q}&m=search&c=index&a=wx_search&typeid=1&siteid=1&forward=&page='+page,function(data){
+        $(".loading").css('display','block');   
+        if(data[0].sum  != 1 && data[0].hasOwnProperty("id") ){
+            $("#page").val(data[0].page);
+            for(var i=0;i<data.length;i++){         
+            var ul=' <li class="clearfix">';
+                ul+='<img src="'+data[i].thumb+'" alt="'+data[i].title+'" title="'+data[i].title+'">';
+                ul+='<div class="info">';
+                ul+=' <p class="title">'+data[i].title+'</p>';
+                ul+='<p class="tip">回复<span>'+data[i].id+'#</span>领取</p>';
+                if(data[i].is_null == 0 && data[i].is_expire != 1){
+                    ul+='<a class="btn_th" href="http://m.93636.com/index.php?m=search&c=index&a=TH_show&id='+data[i].id+'">淘号</a>';
+                }
+                if(data[i].is_expire == 1){
+                    ul+='<p class="title-guoqi"></p>';
+                }
+                ul+='</div>';
+                ul+='</li>';
+                $("#content").append(ul);           
+            }
+            if(data[0].page<=data[0].sum){
+                
+            }else if(data[0].page>data[0].sum){
+               
+                $("#all").val(2);
+                $(".i-more").hide();
+            }
+        }else{
+           
+            $("#all").val(2);
+            $(".i-more").hide();
+        }
+    });
+}
+</script>
+</body>
+</html>

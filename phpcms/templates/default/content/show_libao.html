@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>{$title}_93636手游网</title>
+  <link rel="alternate" media="only screen and(max-width: 640px)" href="{$last_url}" id="link">
+    <meta name="keywords" content="{$SEO['keyword']}">
+    <meta name="description" content="{$SEO['description']}" />
+    <link rel="shortcut icon" href="http://www.93636.com/statics/icon/32X32.ico" type="image/x-icon" />
+<link rel="stylesheet" href="/statics/new_style/css/common.css">
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+    <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+    <script  src="/statics/new_style/js/jquery.js"></script>
+    <script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+    <script  src="/statics/new_style/js/jquery.scrollbar.js"></script>
+    <script  src="/statics/new_style/js/jquery.slider.js"></script>
+    <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+    <script type="text/javascript" src="http://img3.job1001.com/js/ZeroClipboard/jquery.zclip.min.js"></script>
+    <script src="/statics/new_style/js/lib/common.js"></script>
+  <script>
+
+    if (/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                try {
+                    if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+                        //var strr = $('#link').attr("href");
+            var strr = 'http://m.93636.com/youxilibao/{$id}.html';
+                        window.location.href = strr;
+                    }
+                } catch (e) {
+                }
+            }
+
+        </script>
+</head>
+<body>
+{template "content","head"}
+<div class="make_bg mt20">
+    <div class="main clear">
+  <div class="ad" style=" margin-top:25px;"><a href="http://down9.93636.com/qmyxzs_sp[111]_qd[xwgw].exe" target="_blank" title="携玩助手充值返利"><img src="/statics/uploadfile/content/1134.gif" alt="携玩助手充值返利" rel="nofollow"></a></div>
+        <ul class="bread-nav bread-top">
+            <li>当前位置：</li><li><a href="/">首页</a>&gt;</li><li>{catpos($catid)}<a href="http://www.93636.com/games/libaolist">领取中心</a>&gt;{$title}</li>
+        </ul>
+        <div class="index-ranking mt0">
+            <div class="wrap3 clear">
+                <div class="wrap3_title">{$title}</div>
+                <div class="wrap3_list">
+                    <div class="wrap3_lf">
+                    {pc:get sql="select thumb from 93636_game where title='$gamename' ORDER BY updatetime DESC" return="data" num="1"}
+                    {if !empty($data)}
+                    {loop $data $key $r}
+                    <img src="{$r[thumb]}" alt="{$title}">
+                    {/loop}
+                    {else}
+                    <img src="{$thumb}" alt="{$title}">
+                    {/if}
+                    {/pc}
+                    </div>
+                    <div class="wrap3_info">
+                        <dl class="clear">
+                            <dt>剩余：</dt>
+                            <dd class="clearfix">
+                                <span class="spanbox"><span class="ht" style="width:0%;"></span></span>
+                                <em class="sl" id="emsl"></em>
+                            </dd>
+                        </dl>
+                        <dl class="clear">
+                            <dt>礼包时效：</dt>
+                            <dd class="clearfix">{$starttime}  至 {$endtime}</dd>
+                        </dl>
+                        <dl class="clear">
+                                    <dt>支持平台：</dt>
+                                    <dd class="clearfix"><em>{if $plate==0}<i class="android-icon"></i>{elseif $plate==1}<i class="iphone-icon"></i>{else}<i class="ap_all"></i>{/if}</em></dd>
+                                </dl>
+                        <dl class="clear greet">
+                            <dt>[温馨提示]</dt>
+                            <dd class="clearfix">
+                                <p>该礼包开启淘号功能，请领取礼包的用户尽快使用！</p>
+                                <p>加入93636礼包群（367094862），了解最新礼包资讯！</p>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="wrap3_rg">
+                        <!-- lh th -->
+                        <a href="javascript:void(0)" class="lh" id="lh" >
+                            <span><em class="emicon"></em><em class="ho qh"></em></span>
+                            <em class="emtxt" >领取</em>
+                        </a>
+                        <!--已经领完-->
+                        <a href="javascript:void(0)" class="lh none-libao" id="none_libao" style="display: none;">
+                            <span></span>
+                            <em class="emtxt" >抢光了</em>
+                        </a>
+                    </div>
+                    <div class="wrap3_link">
+          {pc:get sql="select * from 93636_game  where title='$gamename' ORDER BY updatetime DESC " return="data" num="1"}
+                        {loop $data $r}
+                        <a href="{ChangeUrl($r[url])}" target="_blank" class="zl_but "></a>
+            {if $r[pclink]!=''}
+                        <a href="{$pclink}" target="_blank" class="pc_but"></a>
+            {else}
+            <a href="javascript:;" target="_blank" class="pc_but moda-show"></a>
+            {/if}
+            {/loop}
+                        {/pc}
+                    </div>
+                    <div class="mod-bg"></div>
+                    <div class="mod-box">
+                        <div class="mod-ms jsb">
+                            <i></i>
+                            <span>极速版</span>
+                            <p>极速体验、拒绝卡顿、超低占用</p>
+                            <a href="http://down.kaopu001.com/cszs/cpa/ChaoShenSetup-93636-andriod.exe" title="极速版下载">极速版下载</a>
+                            <!-- 不能下载 -->
+                            <!-- <a class="disable" href="" title="极速版下载">极速版下载</a> -->
+                        </div>
+                        <i class="hr"></i>
+                        <div class="mod-ms jrb">
+                            <i></i>
+                            <span>兼容版</span>
+                            <p>极致兼容、超强性能、稳定高效</p>
+                            <a href="http://down9.93636.com/qmyxzs_sp[111]_qd[xwgw].exe" title="兼容版下载">兼容版下载</a>
+                            <!-- 不能下载 -->
+                            <!-- <a class="disable" href="" title="兼容版下载">兼容版下载</a> -->
+                        </div>
+                    </div>
+                    <script>
+                        $(function(){
+                            $('.moda-show').on('click',function(e){
+                                e.preventDefault();
+                                $('.mod-bg,.mod-box').fadeIn(300);
+                            });
+                            $('.mod-bg').on('click',function(){
+                                $('.mod-bg,.mod-box').fadeOut(300);
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="mar_top">
+            <div class="part_one clear">
+                <h3 class="tit_part">礼包详情</h3>
+                <div class="index-ranking  mar_top">
+                    <div class="gife_info">
+                        {$content}
+                    </div>
+                </div>
+            </div>
+            <div class="part_one clear">
+                <h3 class="tit_part">相关礼包</h3>
+                <div class="index-ranking  mar_top">
+                    <ul class="about_gift">
+            {pc:get sql="select * from 93636_libao LEFT JOIN 93636_libao_data on 93636_libao.id=93636_libao_data.id where 93636_libao.gamename='$gamename' and 93636_libao.id !='$id' ORDER BY updatetime DESC " return="data" num="4"}
+            {if empty($data)}
+            {pc:content  action="position" posid="49" catid="31" order="listorder DESC" num="4"}
+            {/if}
+                        {loop $data $r}
+                        <li class="gife_one">
+                            <a href="{ChangeUrl($r[url])}" target="blank" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+                            <div class="gife_tit">
+                                <p class="ptitle"><a href="" title="{$r[title]}">{$r[title]}</a></p>
+                                <p class="ptxt">有效期至：{$r[endtime]} </p>
+                                <p class="plq"><em>剩余:{LbCount($r['id'],$r['number'])}%</em>
+                                    {if LbCount($r['id'],$r['number'])==0}
+                                    <a href="{ChangeUrl($r[url])}" target="blank"  class="b_gre">领取</a>
+                                    {else}
+                                    <a href="{ChangeUrl($r[url])}" target="blank"  class="b_red">领取</a>
+                                    {/if}
+                                </p>
+                            </div>
+                        </li>
+                        {/loop}
+                        {/pc}
+                    </ul>
+                </div>
+            </div>
+            <div class="part_one clear">
+                <h3 class="tit_part">相关游戏</h3>
+                <ul class="gm_list">
+                    {pc:content  action="position" posid="26" catid="5" order="listorder DESC" num=8}
+                    {loop $data $r}
+                    <li><a href="{ChangeUrl($r[url])}" title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"><p>{$r[title]}</p></a></li>
+                    {/loop}
+                    {/pc}
+                </ul>
+            </div>
+        </div>
+        <div class="dgyx_rig mt0">
+            <h2>游戏礼包</h2>
+            <dl class="ph_new paih pop">
+                <dd class="rank-cont rank-ios">
+                    <!--下载排行榜-->
+                    <ul class="rank-cont-ul">
+                        {pc:content  action="position" posid="35" catid="31" order="listorder DESC" limits="0,1"}
+                        {loop $data $r}
+                        <li class=" hover">
+                            <div class="rank-normal">
+                                <p>{$r[title]}<a href="{ChangeUrl($r[url])}" class="claim" title="{$r[title]}">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-down" href="{ChangeUrl($r[url])}" target="blank" title="{$r[title]}"></a>
+                                <a class="rank-img" target="blank" href="{ChangeUrl($r[url])}" title="{$r[title]}"> <img src="{$r[thumb]}" alt="{$r[title]}">
+                                    <p class="rank-item-tit cut">{$r[title]}</p>
+                                    <p class="rank-type">剩余：<span>{LbCount($r['id'],$r['number'])}%</span></p>
+                                </a>
+                                <a href="{ChangeUrl($r[url])}" class="claims">领取</a>
+                            </div>
+                        </li>
+                        {/loop}
+                        {/pc}
+                        <!--鼠标效果 hover-->
+                        <!--排行榜10-->
+                        {pc:content  action="position" posid="35" catid="31" order="listorder DESC" limits="1,9"}
+                        {php $i=2;}
+                        {loop $data $r}
+                        <li>
+                            <div class="rank-normal">
+                                <p>{str_cut($r[title],30,'')}<a href="{ChangeUrl($r[url])}" class="claim">领取</a></p>
+                            </div>
+                            <div class="rank-hover">
+                                <a class="rank-img" target="blank" href="{ChangeUrl($r[url])}" title="{$r[title]}"> <img src="{$r[thumb]}" alt="{$r[title]}">
+                                    <p class="rank-item-tit cut">{str_cut($r[title],30,'')}</p>
+                                    <p class="rank-type">剩余：<span>{LbCount($r['id'],$r['number'])}%</span></p>
+                                </a>
+                                <a href="{ChangeUrl($r[url])}" class="claims">领取</a>
+                            </div>
+                        </li>
+                        {php $i++;}
+                        {/loop}
+                        {/pc}
+                    </ul>
+                </dd>
+                <!--下载排行榜-->
+            </dl>
+                <!--下载排行榜-->
+            </dl>
+            <h3 class="tit_two">游戏测评</h3>
+            <dl class="paih">
+                <dd>
+                    <div class="v_info fl">
+                        <ul>
+                            {pc:content  action="lists" catid="29" order="id DESC" num="8"}
+                            {loop $data $r}
+                            <li><a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a></li>
+                            {/loop}
+                            {/pc}
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="footer">
+
+        {template "content","foot"}
+
+</div>
+<!--弹窗-->
+<!--<div class="mod-dia">
+    <div class="m-dia">
+        <p>请在微信公众号回复领取
+        <p class="code-libao">{$id}#</p>
+        <img src="../../../../statics/new_style/images/code.jpg" width="140px" height="140px">
+        <p class="tip">微信公众号搜索<span>【93636手游网】</span>，领取礼包</p>
+        <a class="i-close" href="javascript:;" id="i-close">×</a>
+    </div>
+</div>-->
+ <div class="mod-dia">
+    <div class="m-box">
+        <a class="icon-close" href="javascript:;" id="i-close"></a>
+        <img src="../../../../statics/new_style/images/code.jpg" width="160px" height="160px">
+        <p class="tip">微信搜索关注 <span>93636</span></br>回复<span>{$id}#</span>领取</p>
+    </div>
+</div> 
+<!--未登录提示-->
+<div class="prompt">
+    <div class="pr_bg"><span id="pr_cloes">×</span></div>
+    <div class="pr_tit">
+        <p><i></i>尊敬的用户：您好！您还未登录，请先登录。</p>
+        <div class="pr_logn">
+            <a href="javascript:void(0)" class="pr_l_ioc"></a>
+            <a href="javascript:void(0)" class="pr_r_ioc"></a>
+        </div>
+    </div>
+</div>
+<!--登录框-->
+<div class="login_box">
+    <div class="box_close">×</div>
+    <div class="login_tab">
+        <ul>
+            <li class="hover">登录</li>
+            <li class="">注册</li>
+        </ul>
+    </div>
+    <div class="box_content">
+        <iframe src="/phpcms/templates/default/content/login_iframe.html" id="login" class="iframe" scrolling="no" style="border: 0px; width: 100%; height: 355px; display: inline;"></iframe>
+        <iframe src="/phpcms/templates/default/content/reg_iframe.html" id="register" class="iframe" scrolling="no" style="border: 0px; width: 100%; height: 425px; display: none;"></iframe>
+    </div>
+</div>
+<!--领取礼包提示-->
+<div class="get_pr" style="display: none;">
+    <div class="get_bg"><span id="get_cloes">×</span></div>
+    <div class="get_line">您的礼包码是：<input type="text" class="text" id="code" value=""> <a href="javascript:;" id="copy">复制</a></div>
+    <div class="get_group">欢迎加入官方礼包福利群：<a href=""><img src="/statics/new_style/images/group.png"></a></div>
+</div>
+
+<script type="text/javascript">
+   $(function(){
+
+       var id="{$id}";
+       var number="{$number}";
+       $.ajax({
+           type: 'post',
+           url: '/index.php?m=help&c=index&a=libaonullp',
+           data: {id:id,number:number},
+           dataType: 'json',
+           success: function(data) {
+               $(".wrap3_info").find(".spanbox .ht").css("width",data+"%");
+               $("#emsl").text(data+"%");
+
+           }
+       });
+       $("#lh").on("click",function () {
+           $(".mod-dia").fadeIn(200)
+       });
+       $("#i-close").on("click",function () {
+           $(".mod-dia").fadeOut(200);
+       })
+   });
+
+window.onload=function(){
+     var id="{$id}";
+    $.ajax({
+                type: 'post',
+                url: '/index.php?m=help&c=index&a=is_null',
+                data: {id:id},
+                dataType: 'json',
+                success: function(data) {
+                    if (data.static == "1") {
+                        $(".lh").show();//礼包框
+                        $("#none_libao").hide();
+                    } else {
+                        $(".lh").hide();
+                        $("#none_libao").show();
+
+                    }
+                }
+        });
+};
+</script>
+</body>
+</html>

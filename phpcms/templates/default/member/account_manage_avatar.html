@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="chendianhuai,XiaMen">
+        <meta name="date" content="2016-04-19 09:50:11">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>用户中心</title>
+        <meta name="keywords" content="用户中心">
+        <meta name="description" content="用户中心" />
+        <link rel="shortcut icon" href="http://www.93636.com/statics/icon/32X32.ico" type="image/x-icon" />
+         <link rel="stylesheet" href="/statics/new_style/css/common.css">
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+        <link href="/statics/css/user/yueact.css" rel="stylesheet">
+         <style>.foot {margin-top: 0px;}</style>
+          <script  src="/statics/js/user/city.js"></script>
+        <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+        <script  src="/statics/new_style/js/jquery.js"></script>
+        <script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+        <script  src="/statics/new_style/js/jquery.scrollbar.js"></script>
+        <script  src="/statics/new_style/js/jquery.slider.js"></script>
+        <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+        <script src="/statics/new/js/miguan_wjzj.js" type="text/javascript"></script>
+         <script src="/statics/new_style/js/lib/common.js"></script>
+    </head>
+    <body>
+        {template "content","head"}
+        {php $username = param::get_cookie('_username');}
+        <div class="user_all">
+            <div class="user_main">
+                {template "member","head"}
+                <div class="user_imopr  clear">
+                    <div class="im_fl">
+                        <ul>
+                            <li class="im_top"><a href="/index.php?m=member&c=index&a=gold_shop">兑换商城<b></b></a></li>
+                            <li class="im_cen"><a href="/index.php?m=member&c=index&a=my_level">我的等级<b></b></a></li>
+                            <li class="im_cen"><a href="/index.php?m=member&c=index&a=account_manage_password&t=1">修改密码<b></b></a></li>
+                            <li class="im_cen"><a href="/index.php?m=member&c=index&a=my_libao">我的收藏<b></b></a></li>
+                            <li class="im_cen"><a href="/index.php?m=member&c=index&a=notice">我的消息{if $new==1}<i class="new"></i>{/if}<b></b></a></li>
+                            <li class="im_fot"><a href="/index.php?m=member&c=index" class="cus">基本资料<b class="on"></b></a></li>
+                        </ul>
+                    </div>
+                    <div class="im_fr pd">
+                        <div class="user_head_img">
+                            <!-- <a href="" class="head_pic">头像上传</a> -->
+                            <p class="h_i_txt">请选择JPG丶GIF丶PNG丶JPEG格式，小于2M的图片</p>
+                            <div class="user_head_info clear">
+                                <div class="user_head_bg" id="myContent">
+                                    <img src="/statics/images/user/head_add.png" alt="">
+                                    <p>请选择头像</p>
+                                </div>
+                                <script language="javascript" type="text/javascript" src="{$phpsso_api_url}/statics/js/swfobject.js"></script>
+                            <script type="text/javascript">
+                                var flashvars = {
+                                    'upurl': "{$upurl}&callback=return_avatar&"
+                                };
+                                var params = {
+                                    'align': 'middle',
+                                    'play': 'true',
+                                    'loop': 'false',
+                                    'scale': 'showall',
+                                    'wmode': 'window',
+                                    'devicefont': 'true',
+                                    'id': 'Main',
+                                    'bgcolor': '#ffffff',
+                                    'name': 'Main',
+                                    'allowscriptaccess': 'always'
+                                };
+                                var attributes = {
+                                };
+                                swfobject.embedSWF("{$phpsso_api_url}/statics/images/main.swf", "myContent", "490", "434", "9.0.0", "{$phpsso_api_url}/statics/images/expressInstall.swf", flashvars, params, attributes);
+
+                                function return_avatar(data) {
+                                    if (data == 1) {
+                                        window.location.reload();
+                                    } else {
+                                        alert('failure');
+                                    }
+                                }
+                            </script> 
+                                <div class="user_head_list">
+                                <ul>
+                                {loop $avatar $k $v}
+                                <li>
+                                 <div class="img{$k}"><img src="{$v}" onerror="this.src='{$phpsso_api_url}/statics/images/member/nophoto.gif'" alt="">
+                                 <p {if $k==30} style="margin-left: -7px;width:45px"{/if}>{$k} x {$k}</p></div>
+                                </li>
+                                {/loop}
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"> 
+            {template "content","foot"}
+        </div>
+        <script>
+            function redirect(url) {
+                if (url.indexOf('://') == -1 && url.substr(0, 1) != '/' && url.substr(0, 1) != '?')
+                    url = $('base').attr('href') + url;
+                location.href = url;
+            }
+        </script>	
+    </body>
+</html>

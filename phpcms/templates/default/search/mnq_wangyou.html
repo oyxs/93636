@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>网游-模拟器游戏库</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="/statics/mnq/style/yueact.css" rel="stylesheet" type="text/css">
+    <script src="/statics/mnq/js/jquery.js" type="text/javascript"></script>
+    <script type="/statics/mnq/text/javascript" src="js/superslide.2.1.js"></script>
+	<script src="/statics/mnq/js/index.js" type="text/javascript"></script>
+	<div style="display:none"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cdiv id='cnzz_stat_icon_1256716135'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256716135%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></div>
+<script>
+function InstallAndRun(id){
+          $.ajax({
+            url: "http://mnq.93636.com/index.php?m=help&a=gethree",
+            cache: false,
+            success: function(html){
+              var jdata=eval('('+html+')');
+				   for(var i=0;i<jdata.length;i++){
+					   if(id==jdata[i].id){
+						   var anlink = jdata[i].anlink;
+						   var title = jdata[i].title;
+						   var thumb = jdata[i].thumb;
+					   }
+					}
+			    	window.external.InstallApp(anlink,title,thumb);
+					//alert(anlink+title+thumb);
+				}
+        })
+  	}
+</script>
+</head>
+<body>
+    <div class="header">
+        <div class="break">
+          <a onclick="window.history.go(-1)"><em></em></a>
+          <a onclick="window.history.go(1)"><em class="new2"></em></a>
+          <a onclick="window.location.reload()"><em class="new1"></em></a>
+        </div>
+        <ul class="navlist">
+            <li><a href="http://mnq.93636.com/">首页</a></li>
+            <li><a href="/games/">游戏库</a></li>
+            <li class="on"><a href="/mnq/wangyou/">网游</a></li>
+            <li><a href="/mnq/danji/">单机</a></li>
+            <li><a href="/heji/?typeid=120">手游合集</a></li>
+        </ul>
+        <div class="search">
+        <form id="seaform" name="seaform" action="/index.php" method="get">
+            <input name="q" type="text" id="search_txt" class="title" value="" size="20" maxlength="30" placeholder="">
+            <input type="hidden" name="m" value="search">
+            <input type="hidden" name="c" value="index">
+            <input type="hidden" name="a" value="init">
+            <input type="hidden" name="typeid" value="55">
+            <input type="hidden" name="siteid" value="1">
+            <input type="hidden" name="forward" value="">
+            <input class="r bian" type="submit" class="submit" name="Submit" value="" />
+        </form>
+        </div>
+    </div>
+    <div class="hotcon">
+        <div class="select">
+            <p><span>排序</span><i class="minus"></i></p>
+            <ul class="new-px" style=" display: none;">
+                <li>按最新</li>
+                <li>按人气</li>   
+            </ul>
+        </div>
+        <div class="mar-jl">
+          <ul class="style">
+              <li><a href=""><img src="/statics/mnq/images/3-(2).png" alt=""></a></li>
+              <li><a href=""><img src="/statics/mnq/images/3-(1).png" alt=""></a></li>
+          </ul>
+        </div> 
+        {php $catid=$_GET['catid'];}
+       <div class="classify">
+          <a href="/games/catid_32_network_1_plate_{$plate}/" {if $catid==32}class="on"{/if}>射击类</a>                     
+          <a href="/games/catid_33_network_1_plate_{$plate}/" {if $catid==33}class="on"{/if}>休闲类</a>
+          <a href="/games/catid_34_network_1_plate_{$plate}/" {if $catid==34}class="on"{/if}>体育类</a>
+          <a href="/games/catid_35_network_1_plate_{$plate}/" {if $catid==35}class="on"{/if}>角色类</a>
+          <a href="/games/catid_36_network_1_plate_{$plate}/" {if $catid==36}class="on"{/if}>模拟类</a>
+          <a href="/games/catid_38_network_1_plate_{$plate}/" {if $catid==38}class="on"{/if}>动作类</a>
+          <a href="/games/catid_39_network_1_plate_{$plate}/" {if $catid==39}class="on"{/if}>赛车类</a>
+          <a href="/games/catid_41_network_1_plate_{$plate}/" {if $catid==41}class="on"{/if}>格斗类</a>
+          <a href="/games/catid_42_network_1_plate_{$plate}/" {if $catid==42}class="on"{/if}>棋牌类</a>
+       </div>
+    </div>
+    <div class="conmiddle">
+        <ul class="list-games on">
+      	{pc:content action="lists" catid="$_GET['catid']" where="$where" num="16" order="updatetime DESC" return="info" page="$page"}
+           {loop $info $i $r}
+            <li><div class="unit">
+                <a href="{search_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"><strong>{$r[title]}</strong><em>{$r[downloadtimes]}下载 |{$r[size]}</em></a>
+                <a onClick="InstallAndRun({$r[id]});_czc.push(['_trackEvent', '网游', '安装','updatetime',,'']);" class="button">安装</a>
+            </div></li>
+            {/loop}
+        {/pc}    
+        </ul>
+        <ul class="list-games">
+      	{pc:content action="lists" catid="$_GET['catid']" where="$where" num="16" order="downloadtimes DESC" return="info" page="$page"}
+           {loop $info $i $r}
+            <li><div class="unit">
+                <a href="{search_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"><strong>{$r[title]}</strong><em>{$r[downloadtimes]}下载 |{$r[size]}</em></a>
+                <a onClick="InstallAndRun({$r[id]});_czc.push(['_trackEvent', '网游', '安装','downloadtimes',,'']);" class="button">安装</a>
+            </div></li>
+            {/loop}
+        {/pc}    
+        </ul>
+        <div class="page">{$pages}</div>
+    </div>
+    <script type="text/javascript">
+        jQuery(".slider .bd li").first().before(jQuery(".slider .bd li").last());
+        jQuery(".slider").slide({titCell: ".hd ul", mainCell: ".bd ul", effect: "leftLoop", autoPlay: true, vis: 3, autoPage: true, trigger: "click"});
+    </script>
+</body>
+</html>

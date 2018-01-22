@@ -1,0 +1,464 @@
+{template "content","last"}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>{$seotitle}_93636手游网</title>
+		<link rel="alternate" media="only screen and(max-width: 640px)" href="{$last_url}" id="link">
+        <meta name="keywords" content="{$SEO['keyword']}">
+        <meta name="description" content="{$SEO['description']}" />
+        <link rel="shortcut icon" href="http://www.93636.com/statics/icon/32X32.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/statics/new_style/css/common.css">
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+        <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+		<script  src="/statics/new_style/js/jquery.js"></script>
+		<script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+        <script src="/statics/new_style/js/lib/common.js"></script>
+        <script src="/statics/new_style/js/lib/jquery.cookie.js"></script>
+		<script>
+		if (/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                try {
+                    if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+                        //var strr = $('#link').attr("href");
+						var strr = 'http://m.93636.com/games/{$id}.html';
+                        window.location.href = strr;
+                    }
+                } catch (e) {
+                }
+            }
+		var _czc = _czc || [];_czc.push(["_setAccount", "1256663213"]);
+		</script>
+		<script>
+		$(function(){
+            var today = new Date();
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+            today.setMilliseconds(0);
+            var oneday = 1000 * 60 * 60 * 24;
+            var date = new Date(today * 1 + oneday * 1);
+		$("#an_count").click(function(){
+            var cookie=$.cookie("安卓{$title}"); //读取cookie
+            if(cookie){
+            }else{
+                _czc.push(['_trackEvent','{$title}', '安卓', '下载','1','an']);
+                $.cookie("安卓{$title}",//写入cookie
+                        "安卓{$title}",//需要cookie写入的业务
+                        {
+                            "path":"/", //cookie的默认属性
+                            "expires":date //有效天数
+                        })
+            }
+		});
+		$("#ios_count").click(function(){
+            var cookie=$.cookie("IOS{$title}"); //读取cookie
+            if(cookie){
+            }else{
+                _czc.push(['_trackEvent','{$title}', 'IOS', '下载','1','ios']);
+                $.cookie("IOS{$title}",//写入cookie
+                        "IOS{$title}",//需要cookie写入的业务
+                        {
+                            "path":"/", //cookie的默认属性
+                            "expires":date //有效天数
+                        })
+            }
+		});
+		$("#pc_count").click(function(){
+            var cookie=$.cookie("PC{$title}"); //读取cookie
+            if(cookie){
+            }else{
+                _czc.push(['_trackEvent','{$title}', 'PC', '下载','1','pc']);
+                $.cookie("PC{$title}",//写入cookie
+                        "PC{$title}",//需要cookie写入的业务
+                        {
+                            "path":"/", //cookie的默认属性
+                            "expires":date //有效天数
+                        })
+            }
+		});
+		});
+		
+		function down(id){
+			$.ajax({
+    	        type: 'post',
+    	        url: '/index.php?m=member&c=index&a=download&gameid='+id,
+    	        dataType: 'json',
+    	        success: function(data) {
+    	            
+    	        }
+    	    })
+		}
+	</script>
+    </head>
+    <body>
+        {template "content","head"}
+		{php $gf_link=$last_url.'?v=gf';$link_360=$last_url.'?v=360';}		
+        <div class="make_bg mt20">
+            <div class="main clear">
+			<div class="ad mr"><a href="http://www.xiewan.org/" target="_blank" title="携玩助手充值返利"><img src="/statics/uploadfile/content/1134.gif" alt="携玩助手充值返利" rel="nofollow"></a></div>
+                <div class=" mar_top">
+                    <ul class="bread-nav">
+                        <li>当前位置：</li><li><a href="/">首页</a>&gt;</li><li><a href="http://www.93636.com/games/list.html">游戏宝库</a>&gt;{$title}</li>
+                    </ul>
+                    <div class="index-ranking  mar_top">
+                        <div class="game_info clear">
+                            <a href="" class="game_pic" target="_blank"><img src="{$thumb}"></a>
+                            <ul class="z_box">
+                                <li class="title"><h1>{$title}</h1><em class="pj-start pj-start{$recommend}"></em></li>
+                                <li class="wgg_box"><span>游戏类型：<em> {$CATEGORYS[$catid][catname]}</em></span><span>软件大小：<em>{$size}</em></span></li>
+                                <li class="wgg_box"><span>运营状态：<em>{$state}</em></span><span>更新时间：<em>{$updatetime}</em></span></li>
+                                <li class="wgg_box"><span>支持平台：<em><img src="/statics/new_style/images/ap_ico.png" alt="支持平台"></em></span><span>下载次数：<em>{$downloadtimes}次</em></span></li>
+                            </ul>
+                        </div>
+                        <div class="down_link clear">
+                            <ul>
+                                <li class="an_QR" >
+                                    <a  id="an_count" {if $anlink!='' || $qmlink!='' || $guanlink!=''} href="{if $qmlink!=''}{$qmlink}{elseif $guanlink!=''}{$guanlink}{else}{$anlink}{/if}"  onclick="down({$id})"  class="an_bg"{else} href="javascript:;" class="an_none"{/if}></a>
+                                    {if $anlink!='' || $qmlink!='' || $guanlink!=''} 
+                                    <div class="anz_bg">
+                                        <div class="anz_QR clear">
+                                            <div class="anz_bor">
+                                                <p class="on">官方版</p>
+                                                <p>360版</p>
+                                                <p>UC版</p>
+                                            </div>
+                                            <div class="QR_m fl">
+                                                <p class="on"><img src="/towcode.php?u={$gf_link}" alt="二维码"></p>
+                                                <p><img src="/towcode.php?u={$link_360}" alt="二维码"></p>
+                                                <p><img src="/towcode.php?u={$last_url}" alt="二维码"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/if}
+                                </li>
+                                <li><a id="pc_count" {if $pclink!=''}  class="pc_bg"  href="{$pclink}"  {else} href="javascript:;" class="moda-show pc_bg"{/if}  ></a></li>
+                                <li  class="ios_QR">
+                                    <a id="ios_count" {if $applelink!=''}href="{$applelink}"  class="ios_bg"  onclick="down({$id})" {else}href="javascript:;" class="ios_none"{/if}></a>
+                                    {if $applelink!=''}
+                                    <div class="QR_i">
+                                        <div class="ios_pd clear">
+                                            <div class="ios_tit">
+                                                <p class="on">官方版</p>
+                                            </div>
+                                            <div class="ios_pic fl">
+                                                <p class="on"><img src="/towcode.php?u={$last_url}" alt="二维码"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/if}
+                                </li>
+                                    
+                            </ul>
+                        </div>
+                        <div class="mod-bg"></div>
+                        <div class="mod-box">
+                            <div class="mod-ms jsb">
+                                <i></i>
+                                <span>极速版</span>
+                                <p>极速体验、拒绝卡顿、超低占用</p>
+                                <a href="http://down.kaopu001.com/cszs/cpa/ChaoShenSetup-93636-andriod.exe" title="极速版下载">极速版下载</a>
+                                <!-- 不能下载 -->
+                                <!-- <a class="disable" href="" title="极速版下载">极速版下载</a> -->
+                            </div>
+                            <i class="hr"></i>
+                            <div class="mod-ms jrb">
+                                <i></i>
+                                <span>兼容版</span>
+                                <p>极致兼容、超强性能、稳定高效</p>
+                                 <a href="http://down9.93636.com/qmyxzs_sp[111]_qd[xwgw].exe" title="兼容版下载">兼容版下载</a>
+                                <!-- 不能下载 -->
+                                <!-- <a class="disable" href="" title="兼容版下载">兼容版下载</a> -->
+                             </div>
+                         </div>
+                         <script>
+                             $(function(){
+                                 $('.moda-show').on('click',function(e){
+                                     e.preventDefault();
+                                     $('.mod-bg,.mod-box').fadeIn(300);
+                                 });
+                                 $('.mod-bg').on('click',function(){
+                                     $('.mod-bg,.mod-box').fadeOut(300);
+                                 });
+                             });
+                         </script>
+                         <div class="dgyx_left">
+                             <ul class="dgyx_tab_an">
+                                 <li class="on">基本信息</li>
+                                 <li class="">攻略</li>
+                                 <li class="">礼包</li>
+                                 <li class="">新闻</li>
+                                 <li class="">评测</li>
+                             </ul>
+                             <div class="dgyx_con">
+                                 <div class="dgyx_conlist on">
+                                     <div class="perpen">
+                                         {$content}
+                                         <!-- <div class="qq">
+                                             <span>QQ&nbsp;群：</span>
+                                             {if $QQQ}{$QQQ}{else}
+                                             <a target="_blank" href=""><img border="0" src="/statics/new_style/images/group.png" alt="" title=""></a>
+                                             {/if}
+                                         </div> -->
+                                    </div>
+                                    <div class="show_r2">
+                                        <div class="showcase" id="showcase">
+                                            <div class="scrollbar" style="position: relative; overflow: hidden;">
+                                                <div class="s-box">
+                                                    <ul class="s-content" style="position: absolute; width: 925px; left: 0px;">
+                                                        {loop $pictures $val}
+                                                        <li class="picture" style="width: 167px;">
+                                                            <img src="{$val['url']}" alt="{$val['alt']}">
+                                                            <span class="bg"></span><span class="info"></span>
+                                                        </li>
+                                                        {/loop}
+                                                    </ul>
+                                                </div>
+                                                <div class="track" style="display: block;"><div style="position: absolute; width: 683.253px; left: 0px;"></div></div>
+                                            </div>
+                                            <div class="slider">
+                                                <a class="trigger" href="javascript:void(0);">切换</a>
+                                                <a class="prev" href="javascript:void(0);" style="height: 128px;">上一页</a>
+                                                <a class="next" href="javascript:void(0);" style="height: 128px;">下一页</a>
+                                                <div class="s-box" itemprop="screenshots" style="height: 480px;">
+                                                    <ul class="s-content">
+                                                        {loop $pictures $val}
+                                                        <li><img itemprop="contentURL" src="{$val['url']}" alt="{$val['alt']}" style="margin-top: 0px;"></li>
+                                                        {/loop}
+                                                    </ul>
+                                                </div>
+                                                <div class="s-nav">
+                                                    <span class="picture"><span class="active"></span></span>
+                                                    <span class="picture"><span></span></span>
+                                                    <span class="picture"><span></span></span>
+                                                    <span class="picture"><span></span></span>
+                                                    <span class="picture"><span></span></span>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div><!--dgyx_conlist 简介 end-->
+								
+								<!--dgyx_conlist 攻略start-->
+                                <div class="dgyx_conlist">
+                                    <div class="v_info fl">
+                                        <ul>
+                                            {pc:get sql="select url,title from 93636_news  where catid='2' and gamename = '$title' ORDER BY updatetime DESC" return="data" num="10"}
+                                            {loop $data $key $r}
+                                            <li><a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a></li>
+                                            {/loop}
+                                            {/pc}
+                                        </ul>
+                                    </div>
+
+                                </div>
+								<!--dgyx_conlist 攻略end-->
+								<!--dgyx_conlist礼包 start-->
+                                <div class="dgyx_conlist">
+                                    <div class="game_gife">
+                                        <dl>
+                                            {pc:get sql="select * from 93636_libao  where catid='31' and gamename = '$title' ORDER BY updatetime DESC" return="data" num="10"}
+                                            {loop $data $key $r}
+                                            <dd>
+                                                <div class="pic"><a href="{ChangeUrl(ChangeUrl($r[url]))}" target="_blank"title="{$r[title]}"><img src="{$r[thumb]}" alt="{$r[title]}"><span class="cover_74"></span></a></div>
+                                                <div class="info">
+                                                    <p class="tit"><a href="{ChangeUrl(ChangeUrl($r[url]))}" target="_blank" title="{$r[title]}">{$r[title]}</a></p>
+                                                    <p class="time">剩余：{LbCount($r['id'],$r['number'])}%</p>
+                                                    <a class="bnt" href="{ChangeUrl(ChangeUrl($r[url]))}" target="_blank">领取礼包</a> </div>
+                                            </dd>
+                                            {/loop}
+                                            {/pc}
+                                        </dl>
+                                    </div>
+                                </div>
+								<!--dgyx_conlist礼包 end-->
+								<!--dgyx_conlist新闻 start-->
+                                <div class="dgyx_conlist">
+                                    <div class="v_info fl">
+                                        <ul>
+                                            {pc:get sql="select url,title from 93636_news a where catid='30' and a.gamename = '$title' ORDER BY updatetime DESC" return="data" num="10"}
+                                            {loop $data $key $r}
+                                            <li><a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a></li>
+                                            {/loop}
+                                            {/pc}
+                                        </ul>
+                                    </div>
+
+                                </div>
+								<!--dgyx_conlist新闻 end-->
+								
+                                <div class="dgyx_conlist">
+                                    <div class="v_info fl">
+                                        <ul>
+                                            {pc:get sql="select url,title from 93636_news  where catid='29' and gamename = '$title' ORDER BY updatetime DESC" return="data" num="10"}
+                                            {loop $data $key $r}
+                                            <li><a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a></li>
+                                            {/loop}
+                                            {/pc}
+                                        </ul>
+                                    </div>
+                                </div><!--dgyx_conlist 评测end-->
+								
+                                <!--perpen end-->
+                                <div class="wypj" id="pingce">
+                                    <div class="bt-tet"><span>网游评论</span></div>
+                                    <iframe src="{APP_PATH}index.php?m=comment&c=index&a=init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
+                                </div>
+                            </div><!--dgyx_con end-->
+                        </div>
+                    </div>
+                </div>
+                <div class="dgyx_rig mt0">
+                    <h2>游戏下载排行榜</h2>
+                    <dl class="ph_new paih"  id="nine-box">
+                        <dd class="rank-cont rank-ios">
+                            <!--下载排行榜-->
+                            <ul class="rank-cont-ul">
+                                {pc:content  action="position" posid="26" catid="5" order="listorder DESC" limits="0,1"}
+                                {loop $data $r}
+                                <li class=" hover">
+                                    <div class="rank-normal"> 
+                                        <em class="rank-rank ios-and">1</em>
+                                        <p>{$r[title]}</p>
+                                    </div>
+                                    <div class="rank-hover">
+                                        <em class="rank-rank ios-and">1</em>
+                                        <a class="rank-down" href="" target="blank"></a> 
+                                        <a class="rank-img" target="blank" href="{ChangeUrl($r[url])}" title="{$r[title]}"> <img src="{$r[thumb]}" alt="{$r[title]}">
+                                            <p class="rank-item-tit cut">{$r[title]}</p>
+                                            <p class="rank-type">类型：<span> {$CATEGORYS[$r[catid]][catname]}</span></p>
+                                            <p class="rank_mar"><span class="star stargrey"> <span class="star starlight star"></span> </span> </p>
+                                        </a> 
+                                    </div>
+                                </li>
+                                {/loop}
+                                {/pc}
+                                <!--鼠标效果 hover-->
+                                <!--排行榜10-->
+                                {pc:content  action="position" posid="26" catid="5" order="listorder DESC" limits="1,8"}
+                                {php $i=2;}
+                                {loop $data $r}
+                                <li>
+                                    <div class="rank-normal">
+                                        <em class="rank-rank ios-and">{$i}</em>
+                                        <p>{$r[title]}</p>
+                                    </div>
+                                    <div class="rank-hover">
+                                        <em class="rank-rank ios-and">{$i}</em>
+                                        <a class="rank-img" target="blank" href="{ChangeUrl($r[url])}" title="{$r[title]}"> <img src="{$r[thumb]}" alt="{$r[title]}">
+                                            <p class="rank-item-tit cut">{$r[title]}</p>
+                                            <p class="rank-type">类型：<span> {$CATEGORYS[$r[catid]][catname]}</span></p>
+                                            <p class="rank_mar"> <span class="star stargrey"> <span class="star starlight star"></span> </span> </p>
+                                        </a>
+                                    </div>
+                                </li>
+                                {php $i++;}
+                                {/loop}
+                                {/pc}
+                                {pc:content  action="position" posid="26" catid="5" order="listorder DESC" limits="9,1"}
+                                {loop $data $r}
+                                <li class="none">
+                                    <div class="rank-normal">
+                                        <em class="rank-rank ios-and">10</em>
+                                        <p>{$r[title]}</p>
+                                    </div>
+                                    <div class="rank-hover">
+                                        <em class="rank-rank ios-and">10</em>
+                                        <a class="rank-img" target="blank" href="{ChangeUrl($r[url])}" title="{$r[title]}"> <img src="{$r[thumb]}" alt="{$r[title]}">
+                                            <p class="rank-item-tit cut">{$r[title]}</p>
+                                            <p class="rank-type">类型：<span> {$CATEGORYS[$r[catid]][catname]}</span></p>
+                                            <p class="rank_mar"> <span class="star stargrey"> <span class="star starlight star"></span> </span> </p>
+                                        </a>
+                                    </div>
+                                </li>
+                                {/loop}
+                                {/pc}
+                            </ul>
+                        </dd>
+                        <!--下载排行榜-->
+                    </dl>
+                    <div id="bourt">
+                        <h2>游戏礼包</h2>
+                        <dl class="ph_new paih pop">
+                            <dd class="rank-cont rank-ios">
+                                <!--下载排行榜-->
+                                <ul class="rank-cont-ul">
+                                    {pc:content  action="position" posid="35" catid="31" order="listorder DESC" limits="0,1"}
+                                    {loop $data $r}
+                                    <li class=" hover">
+                                        <div class="rank-normal"> 
+                                            <p>{str_cut($r[title],40,'')}<a href="{ChangeUrl($r[url])}" title="{$r[title]}" class="claim">领取</a></p>
+                                        </div>
+                                        <div class="rank-hover">
+                                            <a class="rank-down" href="{ChangeUrl($r[url])}" target="blank" title="{$r[title]}"></a>
+                                            <a class="rank-img" target="blank" href="{ChangeUrl($r[url])}" title="{$r[title]}"> <img src="{$r[thumb]}" alt="{$r[title]}">
+                                                <p class="rank-item-tit cut">{str_cut($r[title],40,'')}</p>
+                                                <p class="rank-type">剩余：<span>{LbCount($r['id'],$r['number'])}%</span></p>
+                                            </a> 
+                                            <a href="{ChangeUrl($r[url])}" class="claims">领取</a>
+                                        </div>
+                                    </li>
+                                    {/loop}
+                                    {/pc}
+                                    <!--鼠标效果 hover-->
+                                    <!--排行榜10-->
+                                    {pc:content  action="position" posid="35" catid="31" order="listorder DESC" limits="1,8"}
+                                    {php $i=2;}
+                                    {loop $data $r}
+                                    <li>
+                                        <div class="rank-normal"> 
+                                            <p>{str_cut($r[title],40,'')} <a href="{ChangeUrl($r[url])}" class="claim">领取</a></p>
+                                        </div>
+                                        <div class="rank-hover">
+                                            <a class="rank-img" target="blank" href="{ChangeUrl($r[url])}" title="{$r[title]}"> <img src="{$r[thumb]}" alt="{$r[title]}">
+                                                <p class="rank-item-tit cut">{str_cut($r[title],40,'')}</p>
+                                                <p class="rank-type">剩余：<span>{LbCount($r['id'],$r['number'])}%</span></p>
+                                            </a> 
+                                            <a href="{ChangeUrl($r[url])}" class="claims">领取</a>
+                                        </div>
+                                    </li>
+                                    {php $i++;}
+                                    {/loop}
+                                    {/pc}
+                                    {pc:content  action="position" posid="35" catid="31" order="listorder DESC" limits="9,1"}
+                                    {loop $data $r}
+                                    <li class="none">
+                                        <div class="rank-normal"> 
+                                            <p>{str_cut($r[title],24,'')}<a href="{ChangeUrl($r[url])}" class="claim">领取</a></p>
+                                        </div>
+                                        <div class="rank-hover">
+                                            <a class="rank-img" target="blank" href="{ChangeUrl($r[url])}" title="{$r[title]}"> <img src="{$r[thumb]}" alt="{$r[title]}">
+                                                <p class="rank-item-tit cut">{str_cut($r[title],24,'')}</p>
+                                                <p class="rank-type">剩余：<span>{LbCount($r['id'],$r['number'])}%</span></p>
+                                            </a> 
+                                            <a href="{ChangeUrl($r[url])}" class="claims">领取</a>
+                                        </div>
+                                    </li>
+                                    {/loop}
+                                    {/pc}
+                                </ul>
+                            </dd>
+                            <!--下载排行榜-->
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            {template "content","foot"}
+        </div>
+    </body>
+    <script  src="/statics/new_style/js/jquery.scrollbar.js"></script>
+    <script  src="/statics/new_style/js/jquery.slider.js"></script>
+    <script  src="/statics/new_style/js/jquery_hd.js"></script>
+    <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+    <script type="text/javascript">
+        // 游戏排行
+        $('.js-game-top-list').on('mouseover', 'li', function(e) {
+            if ($(this).hasClass('game-top-active'))
+                return;
+            $(this).addClass('game-top-active').siblings('li').removeClass('game-top-active');
+        });
+    </script>
+
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>{$search_q}_{$SEO['site_title']}</title>
+    <link rel="stylesheet" href="/statics/new_style/css/common.css">
+    <link rel="stylesheet" href="/statics/new_style/css/index.css">
+    <link href="/statics/new_style/style/yueact.css" rel="stylesheet">
+    <script  src="/statics/new_style/js/jquery.js"></script>
+    <script  src="/statics/new_style/js/miguan_wjzj.js"></script>
+    <script  src="/statics/new_style/js/jquery.scrollbar.js"></script>
+    <script  src="/statics/new_style/js/jquery.slider.js"></script>
+    <script  src="/statics/new_style/js/superslide.2.1.js"></script>
+    <script src="/statics/new_style/js/lib/common.js"></script>
+	<script type="text/javascript">
+            if (/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+                try {
+                    if (/Android|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)) {
+                        var strr = "http://m.93636.com?m=search&c=index&a=restart_search&typeid=4&q=%E9%98%B4%E9%98%B3%E5%B8%88&siteid=1";
+                        window.location.href = strr;
+                    }
+                } catch (e) {
+                }
+            }
+        </script>
+</head>
+<style type="text/css">
+    .m-nav { width: 100%; height: 45px;}
+     .m-nav li{ float: left; overflow: hidden; color: #666; font-size: 14px;}
+     .m-nav li a{ line-height: 45px;color: #666666;font-size: 14px;display: inline-block;}
+    .m-nav li .i-next {  margin: 0 5px 0 2px;  }
+
+    .mod-tab .tab-nav{
+        width: 100%;
+        background: #eaf5de url(/statics/new_style/images/nav-bg.png) no-repeat 0 0;
+        line-height: 36px;
+        height: 36px;
+        position: relative;
+        z-index: 5;
+        margin-bottom: 20px;;
+    }
+    .mod-tab .tab-nav-2{
+        background: #eaf7ff url(/statics/new_style/images/nav-bg-2.png) no-repeat 0 0;
+    }
+    .mod-tab .tab-nav li{
+        float: left; margin-left: -11px;
+        *display: inline;
+        width: 100px;
+        text-align: center;
+        position: relative;
+    }
+    .mod-tab .tab-nav li.first-nav { margin-left: 0; background: url(/statics/new_style/images/nav3.png) 0 0  no-repeat;}
+    .mod-tab .tab-nav a{
+        text-align: center;
+        font-size: 16px;
+        color: #333333;
+        font-family: "microsoft yahei";
+        display: block;
+    }
+    .mod-tab .tab-nav li.active,.mod-tab .tab-nav li:hover{
+        background: url(/statics/new_style/images/nav2.png) 0 0  no-repeat;
+    }
+    .mod-tab .tab-nav li.active.first-nav,
+    .mod-tab .tab-nav li.first-nav:hover {background: url(/statics/new_style/images/nav1.png) 0 0  no-repeat;}
+    .mod-tab .tab-nav li.active a,.mod-tab .tab-nav li:hover a{
+        color: #ffffff;
+    }
+    .bk_game_all{}
+    .seach_list { background-color: #fff;padding-bottom: 20px;}
+    .seach_list li .info{width: 672px;height: 110px;}
+    .seach_list li .info .pj{margin: 0;line-height: 30px;}
+    .seach_list li{height: auto;padding: 0;margin: 0;}
+    .seach_list li >div{border-bottom: 1px dashed #ccc;margin: 0 20px;width: 1160px;padding: 20px 0;}
+
+
+    /*搜索页面*/
+    .search-yx{position: relative;padding: 20px;}
+    .search-yx h2{width: 92px;height: 38px;display: inline-block;background: url("/statics/new_style/images/ico-search.png") no-repeat;background-position: -3px -3px;vertical-align: middle;text-indent: -9999px;float: left;*display:inline;}
+    .search-wz h2{background-position: -3px -46px;}
+    .search-lb h2{background-position: -3px -89px;}
+    .search-yx .s-result{float: left;font-size: 12px;color: #999;margin: 10px 0 0 10px;}
+    .search-yx .s-result span{color: #76c421;}
+
+    .search-more{text-align: center;padding-bottom: 20px;}
+    .search-more a{font-size: 16px;color: #999;}
+    .search-more a:hover{color: #76c421}
+    .search-more a span{color: #76c421;font-size: 16px;}
+    .h-line-search {  position: absolute;  height: 1px;  background-color: #e2e2e2;  width: 1065px;  top: 56px;  left: 108px; }
+
+    .seach_list li .down_bont {  margin: 0px 0 0 192px;}
+    .bk_game_all{background-color: #fff;margin-bottom: 20px;}
+
+    /*.zx-list li{padding:20px;width: 1160px;}*/
+    .zx-list .img-box {
+        float: left;
+        width: 218px;
+        height: 134px;
+        overflow: hidden;
+        margin-right: 14px;
+    }
+    .zx-list .img-box img {
+        width: 218px;
+        height: 134px;
+        transition: all .6s;
+        -moz-transition: all .6s;
+        -webkit-transition: all .6s;
+        -o-transition: all .6s;
+    }
+    .zx-list .z-tit {
+        font-size: 18px;
+        color: #333;
+        font-weight: bold;
+        line-height: 26px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        text-align: left;;
+    }
+    .zx-list .txt{font-size: 14px;color: #666;margin-top: 20px;text-align: left;}
+    .zx-list .date {
+        text-align: left;
+        font-family: 'simsun';
+        color: #999999;
+        font-size: 12px;
+        line-height: 20px;
+        margin-top: 5px;;
+    }
+    .zx-list .date i {
+        background: url("/statics/new_style/images/ico-search.png") -133px -2px;
+        width: 14px;
+        height: 14px;
+        margin-right: 10px;
+        vertical-align: sub;
+        display: inline-block;;
+    }
+    .z-info{float: left;width: 925px;}
+    .d_bule-no{background-color: #999 !important;cursor: no-drop !important;}
+    .wrap3_rg{width: 140px;float: right;padding-top: 30px;}
+    .wrap3_rg a{width: 140px;height: 35px;text-align: center;line-height: 35px;color: #fff;font-size: 20px;border-radius: 22px;background-color: #76c421;}
+    .wrap3_rg a:hover{background-color: #5e9620}
+    .spanbox{width: 173px;height: 4px;border: 1px solid #76c421;border-radius: 3px;background-color: #fff;}
+    .spanbox .ht{height: 4px;}
+    .wrap3_info dl{margin-bottom: 0px;}
+    .wrap3_info dl dt .w_title{color: #333;font-size: 18px;font-weight: bold;}
+    .wrap3_lf img{border-radius: 12px;}
+
+
+    .seach_list li .pic{padding: 0 15px;}
+    .zx-list-wz li{border-bottom: 1px dashed #ccc;margin: 0 20px;padding: 20px 0;width: 1160px;}
+</style>
+<body>
+{template 'content', 'head'}
+
+<div class="main clear min-h">
+    <ul class="m-nav clearfix">
+        <li class="">
+            <a href="http://www.93636.com/" target="_blank">
+                <i></i>
+                首页
+            </a>
+            <span class="i-next">&gt;</span>
+        </li>
+        <li>
+            <a href="#" target="">
+                {if $typeid==0}全部{elseif $typeid==1}游戏{elseif $typeid==2}文章{else}礼包{/if}的搜索结果
+            </a>
+        </li>
+    </ul>
+    <div class="search_info">
+        <div class="mod-tab">
+            <ul class="tab-nav clearfix" id="tab-nav">
+                <li class="{if 0==$typeid}first-nav active{else}first-nav{/if}">
+                    <a href="?m=search&c=index&a=searchall&typeid=0&q={urlencode($search_q)}&siteid={$siteid}" >全部<i></i></a>
+                </li>
+                <li class="{if 1==$typeid}active{else}{/if}">
+                    <a href="?m=search&c=index&a=restart_search&typeid=1&q={urlencode($search_q)}&siteid={$siteid}" >游戏<i></i></a>
+                </li>
+                <li class="{if 2==$typeid}active{else}{/if}">
+                    <a href="?m=search&c=index&a=restart_search&typeid=2&q={urlencode($search_q)}&siteid={$siteid}" >文章<i></i></a>
+                </li>
+                <li class="{if 3==$typeid}active{else}{/if}">
+                    <a href="?m=search&c=index&a=restart_search&typeid=3&q={urlencode($search_q)}&siteid={$siteid}" >礼包<i></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="index-ranking mt0">
+
+{if $totalnumsyx}
+            <div class="bk_game_all">
+                <div class="search-yx clearfix">
+                    <h2>游戏</h2>
+                    <p class="s-result">为您找到的结果为<span>{$totalnumsyx}</span>个</p>
+                    <div class="h-line-search"></div>
+                </div>
+                <ul class="seach_list clear cut">
+                    {loop $datayx $i $r}
+                    <li>
+                        <div class="clearfix">
+                            <div class="pic"><a href="{$r[url]}" title="{$r[title]}" target="_blank"><img src="{$r[thumb]}" alt="{$r[title]}"></a></div>
+                            <div class="info zx-list">
+                                <div class="pj"> <h2><a href="{$r[url]}" title="{$r[title]}" target="_blank">{$r[title]}</a></h2><span>{$CATEGORYS[$r[catid]][catname]}</span><span>|</span><span>大小：{$r[size]}</span></div>
+                                <div class="text">{$r[description]}</div>
+                                <p class="date"><i></i>{format::date($r[inputtime])}</p>
+                            </div>
+                            <div class="down_bont"><a href="{$r[url]}" class="d_rad" target="_blank">进入专区</a>
+                                <a href="{if $r[anlink]!==''}{$r[anlink]}{else}http://cdn.qmzs.com/xiewan/qmzs_sp[111]_qd[xw93636].exe{/if}" class="d_bule d_bule-no">下载游戏</a>
+                            </div>
+                        </div>
+                    </li>
+                    {/loop}
+                     </ul>
+                <div class="search-more"><a href="?m=search&c=index&a=restart_search&typeid=1&q={urlencode($search_q)}&siteid={$siteid}" target="">更多<span>{$search_q}</span>游戏</a></div>
+            </div>
+            {/if}
+            {if $totalnumswz}
+            <div class="bk_game_all">
+                <div class="search-yx search-wz clearfix">
+                    <h2>文章</h2>
+                    <p class="s-result">为您找到的结果为<span>{$totalnumswz}</span>个</p>
+                    <div class="h-line-search"></div>
+                </div>
+                <ul class="zx-list zx-list-wz seach_list clear cut">
+                    {loop $datawz $i $r}
+                    <li>
+                        <a href="{$r[url]}" class="clearfix" title="{$r[title]}" target="_blank">
+                            <div class="img-box">
+                                <img src="{$r[thumb]}">
+                            </div>
+                            <div class="z-info">
+                                <p class="z-tit">{$r[title]}</p>
+                                <p class="txt">{$r[description]}</p>
+                                <p class="date"><i></i>{format::date($r[inputtime])}</p>
+                            </div>
+                        </a>
+                    </li>
+                    {/loop}
+                </ul>
+                <div class="search-more"><a href="?m=search&c=index&a=restart_search&typeid=2&q={urlencode($search_q)}&siteid={$siteid}" target="">更多<span>{$search_q}</span>文章</a></div>
+            </div>
+            {/if}
+            {if $totalnumslb}
+            <div class="bk_game_all">
+                <div class="search-yx search-lb clearfix">
+                    <h2>礼包</h2>
+                    <p class="s-result">为您找到的结果为<span>{$totalnumslb}</span>个</p>
+                    <div class="h-line-search"></div>
+                </div>
+                <ul class="zx-list  seach_list clear cut">
+                    {loop $datalb $i $r}
+                    <li class="clear">
+                        <div class="wrap3_list clearfix">
+                            <div class="wrap3_lf"><img src="{$r[thumb]}" alt="{$r[title]}"></div>
+                            <div class="wrap3_info">
+                                <dl class="clear">
+                                    <dt><a href="{$r[url]}" class="w_title" target="_blank">{$r[title]}</a> </dt>
+                                </dl>
+                                <dl class="clear">
+                                    <dt>{$r[description]}</dt>
+                                </dl>
+                                <dl class="clear">
+                                    <dt>剩余：</dt>
+                                    <dd class="clearfix">
+                                        <span class="spanbox"><span class="ht" style="width:{LbCount($r['id'],$r['number'])}%;"></span></span>
+                                        <em class="sl">{LbCount($r['id'],$r['number'])}%</em>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="wrap3_rg">
+                                <!-- lh th -->
+                                <a href="{$r[url]}" class="ht" target="_blank">
+                                    立即领取
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    {/loop}
+
+                </ul>
+                <div class="search-more"><a href="?m=search&c=index&a=restart_search&typeid=3&q={urlencode($search_q)}&siteid={$siteid}" target="">更多<span>{$search_q}</span>礼包</a></div>
+            </div>
+            {/if}
+        </div>
+    </div>
+</div>
+<div class="footer">
+    {template 'content', 'foot'}
+
+</div>
+
+
+<audio controls="controls" style="display: none;"></audio></body><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></html>

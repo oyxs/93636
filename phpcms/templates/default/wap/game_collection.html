@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+        <meta name="MobileOptimized" content="620"/>
+        <meta name="format-detection" content="telephone=no" />
+        <title>手游网游戏集合</title>
+        <link href="http://www.93636.com/statics/wap/new_style/new_css/swiper.css" rel="stylesheet" type="text/css" />
+        <link href="http://www.93636.com/statics/wap/new_style/new_css/yueact.css" rel="stylesheet" type="text/css" />
+        <script src="http://www.93636.com/statics/wap/new_style/new_js/jquery.js" type="text/javascript"></script>
+        <script src="http://www.93636.com/statics/wap/new_style/new_js/swiper.min.js" type="text/javascript"></script>
+        <script src="http://www.93636.com/statics/wap/new_style/new_js/top.js" type="text/javascript"></script>
+        <style> .header .logo { margin-top: 0px;}</style>
+    </head>
+    <body>
+       {template "wap","header_wap"}
+        <div class="content">
+            <div class="link">
+                <a href="http://m.93636.com">首页</a> ><a href="/">游戏集合</a> 
+            </div>
+            {pc:get sql="select * from 93636_wap_type w LEFT JOIN 93636_category c on w.cat=c.catid where w.parentid=119" return="info"}
+            {loop $info $r}
+            
+            <div class="art-lbs art-mart">
+           		<a href="/yxheji/{$r[typeid]}">
+                	<img src="{$r[image]}" alt="">
+                </a>
+            </div>
+            {/loop}
+            {/pc}
+            <div class="art-lb">                         
+                <div class="g-more boru"><a href="/games/wangyou" class="txt" rel="nofollow">更多游戏</a></div>
+            </div>
+        </div>
+        {template "wap","footer_wap"}
+    </body>
+</html>

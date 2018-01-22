@@ -1,0 +1,85 @@
+﻿<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta name="MobileOptimized" content="620"/>
+<meta name="format-detection" content="telephone=no" />
+<link id="adaptation" rel="canonical" href="{new_get_url($catid)}" >
+<title>{$tit_le['title']}_93636手游网</title>
+<meta name="keywords" content="{$tit_le['keyword']}" /> 
+<meta name="description" content="{$tit_le['description']}" />
+<link href="http://www.93636.com/statics/wap/style/yueact.css" rel="stylesheet" type="text/css" />
+<link href="http://www.93636.com/statics/wap/style/swiper.css" rel="stylesheet" type="text/css" />
+<script src="http://www.93636.com/statics/wap/js/jquery.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/wap/js/top.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/wap/js/swiper.min.js" type="text/javascript"></script>
+<script src="http://www.93636.com/statics/wap/js/jquery.infinitescroll.js" type="text/javascript"></script>
+    <script src="http://www.93636.com/statics/js/baidu_count.js" type="text/javascript"></script>
+
+</head>
+<body>
+{template "wap","header_wap"}
+<div class="content">
+    <div class="swiper-container">
+    	{pc:wap action="position" posid="18" catid="12" order="listorder DESC" num="5"}
+        <div class="swiper-wrapper">
+        	{loop $data $r}
+            <div class="swiper-slide"><a href="{mynewurl($r[url])}"><img src="{$r[nopicture]}" alt="{$r[title]}"><span class="swiper-txt">{$r[title]}</span></a></div>
+            {/loop}
+        </div>
+        {/pc}
+    </div>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: 5000,
+        });
+    </script>
+    <ul class="conbtn">
+        <li><a href="{my_list_url('25')}" class="ibtn10 ibtn03"><em></em>美女</a></li>
+        <li><a href="{my_list_url('26')}" class="ibtn07"><em></em>截图</a></li>
+        <li><a href="{my_list_url('27')}" class="ibtn08"><em></em>壁纸</a></li>
+        <li><a href="{my_list_url('28')}" class="ibtn09"><em></em>其他</a></li>
+    </ul>
+    <div class="art-lb mb">
+        <div class="link">
+            <a href="/">首页</a> >{my_wap_pos($typeid)}
+        </div>
+       {pc:wap action="lists" typeid="$typeid" num="6" order="id DESC" return="info" page="$page"}
+      	<ul class="art-lists">
+            {loop $info $r}
+            <li><a href="{my_show_url($r[catid],$r[id])}"><img src="{$r[thumb]}" alt="{$r[title]}"><div class="info"><p class="tit">{$r[title]}</p><p class="time">{date('Y-m-d',$r[inputtime])}</p></div></a></li>
+            {/loop}
+      </ul>
+      {/pc}
+        <div class="g-more"><a class="txt arrow">加载更多</a></div>
+    </div>
+  <div id="page" style="display:none;">{$pages}</div>
+</div>
+{template "wap","footer_wap"}
+<script>
+	$(document).ready(function() {
+		$('.art-lb .art-lists').infinitescroll({
+			navSelector  : "#page",
+       		nextSelector : "#page #nextpage",
+			itemSelector: ".art-lb li",
+			animate: true,
+			extraScrollPx: 100,
+			bufferPx: 5,
+			loading: {
+				finishedMsg: '没有更多内容了',
+				img: '/statics/wap/images/load.gif',
+				msgText: '正在加载中...'
+			}
+		});
+		$(window).unbind('.infscr');
+		$('.g-more .arrow').click(function() {
+			$('.art-lb .art-lists').infinitescroll('retrieve');
+		});
+		$(document).ajaxError(function(e, xhr, opt) {
+			if (xhr.status == 404)
+				$('.g-more .arrow').remove();
+		});
+	});
+</script>	
+</body>
+</html>

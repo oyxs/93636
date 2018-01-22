@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>93636登录</title>
+        <meta name="Generator" content="EditPlus®">
+        <link rel="stylesheet" href="/statics/new_style/css/common.css">
+        <link rel="shortcut icon" href="http://www.93636.com/statics/icon/32X32.ico" type="image/x-icon" />
+   <link rel="stylesheet" href="/statics/new_style/css/index.css">
+        <link href="/statics/new/style/yueact.css" rel="stylesheet" type="text/css">
+        <script src="/statics/new/js/jquery.js" type="text/javascript"></script>
+        <script scr="/statics/js/formvalidatorregex.js" type="text/javascript"></script>
+		<script type="text/javascript" src="{JS_PATH}cookie.js"></script>
+		<script type="text/javascript" src="{JS_PATH}member_common.js"></script>
+		<script type="text/javascript" src="{JS_PATH}dialog.js"></script>
+		<script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
+            <script src="/statics/new_style/js/lib/common.js"></script>
+    </head>
+    <body>
+        <div class="loginDiv">
+            {template "content","head"}
+            <div class="userlogin">
+                <div class="user_BD clearfix">
+                    <div class="user_LF">               
+                        <div class="user_tab">
+                            <p class="on"><span>会员登录</span></p>
+                        </div>
+                        <div class="tabCon">   
+                            <form id="leftlogin" method="post" class="on">
+                                <div class="login_input">
+                                    <div class="login_bor">
+                                        <label class="resName">&nbsp;</label>
+                                        <input type="text" maxlength="50" name="username" id="username">
+                                    </div>
+                                    <p>2-14个字符：英文、数字或中文</p>
+                                </div>
+
+                                <div class="login_password">
+                                    <input class="resName" type="password" name="password" maxlength="50">
+                                    <p>请输入密码</p>
+                                </div>
+
+                                <div class="jcode_input">
+                                    <input class="resName" type="text" name="code" maxlength="50">
+                                    <div class="jcode-pic">
+                                        <img id="imgCode" onclick='this.src = this.src + "&" + Math.random()' alt="验证码" src="/api.php?op=checkcode&code_len=5&font_size=14&width=90&height=30">
+                                    </div>
+                                    <p>请输入图中的字母或数字，不区分大小写</p>
+                                </div>
+
+                                <a id="loginBtn" class="login" title="点击登录" href="javascript:submit()">登  录</a>
+                                <div class="userbt">
+                                    <!--<input id="fx" class="fx" type="checkbox" />-->
+                                    <!--<a id="rememberMe" href="">自动登录</a>-->
+									<!--<input type="checkbox" name="cookietime" value="2592000" id="cookietime"> {L('remember')}{L('username')}-->
+                                  
+                                </div>
+
+                                <input type="hidden" name="forward" value="<?php echo urlencode($_GET[forward]); ?>">
+                                <input type="hidden" name="dosubmit" value="登录">
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="userRT">
+                        <dl>
+                            <dt>快捷登录：</dt>
+                            <dd>
+                               {if $setting['qq_appkey'] || $setting['qq_appid']} <a href="http://www.93636.com/qq/"  target="_blank" class="qq"></a>{/if}
+                               {if $setting['sina_akey'] || $setting['sina_skey']} <a href="javascript:;" onclick="show_login('sina');return false;" class="sina"></a> {/if}
+                       
+                  <div class="ring"><p class="text-r">没用账号？<a class="Forget" href="http://www.93636.com/index.php?m=member&c=index&a=register">注册</a>|<a class="Forget" href="index.php?m=member&c=index&a=public_get_password_type&siteid={$siteid}">{L('forgetpassword')}</a></p></div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            {template "content","foot"}
+        </div>
+        <script>
+		function submit() {
+                $("#leftlogin").submit();
+            }
+		$(function(){
+		$('#username').focus();
+		})
+
+	function save_username() {
+		if($('#cookietime').attr('checked')==true) {
+			var username = $('#username').val();
+			setcookie('username', username, 3);
+		} else {
+			delcookie('username');
+		}
+	}
+	var username = getcookie('username');
+	if(username != '' && username != null) {
+		$('#username').val(username);
+		$('#cookietime').attr('checked',true);
+	}
+
+	function show_login(site) {
+		if(site == 'sina') {
+			art.dialog({lock:false,title:'{L('sina_login')}',id:'protocoliframe', iframe:'index.php?m=member&c=index&a=public_sina_login',width:'500',height:'310',yesText:'{L('close')}'}, function(){
+			});
+		} else if(site == 'snda') {
+			art.dialog({lock:false,title:'{L('snda_login')}',id:'protocoliframe', iframe:'index.php?m=member&c=index&a=public_snda_login',width:'500',height:'310',yesText:'{L('close')}'}, function(){
+			});
+		} else if(site == 'qq') {
+			art.dialog({lock:false,title:'{L('qq_login')}',id:'protocoliframe', iframe:'index.php?m=member&c=index&a=public_qq_login',width:'500',height:'310',yesText:'{L('close')}'}, function(){
+			});
+		}
+	}
+            
+        </script>
+        <script src="/statics/new/js/miguan_wjzj.js" type="text/javascript"></script>
+    </body>
+</html>

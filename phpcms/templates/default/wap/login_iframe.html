@@ -1,0 +1,75 @@
+﻿<link href="http://www.93636.com/statics/wap/new_style/new_css/yueact.css" rel="stylesheet">
+<script  type="text/javascript" src="http://www.93636.com/statics/wap/new_style/new_js/jquery.js"></script>
+<script src="http://www.93636.com/statics/xiewan/js/jquery.easing.min.js" type="text/javascript"></script>
+<div class="login">
+ <form id="leftlogin" method="" class="on" >
+    <ul>
+        <li><p class="error" id="login_error"></p></li>
+        <li><input type="text" id="username" name="username" class="login_tx login_user" placeholder="请输入用户名/手机号码" /></li>
+        <li><input type="password" id="password" name="password" class="login_tx login_passwor" placeholder="请输入密码"  />
+            <input type="password" id="login_password" class="login_tx login_passwor" style="display: none;"/>
+        </li>
+
+        <li id="li_yzm">
+            <input type="text" id="code" name="code" class="login_tx login_yzm" placeholder="请输入验证码" />
+            <img src="/api.php?op=checkcode&code_len=5&font_size=14&width=90&height=30" class="login_code" id="LimgYzm" onclick='this.src = this.src + "&" + Math.random()' />
+            <span class="f5" onclick='this.src = this.src + "&" + Math.random()'></span>
+        </li>
+        <!--<li style="margin-top:20px;">
+            <input type="checkbox" name="rememberpwd" checked="checked" id="rememberpwd" class="login_check">
+             <label for="rememberpwd"><span class="check">记住密码</span></label>
+            <a target="top" href="" class="a1">忘记密码？</a>
+        </li>  -->
+        <li><input type="button" id="login_sub" class="login_bt" value="登录" /></li>
+        <input type="hidden" name="dosubmit" value="登录">
+    </ul>
+     </form>
+    <p class="shejiao clear" >
+        <span>社交账号登录:</span>
+        <a href="http://www.93636.com/qq/" id="qq_login" class="a1" target="_blank">QQ账号登录</a>
+        <a onclick="show_login('sina');return false;" href="javascript:;" id="sina" class="a2">新浪微博登录</a>
+    </p>
+</div>      
+<div class="loding-gif" style="width:100%; height:100%; position: fixed; top:0; left:0; display:none; background:rgba(0,0,0,.5)"><img style="position: fixed; top:50%; left:50%" src="http://www.93636.com/statics/wap/new_style/new_img/5-121204193935-51.gif" alt=""></div>
+ <script type="text/javascript">
+ $("#login_sub").click(function() {
+             var username = $("#username").val();
+             var password = $("#password").val();
+             var code = $("#code").val();
+             var dosubmit = 1;
+             if(username==''){
+            	 alert('请输入用户名');
+             }
+             if(password==''){
+            	 alert('请输入密码');
+             }
+             if(code==''){
+            	 alert('请输入验证码');
+             }
+			 $('.loding-gif').show();
+             $.post("/index.php?m=member&c=index&a=login_new",{
+     			"username" : username,
+     			"password" : password,
+     			"code" : code,
+     			"dosubmit" : dosubmit
+     			},function(data) {
+     				if(data){
+     					var obj = eval('('+data+')');  
+     					if(obj.static == '1'){
+						$('.loding-gif').hide();
+     						alert(obj.msg);
+     						parent.location.href="http://m.93636.com";
+     					}else{
+						$('.loding-gif').hide();
+     						alert(obj.msg);
+     					}
+         				
+     				}else{
+					$('.loding-gif').hide();
+     					alert("登录失败");
+     				}
+     		});
+         
+     
+ });
+</script>

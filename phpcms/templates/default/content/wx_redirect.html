@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>{$r[title]}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="MobileOptimized" content="320">
+		<meta name="applicable-device" content="mobile">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<script>
+			(function(window, document) {
+				(function() {
+					var viewportEl = document.querySelector('meta[name="viewport"]'),
+						hotcssEl = document.querySelector('meta[name="hotcss"]'),
+						dpr = window.devicePixelRatio || 1;
+					if(hotcssEl) {
+						var hotcssCon = hotcssEl.getAttribute("content");
+						if(hotcssCon) {
+							var initialDpr = hotcssCon.match(/initial\-dpr=([\d\.]+)/);
+							if(initialDpr) {
+								dpr = parseFloat(initialDpr[1])
+							}
+						}
+					}
+					var scale = 1,
+						content = "width=device-width, initial-scale=" + scale + ", minimum-scale=" + scale + ", maximum-scale=" + scale + ", user-scalable=no";
+					if(viewportEl) {
+						viewportEl.setAttribute("content", content)
+					} else {
+						viewportEl = document.createElement("meta");
+						viewportEl.setAttribute("name", "viewport");
+						viewportEl.setAttribute("content", content);
+						document.head.appendChild(viewportEl)
+					}
+				})();
+				var hotcss = {};
+				hotcss.px2rem = function(px, designWidth) {
+					if(!designWidth) {
+						designWidth = parseInt(hotcss.designWidth, 10)
+					}
+					return parseInt(px, 10) * 320 / designWidth / 20
+				};
+				hotcss.mresize = function() {
+					var innerWidth = window.innerWidth;
+					if(!innerWidth) {
+						return false
+					}
+					document.documentElement.style.fontSize = (innerWidth * 20 / 320) + "px"
+				};
+				hotcss.mresize();
+				window.addEventListener("resize", hotcss.mresize, false);
+				window.addEventListener("load", hotcss.mresize, false);
+				setTimeout(function() {
+					hotcss.mresize()
+				}, 300);
+				window.hotcss = hotcss;
+			})(window, document);
+		</script>
+		<style>
+			/*px / 40 得到rem*/
+			
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			body {
+				width: 100%;
+				position: relative;
+			}
+			
+			.iframe-box {
+				-webkit-overflow-scrolling: touch !important;
+				overflow-y: scroll !important;
+				overflow-x: hidden;
+				width: 100%;
+				height: 19.4rem;
+			}
+			/*Plugin CSS*/
+			
+			.str_wrap {
+				overflow: hidden;
+				//zoom:1;
+				width: 100%;
+				font-size: 12px;
+				line-height: 16px;
+				position: relative;
+				-moz-user-select: none;
+				-khtml-user-select: none;
+				user-select: none;
+				background: #f6f6f6;
+				white-space: nowrap;
+			}
+			
+			.str_wrap.str_active {
+				background: #f1f1f1;
+			}
+			
+			.str_move {
+				white-space: nowrap;
+				position: absolute;
+				top: 0;
+				left: 0;
+				cursor: move;
+				z-index: 999999
+			}
+			
+			.str_move_clone {
+				display: inline-block;
+				//display:inline;
+				//zoom:1;
+				vertical-align: top;
+				position: absolute;
+				left: 100%;
+				top: 0;
+			}
+			
+			.str_vertical .str_move_clone {
+				left: 0;
+				top: 100%;
+			}
+			
+			.str_down .str_move_clone {
+				left: 0;
+				bottom: 100%;
+			}
+			
+			.str_vertical .str_move,
+			.str_down .str_move {
+				white-space: normal;
+				width: 100%;
+			}
+			
+			.str_static .str_move,
+			.no_drag .str_move,
+			.noStop .str_move {
+				cursor: inherit;
+			}
+			
+			.str_wrap img {
+				max-width: none !important;
+			}
+			
+			.main-box {
+				width: 100%;
+				overflow: hidden;
+				position: relative;
+				z-index: 9999;
+			}
+			
+			.main-box ul {
+				overflow: hidden;
+				padding: 0.5rem 0.25rem 0 0.25rem;
+				margin-right: -0.4rem;
+			}
+			
+			.main-box li {
+				float: left;
+				height: 4.75rem;
+				overflow: hidden;
+				margin-right: 0.2rem;
+			}
+			
+			.main-box li a {
+				display: block;
+			}
+			
+			.main-box li img {
+				width: 5rem;
+				height: 4.75rem;
+				background-size: cover;
+			}
+			
+			.main-box li.one-img {
+				width: 100%;
+				height: 4.75rem;
+			}
+			
+			.main-box li.one-img img {
+				width: 15.5rem;
+				height: 4.75rem;
+				background-size: cover;
+			}
+			
+			.bg-wz {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 999999;
+				display: block;
+				overflow: hidden;
+			}
+			
+			.div-wz {
+				/*background-image: url(1113/bg0621.jpg);*/
+				background-color: #ffedf8;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+				display: block;
+				position: relative;
+			}
+			
+			.wz-pas {
+				width: 100%;
+				text-align: center;
+				color: #e24a59;
+				font-size: 1.3rem;
+				padding-top: 3.5rem;
+				font-weight: bold;
+			}
+			
+			.wz-pas .share {
+				color: #e24a59;
+				font-size: 1.3rem;
+			}
+			
+			.wz-btn {
+				width: 100%;
+				text-align: center;
+			}
+			
+			#copybtn {
+				width: 8.3rem;
+				height: 2.4rem;
+				line-height: 2.2rem;
+				text-align: center;
+				display: block;
+				background: url("http://jk.vrqile.com/statics/images/1113/btn.png") no-repeat;
+				background-size: cover;
+				vertical-align: middle;
+				margin: 1rem auto 0;
+				color: #571208;
+				font-size: 1rem;
+				font-weight: bold;
+				position: relative;
+				z-index: 999;
+			}
+			
+			.wz-btn-error #copybtn {
+				background: url("http://jk.vrqile.com/statics/images/1113/btn-f.png") no-repeat;
+				background-size: cover;
+				color: #d9d9d9;
+			}
+			
+			.bg {
+				display: block;
+				width: 100%;
+				/* position: relative; */
+			}
+			
+			.bg-gif {
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				display: block;
+				/*background-image: url(1113/bg.gif);*/
+			}
+			
+			.marquee-cont {
+				position: absolute;
+				bottom: 2.8rem;
+				/*left: 1rem;*/
+				left:0;
+				right:0;
+				/*top:0;*/
+				margin:auto;
+				width: 9.2rem;
+				height: 5.475rem;
+				/*margin: 0 auto 5rem auto;*/
+				/*background-color: royalblue;*/
+				overflow: hidden;
+				display: block;
+				/*vertical-align: middle;*/
+				background-color: transparent;
+			}
+			
+			#marquee {
+				width: 9.2rem;
+				height: 12.45rem;
+				display: block;
+				margin-bottom: 0.225rem
+				/* margin-right: 0.35rem; */
+				/*	float: left;*/
+			}
+			/**/
+			
+			.mark {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9999999;
+				display: none;
+				background-color: rgba(0, 0, 0, .4);
+			}
+			
+			.mark .item-1 {
+				width: 100%;
+				padding-top: 10rem;
+				text-align: center;
+				font-size: .75rem;
+				color: #fff;
+			}
+			
+			.spinner {
+				margin: .1rem auto 0;
+				width: 100%;
+				text-align: center;
+			}
+			
+			.spinner>div {
+				width: .2rem;
+				height: .2rem;
+				background-color: #fff;
+				border-radius: 100%;
+				display: inline-block;
+				-webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+				animation: bouncedelay 1.4s infinite ease-in-out;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.spinner .bounce1 {
+				-webkit-animation-delay: -0.32s;
+				animation-delay: -0.32s;
+			}
+			
+			.spinner .bounce2 {
+				-webkit-animation-delay: -0.16s;
+				animation-delay: -0.16s;
+			}
+			
+			@-webkit-keyframes bouncedelay {
+				0%,
+				80%,
+				100% {
+					-webkit-transform: scale(0.0)
+				}
+				40% {
+					-webkit-transform: scale(1.0)
+				}
+			}
+			
+			@keyframes bouncedelay {
+				0%,
+				80%,
+				100% {
+					transform: scale(0.0);
+					-webkit-transform: scale(0.0);
+				}
+				40% {
+					transform: scale(1.0);
+					-webkit-transform: scale(1.0);
+				}
+			}
+			
+			.pc .bg-wz {
+				/*防止没滚动条*/
+				position: absolute;
+				/*防止没高度*/
+				height: 25.2rem;
+			}
+			.pc .mark .item-1 {
+				padding-top: 100px;
+			}
+			.ipad .wz-pas{
+				padding-top: 1.5rem;
+			}
+			.tips {
+				width: 100%;
+				font-size: .55rem;
+				color: #571208;
+				text-align: center;
+				margin-top: .5rem;
+			}
+			.gifbtn {
+				width: 10.525rem;
+				height: 2.25rem;
+				position: absolute;
+				bottom: 0.04rem;
+				margin: 0 auto;
+				left: 0;
+				right: 0;
+			}
+			.zd {
+				width: 16rem;
+				height: 9.15rem;
+				position: absolute;
+				bottom: 0;
+			}
+			.title {
+				width: 11.725rem;
+				height: 4.15rem;
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				bottom: 9.2rem;
+				z-index: 998;
+			}
+			/* 华为荣耀8 */
+			@media screen  and (device-width: 360px) and (device-height: 640px) {
+				.wz-pas {
+					padding-top: 1.8rem;
+				}
+			}
+			/* iphone4 */
+			@media screen and (device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2){
+				.wz-pas {
+					padding-top: 1.75rem;
+				}
+			}
+
+			/* iphone5 */
+			@media screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2){
+				.wz-pas {
+					padding-top: 1.75rem;
+				}
+			}
+		</style>
+		
+		<script>
+    //声明_czc对象:
+    var _czc = _czc || [];
+    //绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
+    _czc.push(["_setAccount", "1256719651"]);
+     _czc.push(['_trackEvent', '{$r[title]}', '资源', '温香暖玉','1','visit']);
+    </script>
+	</head>
+
+	<body>
+		<div class="bg-wz">
+			<div class="div-wz">
+				<div class="wz-pas">
+					网盘密码:
+					<span id="copy_key_ios_nb" class="share" data-taowords="{$code}">{$code}</span>
+				</div>
+				<div class="wz-btn" id="nbcopy">
+					<!--<span id="copybtn" class="btn">一键复制</span>
+           <div class="share_content" ></div>-->
+				</div>
+				<p class="tips">点击一键复制跳转网盘</p>
+				<a class="bg" href="http://interaction.bayimob.com/gameHtml?appkey=39d0a8908fbe6c18039ea8227f827023&adSpaceKey=3988c7f88ebcb58c6ce932b957b6f332" onclick="_czc.push(['_trackEvent', '红包广告', '红包广告', '广告点击','1','visit']);">
+					<img class="bg-gif" src="http://jk.vrqile.com/statics/images/1113/bg.png">
+					<img class="title" src="http://jk.vrqile.com/statics/images/1113/title.png">
+					<img class="zd" src="http://jk.vrqile.com/statics/images/1113/zd.gif">
+				</a>
+			</div>
+		</div>
+		<div class="mark">
+			<div class="item-1">即将跳转至网盘</div>
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+<div  style="display:none"><script src="https://s11.cnzz.com/z_stat.php?id=1256719651&web_id=1256719651" language="JavaScript"></script></div>
+		<script src="http://jk.vrqile.com/statics/js/jquery-3.0.0.min.js"></script>
+		<script src="http://jk.vrqile.com/statics/js/clipboard.min.js"></script>
+		<script src="http://jk.vrqile.com/statics/js/jquery.liMarquee.js"></script>
+		<script type="text/javascript">
+			function browserRedirect() {
+				var sUserAgent = navigator.userAgent.toLowerCase();
+				var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+				var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+				var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+				var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+				var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+				var bIsAndroid = sUserAgent.match(/Android/i) == "android";
+				var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+				var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+				//        document.writeln("您的浏览设备为：");
+				if(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+					//            document.writeln("phone");
+					$("body").removeClass("pc");
+				}
+				else {
+					//            document.writeln("pc");
+					$("body").addClass("pc");
+
+				}
+				if(bIsIpad){
+					$("body").addClass("ipad");
+				}
+			}
+			$(document).ready(function() {
+				browserRedirect();
+				$(".wz-btn").html("<span id='copybtn' class='btn'>一键复制</span><div class='share_content' style='display:none;position:fixed;top:-1000px'></div>").show();
+				$("#copybtn").on("click", function() {
+					var a = $(".share").attr("data-taowords");
+					a = a.replace(/<br>/ig, "");
+					console.log(a);
+					$(".share_content").html(a);
+					$(".share_content").show();
+					$("#ckcopy").hide()
+				});
+				$("#copybtn").show();
+				var clipboard = new Clipboard("#copybtn", {
+					text: function() {
+						return $(".share_content").html()
+					}
+				});
+				clipboard.on("success", function(a) {
+					a.trigger.innerHTML = "复制成功";
+					//            a.trigger.style.backgroundColor="#a3e021";
+					//            a.trigger.style.borderColor="#a3e021";
+					$(".share_content").hide();
+					console.info("Action:", a.action);
+					console.info("Text:", a.text);
+					console.info("Trigger:", a.trigger);
+					a.clearSelection();
+					//$('.bg-wz').remove()
+					//setTimeout("$('.bg-wz').remove()",2000)
+					$(".mark").show();
+					setTimeout("window.location.href='{$r[wp_url]}'", 2000)
+				});
+				clipboard.on("error", function(a) {
+					$(".wz-btn").addClass("wz-btn-error");
+					a.trigger.innerHTML = "复制失败";
+					setTimeout(function() {
+						a.trigger.innerHTML = "硬件不支持"
+					}, 1000);
+					//a.trigger.style.backgroundColor="#666";
+					//a.trigger.style.borderColor="#9ED29E";
+					$(".share_content").hide();
+					console.info("Action:", a.action);
+					console.info("Text:", a.text);
+					console.info("Trigger:", a.trigger);
+					a.clearSelection();
+					$(".mark").show();
+					setTimeout("window.location.href='{$r[wp_url]}'", 3000)
+				});
+			});
+		</script>
+	</body>
+
+</html>

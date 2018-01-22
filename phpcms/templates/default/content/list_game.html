@@ -1,0 +1,73 @@
+{template "content","header8"}
+
+{template "content","header2"}
+
+
+
+<div class="laction"><i></i>当前位置：<a href="/">首页</a> > {catpos($catid)}</div>
+
+<div class="main ny_main">
+	<div class="yxbk_left">
+		<dl>
+			<dt><h2>游戏类别</h2></dt>
+			<dd>
+				<span class="on"><a href="">不限</a></span>
+				<span><a href="">休闲娱乐</a></span>
+				<span><a href="">动作游戏</a></span>
+				<span><a href="">射击游戏</a></span>
+				<span><a href="">角色扮演</a></span>
+				<span><a href="">赛车游戏</a></span>
+				<span><a href="">策略游戏</a></span>
+				<span><a href="">益智游戏</a></span>
+				<span><a href="">格斗游戏</a></span>
+				<span><a href="">冒险游戏</a></span>
+				<span><a href="">模拟经营</a></span>
+				<span><a href="">棋牌游戏</a></span>
+				<span><a href="">儿童游戏</a></span>
+				<span><a href="">音乐游戏</a></span>
+				<span><a href="">回合游戏</a></span>
+			</dd>
+		</dl>
+		<dl>
+			<dt><h2>支持平台</h2></dt>
+			<dd>
+				<span class="on"><a href="">不限</a></span>
+				<span><a href="">苹果</a></span>
+				<span><a href="">安卓</a></span>
+			</dd>
+		</dl>
+		<dl>
+			<dt><h2>游戏类型</h2></dt>
+			<dd>
+				<span class="on"><a href="">不限</a></span>
+				<span><a href="">单机</a></span>
+				<span><a href="">网游</a></span>
+			</dd>
+		</dl>
+	</div>
+	
+	<div class="yxbk_rig">
+		
+		{pc:content action="lists" catid="$catid" num="8" order="id DESC" page="$page"}
+		<ul class="yxbk_box">
+			{loop $data $r}
+			<li>
+				<p><a href="{ChangeUrl($r[url])}" class="title">{$r[title]}</a>
+				<a href="{ChangeUrl($r[url])}" class="lq"></a>  <span><a href="{ChangeUrl($r[url])}">{$r[type]}</a> | <em class="anzhuo"></em></span></p>
+				<a href="{ChangeUrl($r[url])}" class="img"><img src="{$r[thumb]}"><i></i></a>
+				<div class="tjzs"><span>推荐指数：</span><span class="xx xx4"><i></i></span></div>
+				<a href="{ChangeUrl($r[url])}" class="ljxz">立即下载</a>
+			</li>
+			{/loop}
+		</ul>
+		{/pc}
+		
+		<div class="page">{$pages}</div>
+
+	</div>
+</div>
+
+{template "content","footer"}
+
+</body>
+</html>

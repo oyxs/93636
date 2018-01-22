@@ -1,0 +1,126 @@
+{template "content","header8"}
+
+{template "content","header2"}
+
+<div class="laction"><i></i>当前位置：<a href="/">首页</a> > 单个游戏</div>
+	
+<div class="main ny_main">
+	<div class="jqjd_box">
+		<div class="slide">
+			<ul class="slide-cont"><!-- 幻灯 -->
+				<li class="slide-item">
+					<a target="blank" title="" href=""><img alt="" src="/statics/new/pic/19.png"></a>
+					<div class="slide-txt">
+						<div class="txt_bg"></div>
+						<a target="_blank" title="" href="">《太极熊猫》真.踩楼无双 狂揽1000钻</a>				</div><!--slide-txt-->
+				</li>
+				<li class="slide-item">
+					<a target="blank" title="" href=""><img alt="" src="/statics/new/pic/19.png"></a>
+					<div class="slide-txt">
+						<div class="txt_bg"></div>
+						<a target="_blank" title="" href="">《太极熊猫》真.踩楼无双 狂揽1000钻，全套周边带回家！</a>				</div><!--slide-txt-->
+				</li>
+			</ul><!--slide-cont-->
+			<ul class="slide-nav">
+				<li class="nownav">1</li>
+				<li>1</li>
+			</ul><!--slide-nav-->
+			<div style="" class="slide-loading"></div>
+			<a id="next" href="javascript:void(0)"></a>
+			<a id="prev" href="javascript:void(0)"></a>		</div>
+		<!--img_ban end-->
+		<dl class="jqjd">
+			<dt><h2>近期焦点</h2></dt>
+			<dd>
+				<ul>
+					<li class="xg"><a href="">魔鬼的步伐 《剑尊》四大时尚系统独家曝光</a>
+						在2009年发布到iOS平台之后，《愤怒的小鸟》获得了全球范围的成功，Rovio推出的这款物理游戏下载量突破了20亿。
+					</li>
+					<li><a href="">跨国间强强合作十字召唤师将首推中文版在2009年发布到我们动态</a> <span>03-13</span></li>
+					<li><a href="">跨国间强强合作十字召唤师将首推中文版在2009年发布到我们动态</a> <span>03-13</span></li>
+					<li><a href="">跨国间强强合作十字召唤师将首推中文版在2009年发布到我们动态</a> <span>03-13</span></li>
+					<li><a href="">跨国间强强合作十字召唤师将首推中文版在2009年发布到我们动态</a> <span>03-13</span></li>
+					<li><a href="">跨国间强强合作十字召唤师将首推中文版在2009年发布到我们动态</a> <span>03-13</span></li>
+				</ul>
+			</dd>
+		</dl><!--jqjd end-->
+	</div><!--jqjd_box end-->
+	<div class="cyxw_box">
+		<dl class="cyxw">
+			<dt><h2 class="on">产业新闻</h2></dt>
+			<dd>
+				<ul>
+				{pc:content action="lists" catid="$catid" num="10" order="inputtime DESC" page="$page"}
+					{loop $data $v}
+					<li>
+						<a href="{$v[url]}" class="img"><img src="{thumb($v[thumb],260,145)}"></a>
+						<div>
+							<a href="" class="title"><em>{$v[title]}</em><span class="time">{date('Y-m-d',$r[inputtime])}</span></a>
+							<p class="tag"><span>标签：</span> <a href="">安卓新闻</a> <a href="">行业新闻</a> </p>
+							<p class="peren">{str_cut(strip_tags($v[description]), 200)}</p>
+						</div>
+					</li>
+					{/loop}
+				{/pc}
+				</ul>
+				
+				<div class="page">{$pages}</div>
+
+			</dd>
+		</dl><!--cyxw end-->
+				
+		<div class="cyxw_rig">
+			<dl class="yxzx">
+				<dt><h2>游戏资讯</h2> <a href=""></a></dt>
+				<dd>
+					<ul>
+						<li class="img"><a href=""><img src="/statics/new/pic/1.jpg"><i></i><em>晒出《刀塔传奇》本命英雄，全套周边带回家！</em></a></li>
+						<li class="nlist"><a href="" class="img"><img src="/statics/new/pic/1.jpg"></a>
+					  <p><a href="" class="title">晒出《刀塔传奇》本命英雄，全套周边带回家！</a>手游行业正在高速发展，一些老的观随着行业经验的积的暗恋 澳大利亚。.</p></li>
+						<li class="nlist"><a href="" class="img"><img src="/statics/new/pic/1.jpg"></a>
+					  <p><a href="" class="title">晒出《刀塔传奇》本命英雄，全套周边带回家！</a>手游行业正在高速发展，一些老的观随着行业经验的积的暗恋 澳大利亚。.</p></li>
+						<li class="nlist"><a href="" class="img"><img src="/statics/new/pic/1.jpg"></a>
+					  <p><a href="" class="title">晒出《刀塔传奇》本命英雄，全套周边带回家！</a>手游行业正在高速发展，一些老的观随着行业经验的积的暗恋 澳大利亚。.</p></li>
+						<li class="nlist"><a href="" class="img"><img src="/statics/new/pic/1.jpg"></a>
+					  <p><a href="" class="title">晒出《刀塔传奇》本命英雄，全套周边带回家！</a>手游行业正在高速发展，一些老的观随着行业经验的积的暗恋 澳大利亚。.</p></li>
+					</ul>
+				</dd>
+			</dl><!--yxzx end-->
+			<dl class="yxsp">
+				<dt><h2>游戏视频</h2> <a href=""></a></dt>
+				<dd>
+					<ul>
+						<li class="img"><a href=""><img src="/statics/new/pic/2.jpg"><em>「Link·二次元」深度解读我们心中的神《新世纪福音战士》</em></a></li>
+						<li class="list"><a href="">你需要依靠自己的智慧决定到底应该要让谁通过，让谁离开某个虚拟国度。</a></li>
+						<li class="list"><a href="">你需要依靠自己的智慧决定到底应该要让谁通过，让谁离开某个虚拟国度。</a></li>
+						<li class="list"><a href="">你需要依靠自己的智慧决定到底应该要让谁通过，让谁离开某个虚拟国度。</a></li>
+						<li class="list"><a href="">你需要依靠自己的智慧决定到底应该要让谁通过，让谁离开某个虚拟国度。</a></li>
+						<li class="list none"><a href="">你需要依靠自己的智慧决定到底应该要让谁通过，让谁离开某个虚拟国度。</a></li>
+					</ul>
+				</dd>
+			</dl><!--yxsp end-->
+			<dl class="yxsp yxsp_3">
+				<dt><h2>游戏视频</h2> <a href=""></a></dt>
+				<dd>
+					<a href="" class="ads"><img src="/statics/new/pic/文章/2.jpg"></a>
+					<ul>
+						<li><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+						<li><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+						<li class="none"><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+						<li><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+						<li><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+						<li class="none"><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+						<li><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+						<li><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+						<li class="none"><a href=""><img src="/statics/new/pic/12.jpg"><i>马上看</i><em>炉石传说</em></a></li>
+					</ul>
+				</dd>	
+			</dl><!--yxsp end-->
+		</div><!--cyxw_rig end-->
+	</div><!--cyxw_box end-->
+</div><!--main end-->
+
+{template "content","footer"}
+
+</body>
+</html>

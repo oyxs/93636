@@ -1,0 +1,33 @@
+{template "content","header8"}
+{template "content","header2"}
+
+<div class="laction"><i></i>当前位置：<a href="/">首页</a> > {catpos($catid)}</div>
+<div class="main h5_main">
+   {if $top_parentid}
+	<ul class="h5_qbfl">
+		<li class="on"><a href="">分类</a></li>
+        {pc:content action="category" catid="$top_parentid" num="5" siteid="$siteid" order="listorder ASC"}
+            {loop $data $r}
+            <li {if $r['catid'] == $catid } class="on" {/if}><a href="{ChangeUrl($r[url])}">{$r[catname]}</a></li> 
+            {/loop}
+        {/pc}
+	</ul>
+    {/if}
+	{pc:content action="lists" catid="$catid" num="15"  order="id DESC" page="$page" }
+	<ul class="h5_yw">
+    	{loop $data $r}	
+		<li>
+			<img class="h5_zt" src="{$r[thumb]}" alt="{$r[title]}">
+			<h3>{$r[title]}</h3>
+			<h4>{$r[tags]}</h4>
+			<h5>{str_cut($r[description],150)}</h5>
+			<a href="{ChangeUrl($r[url])}" target="_blank" class="game_go">开始游戏</a>
+		</li>
+		{/loop}	
+	</ul>
+     <div class="pages">{$pages}</div>
+     {/pc}
+ </div > <!--qubf-->
+{template "content","footer"}
+</body>
+</html>

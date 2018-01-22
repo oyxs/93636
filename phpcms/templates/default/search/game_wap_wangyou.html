@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<meta name="MobileOptimized" content="620"/>
+<meta name="format-detection" content="telephone=no" />
+<title>{$SEO[title]}_93636手游网</title>
+<meta name="keywords" content="{$SEO[keyword]}" /> 
+<meta name="description" content="{$SEO[description]}" />
+<link href="/statics/wap/new_style/new_css/yueact.css" rel="stylesheet" type="text/css" />
+<script src="/statics/wap/js/jquery.js" type="text/javascript"></script>
+<script src="/statics/wap/js/top.js" type="text/javascript"></script>
+<script src="/statics/wap/js/jquery.infinitescroll.js" type="text/javascript"></script>
+</head>
+<body>
+{template "wap","header_wap"}
+<div class="content">
+    <div class="bourt">
+        <div class="link">
+            <a href="/">首页</a> > <a href="http://m.93636.com/games/">游戏库</a> ><a>网游</a>
+        </div>
+        <div class="art-lb">
+            <ul class="sort-list">
+			<div class="distinction clear style_n">
+                        <a href="http://m.93636.com/games/wangyou" {if $network==1}class="mar_l mar_r"{else}class="mar_l"{/if}>网游</a>  
+                        <a href="http://m.93636.com/games/danji" {if $network==0}class="mar_r"{else}class=""{/if}>单机</a>
+                    </div>
+              <li {if $catid==33} class="colou" {/if}><a href="/games/catid_33_network_1_plate_{$plate}/" class="green">休闲</a></li>
+              <li {if $catid==38} class="colou" {/if}><a href="/games/catid_38_network_1_plate_{$plate}/" class="yellow">动作</a></li>
+              <li {if $catid==37} class="colou" {/if}><a href="/games/catid_37_network_1_plate_{$plate}/" class="blud">策略</a></li>
+              <li {if $catid==35} class="colou" {/if}><a href="/games/catid_35_network_1_plate_{$plate}/" class="rad">角色</a></li>
+              <li {if $catid==34} class="colou" {/if}><a href="/games/catid_34_network_1_plate_{$plate}/" class="rad">竞技</a></li>
+              <li {if $catid==32} class="colou" {/if}><a href="/games/catid_32_network_1_plate_{$plate}/" class="green">射击</a></li>
+              <li {if $catid==36} class="colou" {/if}><a href="/games/catid_36_network_1_plate_{$plate}/" class="yellow">经营</a></li>
+              <li {if $catid==41} class="colou" {/if}><a href="/games/catid_41_network_1_plate_{$plate}/" class="blud">格斗</a></li>
+              <li {if $catid==42} class="colou" {/if}><a href="/games/catid_42_network_1_plate_{$plate}/" class="blud">棋牌</a></li>
+              <li {if $catid==39} class="colou" {/if}><a href="/games/catid_39_network_1_plate_{$plate}/" class="blud">赛车</a></li>
+            </ul>
+        </div>
+        <div class="art-lb mr">
+            {pc:content action="lists" catid="$catid" where="$where" num="8" order="id DESC" return="info" page="$page"}
+            <ul class="g-rb game-name paddi-none">
+                {loop $info $r}
+                <li><a href="{search_show_url($r[catid],$r[id])}" class="img"><img src="{$r[thumb]}" alt="{$r[title]}"> <strong>{$r[title]}</strong>
+				<span>
+				{php echo mb_substr($r[type], 0, 2, 'utf-8')}
+				</span><!--<em>{$r[size]}</em>--></a><a href="{search_show_url($r[catid],$r[id])}" class="g-list sw">下载</a> </li>
+                {/loop}
+            </ul>
+             
+            {if $pages!=''}<div class="g-more boru"><a class="txt arrow">加载更多</a></div>{/if}
+            {/pc}
+        </div>
+        <div id="page" style="display:none;">{$pages}</div>
+    </div>
+</div>
+{template "wap","footer_wap"}
+<script>
+	$(document).ready(function() {
+		$('.art-lb .game-name').infinitescroll({
+			navSelector  : "#page",
+       		nextSelector : "#page #nextpage",
+			itemSelector: ".art-lb .game-name li",
+			animate: true,
+			extraScrollPx: 100,
+			bufferPx: 5,
+			loading: {
+				finishedMsg: '没有更多内容了',
+				img: '/statics/wap/images/load.gif',
+				msgText: '正在加载中...'
+			}
+		});
+		$(window).unbind('.infscr');
+		$('.g-more .arrow').click(function() {
+			$('.art-lb .game-name').infinitescroll('retrieve');
+		});
+		$(document).ajaxError(function(e, xhr, opt) {
+			if (xhr.status == 404)
+				$('.g-more .arrow').remove();
+		});
+	});
+</script>	
+</body>
+</html>

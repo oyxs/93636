@@ -1,0 +1,130 @@
+﻿<link href="http://www.93636.com/statics/wap/new_style/new_css/yueact.css" rel="stylesheet">
+<script  type="text/javascript" src="http://www.93636.com/statics/wap/new_style/new_js/jquery.js"></script>
+
+<div class="login" >
+    <ul>
+        <li><p class="error" id="msg"></p></li>
+        <li><input type="text" id="username" name="username" class="login_tx login_user" placeholder="输入6-15位字母或数字"/></li>
+        <li><input type="password" name="password" id="password" class="login_tx login_passwor" placeholder="请输入密码"  />
+
+            <input type="password"  class="login_tx login_passwor" style="display: none;"/></li>
+        <li><input type="password" id="pwdconfirm" name="pwdconfirm" class="login_tx login_passwor" placeholder="再输入密码"  />
+            <input type="password" id="password1" class="login_tx login_passwor" style="display: none;"/>
+        </li>
+        <li><input type="text" id="email" name="email"  class="login_tx login_email" placeholder="输入正确邮箱地址" /></li>
+		<li><input type="text" id="tell" name="tell"  class="login_tx login_tell" placeholder="输入手机号码" /></li>
+		<script type="text/javascript">
+                                    var countdown=60;
+                                    function settime(obj) {
+									var tell = $("#tell").val();
+									if(tell==''){
+										alert('请输入手机号');
+										return false;
+									}
+                                        var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+                                        if(!myreg.test(tell))
+                                        {
+                                            alert('请输入有效的手机号码！');
+                                            return false;
+                                        }
+                                        /*if (!tell.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
+                                                alert("手机号码格式不正确！");
+												return false;
+                                            }*/
+                                        if (countdown == 0) {
+                                            obj.removeAttribute("disabled");
+                                            obj.value="免费获取验证码";
+                                            countdown = 60;
+                                            return;
+                                        } else {
+
+                                            if (countdown == 60){
+                                                $.ajax({
+                                                    type: 'post',
+                                                    url: '/alidayu/sent.php',
+                                                    data: {tell: tell},
+                                                    dataType: 'json',
+                                                    success: function(data) {
+                                                        alert($data);
+                                                    }
+                                                });
+
+
+                                            }
+                                                
+														
+                                            obj.setAttribute("disabled", true);
+                                            obj.value="重新发送(" + countdown + ")";
+                                            countdown--;
+                                        }
+                                        setTimeout(function() {
+                                                    settime(obj) }
+                                                ,1000)
+                                    }
+
+                                </script>
+		<li style="position: relative">
+            <input type="text" id="m_code" class="login_tx login_m_code"   name="m_code"  placeholder="请输入验证码"/>
+            <input type="button" id="btn" size="10" value="手机号获取验证码" style="position: absolute; font-size: 12px;;width:120px;right: 0px;top:0 ;text-align: center;text-indent: 0" onclick="settime(this)" />
+        </li>
+		<!--
+        <li>
+            <input type="text" id="code" name="code"  class="login_tx login_yzm" placeholder="请输入验证码"  />
+            <img src="/api.php?op=checkcode&code_len=5&font_size=14&width=90&height=30" class="login_code" id="R_imgYzm"  onclick='this.src = this.src + "&" + Math.random()'/>
+            <span class="f5" onclick='this.src = this.src + "&" + Math.random()'></span>
+        </li>
+-->
+        <li><input type="button" id="r_sub" class="login_bt" value="注册" /></li>
+        <input type="hidden" name="dosubmit" value="注册">
+    </ul>
+    <!-- <p class="shejiao clear" >
+        <span>使用社交账号登录:</span>
+        <a href="http://www.93636.com/qq/" id="qq_login" class="a1" target="_blank">QQ账号登录</a>
+        <a onclick="show_login('sina');return false;" href="javascript:;" id="sina" class="a2">新浪微博登录</a>
+    </p> -->
+</div>
+<div class="loding-gif" style="width:100%; height:100%; position: fixed; top:0; left:0; display:none; background:rgba(0,0,0,.5)"><img style="position: fixed; top:50%; left:50%" src="http://www.93636.com/statics/wap/new_style/new_img/5-121204193935-51.gif" alt=""></div>
+<script type="text/javascript">
+ $("#r_sub").click(function() {
+             var username = $("#username").val();
+             var password = $("#password").val();
+             var pwdconfirm = $("#pwdconfirm").val();
+             var email = $("#email").val();
+             var code = $("#code").val();
+			 var tell = $("#tell").val();
+			 var m_code = $("#m_code").val();
+             var dosubmit = 1;
+             
+             if(password != pwdconfirm){
+            	 alert('两次输入的密码不一致');return;
+             }
+             $('.loding-gif').show();
+             $.post("/index.php?m=member&c=index&a=register_new",{
+     			"username" : username,
+     			"password" : password,
+     			//"code" : code,
+     			"email" : email,
+				"tell" :tell,
+				"m_code":m_code,
+     			"dosubmit" : dosubmit
+     			},function(data) {
+     				if(data){
+     					var obj = eval('('+data+')');  
+     					if(obj.static == 1){
+						$('.loding-gif').hide();
+     						alert(obj.msg);
+     						parent.location.href="http://m.93636.com";
+     					}else{
+						$('.loding-gif').hide();
+     						alert(obj.msg);
+     					}
+         				
+     				}else{
+					$('.loding-gif').hide();
+     					alert("注册失败");
+     				}
+     		});
+         
+     
+ });
+</script>

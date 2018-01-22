@@ -1,0 +1,63 @@
+{template "content","header"}
+{template "content","header2"}
+        
+        <div class="laction"><i></i>当前位置：<a href="/">首页</a> > {catpos($catid)} </div>
+        <div class="main clear">
+            <div class="page3 wbox">
+                <ul class="tese clearfix">
+                    <li class="sg on">
+                        <a href="http://www.93636.com/heji/sanguo/" title="三国手机游戏" target="_blank">
+                            <b></b>
+                        </a>
+                    </li>
+                    <li class="ns">
+                        <a href="http://www.93636.com/heji/nvshen/" title="女生必玩手游" target="_blank">
+                            <b></b>
+                        </a>
+
+                    </li>
+                    <li class="jd">
+                        <a href="http://www.93636.com/heji/jingdiandanji/" title="经典单机游戏" target="_blank">
+                            <b></b>
+                        </a>
+
+                    </li>
+                    <li class="xy ">
+                        <a href="http://www.93636.com/heji/xiyou/" title="西游题材手机游戏" target="_blank">
+                            <b></b>
+                        </a>
+                    </li>
+                    <li class="xs nopx">
+                        <a href="http://www.93636.com/heji/xiaoshuo/" title="小说改编游戏" target="_blank">
+                            <b></b>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="game-list-syhj">
+                <div class="game-list-syhj-header">手游合集列表</div>
+                <ul class="clearfix">
+				{pc:get sql="select * from 93636_category where parentid=218 order by listorder desc " return="info"}
+				{loop $info $r}
+                    <li>
+                        <div class="game-box clearfix">
+                            <div class="game-box-pic"><a class="pic" href="http://www.93636.com{$r[url]}" title="{$r[catname]}" target="_blank"><img src="{$r[index_image]}" title="{$r[catname]}" alt=""></a></div>
+                            <div class="game-box-c">
+                                <h2><a href="http://www.93636.com{$r[url]}" target="_blank">{$r[catname]}</a></h2>
+                                <p>{$r['description']}</p>
+                                <a class="ckxq" href="http://www.93636.com{$r[url]}" title="{$r[catname]}" target="_blank">详情查看</a>
+                            </div>
+                        </div>
+                    </li>
+					{/loop}
+            {/pc}
+                   
+                </ul>
+            </div>
+        </div>
+        <!--main-->
+<div class="footer">
+          {template "content","foot"}
+</div>
+    </body>
+</html>

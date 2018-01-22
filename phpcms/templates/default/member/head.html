@@ -1,0 +1,98 @@
+<div class="user_bg">
+                    <div class="user_head fl">
+						<img src="{$member['img']}" alt="头像" onerror="this.src='/statics/images/user/hd_img.png'"> 
+                        
+                        <a href="/index.php?m=member&c=index&a=account_manage_avatar&t=1">修改头像</a>
+                    </div>
+                    <div class="user_information fl">
+                        <h2>{$member['nickname']}</h2>
+                        <p class="u_txt">用户名：{$username}<a href="/index.php?m=member&c=index&a=account_manage_info&t=1" class="bj_link">编辑资料</a></p>
+                        <p class="u_txt2"><span class="dj_ico">Lv{$member['level']}</span><span class="p2"><em style="width: {$member['percent']}%;" class="charts barred"></em></span><span>{$member['c']}/{$member['need_point']}</span><p>
+						
+                    </div>
+					{if $member['is_sign']==1}
+						<div class="user_sign">
+							<a href="javascript:;"  class="Sign Signed" >
+								<i>{if $member['sign_num']<10}0{/if}{$member['sign_num']}</i>
+							</a>
+							<a href="javascript:void(0)" id="ph" class="qdph">签到排行</a>
+						</div>
+					{else}
+						<div class="user_sign" id="user_sign">
+							<a href="javascript:void(0)"  class="Sign">
+								<i>{if $member['sign_num']<10}0{/if}{$member['sign_num']}</i>
+							</a>
+							<a href="javascript:void(0)" id="ph" class="qdph">签到排行</a>
+						</div>
+					{/if}
+                    
+					
+                       
+                    
+                    <div class="u_comp clear">
+                        <ul>
+                            <li><i class=""></i><div class="u_c_fr"><p class="txt1">资料完整度：<span>{$member['wanzd']}%</span></p><p><a href="/index.php?m=member&c=index&a=account_manage_info&t=1" class="txt2">完善>></a></p></div></li>
+                            <li><i class="jb_ico"></i><div class="u_c_fr"><p class="txt1">剩余金币：<span>{if $member['gold']==''}0{else}{$member['gold']}{/if}</span></p><p><a href="/index.php?m=member&c=index&a=gold_shop" class="txt2">使用>></a></p></div></li>
+                            <li><i class="dj_ico pad0" style="padding:0"></i><div class="u_c_fr"><p class="txt1">我的等级：<span>Lv{$member['level']}</span></p><p><a href="/index.php?m=member&c=index&a=level_explain" class="txt2">特权>></a></p></div></li>
+                        </ul>
+                    </div>
+                </div>
+				
+<!-- 签到弹窗 -->
+        <div class="office">
+            <div class="of-make"></div>
+            <div class="of_info of_one" style=" display: none;">
+                <p class="of_cloes" id="one_cloes"></p>
+                <div class="of_txt">
+                    <span class="of_tit">签到成功！</span>
+                    <span class="i_rad"><!--<i class="ico_xz"></i>+10--></span>
+                    <span class="i_greet"><!--<i class="ico_jb"></i>+5--></span>
+                </div>
+                <p class="of_ball">已连续签到{$member['sign_num_next']}天，明日签到可获得 +{$member['point_next']}积分 +{$member['gold_next']}金币</p>
+                <p class="of_ball of_rule"><a href="javascript:void(0)" id="of_rule">签到奖励规则></a><!--<a href="javascript:void(0)" id="of_ranking" style=" float:right;">签到排行></a>--></p>
+            </div>
+            <div class="of_info of_two" style=" display: none;">
+                <p class="of_cloes" id="two_cloes"></p>
+                <div class="of_txt"><span class="of_tit">签到奖励规则</span></div>
+                <p class="of_line">1-6天每日签到获得10积分、15金币，连续签到7天以上每天获得15积分、25金币，连续签到15天以上每天获得20积分、35金币。当连续签到30天以上每天获得30积分、50金币</p>
+                <p style=" font-size: 16px; line-height: 30px;">规则说明</p>
+                <p class="of_color of_rule">1.连续签到，不同阶段签到天数对应签到奖励不同；</p>
+                <p class="of_color">2.签到一天，连续签到天数+1；漏签一天，连续签到天数-3。比
+                    如，连续签到了7天，第8天漏签了，第9天签到时，连续签到天
+                    数为5天。对应签到奖励从 14降到12.连续签到天数最小为0天；
+                    3.排行榜天数以连续签到天数(漏签扣除连续签到天数)为准。</p>
+            </div>
+            
+        </div>
+		<div class="of_info of_three" style=" display: none;">
+                <p class="of_cloes" id="three_cloes"></p>
+                <div class="of_txt"><span class="of_tit greet">签到排行</span></div>
+                <p class="of_ph">我的排名：<span>{$paihang[my_ph]}</span></p>
+                <table width="540" border="1" cellpadding="0" cellspacing="0"   class="office_table">
+                    <tr style=" background: #f3f3f3;">
+                        <td width="100" height="40">排名</td>
+                        <td width="180">用户</td>
+                        <td width="150">等级</td>
+                        <td width="110">连续签到</td>
+                    </tr>
+				{php $i=1;}
+				{loop $paihang $p}
+				{php if ($i==11) break;}
+                    <tr>
+                        <td  height="40">{$i}</td>
+                        <td>{$p[username]}</td>
+                        <td>{$p[level_name]}</td>
+                        <td>{$p[sign_num]}天</td>
+                    </tr>
+					{php $i++;}
+					
+				{/loop}
+                    <tr>
+                        <td  height="40" class="greet">{$paihang[my_ph]}</td>
+                        <td class="greet">{$username}</td>
+                        <td class="greet">{$member['level_name']}</td>
+                        <td class="greet">{$member['sign_num']}天</td>
+                    </tr>
+                </table>
+                <i class="user_jh"></i>
+            </div>

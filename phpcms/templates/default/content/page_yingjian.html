@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>93636手游网cj_2016年手游chinajoy</title>
+        <meta name="keywords" content="93636手游chinajoy,93636手游网cj,2016cj">
+        <meta name="description" content="93636手游网参与2016年chinajoy中国国际数码互动娱乐展览会,93636手游将会竭诚为用户介绍2016cj展览会最新动态,敬请关注93636手游网cj" />
+        <link href="/statics/ganzhi/css/yueact.css" rel="stylesheet">
+        <script  src="/statics/ganzhi/js/jquery.js"></script>
+        <script  src="/statics/ganzhi/js/miguan_wjzj.js"></script>
+        <script  src="/statics/ganzhi/js/jquery.scrollbar.js"></script>
+        <script  src="/statics/ganzhi/js/jquery.slider.js"></script>
+        <script  src="/statics/ganzhi/js/superslide.2.1.js"></script>
+        <script  src="/statics/ganzhi/js/jquery_hd.js"></script>
+		<script type="text/javascript">
+             $(document).ready(function() {
+                //首页浮动效果
+                var d = document.getElementById("dt");
+                if (d != null) {
+                    var $fixedNav = $("#dt");
+                    var navTop = 0;
+                    $(window).on("scroll", function() {
+                        var wt = $(this).scrollTop();
+                        if (wt > navTop) {
+                           $(".china_top").show();
+                        } else {
+                           $(".china_top").hide();
+                        }
+                    });
+                }
+            });
+
+            function pageScroll() {
+                $('body,html').animate({scrollTop: 0}, 500);
+            }
+        </script>
+        <script type="text/javascript">
+            // 游戏排行
+            $('.js-game-top-list').on('mouseover', 'li', function(e) {
+                if ($(this).hasClass('game-top-active'))
+                    return;
+                $(this).addClass('game-top-active').siblings('li').removeClass('game-top-active');
+            });
+        </script>
+    </head>
+    <body>
+<<<<<<< .mine
+       <div class="china_muen">
+               <div class="china_list" >
+                <a href="http://www.93636.com/" target="_blank" class="c_logo"><img src="http://www.93636.com/statics/ganzhi/images/cy_logo.png" alt="logo"></a>
+                <ul class="c_list"> 
+                    <li class="on"><a href="" >首页</a></li>
+                    <li><a href="#wl">未来畅想</a></li>
+                    <li><a href="#dt">行业动态</a></li>
+                    <li><a href="">关于我们</a></li>
+                </ul>
+            </div>
+    </div>
+=======
+       <div class="china_list">
+           <div class="china_muen" >
+            <a href="http://www.93636.com/" target="_blank" class="c_logo"><img src="http://www.93636.com/statics/ganzhi/images/cy_logo.png" alt="logo"></a>
+            <ul class="c_list"> 
+                <li class="on"><a href="" >首页</a></li>
+                <li><a href="#wl">未来畅想</a></li>
+                <li><a href="#dt">行业动态</a></li>
+                <li><a href="">关于我们</a></li>
+            </ul>
+        </div>
+>>>>>>> .r158
+       </div>
+        <div class="chinajoy_pic"></div>
+       <div class="yj_main">
+            <div class="main">
+                <div class="main_k azwy">
+                    <!--幻灯-->
+                    <div class="gzBox">
+                        <div class="bd">
+                            <div class="tempWrap">
+                                <div class="tempWrap">
+                                    <ul>
+									{pc:content  action="position" posid="53" catid="27" order="listorder DESC" num="4"}
+									{loop $data $r}
+                                        <li>
+										<a target="_blank" href="{ChangeUrl($r[url])}" title="{$r[title]}">
+										<img src="{$r[nopicture]}" alt="{$r[title]}">
+										<div class="s_bg">
+										<span>{$r[title]}</span>
+										</div>
+										</a>
+										</li>
+                                    {/loop}
+									{/pc}   
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hd ch_ct">
+                            <ul><li class="on">1</li><li class="">2</li><li class="">3</li><li class="">4</li></ul>
+                        </div>
+                        <script>
+                            jQuery(".gzBox").slide({titCell: ".hd ul", mainCell: ".bd ul", effect: "left", autoPlay: true, autoPage: true, switchLoad: "_src"});
+                        </script>
+                    </div>
+                    <!--幻灯end-->
+                    <div class="News_box china_zi">
+                        <!--新闻大头条 -->
+                        <div class="hd">
+						{pc:content action="position" catid="27" posid="54" order="listorder DESC" num="1"}
+						{loop $data $r}
+                            <div class="hd_tit">
+							<a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank" class="gz_red">
+							{$r[title]}
+							</a>
+							</div>
+                            <div class="hd_art">
+                                <p>{str_cut($r[description],180)}...<a href="{ChangeUrl($r[url])}" target="_blank" rel="nofollow" class="china_fon">详细</a></p>
+                            </div>
+						{/loop}
+						{/pc}
+                        </div>
+                        <div class="bd">
+                            <ul>     
+							{pc:content action="position" catid="27" posid="54" order="listorder DESC" limits="1,5"}
+							{loop $data $r}								
+                                <li>
+                                    <em class="gz_dot"></em>                       
+                                    <a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank">{$r[title]}</a>
+                                    <span>{date('m-d',$r[inputtime])}</span>
+                                </li>
+                            {/loop}
+							{/pc}  
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="future" id="wl">
+                    <h2 class="fu_tit chin_pic"><i></i>未来畅想</h2>
+                    <div class="fu_list clear">
+                        <ul class="fu_part clear">
+						{pc:content action="position" catid="27" posid="55" order="listorder DESC" num="4"}
+						{loop $data $r}
+                            <li>
+                                <a href="{ChangeUrl($r[url])}" class="gz_img" title="{$r[title]}" target="_blank"><img src="{$r[thumb]}" alt="{$r[title]}"></a>
+                                <div class="gz_info">
+                                    <a href="{ChangeUrl($r[url])}" title="{$r[title]}" class="gz_txt china_color" target="_blank">{$r[title]}</a>
+                                    <p>{str_cut($r[description],180)}...<a href="{ChangeUrl($r[url])}" target="_blank" rel="nofollow" class="china_fon">详情</a></p>
+                                </div>
+                            </li>
+                        {/loop}
+						{/pc}    
+                        </ul>
+                    </div>
+                </div>
+                <div class="future" id="dt">
+                    <h2 class="fu_tit chin_pic"><i class="gz_hy"></i>行业动态</h2>
+                    <div class="fu_list clear">
+                        <div class="f_hy_pic clear">
+						{pc:content action="position" catid="27" posid="56" order="listorder DESC" num="4"}
+						{loop $data $r}
+                            <div class="s_pic">
+                                <a href="{ChangeUrl($r[url])}" title="{$r[title]}" target="_blank"><img src="{$r[thumb]}" alt="{$r[title]}" title="{$r[title]}"><p class="fu_bg ch_bg">{$r[title]}</p></a>
+                            </div>
+                        {/loop}
+						{/pc}    
+                        </div>
+                    </div>
+                </div>
+                <div class="future" >       
+                    <h2 class="fu_tit chin_pic chin_pics"><i class="gz_hz"></i>合作伙伴</h2>
+                    <div class="fu_list clear ch_fff">
+                        <div class="hz_list clear">
+                            <a href="http://www.kingnet.com/main" title="恺英网络" target="_blank"><img src="/statics/ganzhi/pic/hz2.jpg" alt=""></a>
+							<a href="http://www.93636.com/games/4800.html" title="项谷科技" target="_blank"><img src="/statics/ganzhi/pic/xgkj1238x140.jpg" alt=""></a>
+							<a href="http://www.yukusoft.com/" title="" target="_blank"><img src="/statics/ganzhi/pic/swyk1.jpg" alt=""></a>
+                            <!--<a href="" title="" target="_blank"><img src="pic/hz.png" alt=""></a>
+                            <a href="" title="" target="_blank"><img src="pic/hz.png" alt=""></a>
+                            <a href="" title="" target="_blank"><img src="pic/hz.png" alt=""></a>
+                            <a href="" title="" target="_blank"><img src="pic/hz.png" alt=""></a>-->
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="foot mt0"> 
+            <ul class="copyright">
+                <li>
+                    <a href="/about/">关于我们</a> |
+                    <a href="/statement/">免责声明</a> |
+                    <a href="/contact/">联系我们</a> |
+                    <a href="/ruanwen/">软文投稿</a> |
+                    <a href="/hezuo/">商务合作</a> |
+                    <a href="/sitemap/">网站地图</a>
+                    <br>Copyright 2015 <a href="http://www.93636.com" target="_blank">93636手游网</a> 版权所有 <span id="cnzz_stat_icon_1254986506"><a href="http://www.cnzz.com/stat/website.php?web_id=1254986506" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="http://icon.cnzz.com/img/pic1.gif"></a></span><script src=" http://s4.cnzz.com/z_stat.php?id=1254986506&amp;show=pic1" type="text/javascript"></script><script src="http://c.cnzz.com/core.php?web_id=1254986506&amp;show=pic1&amp;t=z" charset="utf-8" type="text/javascript"></script>	<br>
+                </li>
+            </ul>
+        </div>
+    </body>
+
+</html>

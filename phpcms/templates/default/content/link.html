@@ -1,0 +1,14 @@
+<!--友情链接-->
+<div class="friendly-list win_110 clear">
+    <div class="item1">友情链接:</div>
+    <div class="item2">
+        <ul>
+            {pc:link  action="type_list" siteid="$siteid" order="listorder DESC" num="24" return="data"}
+            {loop $data $v}
+            <li class="friendly_link"><a href="{$v['url']}" target="_blank">{$v['name']}</a></li>
+            {/loop}
+            {/pc}
+        </ul>
+    </div>
+</div>
+<!--友情链接-->

@@ -1,0 +1,102 @@
+{template "content","header"}
+{template "content","header2"}
+<div class="laction"><i></i>当前位置：<a href="{siteurl($siteid)}">首页</a> > {catpos($catid)} </div>
+<div class="main ny_main">
+	<div class="tbpic">
+			<div class="tpbr">
+            	{pc:content  action="position" catid="$catid" posid="18" order="id DESC" num="1"} 
+                {loop $data $key $val}
+                <a id="img" href="{$val['url']}" target="_blank">	
+                    <img src="{$val['nopicture']}" alt="{$val['title']}">
+                    <i>{$val['title']}</i>
+                </a>
+                {/loop}
+                {/pc}
+                {pc:content  action="position" catid="$catid" posid="18" order="id DESC" num="4"} 
+				<ul class="tpxt">
+                	{loop $data $key $val}
+					<li {if $n==1}class="active"{/if}>
+						<a href="javascript:void(0)"><img src="{$val['nopicture']}" links="{$val['url']}" alt="{$val['title']}"></a>
+                    </li>
+                    {/loop}
+				</ul>
+                {/pc}
+			</div><!--tpbr 轮播-->
+			
+		<div class="jrtjwz">
+			<div class="list1">
+				<h3><span>今日推荐</span>	</h3>
+            </div>
+            {pc:content  action="position" catid="$catid" posid="19" order="id DESC" num="1"} 
+            	{loop $data $key $val}	
+				<a class="first1" href="{$val['url']}" target="_blank"><img alt="{$val['title']}" src="{$val['nopicture']}"></a>
+				{/loop}
+			{/pc}
+			{pc:content  action="position" catid="$catid" posid="19" order="id DESC" limits="1,8"} 	
+			<ul class="first">
+           		{loop $data $key $val}
+				<li>
+					<a href="{$val['url']}" target="_blank">{$val['title']}</a>
+				</li>
+				{/loop}
+			</ul>
+			{/pc}
+	</div><!--jrtjwz 轮播右侧文字-->
+</div><!--tbpic1 轮播-->	
+	
+<dl class="mntppic">
+	<dt><h2>{$CATEGORYS[13]['catname']}</h2><a href="{$CATEGORYS[13]['url']}" target="_blank" rel="nofollow"></a></dt>
+	<dd>
+    	{pc:content action="lists" catid="13" order="id DESC" num="8"}
+		<ul>
+        	{loop $data $key $val}
+			<li><a href="{$val['url']}" target="_blank"><img alt="{$val['title']}" src="{$val['thumb']}"><i>{$val['title']}</i></a></li>
+            {/loop}
+		</ul>
+        {/pc}
+	</dd><!--mntppic end-->
+</dl><!--mntppic end-->
+	
+<dl class="mntppic">
+	<dt><h2>{$CATEGORYS[25]['catname']}</h2><a href="{$CATEGORYS[25]['url']}" target="_blank" rel="nofollow"></a></dt>
+	<dd>
+		{pc:content action="lists" catid="25" order="id DESC" num="8"}
+		<ul>
+        	{loop $data $key $val}
+			<li><a href="{$val['url']}" target="_blank"><img alt="{$val['title']}" src="{$val['thumb']}"><i>{$val['title']}</i></a></li>
+            {/loop}
+		</ul>
+        {/pc}
+	</dd><!--mntppic end-->
+</dl><!--mntppic end-->
+	
+<dl class="mntppic">
+	<dt><h2>{$CATEGORYS[26]['catname']}</h2><a href="{$CATEGORYS[26]['url']}" target="_blank" rel="nofollow"></a></dt>
+	<dd>
+		{pc:content action="lists" catid="26" order="id DESC" num="8"}
+		<ul>
+        	{loop $data $key $val}
+			<li><a href="{$val['url']}" target="_blank"><img alt="{$val['title']}" src="{$val['thumb']}"><i>{$val['title']}</i></a></li>
+            {/loop}
+		</ul>
+        {/pc}
+	</dd><!--mntppic end-->
+</dl><!--mntppic end-->
+	
+<dl class="mntppic">
+	<dt><h2>{$CATEGORYS[24]['catname']}</h2><a href="{$CATEGORYS[24]['url']}" target="_blank" rel="nofollow"></a></dt>
+	<dd>
+		{pc:content action="lists" catid="24" order="id DESC" num="8"}
+		<ul>
+        	{loop $data $key $val}
+			<li><a href="{$val['url']}" target="_blank"><img alt="{$val['title']}" src="{$val['thumb']}"><i>{$val['title']}</i></a></li>
+            {/loop}
+		</ul>
+        {/pc}
+	</dd><!--mntppic end-->
+</dl><!--mntppic end-->
+
+</div><!--h5_tpympic end-->
+{template "content","footer"}	
+</body>
+</html>
